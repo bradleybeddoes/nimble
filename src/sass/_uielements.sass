@@ -1,0 +1,365 @@
+//
+//  Nimble, an extensive application base for Grails
+//  Copyright (C) 2009 Intient Pty Ltd
+//
+//  Open Source Use - GNU Affero General Public License, version 3
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Affero General Public License as
+//  published by the Free Software Foundation, either version 3 of the
+//  License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Affero General Public License for more details.
+//
+//  You should have received a copy of the GNU Affero General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+//  Commercial/Private Use
+//
+//  You may purchase a commercial version of this software which
+//  frees you from all restrictions of the AGPL by visiting
+//  http://intient.com/products/nimble/licenses
+//
+//  If you have purchased a commercial version of this software it is licensed
+//  to you under the terms of your agreement made with Intient Pty Ltd.
+//
+//  Author: Bradley Beddoes
+//
+
+/* This file is licensed by Intient Pty Ltd as part of Nimble. It usage is governed by either the GNU Affero General Public License, version 3
+  or by a commercial license agreement negotiated with Intient. See the source .sass files for full details.
+
+@import compass/utilities/lists.sass
+@import yui/modules/fonts.sass
+
+@import rounded.sass
+
+!color_button = #f2f2f2
+!color_button_text = #363636
+!color_button_border = #ccc
+!color_button_border_highlight = #eee
+
+!color_button2 = #363636
+!color_button2_text = #f2f2f2
+!color_button2_border = #666
+!color_button2_border_highlight = #868686
+
+!link_color = #363636
+
+!button_padding = 6px
+
+=nomargin
+  margin = 0px
+
+=nopadding
+  padding = 0px
+
+=noborder
+  border = "none"
+
+=left
+  float = "left"
+
+=right
+  float = "right"
+
+=bold
+  font-weight = "bold"
+
+=italic
+  font-style = "italic"  
+
+=easyinput
+  padding = 5px
+
+  :font
+    :size = 1.2em
+
+=cleanlist
+  ul
+    list-style-type = "none" 
+
+    li
+      list-style-type = "none"
+
+
+=link(!color = !link_color, !hover_decoration = "underline", !nonhover_decoration = "none")
+  color = !color
+  cursor = "pointer"
+  text-decoration = !nonhover_decoration
+
+  &:hover
+    :text-decoration = !hover_decoration
+
+=datatable(!margin = 0px, !width = 25%, !odd_bg_color = "#fff", !even_bg_color = "#fbfbfb", !head_bg_color = "#fff")
+  margin = !margin
+  width = !width
+
+  h3
+    +nomargin
+    +nopadding
+
+    :margin
+      :bottom = 3px
+
+  thead
+    tr
+      th
+        :background
+          :color = !head_bg_color
+
+        a
+          +link
+
+  tbody
+    tr
+      &.odd
+        td
+          :background
+            :color = !odd_bg_color
+
+      &.even
+        td
+          :background
+            :color = !even_bg_color
+
+      td
+        &.name
+          :font
+            :weight = "bold"
+
+=datatablewithbuttons
+  tbody
+    tr
+      td
+        padding = !button_padding + 3
+
+=popup
+  +nomargin
+  +nopadding
+
+  .banner
+    +font-size(14px)
+    padding = 9px
+
+    text-align = "center"
+
+  .content
+    padding = 18px
+
+  .buttons
+    +right
+    padding = 18px
+
+=button(!radius=5px)
+  +nomargin
+  +rounded(!radius)
+  +link(!link_color, "none")
+
+  padding = 6px
+
+  :background
+    :color = !color_button
+
+  border = 1px "solid" !color_button_border
+  :border
+    :top = 1px "solid" !color_button_border_highlight
+    :left = 1px "solid" !color_button_border_highlight
+
+  color = !color_button_text
+
+  :font
+    :size = 1.1em
+    :weight = "normal"
+
+=button2(!radius=5px)
+  +button(!radius)
+
+  :background
+    :color = !color_button2
+
+  border = 1px "solid" !color_button2_border
+  :border
+    :top = 1px "solid" !color_button2_border_highlight
+    :left = 1px "solid" !color_button2_border_highlight
+
+  a
+    color = !color_button2_text
+
+=notification
+  +rounded
+  +font-size(12px)
+
+  margin = 5px
+  padding = 10px
+  :font
+    :weight = "bold"
+
+=paginatebuttons
+  margin = 5px
+  padding = 5px
+
+  a
+    +link
+
+=paginatebutton
+  margin = 5px
+  padding = 5px
+
+=paginatebuttoncurrent
+  +paginatebutton
+
+  :font
+    :weight = "bold"
+
+=paginatebuttonprevious
+  +paginatebutton
+
+  padding-left: 24px
+
+  :background
+    :repeat = "no-repeat"
+    :position = "left center"
+    :image = url("icons/arrow_left.png")
+
+=paginatebuttonnext
+  +paginatebutton
+
+  padding-right: 24px
+
+  :background
+    :repeat = "no-repeat"
+    :position = "right center"
+    :image = url("icons/arrow_right.png")
+
+=horizontallist
+  +nomargin
+  +nopadding
+
+  list-style-type = "none"
+
+  li
+    +nomargin
+    +nopadding
+    +left
+
+    list-style-type = "none"
+
+=horizontalmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2") 
+  +horizontallist
+
+  position = "relative"
+
+  height = 36px
+  width = 100%
+
+  :background
+    :image = url(!background)
+    :color = !color
+    :position = "top left"
+    :repeat = "repeat-x"
+
+  li
+    :padding
+      :left = 10px
+      :right = 10px
+
+    height = 36px
+    line-height = 36px
+
+    a
+      +link
+      :font
+        :weight = "bold"
+        :size = "1.1em"
+
+
+
+    &.current
+      :background
+        :image = url("images/horizontalmenucurrentbg.png")
+
+
+      a
+        +link("#f2f2f2")
+
+=horizontalsubmenu(!background = "images/horizontalsubmenubg.png", !color = "#000")
+  +horizontallist
+
+  position = "absolute"
+  left = 0
+  top = 36px
+  width = 100%
+
+  :background
+    :image = url(!background)
+    :color = !color
+    :position = "top left"
+    :repeat = "repeat-x"
+
+  border = 0px "solid" #000
+
+  li
+    :padding
+      :left = 10px
+      :right = 10px
+
+    a
+      +link("#fff")
+      line-height = 36px
+
+
+// Generic UI classes
+.error
+  +notification
+
+  background-color = #870000
+  border = 1px "solid" #870000
+  color = "#fff"
+
+.information
+  +notification
+
+  background-color = blue
+  border = 1px "solid" blue
+  color = "#fff"
+
+.success
+  +notification
+
+  background-color = #00872C
+  border = 1px "solid" #00872C
+  color = "#fff"
+
+.easyinput
+  +easyinput
+
+.helppopup
+  +popup
+
+  .banner
+    :background
+      :color =  #1B4366
+
+    color = #fbfbfb
+
+.errorpopup
+  +popup
+
+  .banner
+    :background
+      :color =  #870000
+
+    color = #fbfbfb
+
+.deletepopup
+  +popup
+
+  .banner
+    :background
+      :color =  #870000
+
+    color = #fbfbfb

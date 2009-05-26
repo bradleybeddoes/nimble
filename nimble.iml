@@ -1,0 +1,1983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module relativePaths="true" type="GRAILS_MODULE" version="4">
+  <component name="DBNavigator.Module.ConnectionManager">
+    <connections />
+  </component>
+  <component name="FacetManager">
+    <facet type="Grails" name="Grails">
+      <configuration />
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="Grails" name="Grails" removed="false">
+          <file>file://$MODULE_DIR$/web-app/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/web-app/WEB-INF/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="GrailsPluginsStorage">
+    <option name="availablePluginsMap">
+      <map>
+        <entry key="acegi">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="acegi" />
+              <option name="release" value="0.5.1" />
+              <option name="title" value="Grails Spring Security 2.0 Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="activemq">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="activemq" />
+              <option name="release" value="0.0" />
+              <option name="title" value="Grails Activemq Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="aop">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="aop" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="audit-logging">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="audit-logging" />
+              <option name="release" value="0.4" />
+              <option name="title" value="adds hibernate audit logging and onChange event handlers to GORM domain classes" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="authentication">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="authentication" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Simple, extensible authentication services with signup support" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="auto-delegator">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="auto-delegator" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin automatically does delegation" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="autobase">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="autobase" />
+              <option name="release" value="0.8.1" />
+              <option name="title" value="Automate your database work as much as possible" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="autorest">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="autorest" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="avatar">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="avatar" />
+              <option name="release" value="0.3" />
+              <option name="title" value="Grails Avatar Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="axis2">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="axis2" />
+              <option name="release" value="0.5" />
+              <option name="title" value="Adds Web Service support for Grails services using Apaxhe Axis2." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="background-thread">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="background-thread" />
+              <option name="release" value="1.3" />
+              <option name="title" value="Background Thread Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="bubbling">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="bubbling" />
+              <option name="release" value="1.5.0" />
+              <option name="title" value="Bubbling Library YUI Extension" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="cache">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="cache" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="cas-client">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="cas-client" />
+              <option name="release" value="1.0" />
+              <option name="title" value="This plugin provides client integration for JA-SIG CAS" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="clamav">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="clamav" />
+              <option name="release" value="0.1" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="code-coverage">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="code-coverage" />
+              <option name="release" value="1.1.3" />
+              <option name="title" value="Generates Code Coverage reports" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="cometd">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="cometd" />
+              <option name="release" value="0.1.3" />
+              <option name="title" value="Enable your Grails application with Comet functions" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="compress">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="compress" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Servlet filter to Compress content." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="converters">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="converters" />
+              <option name="release" value="0.3" />
+              <option name="title" value="Provides JSON and XML Conversion for common Objects (Domain Classes, Lists, Maps, POJO)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="criteria">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="criteria" />
+              <option name="release" value="1.3" />
+              <option name="title" value="Criteria (record filtering) plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="crowd">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="crowd" />
+              <option name="release" value="0.4" />
+              <option name="title" value="Plugin that adds support for Atlassian Crowd authentication and authorization to a Grails webapp." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="crypto">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="crypto" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Encryption plugin for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="datasources">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="datasources" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Grails Datasources Plugin." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="db-util">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="db-util" />
+              <option name="release" value="0.3" />
+              <option name="title" value="DB Utils - Embedded" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dbmapper">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dbmapper" />
+              <option name="release" value="0.1.7" />
+              <option name="title" value="Database relation to domain object generator" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dbmigrate">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dbmigrate" />
+              <option name="release" value="0.1.5" />
+              <option name="title" value="Database migration tasks" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dbunit-operator">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dbunit-operator" />
+              <option name="release" value="0.2" />
+              <option name="title" value="DBUnit Operator" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="debug">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="debug" />
+              <option name="release" value="1.0.2" />
+              <option name="title" value="Provides debug tools for development mode" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="debug-help">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="debug-help" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Debugging Help" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="djangotemplates">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="djangotemplates" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dojo">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dojo" />
+              <option name="release" value="0.4.3" />
+              <option name="title" value="Provides integration with the Dojo toolkit http://dojotoolkit.org, an Ajax framework." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="domain-schema">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="domain-schema" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="drilldowns">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="drilldowns" />
+              <option name="release" value="1.3" />
+              <option name="title" value="Drilldown (summary to detail) plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="drools">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="drools" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin provides Drools Rule Based Management System functionality to Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dwr">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dwr" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin adds DWR capabilies to the services in a Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="dynamic-jasper">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="dynamic-jasper" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Integrates DynamicJasper into Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="eastwood-chart">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="eastwood-chart" />
+              <option name="release" value="0.3" />
+              <option name="title" value="This plugin wraps JFreeChart's Eastwood servlet for Grails app" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="easybtest">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="easybtest" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Plugin summary/headline" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="echo2">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="echo2" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Echo2 capabilities to Grails applications" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="exchange-rates">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="exchange-rates" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Foreign currency exchange rates using Yahoo!" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ext">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ext" />
+              <option name="release" value="2.0.2" />
+              <option name="title" value="Ext JavaScript Library" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ext-ui">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ext-ui" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="extended-data-binding">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="extended-data-binding" />
+              <option name="release" value="0.2" />
+              <option name="title" value="This plugin extends Grails' data binding possibilities, both for parsing the user input and to present formatted data" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="facebook-connect">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="facebook-connect" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Facebook Connect" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="fckeditor">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="fckeditor" />
+              <option name="release" value="0.8" />
+              <option name="title" value="Fckeditor" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="feeds">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="feeds" />
+              <option name="release" value="1.4" />
+              <option name="title" value="Render RSS/Atom feeds with a simple builder" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="filter">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="filter" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Dynamic filter plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="filterpane">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="filterpane" />
+              <option name="release" value="0.3.1" />
+              <option name="title" value="Dynamically filter / search domain objects." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="fixtures">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="fixtures" />
+              <option name="release" value="0.4" />
+              <option name="title" value="fixtures" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="flash-player">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="flash-player" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Grails TagLib plugin for the JW FLV Media Player" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="flex">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="flex" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Provides integration between Grails and Flex" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="func">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="func" />
+              <option name="release" value="1.7" />
+              <option name="title" value="Plugin to make your application ables to call Func (https://fedorahosted.org/func)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="functional-test">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="functional-test" />
+              <option name="release" value="1.2.2" />
+              <option name="title" value="Functional Testing" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="google-chart">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="google-chart" />
+              <option name="release" value="0.4.8 (?)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="google-data">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="google-data" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Google Data Java Client Library" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="grails-ui">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="grails-ui" />
+              <option name="release" value="1.0.2 (?)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="gridgain">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="gridgain" />
+              <option name="release" value="0.2" />
+              <option name="title" value="GridGain Plugin to enable GridGain 2.1 support" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="gwt">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="gwt" />
+              <option name="release" value="0.3-SNAPSHOT" />
+              <option name="title" value="The Google Web Toolkit for Grails." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="h2">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="h2" />
+              <option name="release" value="0.2.1" />
+              <option name="title" value="Provide H2 Database Support" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="help-balloons">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="help-balloons" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Grails TagLib plugin for the HelpBalloon system from Beau Scott" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="hibernate">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="hibernate" />
+              <option name="release" value="1.1-beta3" />
+              <option name="title" value="Hibernate for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="hibernate-stats">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="hibernate-stats" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Enables Hibernate Statistics capture and exposes an MBean" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="i18n-gettext">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="i18n-gettext" />
+              <option name="release" value="0.5" />
+              <option name="title" value="I18n gettext plugin for grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="i18n-templates">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="i18n-templates" />
+              <option name="release" value="1.0.4" />
+              <option name="title" value="I18n Templates" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="include">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="include" />
+              <option name="release" value="0.3" />
+              <option name="title" value="This plugin adds include behaviour to Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="iui">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="iui" />
+              <option name="release" value="0.2" />
+              <option name="title" value="iUI for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ivy">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ivy" />
+              <option name="release" value="2.0.0-rc1" />
+              <option name="title" value="The Ivy Dependency Manager for Grails." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="j2d">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="j2d" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Enables Java2D rendering using GraphicsBuilder" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jackrabbit">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jackrabbit" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jasper">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jasper" />
+              <option name="release" value="0.9.5" />
+              <option name="title" value="Easily launch Jasper reports from a Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jawr">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jawr" />
+              <option name="release" value="2.51" />
+              <option name="title" value="adds Jawr (https://jawr.dev.java.net) functionality to Grails applications." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jbosscache">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jbosscache" />
+              <option name="release" value="0.1.2" />
+              <option name="title" value="JBossCache Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jbpm">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jbpm" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Jbpm plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jcaptcha">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jcaptcha" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Grails JCaptcha Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jcr">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jcr" />
+              <option name="release" value="0.2-SNAPSHOT (?)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jms">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jms" />
+              <option name="release" value="0.3" />
+              <option name="title" value="This plugin adds MDB functionality to services." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jmx">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jmx" />
+              <option name="release" value="0.4" />
+              <option name="title" value="The JMX Grails Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jpa">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jpa" />
+              <option name="release" value="0.1.1" />
+              <option name="title" value="Support standalone JPA usage in Grails without GORM" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jquery">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jquery" />
+              <option name="release" value="1.0RC1" />
+              <option name="title" value="JQuery for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jsecurity">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jsecurity" />
+              <option name="release" value="0.3" />
+              <option name="title" value="Security support via the JSecurity framework." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jsf">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jsf" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jsunit">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jsunit" />
+              <option name="release" value="0.3" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="jttaglib">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="jttaglib" />
+              <option name="release" value="0.2" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="laszlo">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="laszlo" />
+              <option name="release" value="0.6.5" />
+              <option name="title" value="OpenLaszlo plugin for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ldap">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ldap" />
+              <option name="release" value="0.8" />
+              <option name="title" value="Adds easy to use LDAP connectivity" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="license">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="license" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin provides license management to Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="liquibase">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="liquibase" />
+              <option name="release" value="1.8.1.0" />
+              <option name="title" value="LiquiBase Database Refactoring for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="localizations">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="localizations" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Localizations (messages) plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="log4j-xml">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="log4j-xml" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Allow configure log4j by Groovy/XML in Grails 1.1" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="logging">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="logging" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Grails Dynamic Logging Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="lookups">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="lookups" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Application lookup (reference tables) plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="mail">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="mail" />
+              <option name="release" value="0.5" />
+              <option name="title" value="Provides Mail support to a running Grails application" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="menus">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="menus" />
+              <option name="release" value="1.1" />
+              <option name="title" value="Menus plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="modalbox">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="modalbox" />
+              <option name="release" value="0.3" />
+              <option name="title" value="This plugin adds the ModalBox to your Grails applications." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="mondrian">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="mondrian" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin installs Pentaho Mondrian into your Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="mootools">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="mootools" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Provides integration with the Mootools toolkit http://mootools.net, a light OO javascript framework." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="morph-deploy">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="morph-deploy" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Deploy applications to Mor.ph hosting" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="navigation">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="navigation" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Site Menu Navigation" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="oauth">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="oauth" />
+              <option name="release" value="0.1.1" />
+              <option name="title" value="Adds OAuth capability to Grails apps" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ofchart">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ofchart" />
+              <option name="release" value="0.5" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ohloh">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ohloh" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="openid">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="openid" />
+              <option name="release" value="0.1" />
+              <option name="title" value="OpenID" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="p6spy">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="p6spy" />
+              <option name="release" value="0.4" />
+              <option name="title" value="This plugin adds p6spy to your application" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="paypal">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="paypal" />
+              <option name="release" value="0.2" />
+              <option name="title" value="A Grails plug-in that provides integration with Paypal's Instant Payment Notfication (IPN) system" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="php">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="php" />
+              <option name="release" value="0.1.2" />
+              <option name="title" value="Support PHP in your Grails application with the Quercus PHP engine" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="portlets">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="portlets" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="post-code">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="post-code" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Provides a service for getting lat/lon from UK postcodes and calculating distance between two postcode centres" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="profiler">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="profiler" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Profiles a Grails application on demand." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="promo">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="promo" />
+              <option name="release" value="0.1" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="quartz">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="quartz" />
+              <option name="release" value="0.4.1-SNAPSHOT" />
+              <option name="title" value="This plugin adds Quartz job scheduling features to Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="radeox">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="radeox" />
+              <option name="release" value="0.1" />
+              <option name="title" value="A plugin for the Radeox Wiki-render engine to allow easy markup and cross-linking." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="recaptcha">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="recaptcha" />
+              <option name="release" value="0.3.1" />
+              <option name="title" value="This plugin adds ReCaptcha support to Grails." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ref-code">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ref-code" />
+              <option name="release" value="0.1" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="remoting">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="remoting" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Adds easy-to-use server-side and client-side RPC support." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="restore-state">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="restore-state" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Restore State Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="richui">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="richui" />
+              <option name="release" value="0.6" />
+              <option name="title" value="Provides a set of AJAX components" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="runtime-logging">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="runtime-logging" />
+              <option name="release" value="0.3" />
+              <option name="title" value="Grails Runtime Logging Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="scaffold-tags">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="scaffold-tags" />
+              <option name="release" value="0.7" />
+              <option name="title" value="Adds tags to support fully-customizable &amp; dynamic scaffolding" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="screen-wiz">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="screen-wiz" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Database Driven Screen Wizard" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="searchable">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="searchable" />
+              <option name="release" value="0.5.1" />
+              <option name="title" value="Adds rich search functionality to Grails domain models. This version is recommended for JDK 1.5+" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="searchable14">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="searchable14" />
+              <option name="release" value="0.5.1" />
+              <option name="title" value="Adds rich search functionality to Grails domain models. This version is recommended for JDK 1.4" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="selenium">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="selenium" />
+              <option name="release" value="0.5" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="settings">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="settings" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Application settings (global constants) plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="shopping-cart">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="shopping-cart" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Shopping cart plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="skinnable">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="skinnable" />
+              <option name="release" value="0.2" />
+              <option name="title" value="This plugin adds skinnable support to Grails application." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="smartclient">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="smartclient" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="sound-manager">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="sound-manager" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Grails SoundManager Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="sparkline">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="sparkline" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Plugin summary/headline" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="springcache">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="springcache" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Spring Cache Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="springmvc">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="springmvc" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Grails Spring MVC Controller Plugin." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="stark-security">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="stark-security" />
+              <option name="release" value="0.4.2" />
+              <option name="title" value="A robust, convention-based implementation of Spring Security for Grails" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="static-resources">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="static-resources" />
+              <option name="release" value="0.5" />
+              <option name="title" value=" " />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="step2">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="step2" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Google Step2 (http://code.google.com/p/step2/)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="struts1">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="struts1" />
+              <option name="release" value="1.3.8.1" />
+              <option name="title" value="Provides integration between Grails and the Struts 1 framework" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="syntax-highlighter">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="syntax-highlighter" />
+              <option name="release" value="0.1.2" />
+              <option name="title" value="Syntax Highlighter Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="terracotta">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="terracotta" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Simple Tarracotta Integration" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="test-template">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="test-template" />
+              <option name="release" value="1.3.2" />
+              <option name="title" value="Test Templates" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="testing">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="testing" />
+              <option name="release" value="0.5" />
+              <option name="title" value="Unit testing plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="triggers">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="triggers" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="twitter">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="twitter" />
+              <option name="release" value="0.2" />
+              <option name="title" value="Grails Twitter Plugin." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="ui-performance">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="ui-performance" />
+              <option name="release" value="1.0" />
+              <option name="title" value="Grails UI Performance Plugin" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="urlrewrite">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="urlrewrite" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Tuckey's Url Rewrite Filter" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="webdav">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="webdav" />
+              <option name="release" value="no releases" />
+              <option name="title" value="No description available" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="webtest">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="webtest" />
+              <option name="release" value="0.6" />
+              <option name="title" value="A plug-in that provides functional testing for Grails using Canoo Web Test" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="webxml">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="webxml" />
+              <option name="release" value="1.2" />
+              <option name="title" value="Create useful additions to web.xml" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="wicket">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="wicket" />
+              <option name="release" value="0.6" />
+              <option name="title" value="Provides integration between Grails and the Wicket framework" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="xfire">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="xfire" />
+              <option name="release" value="0.7.5" />
+              <option name="title" value="Add Web Service support for Grails services using XFire." />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="xmlrpc">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="xmlrpc" />
+              <option name="release" value="0.1" />
+              <option name="title" value="This plugin adds XML RPC functionality to GRAILS" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="xtemplates">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="xtemplates" />
+              <option name="release" value="0.1" />
+              <option name="title" value="Extensible (eXtreme) Templates" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+        <entry key="yui">
+          <value>
+            <GrailsPlugin>
+              <option name="name" value="yui" />
+              <option name="release" value="2.6.0" />
+              <option name="title" value="Yahoo! User Interface Library (YUI)" />
+            </GrailsPlugin>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins">
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/hibernate-1.1/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/grails-app/conf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/grails-app/taglib" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/hibernate-1.1/scripts" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/scripts" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/scripts" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/conf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/conf/hibernate" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/realms" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/templates/artifacts" />
+      <excludeFolder url="file://$MODULE_DIR$/src/templates/scaffolding" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="grails-1.1" level="application" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/ant/lib/ant.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ant-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ant-junit-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ant-launcher-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ant-nodeps-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ant-trax.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/antlr-2.7.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/backport-util-concurrent-3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/cglib-nodep-2.1_3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-beanutils-1.7.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-cli-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-codec-1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-collections-3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-dbcp-1.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-el-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-fileupload-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-io-1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-lang-2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-pool-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/commons-validator-1.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ehcache-1.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ejb3-persistence-3.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/gant_groovy1.6-1.6.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/hsqldb-1.8.0.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ivy-2.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jasper-compiler-5.5.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jasper-compiler-jdt-5.5.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jasper-runtime-5.5.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jcl-over-slf4j-1.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jetty-6.1.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jetty-naming-6.1.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jetty-plus-6.1.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jetty-util-6.1.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jline-0.9.91.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jsp-api-2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jsp-api-2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jsr107cache-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jstl-2.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jstl-2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/jta-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/junit-3.8.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/log4j-1.2.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/ognl-2.6.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/org.springframework.binding-2.0.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/org.springframework.js-2.0.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/org.springframework.webflow-2.0.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/oro-2.0.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/oscache-2.4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/serializer.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/servlet-api-2.5-6.1.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/slf4j-api-1.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/slf4j-log4j12-1.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/spring-2.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/spring-test-2.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/spring-webmvc-2.5.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/standard-2.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/standard-2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/start.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/svnkit-1.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$GRAILS_HOME$/lib/xpp3_min-1.1.3.4.O.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Grails User Library">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/lib/recaptcha4j-0.0.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

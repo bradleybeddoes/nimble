@@ -1,0 +1,22 @@
+Nimble Logging
+--------------
+
+1 message of info or higher for each transaction, whatever a transaction is defined as,
+with as much useful information about what was done, who it was done by,
+and what the outcome was, as possible.
+
+
+How to use log levels
+---------------------
+
+Error - errors relating to application state that is caused by some internal problem
+might be an internal library throwing an exception or something horribly wrong with the application state
+
+Warn - An error you'd expect in general flow if the user is doing something stupid and should be notified
+
+Info - success states for user interactions
+
+Debug - specific details on steps the application is taking
+
+Trace - Low level information, raw request/responses from other systems, etc
+

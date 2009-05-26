@@ -1,0 +1,17 @@
+Nimble CSS
+----------
+
+Order of attributes:
+
+* Mixins
+* Float
+* Position
+* Margin
+* Padding
+* Height
+* Width
+* Alphabetical by attribute name(1)
+
+1. Where it makes sense to order attributes by common display order i.e
+for a table where thead comes before tbody in markup this ordering should be used in preference
+to alphabetical ordering.

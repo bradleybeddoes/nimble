@@ -1,0 +1,175 @@
+//
+//  Nimble, an extensive application base for Grails
+//  Copyright (C) 2009 Intient Pty Ltd
+//
+//  Open Source Use - GNU Affero General Public License, version 3
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Affero General Public License as
+//  published by the Free Software Foundation, either version 3 of the
+//  License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Affero General Public License for more details.
+//
+//  You should have received a copy of the GNU Affero General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+//  Commercial/Private Use
+//
+//  You may purchase a commercial version of this software which
+//  frees you from all restrictions of the AGPL by visiting
+//  http://intient.com/products/nimble/licenses
+//
+//  If you have purchased a commercial version of this software it is licensed
+//  to you under the terms of your agreement made with Intient Pty Ltd.
+//
+//  Author: Bradley Beddoes
+//
+
+/* This file is licensed by Intient Pty Ltd as part of Nimble. It usage is governed by either the GNU Affero General Public License, version 3
+  or by a commercial license agreement negotiated with Intient. See the source .sass files for full details.
+
+@import blueprint/modules/grid.sass
+@import yui/modules/fonts.sass
+
+@import _rounded.sass
+@import _uielements.sass
+
+.login
+  +span(19)
+  :margin
+    :left = "auto"
+    :right = "auto"
+
+  a
+    :margin
+      :left = 9px
+      :right = 9px
+    color = #565656
+    :font
+      :weight = "bold"
+
+.loginchoices
+  +span(9)
+  +cleanlist
+  +rounded
+  +left
+
+  padding = 0px
+
+
+  :background
+    :repeat = "repeat-x"
+    :color = #fbfbfb
+
+  border = 1px "solid" #e2e2e2
+
+  h2
+    +nomargin
+    +nopadding
+    +font-size(14px)
+
+    margin-bottom = 6px
+
+    font-weight = "bold"
+    text-align = "center"
+
+  a
+    +font-size(14px)
+    line-height = 64px
+
+
+  img
+    +left
+
+    margin-right = 3px
+
+.loginmethod
+  +span(9)
+  +rounded
+  +right
+
+  padding = 6px
+
+  min-height = 200px
+
+  :background
+    :color = "#fbfbfb"
+  border = 1px "solid" #e2e2e2
+
+  h2
+    +nomargin
+    +nopadding
+    +font-size(16px)
+
+    margin-bottom = 6px
+
+    font-weight = "bold"
+    text-align = "center"
+
+  form
+    fieldset
+      +nomargin
+      +nopadding
+      +noborder
+
+      &.loginbuttons
+        margin-top = 9px  
+
+.accountoptions
+  :margin
+    :top = 0px
+
+  text-align = "center"
+
+.flash
+  +span(19)
+  +last
+
+  :margin
+    :left = "auto"
+    :right = "auto"
+
+  padding = 6px
+
+.externalloginmethod
+  +cleanlist
+
+  img
+    +left
+    margin = 6px
+
+  p
+    a
+      :margin
+        :top = 6px
+
+  form
+    +nomargin
+    +nopadding
+
+    clear = "left"
+
+    text-align = "center"
+
+    .button
+      :margin
+        :top = 6px
+
+  .return
+    :margin
+      :top = 18px
+
+#facebooklogincontinue
+  a
+    margin-left = 36px 
+
+
+    
+
+
+
+    
