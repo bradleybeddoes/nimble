@@ -8,9 +8,9 @@
   <documentation>http://intient.com/oss/nimble</documentation>
   <resources>
     <resource>BootStrap</resource>
+    <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>NimbleBootStrap</resource>
-    <resource>NimbleConfig</resource>
     <resource>NimbleFilterBase</resource>
     <resource>NimbleSecurityFilters</resource>
     <resource>RecaptchaConfig</resource>

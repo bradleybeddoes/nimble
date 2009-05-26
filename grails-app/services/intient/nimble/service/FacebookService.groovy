@@ -53,8 +53,8 @@ class FacebookService implements InitializingBean {
   boolean provisionUsers
 
   void afterPropertiesSet() {
-    this.apiKey = grailsApplication.config.facebook.apikey
-    this.secretKey = grailsApplication.config.facebook.secretkey
+    this.apiKey = grailsApplication.config.nimble.facebook.apikey
+    this.secretKey = grailsApplication.config.nimble.facebook.secretkey
   }
 
   /**
