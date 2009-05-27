@@ -383,6 +383,20 @@
               <file url="file:///Users/beddoes/Development/workspace/ki-test/web-app/WEB-INF/applicationContext.xml" />
             </files>
           </module>
+          <module name="spry">
+            <files>
+              <file url="file:///Users/beddoes/Development/workspace/spry/web-app/WEB-INF/applicationContext.xml" />
+            </files>
+          </module>
+        </modules>
+      </facet-type>
+      <facet-type id="web">
+        <modules>
+          <module name="nimble">
+            <files>
+              <file url="file://$PROJECT_DIR$/src/templates/war/web.xml" />
+            </files>
+          </module>
         </modules>
       </facet-type>
     </autodetection-disabled>
@@ -562,7 +576,9 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file:///Users/beddoes/Development/workspace/intient/intient.iml" filepath="/Users/beddoes/Development/workspace/intient/intient.iml" />
       <module fileurl="file://$PROJECT_DIR$/nimble.iml" filepath="$PROJECT_DIR$/nimble.iml" />
+      <module fileurl="file:///Users/beddoes/Development/workspace/spry/spry.iml" filepath="/Users/beddoes/Development/workspace/spry/spry.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">

@@ -1,19 +1,20 @@
 <plugin name='nimble' version='0.1' grailsVersion='1.1 &gt; *'>
-  <author>Bradley Beddoes (Intient Pty Ltd) + Open Source Contributors</author>
+  <author>Intient Pty Ltd + Open Source Contributors</author>
   <authorEmail>nimbleproject@googlegroups.com</authorEmail>
   <title>Nimble</title>
   <description>\
-    Nimble is an extensive application base environment for Grails developers.
+    Nimble is an extensive application base environment for Grails.
     </description>
   <documentation>http://intient.com/oss/nimble</documentation>
   <resources>
     <resource>BootStrap</resource>
     <resource>Config</resource>
     <resource>DataSource</resource>
+    <resource>DefaultNimbleConfig</resource>
     <resource>NimbleBootStrap</resource>
+    <resource>NimbleConfig</resource>
     <resource>NimbleFilterBase</resource>
     <resource>NimbleSecurityFilters</resource>
-    <resource>RecaptchaConfig</resource>
     <resource>spring.resources</resource>
     <resource>UrlMappings</resource>
     <resource>intient.nimble.controller.AccountController</resource>
@@ -46,6 +47,7 @@
     <resource>intient.nimble.service.GroupService</resource>
     <resource>intient.nimble.service.OpenIDService</resource>
     <resource>intient.nimble.service.PermissionService</resource>
+    <resource>intient.nimble.service.RecaptchaService</resource>
     <resource>intient.nimble.service.RoleService</resource>
     <resource>intient.nimble.service.UserService</resource>
     <resource>NimbleAuthTagLib</resource>

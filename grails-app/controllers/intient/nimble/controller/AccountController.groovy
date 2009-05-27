@@ -95,7 +95,7 @@ class AccountController {
       return
     }
 
-    log.info("Sending account registration confirmation email to $user.profile.email with subject $grailsApplication.config.messaging.registration.subject")
+    log.info("Sending account registration confirmation email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.registration.subject")
     sendMail {
       to user.profile.email
       subject grailsApplication.config.nimble.messaging.registration.subject
@@ -208,7 +208,7 @@ class AccountController {
 
         userService.setRandomPassword(user)
 
-        log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.messaging.passwordreset.subject")
+        log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.subject")
         sendMail {
           to user.profile.email
           subject grailsApplication.config.nimble.messaging.passwordreset.subject

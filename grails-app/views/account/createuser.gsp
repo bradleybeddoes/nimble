@@ -69,11 +69,9 @@
         </tr>
 
         <tr>
-          <td>Captcha</td>
+          <th>Captcha</th>
           <td>
-            <recaptcha:ifEnabled>
-              <recaptcha:recaptcha/>
-            </recaptcha:ifEnabled>
+            <n:recaptcha/>
           </td>
         </tr>
 

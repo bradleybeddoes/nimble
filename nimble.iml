@@ -1382,8 +1382,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/grails-app/taglib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/src/groovy" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/recaptcha-0.3.1/grails-app/taglib" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/hibernate-1.1/scripts" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/scripts" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" />
@@ -1398,13 +1396,10 @@
       <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/src/templates/artifacts" />
-      <excludeFolder url="file://$MODULE_DIR$/src/templates/scaffolding" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="grails-1.1" level="application" />
@@ -1951,12 +1946,9 @@
     </orderEntry>
     <orderEntry type="module-library">
       <library name="Grails User Library">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" />
-        </CLASSES>
+        <CLASSES />
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library">

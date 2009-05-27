@@ -32,9 +32,7 @@
         <tr>
           <td>Captcha</td>
           <td>
-            <recaptcha:ifEnabled>
-              <recaptcha:recaptcha/>
-            </recaptcha:ifEnabled>
+            <n:recaptcha/>
           </td>
         </tr>
 

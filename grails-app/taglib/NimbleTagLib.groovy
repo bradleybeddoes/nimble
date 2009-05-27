@@ -36,6 +36,8 @@ class NimbleTagLib {
 
   static namespace = "n"
 
+  def recaptchaService
+
   /**
    * Enables growl like message popup in the page
    */
@@ -101,6 +103,24 @@ class NimbleTagLib {
    */
   def accountcreationpolicy = {attrs, body ->
     out << render(template: "/templates/help/accountcreationpolicy", contextPath: pluginContextPath)
+  }
+
+  /**
+   * Provides markup to render a ReCaptcha instance. Supports the following attributes:
+   *
+   * theme - Can be one of 'red','white','blackglass','clean','custom'
+   * lang  - Can be one of 'en','nl','fr','de','pt','ru','es','tr'
+   * tabindex - Sets a tabindex for the ReCaptcha box
+   * custom_theme_widget - Used when specifying a custom theme.
+   */
+  def recaptcha = {attrs ->
+    def props = new Properties()
+    attrs.each {
+      if (attrs[it]) {
+        props.setProperty(it, attrs[it])
+      }
+    }
+    out << recaptchaService.createCaptcha(session, props)
   }
 
 }
