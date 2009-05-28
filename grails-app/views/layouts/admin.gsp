@@ -27,7 +27,7 @@
 
 <div id="doc">
   <div id="hd">
-    <g:render template='/templates/admin/topnavigation'/>
+    <g:render template='/templates/nimble/navigation/topnavigation'/>
   </div>
   <div id="bd">
     <g:layoutBody/>

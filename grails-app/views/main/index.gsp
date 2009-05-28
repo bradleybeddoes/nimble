@@ -1,7 +1,7 @@
 <%@ page import="intient.nimble.service.AdminsService" %>
 
 <head>
-  <meta name="layout" content="nimble"/>
+  <meta name="layout" content="app"/>
 
   <n:jquery/>
 

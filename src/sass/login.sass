@@ -87,8 +87,12 @@
 
     margin-right = 3px
 
+.logininteraction
+  +column(9)
+  +right
+
 .loginmethod
-  +span(9)
+  +column(9)
   +rounded
   +right
 
@@ -121,19 +125,17 @@
 
 .accountoptions
   :margin
-    :top = 0px
+    :top = 18px
 
   text-align = "center"
 
 .flash
-  +span(19)
-  +last
+  +span(12)
+  +automargin
 
-  :margin
-    :left = "auto"
-    :right = "auto"
-
-  padding = 6px
+  .error
+    margin = 0
+    margin-bottom = 9px
 
 .externalloginmethod
   +cleanlist

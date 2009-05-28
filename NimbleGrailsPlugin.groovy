@@ -50,6 +50,7 @@ class NimbleGrailsPlugin {
                       'grails-app/conf/NimbleConfig.groovy',
                       'grails-app/conf/NimbleUrlMappings.groovy',
                       'grails-app/conf/NimbleSecurityFilters.groovy',
+                      'grails-app/conf/NimbleBootStrap.groovy',
     ]
 
     def author = "Intient Pty Ltd + Open Source Contributors"

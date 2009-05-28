@@ -1946,9 +1946,12 @@
     </orderEntry>
     <orderEntry type="module-library">
       <library name="Grails User Library">
-        <CLASSES />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" />
+        </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library">

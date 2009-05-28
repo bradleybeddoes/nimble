@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <meta name="layout" content="nimble"/>
+  <meta name="layout" content="app"/>
   <title>Forgotten Password | External Account</title>
 </head>
 

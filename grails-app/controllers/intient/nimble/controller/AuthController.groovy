@@ -58,7 +58,7 @@ class AuthController {
   def index = { redirect(action: 'login', params: params) }
 
   def login = {
-    return [username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri]
+    render(template: "/templates/nimble/login/login", model: [username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri])
   }
 
   def signin = {

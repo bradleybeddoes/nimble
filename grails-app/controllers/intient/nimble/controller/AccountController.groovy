@@ -99,7 +99,7 @@ class AccountController {
     sendMail {
       to user.profile.email
       subject grailsApplication.config.nimble.messaging.registration.subject
-      html g.render(template: "accountregistration_email", model: [user: savedUser])
+      html g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: savedUser])
     }
 
     log.info("Created new account identified as $user.username with internal id $savedUser.id")

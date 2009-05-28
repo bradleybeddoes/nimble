@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <meta name="layout" content="nimble"/>
+  <meta name="layout" content="app"/>
   <title>Forgotten Password</title>
 </head>
 
@@ -30,7 +30,7 @@
         </tr>
 
         <tr>
-          <td>Captcha</td>
+          <th>Captcha</th>
           <td>
             <n:recaptcha/>
           </td>

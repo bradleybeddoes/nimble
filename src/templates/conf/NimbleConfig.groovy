@@ -39,8 +39,8 @@ nimble {
 
   facebook {
     federationprovider {
-      enabled = false
-      autoprovision = false
+      enabled = true
+      autoprovision = true
     }
 
     apikey = ""
@@ -49,8 +49,8 @@ nimble {
 
   openid {
     federationprovider {
-      enabled = false
-      autoprovision = false
+      enabled = true
+      autoprovision = true
     }
   }
 
@@ -87,15 +87,19 @@ nimble {
 
 environments {
   development {
-    recaptcha {
-      enabled = true
-      secureapi = true
+    nimble {
+      recaptcha {
+        enabled = true
+        secureapi = true
+      }
     }
   }
   production {
-    recaptcha {
-      enabled = true
-      secureapi = true
+    nimble {
+      recaptcha {
+        enabled = true
+        secureapi = true
+      }
     }
   }
 }

@@ -11,7 +11,10 @@
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>DefaultNimbleConfig</resource>
+    <resource>NimbleBootStrap</resource>
     <resource>NimbleConfig</resource>
+    <resource>NimbleSecurityFilters</resource>
+    <resource>NimbleUrlMappings</resource>
     <resource>spring.resources</resource>
     <resource>UrlMappings</resource>
     <resource>intient.nimble.controller.AccountController</resource>
