@@ -172,7 +172,6 @@
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/car.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/flag_green.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/text_padding_left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/basket_edit.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/chart_bar_edit.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/script_delete.png" afterPath="" />
@@ -574,7 +573,6 @@
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/film_delete.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/paste_plain.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/text_linespacing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/conf/NimbleSecurityFilters.groovy" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/map_edit.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/bullet_arrow_up.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/user_gray.png" afterPath="" />
@@ -1142,7 +1140,6 @@
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/script_code.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/wrench.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/comment.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/user_suit.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/chart_curve_link.png" afterPath="" />
       <change type="DELETED" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/icons/comments_delete.png" afterPath="" />
@@ -1301,7 +1298,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/conf/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+            <state line="1" column="19" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -1316,8 +1313,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultNimbleConfig.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultNimbleConfig.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NimbleBootStrap.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="6" selection-start="1891" selection-end="1891" vertical-scroll-proportion="1.0074627">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="0" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NimbleConfig.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleConfig.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -2201,7 +2225,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="30" y="42" width="1869" height="1048" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" />
@@ -2209,7 +2233,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.60640496" order="5" side_tool="false" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.60640496" order="3" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980973" sideWeight="0.5" order="6" side_tool="false" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21263736" sideWeight="0.6097297" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21263736" sideWeight="0.6097297" order="0" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27243245" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39916405" sideWeight="0.5" order="5" side_tool="false" />
@@ -2303,13 +2327,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/conf/NimbleSecurityFilters.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="3" selection-start="1208" selection-end="1208" vertical-scroll-proportion="0.0">
@@ -2373,6 +2390,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="19" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -2380,16 +2411,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/.gitignore">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleConfig.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="6" selection-start="1891" selection-end="1891" vertical-scroll-proportion="1.0074627">
           <folding />
         </state>
       </provider>

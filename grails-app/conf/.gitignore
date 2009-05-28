@@ -1,5 +1,4 @@
 Config.groovy
 NimbleConfig.groovy
-NimbleBootStrap.groovy
 NimbleSecurityFilters.groovy
 NimbleUrlMappings.groovy
