@@ -1,4 +1,7 @@
+.DS_Store
 .sass-cache
 classes
+
+web-app/plugins/*
 
 *.zip

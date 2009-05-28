@@ -30,6 +30,7 @@
 import grails.util.GrailsUtil
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.springframework.mail.javamail.JavaMailSenderImpl
+import org.apache.ki.authc.credential.Sha256CredentialsMatcher
 
 class NimbleGrailsPlugin {
 
@@ -41,12 +42,14 @@ class NimbleGrailsPlugin {
 
     // the other plugins this plugin depends on
     def dependsOn = [ ki: 0.1,
-                      mail: 0.5,
+                      mail: 0.6,
                     ]
     
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-
+                      'grails-app/conf/NimbleConfig.groovy',
+                      'grails-app/conf/NimbleUrlMappings.groovy',
+                      'grails-app/conf/NimbleSecurityFilters.groovy',
     ]
 
     def author = "Intient Pty Ltd + Open Source Contributors"
@@ -61,6 +64,10 @@ class NimbleGrailsPlugin {
 
     def doWithSpring = {
       loadNimbleConfig(application)
+
+      credentialMatcher(Sha256CredentialsMatcher) {
+        storedCredentialsHexEncoded = true
+      }
 
       /*
        * Ok we have all the config the user has supplied for Nimble,

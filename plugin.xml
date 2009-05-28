@@ -11,10 +11,7 @@
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>DefaultNimbleConfig</resource>
-    <resource>NimbleBootStrap</resource>
     <resource>NimbleConfig</resource>
-    <resource>NimbleFilterBase</resource>
-    <resource>NimbleSecurityFilters</resource>
     <resource>spring.resources</resource>
     <resource>UrlMappings</resource>
     <resource>intient.nimble.controller.AccountController</resource>
@@ -55,6 +52,6 @@
   </resources>
   <dependencies>
     <plugin name='ki' version='0.1' />
-    <plugin name='mail' version='0.5' />
+    <plugin name='mail' version='0.6' />
   </dependencies>
 </plugin>

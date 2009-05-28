@@ -82,18 +82,24 @@ class AuthController {
     }
     catch (IncorrectCredentialsException e) {
       log.info "Credentials failure for user '${params.username}'."
+      log.debug(e)
+      
       flash.type = 'error'
       flash.message = message(code: "login.failed.credentials")
       redirect(action: 'login')
     }
     catch (DisabledAccountException e) {
       log.info "Attempt to login to disabled account for user '${params.username}'."
+      log.debug(e)
+
       flash.type = 'error'
       flash.message = message(code: "login.failed.disabled")
       redirect(action: 'login')
     }
-    catch (AuthenticationException ex) {
+    catch (AuthenticationException e) {
       log.info "General authentication failure for user '${params.username}'."
+      log.debug(e)
+
       flash.type = 'error'
       flash.message = message(code: "login.failed.general")
       redirect(action: 'login')

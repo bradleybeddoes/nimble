@@ -148,7 +148,7 @@ class UserService {
    *
    * @param user The user whose password should be changed 
    *
-   * @throws RuntimeException When internal state requires transaction rollback
+   * @return The user object, with errors populated if change problem occured
    */
   def changePassword(User user) {
     user.validate()
@@ -167,7 +167,7 @@ class UserService {
       log.error it
     }
 
-    throw new RuntimeException("Error changing password for user [$user.id]$user.username")
+    return user
   }
 
   /**
@@ -176,6 +176,8 @@ class UserService {
    * @pre User object must be newly created and not yet associated with backend data repository
    *
    * @param user A populated user object to persist
+   *
+   * @return The stored user object if successful or the supplied user with errors on failure
    *
    * @throws RuntimeException When internal state requires transaction rollback
    */

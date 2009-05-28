@@ -27,7 +27,7 @@
 
 <div id="doc">
   <div id="hd">
-    <g:render contextPath="${pluginContextPath}" template='/templates/admin/topnavigation'/>
+    <g:render template='/templates/admin/topnavigation'/>
   </div>
   <div id="bd">
     <g:layoutBody/>

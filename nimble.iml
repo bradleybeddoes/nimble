@@ -1378,10 +1378,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/src/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/grails-app/taglib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.6/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.6/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.6/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.6/src/groovy" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/hibernate-1.1/scripts" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/ki-0.1-SNAPSHOT/scripts" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.grails/1.1/projects/nimble/plugins/mail-0.5/scripts" />

@@ -360,6 +360,14 @@
               <file url="file:///Users/beddoes/.grails/1.1/projects/nimble/plugins/openid4java-0.9.4/scripts/_Upgrade.groovy" />
             </files>
           </module>
+          <module name="spry">
+            <files>
+              <file url="file:///Users/beddoes/.grails/1.1/projects/spry/plugins/hibernate-1.1/HibernateGrailsPlugin.groovy" />
+              <file url="file:///Users/beddoes/.grails/1.1/projects/spry/plugins/hibernate-1.1/scripts/_Install.groovy" />
+              <file url="file:///Users/beddoes/.grails/1.1/projects/spry/plugins/hibernate-1.1/scripts/_Uninstall.groovy" />
+              <file url="file:///Users/beddoes/.grails/1.1/projects/spry/plugins/hibernate-1.1/scripts/_Upgrade.groovy" />
+            </files>
+          </module>
         </modules>
       </facet-type>
       <facet-type id="Grails">
@@ -395,6 +403,11 @@
           <module name="nimble">
             <files>
               <file url="file://$PROJECT_DIR$/src/templates/war/web.xml" />
+            </files>
+          </module>
+          <module name="spry">
+            <files>
+              <file url="file:///Users/beddoes/.grails/1.1/projects/spry/plugins/nimble-0.1/src/templates/war/web.xml" />
             </files>
           </module>
         </modules>

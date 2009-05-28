@@ -26,11 +26,11 @@
 
     <p>
       Nimble is an easy to use application base that takes advantage of Java, Groovy and the Grails web framework. Nimble takes care of all the common
-      bits a web based application needs to be useful, saving developers potentially months of work on every project.
+      bits a web based application needs to be useful, saving developers months of work.
     </p>
     <p>
-      A Nimble powered application has all the folowing features out of the box and it works will all your existing
-      Java libraries as well..
+      A Nimble powered application has all the folowing features out of the box and it works with any existing
+      Java libraries you might have as well..
     </p>
     <ul>
       <li>Extensive support for the Social Web. Allow users to login using Facebook, OpenID and others</li>

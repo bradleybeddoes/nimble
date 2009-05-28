@@ -27,19 +27,6 @@
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
 
-import org.apache.ki.authc.credential.Sha256CredentialsMatcher
-
-/**
- * Specifies additional beans to load into the nimble environment at run time
- *
- * (c) Intient Pty Ltd - 2009
- */
-
 beans = {
-
-  // Nimble uses stronger encryption then default
-  credentialMatcher(Sha256CredentialsMatcher) {
-    storedCredentialsHexEncoded = true
-  }
   
 }

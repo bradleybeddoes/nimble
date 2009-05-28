@@ -27,7 +27,7 @@
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
 
-import NimbleBootStrap
+import intient.nimble.boot.NimbleInternalBoot
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
@@ -35,13 +35,11 @@ import intient.nimble.domain._Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
 import intient.nimble.domain.Profile
-import org.apache.ki.crypto.hash.Sha256Hash
 
 class BootStrap {
 
   boolean runBS = false
 
-  def pwEnc
   def grailsApplication
   def userService
 
@@ -51,9 +49,8 @@ class BootStrap {
       runBS = true
 
       // This will get called by init but we need to have objects active before Bootstrap finishes in development mode
-      def nimBS = new NimbleBootStrap()
-      nimBS.grailsApplication = grailsApplication
-      nimBS.init()
+      def nimBS = new NimbleInternalBoot(log: log, grailsApplication: grailsApplication)
+      nimBS.init(servletContext)
 
       def users = Role.findByName(UserService.USER_ROLE)
       def admins = Role.findByName(AdminsService.ADMIN_ROLE)
@@ -78,9 +75,8 @@ class BootStrap {
 
       def admin = new User()
       admin.username = "admin"
-
-      pwEnc = new Sha256Hash('admin')
-      admin.passwordHash = pwEnc.toHex()
+      admin.pass = "admiN123!"
+      admin.passConfirm = "admiN123!"
 
       admin.enabled = true
 
@@ -90,9 +86,9 @@ class BootStrap {
       userProfile.owner = admin
       admin.profile = userProfile
 
-      admin.save()
-      if (admin.hasErrors()) {
-        admin.errors.each {
+      def savedAdmin = userService.createUser(admin)
+      if (savedAdmin.hasErrors()) {
+        savedAdmin.errors.each {
           log.error(it)
         }
 
