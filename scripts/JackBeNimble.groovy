@@ -29,15 +29,14 @@
 
 target ( default : 'Sets up a new project with a common Nimble base environment ready for customization' ) {
 
-  Ant.echo(" Jack be nimble \n Jack be quick \n Jack jump over \n The candlestick.")
+  echo(" Jack be nimble \n Jack be quick \n Jack jump over \n The candlestick.")
   
-  Ant.mkdir(dir:"${basedir}/grails-app/views/templates/admin")
-  
-  Ant.copy(file:"${nimblePluginDir}/src/templates/conf/NimbleConfig.groovy", tofile: "${basedir}/grails-app/conf/NimbleConfig.groovy", overwrite: false)
-  Ant.copy(file:"${nimblePluginDir}/src/templates/conf/NimbleBootStrap.groovy", tofile: "${basedir}/grails-app/conf/NimbleBootStrap.groovy", overwrite: false)
-  Ant.copy(file:"${nimblePluginDir}/src/templates/conf/NimbleSecurityFilters.groovy", tofile: "${basedir}/grails-app/conf/NimbleSecurityFilters.groovy", overwrite: false)
-  Ant.copy(file:"${nimblePluginDir}/src/templates/conf/NimbleUrlMappings.groovy", tofile: "${basedir}/grails-app/conf/NimbleUrlMappings.groovy", overwrite: false)
-  Ant.copy(file:"${nimblePluginDir}/grails-app/views/templates/admin/_topnavigation.gsp", tofile: "${basedir}/grails-app/views/templates/admin/_topnavigation.gsp", overwrite: false)
+  copy(file:"${nimblePluginDir}/src/templates/conf/NimbleConfig.groovy", tofile: "${basedir}/grails-app/conf/NimbleConfig.groovy", overwrite: false)
+  copy(file:"${nimblePluginDir}/src/templates/conf/NimbleBootStrap.groovy", tofile: "${basedir}/grails-app/conf/NimbleBootStrap.groovy", overwrite: false)
+  copy(file:"${nimblePluginDir}/src/templates/conf/NimbleSecurityFilters.groovy", tofile: "${basedir}/grails-app/conf/NimbleSecurityFilters.groovy", overwrite: false)
+  copy(file:"${nimblePluginDir}/src/templates/conf/NimbleUrlMappings.groovy", tofile: "${basedir}/grails-app/conf/NimbleUrlMappings.groovy", overwrite: false)
 
+
+  copy( todir: "${basedir}/grails-app/views/templates/nimble" , overwrite: false ) { fileset ( dir : "${nimblePluginDir}/grails-app/views/templates/nimble" ) }
 }
  

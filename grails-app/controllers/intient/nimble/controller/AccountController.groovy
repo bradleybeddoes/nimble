@@ -212,7 +212,7 @@ class AccountController {
         sendMail {
           to user.profile.email
           subject grailsApplication.config.nimble.messaging.passwordreset.subject
-          html g.render(template: "forgottenpassword_email", model: [user: user])
+          html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user])
         }
 
         log.info("Successful password reset for user identified as [$user.id]$user.username")
