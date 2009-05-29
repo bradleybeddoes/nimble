@@ -38,7 +38,7 @@ public class NimbleFilterBase {
     // If this is an ajax request we want to send a 403 so the UI can act accordingly (generally log the user in again)
     if (request.getHeader('X-REQUESTED-WITH')) {
       response.status = 403
-      response.setHeader("N-Session-Invalid", "true")
+      response.setHeader("X-Nim-Session-Invalid", "true")
       return false
     }
 

@@ -4,7 +4,7 @@
     $("#sessionterminatedmodal").modal({hide_on_overlay_click:false});
 
     $().ajaxError(function (event, xhr, ajaxOptions, thrownError) {
-      if ((xhr.status == 403) && (xhr.getResponseHeader("N-Session-Invalid") != null)) {
+      if ((xhr.status == 403) && (xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
         $("#sessionterminatedmodal").click();
       }
     });
