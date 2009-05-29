@@ -91,7 +91,7 @@
           <div id="facebook" class="loginmethod externalloginmethod">
             <h2>Login using your Facebook account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/facebook.png")}"/>
+              <n:socialimg name="facebook" size="64" alt="Login using Facebook"/>
               Simply login using your existing  Facebook account. You'll then be able to access this service.
             </p>
             <div id="loginfacebookcontinue">
@@ -108,7 +108,7 @@
           <div id="google" class="loginmethod externalloginmethod">
             <h2>Login with a Google account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/google.png")}"/>
+              <n:socialimg name="google" size="64" alt="Login using Google"/>
               Simply login using your existing Google account. You'll then be able to access this service.
             </p>
             <p>
@@ -119,7 +119,7 @@
           <div id="yahoo" class="loginmethod externalloginmethod">
             <h2>Login using your Yahoo! account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/yahoo.png")}"/>
+              <n:socialimg name="yahoo" size="64" alt="Login using Yahoo"/>
               Simply login using your existing Yahoo! account. You'll then be able to access this service.
             </p>
             <p>
@@ -130,7 +130,7 @@
           <div id="openid" class="loginmethod externalloginmethod">
             <h2>Login using your OpenID account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/openid.png")}"/>
+              <n:socialimg name="openid" size="64" alt="Login using OpenID"/>
               Simply login using your existing OpenID account. You'll then be able to access this service.
             </p>
             <g:form controller="auth" action="openidreq">
@@ -143,7 +143,7 @@
           <div id="blogger" class="loginmethod externalloginmethod">
             <h2>Login with a Blogger account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/blogger.png")}"/>
+              <n:socialimg name="blogger" size="64" alt="Login using Blogger"/>
               Simply login using your existing Blogger account. You'll then be able to access this service.
             </p>
             <g:form controller="auth" action="bloggerreq">
@@ -158,7 +158,7 @@
           <div id="wordpress" class="loginmethod externalloginmethod">
             <h2>Login with a Wordpress account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/wordpress.png")}"/>
+              <n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/>
               Simply login using your existing Wordpress account. You'll then be able to access this service.
             </p>
             <g:form controller="auth" action="wordpressreq">
@@ -173,7 +173,7 @@
           <div id="technorati" class="loginmethod externalloginmethod">
             <h2>Login with a Technorati account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/technorati.png")}"/>
+              <n:socialimg name="technorati" size="64" alt="Login using Technorati"/>
               Simply login using your existing Technorati account. You'll then be able to access this service.
             </p>
             <g:form controller="auth" action="technoratireq">
@@ -188,7 +188,7 @@
           <div id="flickr" class="loginmethod externalloginmethod">
             <h2>Login with a Flickr account</h2>
             <p>
-              <img src="${createLinkTo(dir: "images", file = "/social/64/flickr.png")}"/>
+              <n:socialimg name="flickr" size="64" alt="Login using Flickr"/>
               Simply login using your existing Flickr account. You'll then be able to access this service.
             </p>
             <p>
@@ -207,38 +207,38 @@
           <tr>
             <td>
               <g:if test="${openid}">
-                <a href="#" class="" onClick="changeLogin('openid');"><img src="${createLinkTo(dir: "images", file: "social/64/openid.png")}"/>OpenID</a>
+                <a href="#" class="" onClick="changeLogin('openid');"><n:socialimg name="openid" size="64" alt="Login using OpenID"/>OpenID</a>
               </g:if>
             </td>
             <td>
               <g:if test="${facebook}">
-                <a href="#" class="" onClick="changeLogin('facebook');"><img src="${createLinkTo(dir: "images", file: "social/64/facebook.png")}">Facebook</a>
+                <a href="#" class="" onClick="changeLogin('facebook');"><n:socialimg name="facebook" size="64" alt="Login using Facebook"/>Facebook</a>
               </g:if>
             </td>
           </tr>
           <g:if test="${openid}">
             <tr>
               <td>
-                <a class="" onClick="changeLogin('google');"><img src="${createLinkTo(dir: "images", file: "social/64/google.png")}"/>Google</a>
+                <a class="" onClick="changeLogin('google');"><n:socialimg name="google" size="64" alt="Login using Google"/>Google</a>
               </td>
               <td>
-                <a class="" onClick="changeLogin('yahoo');"><img src="${createLinkTo(dir: "images", file: "social/64/yahoo.png")}">Yahoo!</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="#" class="" onClick="changeLogin('blogger');"><img src="${createLinkTo(dir: "images", file: "social/64/blogger.png")}"/>Blogger</a>
-              </td>
-              <td>
-                <a href="#" class="" onClick="changeLogin('wordpress');"><img src="${createLinkTo(dir: "images", file: "social/64/wordpress.png")}"/>Wordpress</a>
+                <a class="" onClick="changeLogin('yahoo');"><n:socialimg name="yahoo" size="64" alt="Login using Yahoo!"/>Yahoo!</a>
               </td>
             </tr>
             <tr>
               <td>
-                <a href="#" class="" onClick="changeLogin('technorati');"><img src="${createLinkTo(dir: "images", file: "social/64/technorati.png")}"/>Technorati</a>
+                <a href="#" class="" onClick="changeLogin('blogger');"><n:socialimg name="blogger" size="64" alt="Login using Blogger"/>Blogger</a>
               </td>
               <td>
-                <a href="#" class="" onClick="changeLogin('flickr');"><img src="${createLinkTo(dir: "images", file: "social/64/flickr.png")}">Flickr</a>
+                <a href="#" class="" onClick="changeLogin('wordpress');"><n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/>Wordpress</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="" onClick="changeLogin('technorati');"><n:socialimg name="technorati" size="64" alt="Login using Technorati"/>Technorati</a>
+              </td>
+              <td>
+                <a href="#" class="" onClick="changeLogin('flickr');"><n:socialimg name="flickr" size="64" alt="Login using Flickr"/>Flickr</a>
               </td>
             </tr>
           </g:if>

@@ -123,5 +123,12 @@ class NimbleTagLib {
     out << recaptchaService.createCaptcha(session, props)
   }
 
+  /**
+   * Allows Nimble core and Host Apps alike to access images provided for social sites
+   */
+  def socialimg = {attrs ->
+    def mkp = new groovy.xml.MarkupBuilder(out)
+    mkp.img(src: resource(dir: pluginContextPath, file:"images/social/$attrs.size/${attrs.name}.png"), alt: "$attrs.alt")
+  }
 }
 
