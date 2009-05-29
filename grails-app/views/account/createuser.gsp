@@ -19,11 +19,7 @@
     <h2>Account Registration</h2>
 
     <p>
-      You need an account to access this system. You can do this by <g:link controller="auth" action="login" class="icon icon_user_go">logging in</g:link> with your Facebook, OpenID, Google and other online accounts. This saves you needing to remember
-      multiple account details and is really easy to use.
-    </p>
-    <p>
-      Alternatively you can create an account below.
+      You can register for a new account below, fields with a green bullet are required.
     </p>
 
     <n:errors bean="${user}"/>

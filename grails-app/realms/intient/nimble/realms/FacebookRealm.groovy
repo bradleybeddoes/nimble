@@ -54,10 +54,17 @@ import intient.nimble.domain.Details
 public class FacebookRealm {
   static authTokenClass = intient.nimble.auth.FacebookConnectToken
 
+  def grailsApplication
   def facebookService
   def userService
 
   def authenticate(authToken) {
+
+    if (!grailsApplication.config.nimble.facebook.federationprovider.enabled) {
+      log.error("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
+      throw new UnknownAccountException("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
+    }
+
     log.info "Attempting to authenticate user via Facebook connect"
 
     if (facebookService.isLoggedIn(authToken.getCredentials())) {

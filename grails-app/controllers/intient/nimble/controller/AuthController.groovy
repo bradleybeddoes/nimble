@@ -50,6 +50,7 @@ class AuthController {
   def kiSecurityManager 
   def facebookService
   def openIDService
+  def grailsApplication
 
   static Map allowedMethods = [ login: 'GET', signin: 'POST', logout: 'GET', signout: 'GET',
                                 unauthorized: 'GET', facebook: 'GET']
@@ -58,7 +59,10 @@ class AuthController {
   def index = { redirect(action: 'login', params: params) }
 
   def login = {
-    render(template: "/templates/nimble/login/login", model: [username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri])
+    def facebook = grailsApplication.config.nimble.facebook.federationprovider.enabled
+    def openid = grailsApplication.config.nimble.openid.federationprovider.enabled
+
+    render(template: "/templates/nimble/login/login", model: [facebook: facebook, openid: openid, username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri])
   }
 
   def signin = {
@@ -207,6 +211,13 @@ class AuthController {
    * Facebook Connect integration
    */
   def facebook = {
+
+    if (!grailsApplication.config.nimble.facebook.federationprovider.enabled) {
+      log.error("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
+      response.sendError(403)
+      return
+    }
+
     log.info("Attempting to authenticate facebook user")
 
     if (request.cookies != null) {
@@ -256,6 +267,13 @@ class AuthController {
   }
 
   private performOpenIDRequest = {service, params, request, response ->
+
+    if (!grailsApplication.config.nimble.openid.federationprovider.enabled) {
+      log.error("Authentication attempt (request) for OpenID based federation provider, denying attempt as OpenID disabled")
+      response.sendError(403)
+      return
+    }
+
     log.info("Attempting to authenticate $service openID user")
 
     def serviceIdentifier
@@ -295,6 +313,13 @@ class AuthController {
   }
 
   private processOpenIDResponse = {service, params, request, response ->
+
+    if (!grailsApplication.config.nimble.openid.federationprovider.enabled) {
+      log.error("Authentication attempt (response) for OpenID based federation provider, denying attempt as OpenID disabled")
+      response.sendError(403)
+      return
+    }
+    
     def discovered = session.getAttribute("discovered")
     ParameterList openIDResponse = new ParameterList(request.getParameterMap());
 

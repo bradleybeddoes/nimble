@@ -38,6 +38,37 @@
 @import _rounded.sass
 @import _uielements.sass
 
+=loginmethod
+  +rounded
+
+  padding = 6px
+
+  min-height = 200px
+
+  :background
+    :color = "#fbfbfb"
+  border = 1px "solid" #e2e2e2
+
+  h2
+    +nomargin
+    +nopadding
+    +font-size(18px)
+
+    margin-bottom = 6px
+
+    font-weight = "bold"
+    text-align = "center"
+    color = "#565656"
+
+  form
+    fieldset
+      +nomargin
+      +nopadding
+      +noborder
+
+      &.loginbuttons
+        margin-top = 9px
+
 .login
   +span(19)
   :margin
@@ -93,35 +124,13 @@
 
 .loginmethod
   +column(9)
-  +rounded
+  +loginmethod
   +right
 
-  padding = 6px
-
-  min-height = 200px
-
-  :background
-    :color = "#fbfbfb"
-  border = 1px "solid" #e2e2e2
-
-  h2
-    +nomargin
-    +nopadding
-    +font-size(16px)
-
-    margin-bottom = 6px
-
-    font-weight = "bold"
-    text-align = "center"
-
-  form
-    fieldset
-      +nomargin
-      +nopadding
-      +noborder
-
-      &.loginbuttons
-        margin-top = 9px  
+.localonlymethod
+  +span(9)
+  +loginmethod
+  +automargin
 
 .accountoptions
   :margin

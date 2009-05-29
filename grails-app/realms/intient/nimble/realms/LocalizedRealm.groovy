@@ -45,8 +45,15 @@ class LocalizedRealm {
 
   def credentialMatcher
   def sessionFactory
+  def grailsApplication
 
   def authenticate(authToken) {
+
+    if (!grailsApplication.config.nimble.internal.authentication.enabled) {
+      log.debug("Authentication for username/password based tokens is not enabled for internal repository, skipping LocalizedRealm")
+      return
+    }
+
     log.info "Attempting to authenticate ${authToken.username} from local repository"
     def username = authToken.username
 

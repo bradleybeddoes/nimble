@@ -37,6 +37,12 @@ nimble {
     url = ""
   }
 
+  internal {
+    authentication {
+      enabled = true
+    }
+  }
+
   facebook {
     federationprovider {
       enabled = true

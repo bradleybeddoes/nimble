@@ -52,10 +52,17 @@ public class OpenIDRealm {
 
   static authTokenClass = intient.nimble.auth.OpenIDToken
 
+  def grailsApplication
   def openIDService
   def userService
 
   def authenticate(OpenIDToken authToken) {
+
+    if (!grailsApplication.config.nimble.openid.federationprovider.enabled) {
+      log.error("Authentication attempt for OpenID based federation provider, denying attempt as OpenID disabled")
+      throw new UnknownAccountException("Authentication attempt for OpenID federation provider, denying attempt as OpenID disabled")
+    }
+
     log.info "Attempting to authenticate user via OpenID"
 
     def userID = authToken.getUserID()
