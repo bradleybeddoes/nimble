@@ -29,6 +29,8 @@
 
 package intient.nimble.controller
 
+import org.apache.ki.SecurityUtils
+
 import intient.nimble.domain.Role
 import intient.nimble.service.AdminsService
 import intient.nimble.domain.User
@@ -78,12 +80,20 @@ class AdminsController {
 
   def delete = {
     def user = User.get(params.id)
+    def authenticatedUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
 
     if (!user) {
       log.warn("User identified by id $params.id was not located")
 
       response.sendError(500)
       render 'Unable to save administrator changes'
+      return
+    }
+
+    if(user == authenticatedUser) {
+      log.warn("Administrators are not able to remove themselves from the administrative role")
+      response.sendError(500)
+      render 'Unable to save administrator changes. Attempt to remove own administrative rights'
       return
     }
 

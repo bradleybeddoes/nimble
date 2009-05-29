@@ -20,40 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="&#10;# Brief commit desciption here&#10;&#10;# Full commit description here (comment lines starting with '#' will not be included)&#10;&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/account/forgottenpassword.gsp" afterPath="$PROJECT_DIR$/grails-app/views/account/forgottenpassword.gsp" />
       <change type="MODIFICATION" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/login.css" afterPath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/login.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/account/_forgottenpassword_email.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/mail/_forgottenpassword_email.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/OpenIDRealm.groovy" afterPath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/OpenIDRealm.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/JackBeNimble.groovy" afterPath="$PROJECT_DIR$/scripts/JackBeNimble.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy" afterPath="$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/views/layouts/nimble.gsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/templates/_sessionterminated.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/_sessionterminated.gsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/account/_accountregistration_email.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/mail/_accountregistration_email.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groovy/intient/nimble/security/NimbleFilterBase.groovy" afterPath="$PROJECT_DIR$/src/groovy/intient/nimble/security/NimbleFilterBase.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/FacebookRealm.groovy" afterPath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/FacebookRealm.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy" afterPath="$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/views/auth/unauthorized.gsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nimble.iml" afterPath="$PROJECT_DIR$/nimble.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nimble.iws" afterPath="$PROJECT_DIR$/nimble.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sass/login.sass" afterPath="$PROJECT_DIR$/src/sass/login.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AuthController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AuthController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/main/index.gsp" afterPath="$PROJECT_DIR$/grails-app/views/main/index.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AdminsController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AdminsController.groovy" />
       <change type="MODIFICATION" beforePath="/Users/beddoes/Development/workspace/spry/application.properties" afterPath="/Users/beddoes/Development/workspace/spry/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/account/createuser.gsp" afterPath="$PROJECT_DIR$/grails-app/views/account/createuser.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/admin.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/admin.gsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/views/auth/login.gsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/RecaptchaService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/RecaptchaService.groovy" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/views/account/forgottenpasswordexternal.gsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/grails-app/i18n/jsecurity.properties" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/mail/_forgottenpassword_external_email.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/css/nimble.css" afterPath="$PROJECT_DIR$/web-app/css/nimble.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/AdminsService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/AdminsService.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/account/forgottenpasswordcomplete.gsp" afterPath="$PROJECT_DIR$/grails-app/views/account/forgottenpasswordcomplete.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/css/login.css" afterPath="$PROJECT_DIR$/web-app/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sass/_uielements.sass" afterPath="$PROJECT_DIR$/src/sass/_uielements.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/account/createduser.gsp" afterPath="$PROJECT_DIR$/grails-app/views/account/createduser.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/templates/nimble/login/_login.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/login/_login.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/account/forgottenpasswordexternal.gsp" afterPath="$PROJECT_DIR$/grails-app/views/account/forgottenpasswordexternal.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NimbleGrailsPlugin.groovy" afterPath="$PROJECT_DIR$/NimbleGrailsPlugin.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sass/nimble.sass" afterPath="$PROJECT_DIR$/src/sass/nimble.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/i18n/messages.properties" afterPath="$PROJECT_DIR$/grails-app/i18n/messages.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/templates/conf/NimbleConfig.groovy" afterPath="$PROJECT_DIR$/src/templates/conf/NimbleConfig.groovy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/templates/admin/_topnavigation.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/navigation/_topnavigation.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nimble.iws" afterPath="$PROJECT_DIR$/nimble.iws" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="nimble.iws" />
@@ -111,26 +91,7 @@
     <favorites_list name="nimble" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="NimbleFilterBase.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/groovy/intient/nimble/security/NimbleFilterBase.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="26" selection-start="1612" selection-end="1633" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_sessionterminated.gsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/templates/_sessionterminated.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="78" selection-start="303" selection-end="303" vertical-scroll-proportion="0.12926391">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -298,92 +259,6 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="groovy" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="security" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="groovy" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="groovy" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="auth" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nimble" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
           <option name="myItemId" value="grails-app" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
@@ -445,6 +320,40 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="views" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="templates" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="mail" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -479,6 +388,32 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="login" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="views" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="admins" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -566,11 +501,59 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="services" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="service" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="realms" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="realms" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="i18n" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -676,7 +659,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="273" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
   </component>
-  <component name="RunManager" selected="Grails Application.Spry">
+  <component name="RunManager" selected="Grails Application.Nimble">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -932,7 +915,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="137" y="39" width="1674" height="1053" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" />
@@ -940,7 +923,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.60640496" order="5" side_tool="false" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.60640496" order="3" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980973" sideWeight="0.5" order="6" side_tool="false" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23815385" sideWeight="0.6870968" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23815385" sideWeight="0.6870968" order="0" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27243245" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39916405" sideWeight="0.5" order="5" side_tool="false" />
@@ -1034,100 +1017,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/_sessionterminated.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="23" selection-start="1784" selection-end="1784" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/OpenIDRealm.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="4" selection-start="2197" selection-end="2524" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/FacebookRealm.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="4" selection-start="2265" selection-end="2596" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sass/_uielements.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sass/login.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="17" selection-start="1793" selection-end="1793" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AuthController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="98" selection-start="2510" selection-end="2510" vertical-scroll-proportion="-9.257143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="6" selection-start="1437" selection-end="1437" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/account/createuser.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="88" selection-start="422" selection-end="422" vertical-scroll-proportion="-4.6666665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleAuthTagLib.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="51" selection-start="2367" selection-end="2410" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/nimble/login/_login.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="14" selection-start="4877" selection-end="4879" vertical-scroll-proportion="-11.711111">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleConfig.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="55" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="74" selection-start="4078" selection-end="4078" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/beddoes/Development/workspace/spry/grails-app/conf/NimbleSecurityFilters.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="6" column="78" selection-start="303" selection-end="303" vertical-scroll-proportion="0.12926391">
           <folding />
         </state>
       </provider>
@@ -1139,9 +1031,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/_sessionterminated.gsp">
+    <entry file="file://$PROJECT_DIR$/src/templates/conf/NimbleConfig.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="78" selection-start="303" selection-end="303" vertical-scroll-proportion="0.12926391">
+        <state line="84" column="84" selection-start="2131" selection-end="2131" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/nimble/mail/_forgottenpassword_email.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/nimble/mail/_forgottenpassword_external_email.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="23" selection-start="420" selection-end="420" vertical-scroll-proportion="-5.6842103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleConfig.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="103" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/account/forgottenpasswordcomplete.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="7" selection-start="510" selection-end="510" vertical-scroll-proportion="-4.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/admins/index.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="6.4444447">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/MainController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="69" selection-end="103" vertical-scroll-proportion="-1.0285715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AdminsController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="15.085714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/intient/nimble/service/AdminsService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="18" selection-start="3801" selection-end="3801" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/i18n/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="80" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/account/createuser.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="83" selection-start="2307" selection-end="2307" vertical-scroll-proportion="-3.3442624">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sass/login.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sass/nimble.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="0" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.69109946">
           <folding />
         </state>
       </provider>

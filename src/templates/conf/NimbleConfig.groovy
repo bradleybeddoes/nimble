@@ -75,6 +75,7 @@ nimble {
     }
     passwordreset {
       subject = "Your password has been reset"
+      external.subject = "Your password reset request"
     }
 
     mail {

@@ -107,6 +107,11 @@ class AdminsService {
       throw new RuntimeException("Unable to locate default administrative role")
     }
 
+    if(adminRole.users.size() < 2) {
+      log.warn("Unable to remove user from administration, would leave no system administrator available")
+      return false
+    }
+
     adminRole.removeFromUsers(user)
     user.removeFromRoles(adminRole)
 

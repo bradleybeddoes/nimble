@@ -40,10 +40,9 @@ import intient.nimble.domain.Role
  */
 class AccountController {
 
-  static Map allowedMethods = [ createuser: 'GET', saveuser: 'POST', createduser: 'GET',
-                              validateuser: 'GET', validateusername: 'GET', forgottenpassword: 'GET',
-                              forgottenpasswordprocess: 'POST', forgottenpasswordexternal: 'GET',
-                              forgottenpasswordcomplete: 'GET' ]
+  static Map allowedMethods = [createuser: 'GET', saveuser: 'POST', createduser: 'GET',
+          validateuser: 'GET', validateusername: 'GET', forgottenpassword: 'GET',
+          forgottenpasswordprocess: 'POST', forgottenpasswordcomplete: 'GET']
 
   def userService
   def recaptchaService
@@ -64,15 +63,34 @@ class AccountController {
     user.profile.owner = user
     user.properties['username', 'pass', 'passConfirm'] = params
     user.profile.properties['fullName', 'email'] = params
+    user.enabled = false
+    user.external = false
+
+    user.validate()
 
     log.debug("Attempting to create new user account identified as $user.username")
 
-    // Manually enforce email address on account registrations
+    // Enforce username restrictions on local accounts, letters + numbers only
+    if (user.username == null || user.username.length() < 4 || !user.username.matches('[a-zA-Z0-9]*')) {
+      log.debug("Supplied username of $user.username does not meet requirements for local account usernames")
+      user.errors.rejectValue('username', 'user.username.invalid')
+    }
+
+    // Enforce email address for account registrations
     if (user.profile.email == null || user.profile.email.length() == 0)
       user.profile.email = 'invalid'
 
-    user.enabled = false
-    user.external = false
+
+    if (user.hasErrors()) {
+      log.debug("Submitted values for new user are invalid")
+      user.errors.each {
+        log.debug it
+      }
+
+      resetNewUser(user)
+      render(view: 'createuser', model: [user: user])
+      return
+    }
 
     def savedUser
     def human = recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)
@@ -83,7 +101,7 @@ class AccountController {
       if (savedUser.hasErrors()) {
         log.debug("UserService returned invalid account details when attempting account creation")
         resetNewUser(user)
-        render view: 'createuser', model: [user: user]
+        render(view: 'createuser', model: [user: user])
         return
       }
     }
@@ -91,7 +109,7 @@ class AccountController {
       log.debug("Captcha entry was invalid for user account creation")
       resetNewUser(user)
       user.errors.reject('invalid.captcha')
-      render view: 'createuser', model: [user: user]
+      render(view: 'createuser', model: [user: user])
       return
     }
 
@@ -198,8 +216,16 @@ class AccountController {
       def user = profile.owner
 
       if (user.external || user.federated) {
-        log.debug("User identified by [$user.id]$user.username is external or federated, redirecting to forgottenpasswordexternal")
-        redirect(action: "forgottenpasswordexternal", id: user.id)
+        log.info("User identified by [$user.id]$user.username is external or federated")
+
+        log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.external.subject")
+        sendMail {
+          to user.profile.email
+          subject grailsApplication.config.nimble.messaging.passwordreset.external.subject
+          html g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user])
+        }
+
+        redirect(action: "forgottenpasswordcomplete", id: user.id)
         return
       }
 
@@ -235,11 +261,6 @@ class AccountController {
     }
   }
 
-  def forgottenpasswordexternal = {
-    def user = User.get(params.id)
-    [user: user, orgname: grailsApplication.config.nimble.organization.displayname]
-  }
-
   def forgottenpasswordcomplete = {
 
   }
@@ -248,7 +269,7 @@ class AccountController {
 
     log.debug("New user creation failed, resetting user input to accepted state")
     // Ensure we present all error messages
-    user.validate()
+    //user.validate()
 
     if (user.profile?.email.equals('invalid'))
       user.profile.email = ''
