@@ -28,10 +28,14 @@
  */
 package intient.nimble.service
 
+import javax.servlet.http.HttpServletRequest
+import org.apache.ki.crypto.hash.Sha256Hash
+import org.apache.ki.SecurityUtils
+
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import org.apache.ki.crypto.hash.Sha256Hash
 import intient.nimble.domain._Group
+import intient.nimble.domain.LoginRecord
 
 /**
  * Provides methods for interacting with Nimble users.
@@ -296,6 +300,52 @@ class UserService {
     }
 
     log.debug("Assigned random password to user [$user.id]$user.username")
+  }
+
+
+  /**
+   * Stores details of a successful login by a user.
+   */
+  def createLoginRecord(HttpServletRequest request) {
+    def user = User.get(SecurityUtils.getSubject()?.getPrincipal())
+    if(!user)
+    {
+      log.error("Attempt to create login record for unauthenticated session")
+      throw new RuntimeException("Attempt to create login record for unauthenticated session")
+    }
+
+    log.debug("Creating new record for user [$user.id]$user.username login")
+    def record = new LoginRecord()
+
+    record.remoteAddr = request.getRemoteAddr()
+    record.remoteHost = request.getRemoteHost()
+    record.userAgent = request.getHeader("User-Agent")
+    record.time = new Date()
+
+    record.owner = user
+    user.addToLoginRecords(record)
+
+    record.save()
+    if (record.hasErrors()) {
+      log.error("Unable to save login record for user [$user.id]$user.username")
+      record.errors.each {
+        log.error(it)
+      }
+
+      throw new RuntimeException("Unable to save login record for user [$user.id]$user.username")
+    }
+
+    user.save()
+    if (record.hasErrors()) {
+      log.error("Unable to update user [$user.id]$user.username with new login record")
+      user.errors.each {
+        log.error(it)
+      }
+
+      throw new RuntimeException("Unable to update user [$user.id]$user.username with new login record")
+    }
+
+    log.info("User [$user.id]$user.username logged in successfully from remote host $record.remoteHost with UA $record.userAgent")
   }
 
   /**

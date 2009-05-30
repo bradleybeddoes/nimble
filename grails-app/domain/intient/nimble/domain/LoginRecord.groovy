@@ -33,18 +33,19 @@ package intient.nimble.domain
  *
  * @author Bradley Beddoes
  */
-class LoginHost {
+class LoginRecord {
 
-  String hostAddress
+  String remoteAddr
+  String remoteHost
   String userAgent
   
   Date time
-  boolean successful
 
-  static belongsTo = [User]
+  static belongsTo = [owner: User]
 
   static constraints = {
-    hostAddress(nullable: false, blank: false)
+    remoteAddr(nullable: false, blank: false)
+    remoteHost(nullable: false, blank: false)
     userAgent(nullable: false, blank: false)
     time(nullable: false, blank: false)
   }

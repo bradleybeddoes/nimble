@@ -249,6 +249,7 @@
       <li class="current"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
       <li><a href="roles_" class="icon icon_cog">Roles</a></li>
       <li><a href="groups_" class="icon icon_group">Groups</a></li>
+      <li><a href="logins_" class="icon icon_key">Logins</a></li>
     </ul>
 
     <div class="active_ sections_ permissions_">
@@ -261,6 +262,10 @@
 
     <div class="sections_ groups_">
       <g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    </div>
+
+    <div class="sections_ logins_">
+      <g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>      
     </div>
 
   </div>

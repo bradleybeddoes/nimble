@@ -50,6 +50,7 @@ class AuthController {
   def kiSecurityManager 
   def facebookService
   def openIDService
+  def userService
   def grailsApplication
 
   static Map allowedMethods = [ login: 'GET', signin: 'POST', logout: 'GET', signout: 'GET',
@@ -76,6 +77,7 @@ class AuthController {
 
     try {
       this.kiSecurityManager.login(authToken)
+      this.userService.createLoginRecord(request)
 
       def targetUri = params.targetUri ?: "/"
 
@@ -236,6 +238,7 @@ class AuthController {
       def authToken = new FacebookConnectToken(currentFBSessionKey, currentFBSessionCookies)
       try {
         this.kiSecurityManager.login(authToken)
+        this.userService.createLoginRecord(request)
 
         def targetUri = params.targetUri ?: "/"
 
@@ -333,6 +336,7 @@ class AuthController {
     if (authToken) {
       try {
         this.kiSecurityManager.login(authToken)
+        this.userService.createLoginRecord(request)
 
         def targetUri = params.targetUri ?: "/"
 

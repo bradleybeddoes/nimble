@@ -36,6 +36,7 @@ import intient.nimble.domain.Permission
 import intient.nimble.domain._Group
 import intient.nimble.domain.FederationProvider
 import intient.nimble.domain.Profile
+import intient.nimble.domain.LoginRecord
 
 /**
  * Manages Nimble user accounts
@@ -49,7 +50,7 @@ class UserController {
           changepassword: 'GET', changelocalpassword: 'GET', savepassword: 'POST',
           validusername: 'POST', listgroups: 'GET', searchgroups: 'POST', grantgroup: 'POST',
           removegroup: 'POST', listpermissions: 'GET', createpermission: 'POST', removepermisson: 'POST',
-          listroles: 'GET', searchroles: 'POST', grantrole: 'POST', removerole: 'POST']
+          listroles: 'GET', searchroles: 'POST', grantrole: 'POST', removerole: 'POST', listlogins: 'GET']
 
   def userService
   def groupService
@@ -362,6 +363,28 @@ class UserController {
     render "valid"
   }
 
+  def listlogins = {
+    def user = User.get(params.id)
+    if (!user) {
+      log.warn("User identified by id '$params.id' was not located")
+
+      flash.message = "User not found with id $params.id"
+      response.sendError(500)
+      return
+    }
+
+    log.debug("Listing login events for user [$user.id]$user.username")
+    def c = LoginRecord.createCriteria()
+    def logins = c.list {
+      eq("owner", user)
+      order("time")
+      maxResults(20)
+    }
+
+    render(template: '/templates/admin/logins_list', contextPath: pluginContextPath, model: [logins: logins, ownerID: user.id])
+
+  }
+
   def listgroups = {
 
     def user = User.get(params.id)
@@ -467,7 +490,7 @@ class UserController {
     }
 
     groupService.deleteMember(user, group)
- 
+
     log.info("Removed user [$user.id]$user.username from group [$group.id]$group.name")
     render "success"
     return

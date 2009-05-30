@@ -30,7 +30,7 @@
     <resource>intient.nimble.domain.Feed</resource>
     <resource>intient.nimble.domain.Language</resource>
     <resource>intient.nimble.domain.LevelPermission</resource>
-    <resource>intient.nimble.domain.LoginHost</resource>
+    <resource>intient.nimble.domain.LoginRecord</resource>
     <resource>intient.nimble.domain.Permission</resource>
     <resource>intient.nimble.domain.PermissionAware</resource>
     <resource>intient.nimble.domain.Profile</resource>

@@ -28,7 +28,7 @@
  */
 package intient.nimble.domain
 
-import intient.nimble.domain.LoginHost
+import intient.nimble.domain.LoginRecord
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Role
 import intient.nimble.domain._Group
@@ -62,7 +62,7 @@ class User extends PermissionAware {
           roles: Role,
           groups: _Group,
           passwdHistory: String,
-          loginHosts: LoginHost
+          loginRecords: LoginRecord
   ]
 
   static fetchMode = [
