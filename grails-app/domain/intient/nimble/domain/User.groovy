@@ -70,6 +70,8 @@ class User extends PermissionAware {
   ]
 
   static mapping = {
+    sort username:'desc'
+    
     cache usage: 'read-write', include: 'all'
 
     roles cache: true, cascade: 'none'

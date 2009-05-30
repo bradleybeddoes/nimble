@@ -51,7 +51,15 @@ class AdminsController {
 
   def list = {
     def adminAuthority = Role.findByName(AdminsService.ADMIN_ROLE)
-    return [admins: adminAuthority?.users]
+    def authenticatedUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+
+    if(!authenticatedUser) {
+      log.error("Not able to determine currently authenticated user")
+      response.sendError(403)
+      return
+    }
+
+    return [currentAdmin:authenticatedUser, admins: adminAuthority?.users]
   }
 
   def create = {

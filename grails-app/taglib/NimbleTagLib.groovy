@@ -88,21 +88,21 @@ class NimbleTagLib {
    * Provides markup to render the default password policy
    */
   def passwordpolicy = {attrs, body ->
-    out << render(template: "/templates/help/passwordpolicy", contextPath: pluginContextPath)
+    out << render(template: "/templates/nimble/help/passwordpolicy")
   }
 
   /**
    * Provides markup to render the default username policy
    */
   def usernamepolicy = {attrs, body ->
-    out << render(template: "/templates/help/usernamepolicy", contextPath: pluginContextPath)
+    out << render(template: "/templates/nimble/help/usernamepolicy")
   }
 
   /**
    * Provides markup to render the default account creation policy
    */
   def accountcreationpolicy = {attrs, body ->
-    out << render(template: "/templates/help/accountcreationpolicy", contextPath: pluginContextPath)
+    out << render(template: "/templates/nimble/help/accountcreationpolicy")
   }
 
   /**

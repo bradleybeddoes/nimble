@@ -100,6 +100,8 @@ class NimbleBootStrap {
     admin.save()
     admins.save()
 
+
+    // Create example groups
     for (i in 0..30) {
       def group = new _Group()
       group.name = "group${i}"
@@ -115,6 +117,7 @@ class NimbleBootStrap {
       }
     }
 
+    // Create example roles
     for (j in 0..30) {
       def role = new Role()
       role.name = "role${j}"
