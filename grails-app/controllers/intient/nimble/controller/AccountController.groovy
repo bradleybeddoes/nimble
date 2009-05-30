@@ -41,7 +41,7 @@ import intient.nimble.domain.Role
 class AccountController {
 
   static Map allowedMethods = [createuser: 'GET', saveuser: 'POST', createduser: 'GET',
-          validateuser: 'GET', validateusername: 'GET', forgottenpassword: 'GET',
+          validateuser: 'GET', validusername: 'POST', forgottenpassword: 'GET',
           forgottenpasswordprocess: 'POST', forgottenpasswordcomplete: 'GET']
 
   def userService
@@ -71,7 +71,7 @@ class AccountController {
     log.debug("Attempting to create new user account identified as $user.username")
 
     // Enforce username restrictions on local accounts, letters + numbers only
-    if (user.username == null || user.username.length() < 4 || !user.username.matches('[a-zA-Z0-9]*')) {
+    if (user.username == null || user.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !user.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
       log.debug("Supplied username of $user.username does not meet requirements for local account usernames")
       user.errors.rejectValue('username', 'user.username.invalid')
     }
@@ -184,7 +184,7 @@ class AccountController {
 
   def validusername = {
 
-    if (params.username == null || params.username.length() < 4 || !params.username.matches('[a-zA-Z0-9]*')) {
+    if (params.username == null || params.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !params.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
       flash.message = "Username is invalid"
       response.sendError(500)
       return

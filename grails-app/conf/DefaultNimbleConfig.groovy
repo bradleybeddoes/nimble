@@ -28,6 +28,24 @@
  */
 
 nimble {
+
+  localusers {
+    usernames {
+      minlength = 4
+      validregex = '[a-zA-Z0-9]*'
+    }
+  }
+
+  passwords {
+    mustcontain {
+      lowercase = true
+      uppercase = true
+      numbers = true
+      symbols = true
+    }
+    minlength = 8
+  }
+
   facebook {
     name = "facebook connect"
     displayname = "Facebook Connect"

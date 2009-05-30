@@ -48,6 +48,8 @@ class UserService {
 
   boolean transactional = true
 
+  def grailsApplication
+
   /**
    * Activates a disabled user account
    *
@@ -357,13 +359,13 @@ class UserService {
   private def validatePass(User user) {
     log.debug("Validating user entered password")
 
-    if (user.pass == null || user.pass.length() < 8) {
+    if (user.pass == null || user.pass.length() < grailsApplication.config.nimble.passwords.minlength) {
       log.debug("Password to short")
       user.errors.rejectValue('pass', 'user.password.required')
       return false
     }
 
-    if (user.passConfirm == null || user.passConfirm.length() < 8) {
+    if (user.passConfirm == null || user.passConfirm.length() < grailsApplication.config.nimble.passwords.minlength) {
       log.debug("Confirmation password to short")
 
       user.errors.rejectValue('passConfirm', 'user.passconfirm.required')
@@ -376,22 +378,22 @@ class UserService {
       return false
     }
 
-    if (!(user.pass =~ /^.*[a-z].*$/)) {
+    if (grailsApplication.config.nimble.passwords.mustcontain.lowercase && !(user.pass =~ /^.*[a-z].*$/)) {
       log.debug("Password does not contain lower case letters")
       user.errors.rejectValue('pass', 'user.password.no.lowercase')
     }
 
-    if (!(user.pass =~ /^.*[A-Z].*$/)) {
+    if (grailsApplication.config.nimble.passwords.mustcontain.uppercase && !(user.pass =~ /^.*[A-Z].*$/)) {
       log.debug("Password does not contain uppercase letters")
       user.errors.rejectValue('pass', 'user.password.no.uppercase')
     }
 
-    if (!(user.pass =~ /^.*[0-9].*$/)) {
+    if (grailsApplication.config.nimble.passwords.mustcontain.numbers && !(user.pass =~ /^.*[0-9].*$/)) {
       log.debug("Password does not contain numbers")
       user.errors.rejectValue('pass', 'user.password.no.numbers')
     }
 
-    if (!(user.pass =~ /^.*\W.*$/)) {
+    if (grailsApplication.config.nimble.passwords.mustcontain.symbols && !(user.pass =~ /^.*\W.*$/)) {
       log.debug("Password does not contain symbols")
       user.errors.rejectValue('pass', 'user.password.no.symbols')
     }

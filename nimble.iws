@@ -28,10 +28,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/admins/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/admins/list.gsp" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/templates/help/_passwordpolicy.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/help/_passwordpolicy.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy" afterPath="$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/UserService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/intient/nimble/service/UserService.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/templates/help/_accountcreationpolicy.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/help/_accountcreationpolicy.gsp" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/grails-app/views/templates/help/_usernamepolicy.gsp" afterPath="$PROJECT_DIR$/grails-app/views/templates/nimble/help/_usernamepolicy.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy" />
       <change type="MODIFICATION" beforePath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/nimble.css" afterPath="/Users/beddoes/Development/workspace/spry/web-app/plugins/nimble-0.1/css/nimble.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nimble.iws" afterPath="$PROJECT_DIR$/nimble.iws" />
     </list>
     <ignored path=".idea/workspace.xml" />
@@ -90,35 +93,82 @@
     <favorites_list name="nimble" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="NimbleTagLib.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="74" selection-start="3290" selection-end="3290" vertical-scroll-proportion="-22.923077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_accountcreationpolicy.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///Users/beddoes/Development/workspace/spry/grails-app/views/templates/nimble/help/_accountcreationpolicy.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="76" selection-start="397" selection-end="397" vertical-scroll-proportion="-7.5789475">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocalizedRealm.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="6" selection-start="1630" selection-end="1630" vertical-scroll-proportion="-3.3501441">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.58970886">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="UserService.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/services/intient/nimble/service/UserService.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="395" column="69" selection-start="12233" selection-end="12233" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AccountController.groovy" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="43" column="51" selection-start="1597" selection-end="1597" vertical-scroll-proportion="0.82136893">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UserController.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/UserController.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="114" column="13" selection-start="3637" selection-end="3637" vertical-scroll-proportion="-17.714285">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UrlMappings.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="NimbleUrlMappings.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleUrlMappings.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="34" column="6" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="DefaultNimbleConfig.groovy" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="34" column="30" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.60088366">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="User.groovy" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/grails-app/domain/intient/nimble/domain/User.groovy">
+              <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="40" column="6" selection-start="1485" selection-end="1485" vertical-scroll-proportion="2.5357144">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -544,6 +594,32 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="domain" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="domain" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nimble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="grails-app" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="controllers" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
@@ -634,7 +710,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="273" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
   </component>
-  <component name="RunManager" selected="Grails Application.Spry">
+  <component name="RunManager" selected="Grails Application.Nimble">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -992,58 +1068,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/admin/_logins.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="57" selection-start="467" selection-end="467" vertical-scroll-proportion="-10.105263">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/services/intient/nimble/service/UserService.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="321" column="19" selection-start="9485" selection-end="9485" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/UserController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="376" column="18" selection-start="10606" selection-end="10606" vertical-scroll-proportion="-12.342857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/templates/admin/_logins_list.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="63" selection-start="581" selection-end="581" vertical-scroll-proportion="-12.631579">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/beddoes/Development/workspace/spry/grails-app/views/templates/nimble/navigation/_topnavigation.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="91" selection-start="217" selection-end="217" vertical-scroll-proportion="0.036585364">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleAuthTagLib.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="26" selection-start="5422" selection-end="5423" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/intient/nimble/domain/User.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="4" selection-start="2072" selection-end="2072" vertical-scroll-proportion="-6.357143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/intient/nimble/domain/Role.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
@@ -1089,9 +1113,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="74" selection-start="3290" selection-end="3290" vertical-scroll-proportion="-22.923077">
+        <state line="42" column="6" selection-start="1630" selection-end="1630" vertical-scroll-proportion="-3.3501441">
           <folding />
         </state>
       </provider>
@@ -1103,9 +1127,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/realms/intient/nimble/realms/LocalizedRealm.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/taglib/NimbleTagLib.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="6" selection-start="1630" selection-end="1630" vertical-scroll-proportion="-3.3501441">
+        <state line="104" column="74" selection-start="3290" selection-end="3290" vertical-scroll-proportion="-22.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/intient/nimble/service/UserService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="395" column="69" selection-start="12233" selection-end="12233" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/intient/nimble/domain/User.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="6" selection-start="1485" selection-end="1485" vertical-scroll-proportion="2.5357144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleUrlMappings.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="6" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/UserController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="13" selection-start="3637" selection-end="3637" vertical-scroll-proportion="-17.714285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/intient/nimble/controller/AccountController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="51" selection-start="1597" selection-end="1597" vertical-scroll-proportion="0.82136893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/DefaultNimbleConfig.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="30" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.60088366">
           <folding />
         </state>
       </provider>
