@@ -33,17 +33,21 @@ import org.apache.ki.authc.UnknownAccountException
 import org.apache.ki.authc.DisabledAccountException
 import org.apache.ki.authc.SimpleAccount
 import org.apache.ki.authc.IncorrectCredentialsException
-import intient.nimble.domain.User
+
 import com.google.code.facebookapi.ProfileField
 import grails.converters.JSON
-import intient.nimble.domain.FederationProvider
-import intient.nimble.service.FacebookService
-import intient.nimble.domain.Profile
+
 import intient.nimble.auth.AccountCreatedException
+
+import intient.nimble.domain.User
+import intient.nimble.domain.FederationProvider
+import intient.nimble.domain.Profile
 import intient.nimble.domain.SocialMediaAccount
 import intient.nimble.domain.SocialMediaService
 import intient.nimble.domain.Url
 import intient.nimble.domain.Details
+
+import intient.nimble.service.FacebookService
 
 /**
  * Integrates with Ki to establish a session for users accessing the system based
@@ -52,98 +56,84 @@ import intient.nimble.domain.Details
  * @author Bradley Beddoes
  */
 public class FacebookRealm {
-  static authTokenClass = intient.nimble.auth.FacebookConnectToken
+    static authTokenClass = intient.nimble.auth.FacebookConnectToken
 
-  def grailsApplication
-  def facebookService
-  def userService
+    def grailsApplication
+    def facebookService
+    def userService
 
-  def authenticate(authToken) {
+    def authenticate(authToken) {
 
-    if (!grailsApplication.config.nimble.facebook.federationprovider.enabled) {
-      log.error("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
-      throw new UnknownAccountException("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
-    }
-
-    log.info "Attempting to authenticate user via Facebook connect"
-
-    if (facebookService.isLoggedIn(authToken.getCredentials())) {
-
-
-      def facebookClient = facebookService.getFacebookClient(authToken.principal)
-      def userID = facebookClient.users_getLoggedInUser()
-
-      log.info("Facebook security verification succeeded for [$authToken.userID]$userID")
-
-      def user = User.findByUsername(userID + FacebookService.federationProviderDiscriminator)
-      if (!user) {
-        log.info("No account representing user $userID$FacebookService.federationProviderDiscriminator exists")
-        def facebookFederationProvider = FederationProvider.findByUid(FacebookService.federationProviderUid)
-
-        if (facebookFederationProvider && facebookFederationProvider.autoProvision) {
-
-          log.debug("Facebook auto provision is enabled, creating user account for $userID$FacebookService.federationProviderDiscriminator")
-
-          def userList = []
-          userList.add(userID)
-          def fbProfiles = facebookClient.users_getInfo(userList, EnumSet.of(ProfileField.NAME))
-
-          if (fbProfiles.length() == 1) {
-            User newUser = new User()
-            newUser.username = userID + FacebookService.federationProviderDiscriminator
-            newUser.enabled = true
-            newUser.external = true
-            newUser.federated = true
-            newUser.federationProvider = facebookFederationProvider
-
-            newUser.profile = new Profile()
-            newUser.profile.owner = newUser
-
-            newUser.profile.fullName = fbProfiles.getJSONObject(0).get('name')
-
-
-            SocialMediaAccount facebook = new SocialMediaAccount()
-            SocialMediaService facebookMediaService = SocialMediaService.findByUid(FacebookService.socialMediaServiceUid)
-            if (facebookMediaService) {
-              facebook.username = userID
-              facebook.service = facebookMediaService
-              Url fbProfile = new Url()
-              fbProfile.location = FacebookService.profileUrl + userID
-              fbProfile.altText = "Facebook Profile"
-              fbProfile.name = SocialMediaAccount.accountProfileUrl
-
-              newUser.profile.addToSocialAccounts(facebook)
-            }
-
-
-            user = userService.createUser(newUser)
-
-            if (user.hasErrors()) {
-              log.warn("Error creating user account from facebook credentials for $userID$FacebookService.federationProviderDiscriminator")
-              user.errors.each {
-                log.warn(it)
-              }
-              throw new RuntimeException("Account creation exception for new facebook based account");
-            }
-            log.info("Created new user [$user.id]$user.username from facebook credentials")
-          }
+        if (!grailsApplication.config.nimble.facebook.federationprovider.enabled) {
+            log.error("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
+            throw new UnknownAccountException("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
         }
-        else
-          throw new UnknownAccountException("No account representing user $userID$FacebookService.federationProviderDiscriminator exists and creation is disabled")
-      }
 
-      if (!user.enabled) {
-        log.warn("Attempt to authenticate using using Facebook Account with locally disabled account [$user.id]$user.username")
-        throw new DisabledAccountException("The account [$user.id]$user.username accessed via Facebook Connect is disabled")
-      }
+        log.info "Attempting to authenticate user via Facebook connect"
 
-      def account = new SimpleAccount(user.id, authToken.principal, "FacebookRealm")
+        if (facebookService.isLoggedIn(authToken.getCredentials())) {
 
-      log.info("Successfully logged in user [$user.id]$user.username using Facebook Connect")
-      return account
+
+            def facebookClient = facebookService.getFacebookClient(authToken.principal)
+            def userID = facebookClient.users_getLoggedInUser()
+
+            log.info("Facebook security verification succeeded for [$authToken.userID]$userID")
+
+            def user = User.findByUsername(userID + FacebookService.federationProviderDiscriminator)
+            if (!user) {
+                log.info("No account representing user $userID$FacebookService.federationProviderDiscriminator exists")
+                def facebookFederationProvider = FederationProvider.findByUid(FacebookService.federationProviderUid)
+
+                if (facebookFederationProvider && facebookFederationProvider.autoProvision) {
+
+                    log.debug("Facebook auto provision is enabled, creating user account for $userID$FacebookService.federationProviderDiscriminator")
+
+                    def userList = []
+                    userList.add(userID)
+                    def fbProfiles = facebookClient.users_getInfo(userList, EnumSet.of(ProfileField.NAME))
+
+                    if (fbProfiles.length() == 1) {
+                        User newUser = new User()
+                        newUser.username = userID + FacebookService.federationProviderDiscriminator
+                        newUser.enabled = true
+                        newUser.external = true
+                        newUser.federated = true
+                        newUser.federationProvider = facebookFederationProvider
+
+                        newUser.profile = new Profile()
+                        newUser.profile.owner = newUser
+                        newUser.profile.fullName = fbProfiles.getJSONObject(0).get('name')
+
+                        // Create a social media account for facebook, FB Connect implies an account :).
+                        facebookService.create(newUser.profile, userID)
+
+                        user = userService.createUser(newUser)
+                        if (user.hasErrors()) {
+                            log.warn("Error creating user account from facebook credentials for $userID$FacebookService.federationProviderDiscriminator")
+                            user.errors.each {
+                                log.warn(it)
+                            }
+                            throw new RuntimeException("Account creation exception for new facebook based account");
+                        }
+                        log.info("Created new user [$user.id]$user.username from facebook credentials")
+                    }
+                }
+                else
+                throw new UnknownAccountException("No account representing user $userID$FacebookService.federationProviderDiscriminator exists and creation is disabled")
+            }
+
+            if (!user.enabled) {
+                log.warn("Attempt to authenticate using using Facebook Account with locally disabled account [$user.id]$user.username")
+                throw new DisabledAccountException("The account [$user.id]$user.username accessed via Facebook Connect is disabled")
+            }
+
+            def account = new SimpleAccount(user.id, authToken.principal, "FacebookRealm")
+
+            log.info("Successfully logged in user [$user.id]$user.username using Facebook Connect")
+            return account
+        }
+        else {
+            throw new IncorrectCredentialsException('Facebook security verification failed, terminating authentication request')
+        }
     }
-    else {
-      throw new IncorrectCredentialsException('Facebook security verification failed, terminating authentication request')
-    }
-  }
 }

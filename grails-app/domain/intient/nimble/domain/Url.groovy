@@ -29,26 +29,32 @@
 package intient.nimble.domain
 
 /**
- * Represents a web based url with extended information for display purposes
+ * Represents a web based url with extended information for display purposes.
+ * A Url object does not belong to any parent object as its use is general in nature,
+ * developers are advised they are responsible for saving and deleting this object. Grails
+ * will not automatically do this for you.
  *
  * @author Bradley Beddoes
  */
 class Url {
 
-  String name
-  String description
+    String name
+    String description
 
-  String location
-  String altText
-  Language lang
+    String location
+    String altText
+    Language lang
 
-  static belongsTo = [Details]
+    static belongsTo = [
+        Details, Profile,
+        SocialMediaAccount, SocialMediaService
+    ]
 
-  static constraints = {
-    name(nullable: true, blank:true)
-    description(nullable: true, blank:true)
-    location(nullable: false, blank: false, url: true)
-    altText(nullable: true, blank: true)
-    lang(nullable: true)
-  }
+    static constraints = {
+        name(nullable: true, blank:true)
+        description(nullable: true, blank:true)
+        location(nullable: false, blank: false, url: true)
+        altText(nullable: true, blank: true)
+        lang(nullable: true)
+    }
 }

@@ -26,37 +26,15 @@
  *  If you have purchased a commercial version of this software it is licensed
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
-package intient.nimble.domain
-
-import intient.nimble.domain.Url
+package intient.nimble.auth
 
 /**
- * Represents an external Social media service that is utilized by a user
+ * Provides a generic AllPermission for Nimble applications to utilize so we can provide
+ * additional functionality if required.
  *
  * @author Bradley Beddoes
  */
-class SocialMediaAccount {
-
-    String username
-    String accountID
-    Url profile
-    SocialMediaService service
-
-    Map preferences
-
-    static belongsTo = [owner: Profile]
-
-    static hasMany = [
-        feeds: Feed,
-        urls: Url
-    ]
-
-    static constraints = {
-        username(nullable: true, blank: true)
-        accountID(nullable: true, blank:true)
-        profile(nullable:true)
-        urls(nullable: true)
-        feeds(nullable: true)
-        preferences(nullable: true)
-    }
+class AllPermission extends org.apache.ki.authz.permission.AllPermission {
+	
 }
+

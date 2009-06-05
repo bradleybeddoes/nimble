@@ -59,6 +59,7 @@
           <g:link controller="admins" action="index" class="icon icon_user_go">Administer Application</g:link>
         </li>
       </n:hasRole>
+      <li><g:link controller="profile" action="show" class="icon icon_user">View your profile</g:link></li>
       <li><g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link></li>
     </ul>
 

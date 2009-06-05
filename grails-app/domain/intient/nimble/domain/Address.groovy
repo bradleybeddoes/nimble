@@ -28,39 +28,69 @@
  */
 package intient.nimble.domain
 
-import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Profile
 
-/**
- * Our permission object encapsulates details that a normal Ki deployment
- * would put into mapping tables to make life a little easier.
- *
- * By default type, possibleActions and actions are all setup to be used in the context of being
- * a WildcardPermsission when constructed requiring only target to be set. Of course any of these can
- * be modified or the class extended if custom permission types are required.
- */
-class Permission implements Serializable {
+class Address {
 
-    static public String defaultPerm = "intient.nimble.auth.WildcardPermission"
-    static public String adminPerm = "intient.nimble.auth.AllPermission"
+    public static String HOME = "Home"
+    public static String BUSINESS = "Business"
+    public static String OTHER = "Other"
 
-    String type
-    String possibleActions = "*"
-    String actions = "*"
-    String target
-    boolean managed
+    String line1
+    String line2
+    String line3
 
-    static belongsTo = [owner:PermissionAware]
+    String suburb
+    String city
 
-    static mapping = {
-        cache usage: 'read-write', include: 'all'
-    }
+    String state
+    String postCode
+    String country
+
+    String category
+
+    static belongsTo = [owner:Profile]
 
     static constraints = {
-        type(nullable: false, blank: false)
-        possibleActions(nullable: false, blank: false)
-        actions(nullable: false, blank: false)
-        target(nullable: false, blank: false)
+        line1(nullable: false, blank: false)
+        line2(nullable: true, blank: true)
+        line3(nullable: true, blank: true)
+
+        suburb(nullable: true, blank: true)
+        city(nullable: true, blank: true)
+
+        state(nullable: true, blank: true)
+        postCode(nullable: true, blank: true)
+        country(nullable: true, blank:true)
+
+        category(nullable: false, blank: false)
+    }
+
+    def String markup() {
+        def markup = "$line1 <br/>"
+
+        if(line2)
+        markup = "$markup $line2 <br/>"
+
+        if(line3)
+        markup = "$markup $line3 <br/>"
+
+        if(suburb)
+        markup  = "$markup $suburb <br/>"
+
+        if(city)
+        markup =  "$markup $city <br/>"
+
+        if(state)
+        markup =  "$markup $state <br/>"
+
+        if(country)
+        markup  = "$markup $country <br/>"
+
+        if(postCode)
+        markup  = "$markup $postCode <br/>"
+
+        return markup
     }
 }

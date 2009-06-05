@@ -30,21 +30,21 @@ package intient.nimble.domain
 
 /**
  * Indicates that an object extending this class is integrated into the Nimble permissions structure
- * and may perform checks before allowing access to resources it controls.
+ * and may provide permissions suitable for accessing specific resources.
  *
  * @author Bradley Beddoes
  */
 class PermissionAware {
 
-  static hasMany = [permissions: Permission]
+    static hasMany = [permissions: Permission]
 
-  static mapping = {
-    cache usage: 'read-write', include: 'all'
-    permissions cache: true
-    tablePerHierarchy false
-  }
+    static mapping = {
+        cache usage: 'read-write', include: 'all'
+        permissions cache: true
+        tablePerHierarchy false
+    }
 
-  static constraints = {
-          permissions(nullable:true)
-  }
+    static constraints = {
+        permissions(nullable:true)
+    }
 }

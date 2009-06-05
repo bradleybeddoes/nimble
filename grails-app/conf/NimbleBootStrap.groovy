@@ -27,7 +27,6 @@
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
 
-import intient.nimble.boot.NimbleInternalBoot
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
@@ -35,6 +34,12 @@ import intient.nimble.domain._Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
 import intient.nimble.domain.Profile
+import intient.nimble.domain.Phone
+import intient.nimble.domain.Gender
+import intient.nimble.domain.Address
+import intient.nimble.domain.SocialMediaService
+import intient.nimble.domain.SocialMediaAccount
+import intient.nimble.domain.Url
 
 /*
  * Allows applications using Nimble to undertake process at BootStrap that are related to Nimbe provided objects
@@ -43,103 +48,136 @@ import intient.nimble.domain.Profile
  * Utilizing this BootStrap class ensures that the Nimble environment is populated in the backend data repository correctly
  * before the application attempts to make any extenstions.
  */
-class NimbleBootStrap {
+class NimbleBootStrap {    
+    def grailsApplication
 
-  def grailsApplication
-  def userService
+    def nimbleService
+    def userService
+    def adminsService
+    def facebookService
+    def twitterService
 
-  def init = {servletContext ->
+    def nimbleInternalBootStrap
 
-    // The following must be executed
-    internalBootStap(servletContext)
+    def init = {servletContext ->
 
-    // Execute any custom Nimble related BootStrap for your application below
+        // The following must be executed
+        internalBootStap(servletContext)
 
-    // Create example User accounts
-    for (i in 0..30) {
-      def user = new User()
-      user.username = "user$i"
+        // Execute any custom Nimble related BootStrap for your application below
 
-      user.pass = 'User123!'
-      user.passConfirm = 'User123!'
+        // Create example User accounts
+        for (i in 0..15) {
+            def user = new User()
+            user.username = "user$i"
 
-      user.enabled = true
+            user.pass = 'useR123!'
+            user.passConfirm = 'useR123!'
 
-      Profile userProfile = new Profile()
-      userProfile.fullName = "User $i"
-      userProfile.email = "user$i@test.user"
-      userProfile.owner = user
-      user.profile = userProfile
+            user.enabled = true
 
-      userService.createUser(user)
-    }
+            Profile userProfile = new Profile()
+            userProfile.fullName = "User $i"
+            userProfile.email = "user$i@test.user"
+            userProfile.owner = user
+            user.profile = userProfile
 
-    // Create example Administrative account
-    def admins = Role.findByName(AdminsService.ADMIN_ROLE)
-    def admin = new User()
-    admin.username = "admin"
-    admin.pass = "admiN123!"
-    admin.passConfirm = "admiN123!"
-    admin.enabled = true
-
-    Profile adminProfile = new Profile()
-    adminProfile.fullName = "Administrator"
-    adminProfile.owner = admin
-    admin.profile = adminProfile
-
-    def savedAdmin = userService.createUser(admin)
-    if (savedAdmin.hasErrors()) {
-      savedAdmin.errors.each {
-        log.error(it)
-      }
-      throw new RuntimeException("Error creating administrator")
-    }
-
-    admin.addToRoles(admins)
-    admins.addToUsers(admin)
-    admin.save()
-    admins.save()
-
-
-    // Create example groups
-    for (i in 0..30) {
-      def group = new _Group()
-      group.name = "group${i}"
-      group.description = "a test group"
-      group.save()
-
-      if (group.hasErrors()) {
-        group.errors.each {
-          log.error(it)
+            userService.createUser(user)
         }
 
-        throw new RuntimeException("Error creating groups")
-      }
-    }
+        //Create a full featured user account
+        def user = new User()
+        user.username = "smith"
+        user.pass = "smitH123!"
+        user.passConfirm = "smitH123!"
+        user.enabled = true
 
-    // Create example roles
-    for (j in 0..30) {
-      def role = new Role()
-      role.name = "role${j}"
-      role.description = "a test role"
-      role.save()
+        Profile userProfile = new Profile()
+        userProfile.fullName = "Terry Smith"
+        userProfile.nickName = "overflow"
+        userProfile.email = "smith@trs.com"
+        userProfile.dob = new Date()
+        userProfile.gender = Gender.Male
+        
+        def homePh = new Phone(type: Phone.HOME, countryCode: "61", areaCode:"07", number:"31382424", ext:"1")
+        def mobilePh = new Phone(type: Phone.MOBILE, number: "0404362424")
+        userProfile.addToPhoneNumbers(homePh)
+        userProfile.addToPhoneNumbers(mobilePh)
 
-      if (role.hasErrors()) {
-        role.errors.each {
-          log.error(it)
+        def homeAddress = new Address(category: Address.HOME, line1: '15 Koala St', city: 'Ipswich', state: 'Queensland', country: 'Australia', postCode: '1234')
+        homeAddress.owner = userProfile
+        userProfile.addToAddresses(homeAddress)
+
+        // Facebook Account
+        facebookService.create(userProfile, '691860841')
+        
+        // Twitter account
+        twitterService.create(userProfile, 'terrysmith')
+
+        userProfile.owner = user
+        user.profile = userProfile
+        userService.createUser(user)
+
+        // Create example Administrative account
+        def admin = new User()
+        admin.username = "admin"
+        admin.pass = "admiN123!"
+        admin.passConfirm = "admiN123!"
+        admin.enabled = true
+
+        Profile adminProfile = new Profile()
+        adminProfile.fullName = "Administrator"
+        adminProfile.owner = admin
+        admin.profile = adminProfile
+
+        def savedAdmin = userService.createUser(admin)
+        if (savedAdmin.hasErrors()) {
+            savedAdmin.errors.each {
+                log.error(it)
+            }
+            throw new RuntimeException("Error creating administrator")
         }
 
-        throw new RuntimeException("Error creating roles")
-      }
+        adminsService.add(admin)
+
+        // Create example groups
+        for (i in 0..15) {
+            def group = new _Group()
+            group.name = "group${i}"
+            group.description = "a test group"
+            group.save()
+
+            if (group.hasErrors()) {
+                group.errors.each {
+                    log.error(it)
+                }
+
+                throw new RuntimeException("Error creating groups")
+            }
+        }
+
+        // Create example roles
+        for (j in 0..15) {
+            def role = new Role()
+            role.name = "role${j}"
+            role.description = "a test role"
+            role.save()
+
+            if (role.hasErrors()) {
+                role.errors.each {
+                    log.error(it)
+                }
+
+                throw new RuntimeException("Error creating roles")
+            }
+        }
     }
-  }
 
-  def destroy = {
+    def destroy = {
 
-  }
+    }
 
-  private internalBootStap(def servletContext) {
-    def nimbleInternalBoot = new NimbleInternalBoot(log: log, grailsApplication: grailsApplication)
-    nimbleInternalBoot.init(servletContext)
-  }
+    private internalBootStap(def servletContext) {
+        nimbleService.init()
+    }
 } 

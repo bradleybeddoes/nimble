@@ -28,35 +28,46 @@
  */
 package intient.nimble.domain
 
-import intient.nimble.domain.Url
+class Phone {
 
-/**
- * Represents an external Social media service that is utilized by a user
- *
- * @author Bradley Beddoes
- */
-class SocialMediaAccount {
+    // Default values for Type
+    public static String HOME = "Home"
+    public static String WORK = "Work"
+    public static String MOBILE = "Mobile"
+    public static String OTHER = "Other"
 
-    String username
-    String accountID
-    Url profile
-    SocialMediaService service
+    String countryCode
+    String areaCode
+    String number
+    String ext
 
-    Map preferences
+    String type
 
-    static belongsTo = [owner: Profile]
-
-    static hasMany = [
-        feeds: Feed,
-        urls: Url
-    ]
+    static mapping = {
+        sort type:'desc'
+    }
 
     static constraints = {
-        username(nullable: true, blank: true)
-        accountID(nullable: true, blank:true)
-        profile(nullable:true)
-        urls(nullable: true)
-        feeds(nullable: true)
-        preferences(nullable: true)
+        countryCode(nullable:true, blank:true)
+        areaCode(nullable:true, blank:true)
+        number(nullable:false, blank:false)
+        ext(nullable:true, blank: true)
+    }
+
+    public String markup() {
+        def num = ""
+
+        if(countryCode)
+        num = "$num +$countryCode"
+
+        if(areaCode)
+        num = "$num ($areaCode)"
+
+        num = "$num $number"
+
+        if(ext)
+        num = "$num <br/>Ext: $ext"
+
+        return num
     }
 }

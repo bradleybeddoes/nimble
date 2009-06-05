@@ -40,60 +40,66 @@ import intient.nimble.domain._Group
  */
 class User extends PermissionAware {
 
-  String username
-  String passwordHash
-  String actionHash
+    String username
+    String passwordHash
+    String actionHash
 
-  boolean enabled
-  boolean external
-  boolean federated
-  boolean remoteapi = false
+    boolean enabled
+    boolean external
+    boolean federated
+    boolean remoteapi = false
 
-  Date lastLoginTime
-  Date lastFailedLoginTime
-  Date expirationTime
+    Date expiration
 
-  FederationProvider federationProvider
-  Profile profile
+    FederationProvider federationProvider
+    Profile profile
 
-  static belongsTo = [_Group]
+    Date dateCreated
+    Date lastUpdated
 
-  static hasMany = [
-          roles: Role,
-          groups: _Group,
-          passwdHistory: String,
-          loginRecords: LoginRecord
-  ]
+    static belongsTo = [_Group]
 
-  static fetchMode = [
-          roles: 'eager'
-  ]
+    static hasMany = [
+        roles: Role,
+        groups: _Group,
+        passwdHistory: String,
+        loginRecords: LoginRecord,
+        associations: Association,
+        follows: User,
+        followers: User
+    ]
 
-  static mapping = {
-    sort username:'desc'
+    static fetchMode = [
+        roles: 'eager'
+    ]
+
+    static mappedBy = [
+        associations: 'owner'
+    ]
+
+    static mapping = {
+        sort username:'desc'
     
-    cache usage: 'read-write', include: 'all'
+        cache usage: 'read-write', include: 'all'
 
-    roles cache: true, cascade: 'none'
-    groups cache: true, cascade: 'none'
-    permissions cache: true, cascade: 'none'
-  }
+        roles cache: true, cascade: 'none'
+        groups cache: true, cascade: 'none'
+        permissions cache: true, cascade: 'none'
+    }
 
-  static constraints = {
-    username(nullable: false, blank: false, unique: true, size: 4..2048)
-    passwordHash(nullable: true, blank: true)
-    actionHash(nullable: true, blank: true)
+    static constraints = {
+        username(nullable: false, blank: false, unique: true, size: 4..2048)
+        passwordHash(nullable: true, blank: true)
+        actionHash(nullable: true, blank: true)
 
-    lastLoginTime(nullable: true, blank: true)
-    lastFailedLoginTime(nullable: true, blank: true)
-    expirationTime(nullable: true, blank: true)
+        expiration(nullable: true, blank: true)
 
-    federationProvider(nullable: true)
-  }
+        federationProvider(nullable: true)
+    }
 
-// Transients
-  static transients = ['pass', 'passConfirm']
-  String pass
-  String passConfirm
+    // Transients
+    static transients = ['pass', 'passConfirm']
+    String pass
+    String passConfirm
 
 }

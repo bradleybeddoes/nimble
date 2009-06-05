@@ -36,11 +36,12 @@ import intient.nimble.domain.Profile
 import intient.nimble.service.OpenIDService
 import intient.nimble.domain.FederationProvider
 import intient.nimble.auth.OpenIDToken
-import intient.nimble.domain.ProfileGender
+import intient.nimble.domain.Gender
 import org.apache.ki.authc.UnknownAccountException
 import org.apache.ki.authc.DisabledAccountException
 import org.apache.ki.authc.SimpleAccount
 import org.apache.ki.authc.IncorrectCredentialsException
+import intient.nimble.domain.Gender
 
 /**
  * Integrates with Ki to establish a session for users accessing the system based
@@ -89,9 +90,9 @@ public class OpenIDRealm {
 
         if (authToken.gender) {
           if (authToken.gender.equalsIgnoreCase('M'))
-            newUser.profile.gender = ProfileGender.MALE
+            newUser.profile.gender = Gender.MALE
           if (authToken.gender.equalsIgnoreCase('F'))
-            newUser.profile.gender = ProfileGender.FEMALE
+            newUser.profile.gender = Gender.FEMALE
         }
 
         user = userService.createUser(newUser)

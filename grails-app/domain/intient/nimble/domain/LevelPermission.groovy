@@ -66,7 +66,7 @@ class LevelPermission extends Permission {
   }
 
   def LevelPermission() {
-    type = "intient.nimble.auth.WildcardPermission"
+    type = Permission.defaultPerm
   }
 
   def buildTarget() {

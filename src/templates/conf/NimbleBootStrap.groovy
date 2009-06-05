@@ -46,7 +46,10 @@ import intient.nimble.domain.Profile
 class NimbleBootStrap {
 
   def grailsApplication
+  
+  def nimbleService
   def userService
+  def adminService
 
   def init = {servletContext ->
 
@@ -96,10 +99,7 @@ class NimbleBootStrap {
       throw new RuntimeException("Error creating administrator")
     }
 
-    admin.addToRoles(admins)
-    admins.addToUsers(admin)
-    admin.save()
-    admins.save()
+    adminsService.add(admin)
   }
 
   def destroy = {
@@ -107,7 +107,6 @@ class NimbleBootStrap {
   }
 
   private internalBootStap(def servletContext) {
-    def nimbleInternalBoot = new NimbleInternalBoot(log:log, grailsApplication: grailsApplication)
-    nimbleInternalBoot.init(servletContext)
+    nimbleService.init()
   }
 } 

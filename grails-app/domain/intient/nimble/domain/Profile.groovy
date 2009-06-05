@@ -29,49 +29,59 @@
 package intient.nimble.domain
 
 /**
- * Represents generic details users may wish to enter about themselves within
- * a given application, special emphasis on integration with social media.
+ * Represents generic details users may wish to represent about themselves within
+ * a given application.
  *
  * @author Bradley Beddoes
  */
 class Profile {
 
-  String fullName
-  String nickName
-  String email
-  String avatarURL
+    String fullName
+    String nickName
+    String email
 
-  Date dob
+    Date dob
+    Gender gender
 
-  ProfileGender gender
-  byte[] avatar
-  Map preferences
+    byte[] photo
+    byte[] avatar
+    boolean gravatar = false
 
-  boolean remoteAvatar = false
+    Status currentStatus
 
-  static belongsTo = [owner: User]
+    Map preferences
 
-  static hasMany = [
-          websites: Url,
-          alternateEmails: String,
-          feeds: Feed,
-          socialAccounts: SocialMediaAccount,
-          associates: Profile
-  ]
+    Date dateCreated
+    Date lastUpdated
 
-  static constraints = {
-    fullName(nullable: true, blank: true)
-    nickName(nullable: true, blank: true)
-    email(nullable: true, blank: true, email: true, unique: true)
-    avatarURL(nullable: true, blank: true, url: true)
-    avatar(nullable: true)
-    gender(nullable: true, blank: true)
-    dob(nullable: true)
+    static belongsTo = [owner: User]
 
-    preferences(nullable: true)
-  }
+    static hasMany = [
+        websites: Url,
+        alternateEmails: String,
+        feeds: Feed,
+        socialAccounts: SocialMediaAccount,
+        addresses: Address,
+        phoneNumbers: Phone,
+        statuses: Status,
+    ]
+
+    static constraints = {
+        fullName(nullable: true, blank: true)
+        nickName(nullable: true, blank: true)
+        email(nullable: true, blank: true, email: true, unique: true)
+
+        photo(nullable: true)
+        avatar(nullable:true)
+    
+        currentStatus(nullable:true)
+        gender(nullable: true, blank: true)
+        dob(nullable: true)
+
+        preferences(nullable: true)
+    }
 }
 
-public enum ProfileGender {
-  MALE, FEMALE
+public enum Gender {
+    Male, Female
 }

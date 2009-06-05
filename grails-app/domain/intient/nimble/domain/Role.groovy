@@ -62,9 +62,4 @@ class Role extends PermissionAware {
     name(blank: false, unique: true, size:4..256)
     description()
   }
-
-  //TODO
-  public boolean hasPermission(def requiredPermission) {
-    return false
-  }
 }

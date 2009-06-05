@@ -29,65 +29,75 @@
 
 nimble {
 
-  localusers {
-    usernames {
-      minlength = 4
-      validregex = '[a-zA-Z0-9]*'
-    }
-  }
-
-  passwords {
-    mustcontain {
-      lowercase = true
-      uppercase = true
-      numbers = true
-      symbols = true
-    }
-    minlength = 8
-  }
-
-  facebook {
-    name = "facebook connect"
-    displayname = "Facebook Connect"
-    description = "Facebook Connect allows users to login using their credentials provided via their Facebook Account"
-    logo = "social/128/facebook.png"
-    logosmall = "social/16/facebook.png"
-    url = "http://www.facebook.com"
-    alttext = "Facebook Homepage"
-
-    federationprovider {
-      enabled = false
-      autoprovision = false
-    }
-  }
-
-  openid {
-    name = "OpenID"
-    displayname = "OpenID"
-    description = "OpenID is an open and decentralized identity system, designed \"not to crumble if one company turns evil or goes out of business\" "
-    logo = "social/128/openid.png"
-    logosmall = "social/16/openid.png"
-    url = "http://openid.net/"
-    alttext = "OpenID Foundation"
-
-    federationprovider {
-      enabled = false
-      autoprovision = false
+    localusers {
+        usernames {
+            minlength = 4
+            validregex = '[a-zA-Z0-9]*'
+        }
     }
 
-    discovery {
-      google = "https://www.google.com/accounts/o8/id"
-      yahoo = "http://yahoo.com"
-      flickr = "http://flickr.com"
+    passwords {
+        mustcontain {
+            lowercase = true
+            uppercase = true
+            numbers = true
+            symbols = true
+        }
+        minlength = 8
     }
-  }
 
-  messaging {
-    registration {
-      subject = "Your new account is ready!"
+    facebook {
+        uid = "facebook"
+        name = "Facebook"
+        displayname = "Facebook"
+        description = "A social network allowing friends to connect with each other"
+        url = "http://www.facebook.com"
+        alttext = "Facebook Homepage"
+        profileurl = "http://www.facebook.com/profile.php?id=ACCOUNTID"
+        profilealttext = "Facebook Profile"
+
+        federationprovider {
+            enabled = false
+            autoprovision = false
+        }
     }
-    passwordreset {
-      subject = "Your password has been reset"
+
+    twitter {
+        uid = "twitter"
+        name = "Twitter"
+        displayname = "Twitter"
+        description = "Lets you keep in touch with people through the exchange of quick, frequent answers to one simple question: What are you doing?"
+        url = "http://www.twitter.com"
+        alttext = "Twitter Homepage"
+        profileurl = "http://www.twitter.com/ACCOUNTID"
+        profilealttext = "Twitter Profile"
     }
-  }
+
+    openid {
+        name = "OpenID"
+        displayname = "OpenID"
+        description = "OpenID is an open and decentralized identity system, designed \"not to crumble if one company turns evil or goes out of business\" "
+        url = "http://openid.net/"
+        alttext = "OpenID Foundation"
+
+        federationprovider {
+            enabled = false
+            autoprovision = false
+        }
+
+        discovery {
+            google = "https://www.google.com/accounts/o8/id"
+            yahoo = "http://yahoo.com"
+            flickr = "http://flickr.com"
+        }
+    }
+
+    messaging {
+        registration {
+            subject = "Your new account is ready!"
+        }
+        passwordreset {
+            subject = "Your password has been reset"
+        }
+    }
 }

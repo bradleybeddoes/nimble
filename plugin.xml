@@ -22,9 +22,12 @@
     <resource>intient.nimble.controller.AuthController</resource>
     <resource>intient.nimble.controller.GroupController</resource>
     <resource>intient.nimble.controller.MainController</resource>
+    <resource>intient.nimble.controller.ProfileController</resource>
     <resource>intient.nimble.controller.RoleController</resource>
     <resource>intient.nimble.controller.UserController</resource>
     <resource>intient.nimble.domain._Group</resource>
+    <resource>intient.nimble.domain.Address</resource>
+    <resource>intient.nimble.domain.Association</resource>
     <resource>intient.nimble.domain.Details</resource>
     <resource>intient.nimble.domain.FederationProvider</resource>
     <resource>intient.nimble.domain.Feed</resource>
@@ -33,10 +36,12 @@
     <resource>intient.nimble.domain.LoginRecord</resource>
     <resource>intient.nimble.domain.Permission</resource>
     <resource>intient.nimble.domain.PermissionAware</resource>
+    <resource>intient.nimble.domain.Phone</resource>
     <resource>intient.nimble.domain.Profile</resource>
     <resource>intient.nimble.domain.Role</resource>
     <resource>intient.nimble.domain.SocialMediaAccount</resource>
     <resource>intient.nimble.domain.SocialMediaService</resource>
+    <resource>intient.nimble.domain.Status</resource>
     <resource>intient.nimble.domain.Url</resource>
     <resource>intient.nimble.domain.User</resource>
     <resource>intient.nimble.realms.FacebookRealm</resource>
@@ -45,10 +50,13 @@
     <resource>intient.nimble.service.AdminsService</resource>
     <resource>intient.nimble.service.FacebookService</resource>
     <resource>intient.nimble.service.GroupService</resource>
+    <resource>intient.nimble.service.NimbleService</resource>
     <resource>intient.nimble.service.OpenIDService</resource>
     <resource>intient.nimble.service.PermissionService</resource>
+    <resource>intient.nimble.service.ProfileService</resource>
     <resource>intient.nimble.service.RecaptchaService</resource>
     <resource>intient.nimble.service.RoleService</resource>
+    <resource>intient.nimble.service.TwitterService</resource>
     <resource>intient.nimble.service.UserService</resource>
     <resource>NimbleAuthTagLib</resource>
     <resource>NimbleTagLib</resource>

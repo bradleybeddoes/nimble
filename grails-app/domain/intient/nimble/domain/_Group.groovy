@@ -60,15 +60,4 @@ class _Group extends PermissionAware {
     name(nullable: false, blank: false, unique: true, size:4..256)
     description(nullable: false, blank: false)
   }
-
-  //TODO
-  public boolean hasRole(String roleName) {
-    return false
-  }
-
-  //TODO
-  public boolean hasPermission(def requiredPermission){
-    return false
-  }
-
 }

@@ -72,7 +72,7 @@ class AdminsController {
       return
     }
 
-    def result = adminsService.create(user)
+    def result = adminsService.add(user)
     if (result) {
       log.debug("User identified as [$user.id]$user.username was added as an administrator")
       render 'Success'
@@ -105,7 +105,7 @@ class AdminsController {
       return
     }
 
-    def result = adminsService.delete(user)
+    def result = adminsService.remove(user)
     if (result) {
       render 'Success'
       return

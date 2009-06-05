@@ -34,9 +34,10 @@ package intient.nimble.domain
  * @author Bradley Beddoes
  */
 class SocialMediaService {
-
   String uid
   Details details
+
+  Url baseProfileUrl
 
   Map preferences
 

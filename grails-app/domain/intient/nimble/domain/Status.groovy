@@ -31,32 +31,19 @@ package intient.nimble.domain
 import intient.nimble.domain.Url
 
 /**
- * Represents an external Social media service that is utilized by a user
+ * Represents a comment made by a user about some current status or links
+ * to some current content
  *
  * @author Bradley Beddoes
  */
-class SocialMediaAccount {
+class Status {
+    String status
+    Url url
 
-    String username
-    String accountID
-    Url profile
-    SocialMediaService service
-
-    Map preferences
-
-    static belongsTo = [owner: Profile]
-
-    static hasMany = [
-        feeds: Feed,
-        urls: Url
-    ]
-
+    Date dateCreated
+    
     static constraints = {
-        username(nullable: true, blank: true)
-        accountID(nullable: true, blank:true)
-        profile(nullable:true)
-        urls(nullable: true)
-        feeds(nullable: true)
-        preferences(nullable: true)
+        status(nullable:false, blank:false)
+        url(nullable:true)
     }
 }

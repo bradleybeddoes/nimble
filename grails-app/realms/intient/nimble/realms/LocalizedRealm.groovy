@@ -208,7 +208,7 @@ class LocalizedRealm {
       session = sessionFactory.openSession()
       def user = session.get(User.class, new Long(principal))
 
-      log.debug("Determining if permissions assigned to user [$user.id]$username contains a permission that implies $requiredPermissions")
+      log.debug("Determining if permissions assigned to user [$user.id]$user.username contains a permission that implies $requiredPermission")
       // Try all directly assigned permissions
       for (permission in user.permissions) {
         permitted = validatePermission(permission, requiredPermission)
@@ -218,7 +218,7 @@ class LocalizedRealm {
 
       // If we have no positive match try all permissions assigned to roles
       if (!permitted) {
-        log.debug("Determining if roles assigned to user [$user.id]$username contains a permission that implies $requiredPermissions")
+        log.debug("Determining if roles assigned to user [$user.id]$user.username contains a permission that implies $requiredPermission")
 
         rolepermsearch:
         for (role in user.roles) {
@@ -232,8 +232,8 @@ class LocalizedRealm {
 
       // If we have no positive match try all permissions assigned to member groups and to any roles associated with each group
       if (!permitted) {
-        log.debug("""Determining if groups (incl roles assigned to each group) which user [$user.id]$username
-                     is a member of are assigned a permission that implies $requiredPermissions""")
+        log.debug("""Determining if groups (incl roles assigned to each group) which user [$user.id]$user.username
+                     is a member of are assigned a permission that implies $requiredPermission""")
 
         grouppermsearch:
         for (group in user.groups) {
@@ -283,7 +283,7 @@ class LocalizedRealm {
         log.debug("Permission $permission does not imply $requiredPermission")
       }
     }
-    else if (permission.type.equals(AllPermission.class.name)) {
+    else if (permission.type.equals(AllPermission.class.name) || permission.type.equals(intient.nimble.auth.AllPermission.class.name)) {
       def perm = new AllPermission()
 
       if (perm.implies(requiredPermission)) {

@@ -28,35 +28,28 @@
  */
 package intient.nimble.domain
 
-import intient.nimble.domain.Url
-
 /**
- * Represents an external Social media service that is utilized by a user
+ * Represents an association between two user accounts, perhaps brother/sister
+ * or Manager/Employee
  *
  * @author Bradley Beddoes
  */
-class SocialMediaAccount {
+class Association {
 
-    String username
-    String accountID
-    Url profile
-    SocialMediaService service
+    User associate
+    String category
+    String subCategory
 
+    Details details
     Map preferences
 
-    static belongsTo = [owner: Profile]
-
-    static hasMany = [
-        feeds: Feed,
-        urls: Url
-    ]
+    static belongsTo = [owner: User]
 
     static constraints = {
-        username(nullable: true, blank: true)
-        accountID(nullable: true, blank:true)
-        profile(nullable:true)
-        urls(nullable: true)
-        feeds(nullable: true)
+        associate(nullable:false)
+        category(nullable: true, blank:false)
+        subCategory(nullable:true, blank:false)
+
         preferences(nullable: true)
     }
 }
