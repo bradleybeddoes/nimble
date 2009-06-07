@@ -28,6 +28,8 @@
  */
 package intient.nimble.service
 
+import org.apache.ki.authz.permission.AllPermission
+
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
 import intient.nimble.domain.Role
@@ -155,9 +157,9 @@ class AdminsService {
             // Revoke administrative 'ALL' permission(s)
             def permToRemove = []
             user.permissions.each {
-                if (permission.type.equals(AllPermission.class.name) || permission.type.equals(intient.nimble.auth.AllPermission.class.name)) {
+                if (it.type.equals(AllPermission.class.name) || it.type.equals(intient.nimble.auth.AllPermission.class.name)) {
                     permToRemove.add(it)
-                    log.debug("Found $permission.type for user [$user.id]$user.username adding to remove queue")
+                    log.debug("Found $it.type for user [$user.id]$user.username adding to remove queue")
                 }
             }
 
