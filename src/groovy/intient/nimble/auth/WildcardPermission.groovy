@@ -35,5 +35,13 @@ package intient.nimble.auth
  * @author Bradley Beddoes
  */
 public class WildcardPermission extends org.apache.ki.authz.permission.WildcardPermission {
+    public WildcardPermission(String wildcardString)
+    {
+        super(wildcardString)
+    }
 
+    public WildcardPermission(String wildcardString, boolean caseSensitive)
+    {
+        super(wildcardString, caseSensitive)
+    }
 }

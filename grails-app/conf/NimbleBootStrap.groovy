@@ -40,6 +40,7 @@ import intient.nimble.domain.Address
 import intient.nimble.domain.SocialMediaService
 import intient.nimble.domain.SocialMediaAccount
 import intient.nimble.domain.Url
+import intient.nimble.domain.PhoneType
 
 /*
  * Allows applications using Nimble to undertake process at BootStrap that are related to Nimbe provided objects
@@ -87,33 +88,31 @@ class NimbleBootStrap {
 
         //Create a full featured user account
         def user = new User()
-        user.username = "smith"
-        user.pass = "smitH123!"
-        user.passConfirm = "smitH123!"
+        user.username = "beddoes"
+        user.pass = "beddoeS123!"
+        user.passConfirm = "beddoeS123!"
         user.enabled = true
 
         Profile userProfile = new Profile()
-        userProfile.fullName = "Terry Smith"
-        userProfile.nickName = "overflow"
-        userProfile.email = "smith@trs.com"
+        userProfile.fullName = "Bradley Beddoes"
+        userProfile.email = "beddoes@intient.com"
+        userProfile.bio = "Director and Lead Software Architect at Intient Pty Ltd"
         userProfile.dob = new Date()
         userProfile.gender = Gender.Male
         
-        def homePh = new Phone(type: Phone.HOME, countryCode: "61", areaCode:"07", number:"31382424", ext:"1")
-        def mobilePh = new Phone(type: Phone.MOBILE, number: "0404362424")
-        userProfile.addToPhoneNumbers(homePh)
+        def workPh = new Phone(number:'+61 7 3102 4560  ', type: PhoneType.Business)
+        def mobilePh = new Phone(number:'+61 403 768 802', type: PhoneType.Mobile)
+        userProfile.addToPhoneNumbers(workPh)
         userProfile.addToPhoneNumbers(mobilePh)
 
-        def homeAddress = new Address(category: Address.HOME, line1: '15 Koala St', city: 'Ipswich', state: 'Queensland', country: 'Australia', postCode: '1234')
-        homeAddress.owner = userProfile
-        userProfile.addToAddresses(homeAddress)
-
+        /*
         // Facebook Account
-        facebookService.create(userProfile, '691860841')
+        facebookService.create(userProfile, '1241927789')
         
         // Twitter account
-        twitterService.create(userProfile, 'terrysmith')
-
+        twitterService.create(userProfile, 'bradleybeddoes')
+        */
+       
         userProfile.owner = user
         user.profile = userProfile
         userService.createUser(user)
@@ -127,6 +126,7 @@ class NimbleBootStrap {
 
         Profile adminProfile = new Profile()
         adminProfile.fullName = "Administrator"
+        adminProfile.email = "test@test.com"
         adminProfile.owner = admin
         admin.profile = adminProfile
 

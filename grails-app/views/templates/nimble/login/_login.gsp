@@ -60,8 +60,6 @@
           <h2>Login with a local account</h2>
 
           <g:form action="signin" name="signin">
-            <input type="hidden" name="targetUri" value="${targetUri}"/>
-
             <fieldset>
               <label for="username" class="append-1">Username</label>
               <input id="username" type="text" name="username" class="title"/>

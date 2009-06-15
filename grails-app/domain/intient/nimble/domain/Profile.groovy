@@ -28,6 +28,8 @@
  */
 package intient.nimble.domain
 
+import org.apache.ki.crypto.hash.Md5Hash
+
 /**
  * Represents generic details users may wish to represent about themselves within
  * a given application.
@@ -39,14 +41,17 @@ class Profile {
     String fullName
     String nickName
     String email
+    String nonVerifiedEmail
+    String emailHash
+    String bio
 
     Date dob
     Gender gender
 
     byte[] photo
-    byte[] avatar
+    String photoType
+    
     boolean gravatar = false
-
     Status currentStatus
 
     Map preferences
@@ -54,7 +59,24 @@ class Profile {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [owner: User]
+    def beforeInsert = {
+        // Do MD5 hash of email for Gravatar
+        hashEmail()
+    }
+
+    def beforeUpdate = {
+        // Do MD5 hash of email for Gravatar
+        hashEmail()
+    }
+
+    def hashEmail = {
+        if(email) {
+            def hasher = new Md5Hash(email)
+            emailHash = hasher.toHex()
+        }
+    }
+    
+    static belongsTo = [owner:User]
 
     static hasMany = [
         websites: Url,
@@ -66,13 +88,20 @@ class Profile {
         statuses: Status,
     ]
 
+    static mapping = {
+        ache usage: 'read-write', include: 'all'
+    }
+
     static constraints = {
-        fullName(nullable: true, blank: true)
-        nickName(nullable: true, blank: true)
-        email(nullable: true, blank: true, email: true, unique: true)
+        fullName(nullable: true, blank: false)
+        nickName(nullable: true, blank: false)
+        email(nullable:true, blank:false, email: true, unique: true)
+        nonVerifiedEmail(nullable:true, blank:false, email: true)
+        emailHash(nullable: true, blank:true)
+        bio(nullable: true, blank: false)
 
         photo(nullable: true)
-        avatar(nullable:true)
+        photoType(nullable: true, blank:false)
     
         currentStatus(nullable:true)
         gender(nullable: true, blank: true)

@@ -28,11 +28,11 @@
  */
 
 class BootStrap {
+    
+    def init = {servletContext ->
 
-  def init = {servletContext ->
+    }
 
-  }
-
-  def destroy = {
-  }
+    def destroy = {
+    }
 }

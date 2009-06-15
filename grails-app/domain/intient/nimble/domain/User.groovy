@@ -64,18 +64,19 @@ class User extends PermissionAware {
         groups: _Group,
         passwdHistory: String,
         loginRecords: LoginRecord,
-        associations: Association,
+        //associations: Association,
         follows: User,
         followers: User
     ]
 
     static fetchMode = [
-        roles: 'eager'
+        roles: 'eager',
+        groups: 'eager'
     ]
 
-    static mappedBy = [
-        associations: 'owner'
-    ]
+    //static mappedBy = [
+    //    associations: 'owner'
+    //]
 
     static mapping = {
         sort username:'desc'

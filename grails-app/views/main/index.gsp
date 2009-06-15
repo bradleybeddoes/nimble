@@ -18,10 +18,10 @@
   <div class="welcome cleanlist">
 
     <g:if test="${user.profile?.fullName?.length() > 0}">
-      <h1>Welcome to Nimble, ${user.profile.fullName.encodeAsHTML()}</h1>
+      <h1><n:photo id="${user.id}" size="50"/> <g:link controller="profile" action="show" class="">${user.profile.fullName.encodeAsHTML()}</g:link>, Welcome to Nimble!</h1>
     </g:if>
     <g:else>
-      <h1>Welcome to Nimble, ${user.username.encodeAsHTML()}</h1>
+      <h1><n:photo id="${user.id}" size="50"/> <g:link controller="profile" action="show" class="">${user.username.encodeAsHTML()}</g:link>, Welcome to Nimble!</h1>
     </g:else>
 
     <p>

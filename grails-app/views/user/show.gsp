@@ -136,7 +136,11 @@
   <div class="actions">
     <ul class="horizmenu">
       <li>
-        <g:link action="edit" id="${user.id.encodeAsHTML()}" class="icon icon_user_gray">Edit User</g:link>
+        <g:link controller="profile" action="show" id="${user.id.encodeAsHTML()}" class="icon icon_user_go">Profile</g:link>
+      </li>
+
+      <li>
+        <g:link action="edit" id="${user.id.encodeAsHTML()}" class="icon icon_user_gray">Edit</g:link>
       </li>
 
       <li>
@@ -149,10 +153,10 @@
       </li>
 
       <li id="disableuser">
-        <a id="disableuserbtn" class="icon icon_user_red">Disable User</a>
+        <a id="disableuserbtn" class="icon icon_user_red">Disable</a>
       </li>
       <li id="enableuser">
-        <a id="enableuserbtn" class="icon icon_user_green">Enable User</a>
+        <a id="enableuserbtn" class="icon icon_user_green">Enable</a>
       </li>
 
       <li id="disableuserapi">
@@ -173,6 +177,16 @@
       <tr>
         <th>Login Name</th>
         <td>${user.username?.encodeAsHTML()}</td>
+      </tr>
+
+      <tr>
+        <th>Created</th>
+        <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.dateCreated}"/></td>
+      </tr>
+
+      <tr>
+        <th>Last Updated</th>
+        <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.lastUpdated}"/></td>
       </tr>
 
       <tr>

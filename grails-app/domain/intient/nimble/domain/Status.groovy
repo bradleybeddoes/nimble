@@ -1,3 +1,4 @@
+
 /*
  *  Nimble, an extensive application base for Grails
  *  Copyright (C) 2009 Intient Pty Ltd
@@ -41,6 +42,9 @@ class Status {
     Url url
 
     Date dateCreated
+    Date lastUpdated
+
+    static belongsTo = [Profile]
     
     static constraints = {
         status(nullable:false, blank:false)

@@ -89,5 +89,17 @@ class NimbleService {
                 serviceBean.nimbleInit()
             }
         }
+
+        /**
+         * This is some terribly hacky shit to fix a major problem once Nimble
+         * was upgraded to use 1.1.1 (possibly groovy not grails specific)
+         *
+         * TODO: remove this ugly ugly piece of crud when 1.1.2 or 1.2 comes out
+         * BUG: http://jira.codehaus.org/browse/GRAILS-4580
+         */
+        def domains = grailsApplication.getArtefacts("Domain")
+        for (domain in domains) {
+            domain.clazz.count()
+        }
     }
 }

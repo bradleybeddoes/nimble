@@ -46,7 +46,7 @@
     });
   }
 
-  function grantGroup(groupID, groupID) {
+  function grantGroup(groupID) {
     var dataString = 'id=' + ${ownerID.encodeAsHTML()} + '&groupID=' + groupID;
     $.ajax({
       type: "POST",
@@ -63,7 +63,7 @@
     });
   }
 
-  function removeGroup(groupID, groupID) {
+  function removeGroup(groupID) {
     var dataString = 'id=' + ${ownerID.encodeAsHTML()} + '&groupID=' + groupID;
     $.ajax({
       type: "POST",

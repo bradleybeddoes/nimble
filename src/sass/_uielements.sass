@@ -74,6 +74,12 @@
 =clearleft
   clear = "left"
 
+=clearright
+  clear = "right"
+
+=clear
+  clear = "all"
+
 =bold
   font-weight = "bold"
 
@@ -199,12 +205,15 @@
 
 =notification
   +rounded
-  +font-size(12px)
+  +font-size(14px)
 
-  margin = 5px
-  padding = 10px
+  margin = 3px
+  padding = 6px
   :font
-    :weight = "bold"
+    :weight = "normal"
+
+  p
+    margin = 2px
 
 =paginatebuttons
   margin = 5px
@@ -324,23 +333,23 @@
 .error
   +notification
 
-  background-color = #870000
-  border = 1px "solid" #870000
-  color = "#fff"
+  background-color = #FFBABA
+  border = 1px "solid" #FFBABA
+  color = "#D8000C"
 
 .information
   +notification
 
-  background-color = blue
-  border = 1px "solid" blue
-  color = "#fff"
+  background-color = #BDE5F8
+  border = 1px "solid" #BDE5F8
+  color = "#00529B"
 
 .success
   +notification
 
-  background-color = #00872C
-  border = 1px "solid" #00872C
-  color = "#fff"
+  background-color = #DFF2BF
+  border = 1px "solid" #DFF2BF
+  color = "#4F8A10"
 
 .easyinput
   +easyinput

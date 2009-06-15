@@ -50,7 +50,7 @@ nimble {
         uid = "facebook"
         name = "Facebook"
         displayname = "Facebook"
-        description = "A social network allowing friends to connect with each other"
+        description = "Facebook helps you connect and share with the people in your life."
         url = "http://www.facebook.com"
         alttext = "Facebook Homepage"
         profileurl = "http://www.facebook.com/profile.php?id=ACCOUNTID"
@@ -98,6 +98,9 @@ nimble {
         }
         passwordreset {
             subject = "Your password has been reset"
+        }
+        changeemail {
+            subject = "Your email address has been changed"
         }
     }
 }

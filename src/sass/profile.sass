@@ -6,21 +6,74 @@
 
 .profile
   +automargin
-  +span(22)
+  +span(24)
 
-  .profileleft
+  .left
     +span(7)
     +left
+    text-align = "center"
 
-  .profilemain
+    .photo
+      :margin
+        :top = 9px
+        :bottom = 9px
+
+    .bio
+      :margin
+        :top = 9px
+        :bottom = 36px
+
+    .controls
+      +span(5)
+      +cleanlist
+      +rounded
+      +automargin
+
+      :margin
+        :top = 9px
+        :bottom = 9px
+
+      padding = 9px
+
+      background-color = "#fbfbfb"
+      border = 1px "solid" #f2f2f2
+      :border
+        :top = 1px "solid" #f2f2f2
+        :bottom = 1px "solid" #f2f2f2
+      text-align = "left"
+
+      ul
+        margin = 0px
+
+    .follow
+      +font-size(14px)
+
+      :margin
+        :top = 18px
+        :bottom = 36px
+
+      table
+        th
+          padding = 0px
+          :background
+            :color = #fff
+          text-align = "center"
+
+        td
+          text-align = "center"
+
+  .main
     +span(15)
     +left
+
+    :margin
+      :left = 36px
 
     h3
       +font-size(16px)
     
       :border
-        :bottom = 1px "solid" #d2d2d2
+        :bottom = 1px "solid" #f2f2f2
       font-weight = "bold"
 
     table
@@ -29,11 +82,115 @@
           +span(5)
           color = "#464646"
 
+    .banner
+      a
+        color = "#666"
+
+      strong
+        +font-size(22px)
+
+        margin = 0px
+        padding = 0px
+
+        font-weight = "bold"
+        line-height = 22px
+
+      #activestatus
+        +font-size(14px)
+
+        margin = 0px
+        padding = 0px
+
+        font-weight = "normal"
+        line-height = 22px
+
+
+    #createstatus
+      +clearleft
+      +span(14)
+      +rounded
+
+      margin = 12px
+      padding = 6px
+
+      background-color = "#fbfbfb"
+      border = 1px "solid" #f2f2f2
+      text-align = "center"
+
+      h3
+        margin = 0px
+        padding = 3px
+
+        border = 0px
+        color = "#666"
+        font-weight = "normal"
+        text-align = "left"
+
+
+    .common
+      +clearleft
+
 .socialaccount
-  +clearleft
+  +span(12)
+  padding = 12px
 
-  .logo
-    +left
+  .header
+    +span(8)
+    +font-size(16px)
 
-  .details
-    +left
+    img
+      +left
+    a
+      line-height = 32px
+
+  .links
+    +span(10)
+
+  .description
+    +span(10)
+
+  .remove
+    padding-top = 6px
+    text-align = "right"
+
+.edit
+
+  .section
+    margin = 18px
+    padding = 6px
+
+    h4
+      +font-size(18px)
+      margin = 3px
+      color = "#666"
+      font-weight = "bold"
+
+    h5
+      +font-size(14px)
+      margin = 3px
+      color = "#666"
+      font-weight = "bold"
+
+    .add
+      +rounded
+      +clear
+
+      margin = 6px
+      padding = 6px
+      background-color = #fbfbfb
+      border = 1px "solid" #f2f2f2
+
+    .socialactions
+      +span(10)
+      margin = 9px
+      margin-bottom = 36px
+
+table.phonelist
+  +datatable(0px, 100%)
+  +datatablewithbuttons
+
+.clearstatus
+  +font-size(11px)
+
+.statuscreated
+  +font-size(10px)

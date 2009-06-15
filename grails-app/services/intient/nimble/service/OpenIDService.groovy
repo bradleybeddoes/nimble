@@ -128,12 +128,11 @@ class OpenIDService {
      *         Will return nulls on error.
      */
     def establishDiscoveryRequest(def service, def responseUrl) {
-        if (openIDFederationProvider) {
-            return establishRequest(openIDFederationProvider.preferences.get(service + ":discovery"), responseUrl)
+        if (openidFederationProvider) {
+            return establishRequest(openidFederationProvider.preferences.get(service + ":discovery"), responseUrl)
         }
         else {
-            log.warn("Unable to complete openID setup on discovery service ${service}, OpenID federation provider not located")
-            log.debug e.printStackTrace()
+            log.warn("Unable to complete openID setup on discovery service ${service}, OpenID federation provider not located, is your config enabled for OpenID?")
             return [null, null]
         }
     }
