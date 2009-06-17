@@ -72,11 +72,10 @@
         </tr>
 
         <tr>
-
+          <td/>
           <td>
             <button class="button icon icon_user" type="submit">Create My Account!</button>
-          </td>
-          <td/>
+          </td>  
         </tr>
 
         </tbody>

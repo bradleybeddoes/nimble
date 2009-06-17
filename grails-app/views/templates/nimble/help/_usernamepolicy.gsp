@@ -2,7 +2,8 @@
 
   $(function() {
     $("#usernamepolicy").hide();
-    $("#usernamepolicybtn").modal({hide_on_overlay_click:false});
+    $("#usernamepolicybtn").bt({contentSelector: $("#usernamepolicy"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['right'], fill: '#fbfbfb', strokeWidth: 2, strokeStyle: '#f2f2f2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
+
   });
 </script>
 
@@ -17,9 +18,6 @@
         <li>Contain only letters and numbers</li>
         <li>Not previously used as a username for another account</li>
       </ul>
-      <div class="buttons">
-        <a id="ok" class="modal_close button icon icon_tick">Ok</a>
-      </div>
     </div>
   </div>
 </div>

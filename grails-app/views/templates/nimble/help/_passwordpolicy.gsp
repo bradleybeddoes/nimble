@@ -3,7 +3,7 @@
 
   $(function() {
     $("#passwordpolicy").hide();
-    $("#passwordpolicybtn").modal({hide_on_overlay_click:false});
+    $("#passwordpolicybtn").bt({contentSelector: $("#passwordpolicy"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['right'], fill: '#fbfbfb', strokeWidth: 2, strokeStyle: '#f2f2f2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
 
     $('.password').pstrength();
     $('.password').keyup();
@@ -23,9 +23,6 @@
         <li>Not previously used as a password on this account</li>
       </ul>
       <p>Ideally set a password that is considered to be in the category 'strongest' by the indicator bar.</p>
-      <div class="buttons">
-        <a id="ok" class="modal_close button icon icon_tick">Ok</a>
-      </div>
     </div>
   </div>
 </div>
