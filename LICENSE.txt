@@ -1,4 +1,19 @@
-                    GNU AFFERO GENERAL PUBLIC LICENSE
+Nimble, an extensive application base for Grails
+Copyright (C) 2009 Intient Pty Ltd
+
+Commercial/Private Use
+
+  You may purchase a commercial version of this software which
+  frees you from all restrictions of the AGPL by visiting
+  http://intient.com/products/nimble/licenses
+
+  If you have purchased a commercial version of this software it is licensed
+  to you under the terms of your agreement made with Intient Pty Ltd.
+                    
+
+Open Source Use - GNU Affero General Public License, version 3
+
+	            GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
