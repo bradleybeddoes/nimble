@@ -23,7 +23,7 @@
     <g:each in="${users}" status="i" var="user">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-        <td>${user.username?.encodeAsHTML()}</td>
+        <td><span class="userhighlight user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
 
         <g:if test="${user.profile?.fullName}">
           <td valign="top" class="value">${user.profile?.fullName?.encodeAsHTML()}</td>

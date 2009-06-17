@@ -9,7 +9,7 @@
   <tbody>
   <g:each in="${admins}" status="i" var="user">
     <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-      <td>${user.username.encodeAsHTML()}</td>
+      <td><span class="userhighlight user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
       <td>${user?.profile?.fullName.encodeAsHTML()}</td>
       <td>
         <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go">View</g:link>

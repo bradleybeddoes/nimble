@@ -1,69 +1,68 @@
 <%@ page import="intient.nimble.service.AdminsService" %>
 
-<head>
-  <meta name="layout" content="app"/>
+<html>
+  <head>
+    <meta name="layout" content="app"/>
+    <title>Welcome to Nimble!</title>
 
   <n:jquery/>
+  <n:userhighlight/>
 
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/nimble.css')}"/>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/icons.css')}"/>
-
-  <title>Nimble</title>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
+    <div class="welcome cleanlist">
 
-  <div class="welcome cleanlist">
+      <g:if test="${user.profile?.fullName?.length() > 0}">
+        <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
+      </g:if>
+      <g:else>
+        <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.username.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
+      </g:else>
 
-    <g:if test="${user.profile?.fullName?.length() > 0}">
-      <h1><n:photo id="${user.id}" size="50"/> <g:link controller="profile" action="show" class="">${user.profile.fullName.encodeAsHTML()}</g:link>, Welcome to Nimble!</h1>
-    </g:if>
-    <g:else>
-      <h1><n:photo id="${user.id}" size="50"/> <g:link controller="profile" action="show" class="">${user.username.encodeAsHTML()}</g:link>, Welcome to Nimble!</h1>
-    </g:else>
-
-    <p>
-      Nimble is an easy to use application base that takes advantage of Java, Groovy and the Grails web framework. Nimble takes care of all the common
-      bits a web based application needs to be useful, saving developers months of work.
-    </p>
-    <p>
-      A Nimble powered application has all the folowing features out of the box and it works with any existing
-      Java libraries you might have as well..
-    </p>
-    <ul>
-      <li>Extensive support for the Social Web. Allow users to login using Facebook, OpenID and others</li>
-      <li>A full user management layer including user self management and administrative management</li>
-      <li>
-        A fine grained access control engine to allow implementation of even the most complex of authorization policies including:
-        <ul>
-          <li>Roles</li>
-          <li>Groups</li>
-          <li>Permissions</li>
-        </ul>
-      </li>
-      <li>A wonderful set of professionally designed UI's to manage all Nimble features</li>
-      <li>A range of Javascript components based on <a href="http://jquery.com">JQuery</a></li>
-      <li>An extensive set of CSS classes for use with Nimble powered applications including over 1000 icons and integration with Sass</li>
-    </ul>
-    <p>
-       
-    </p>
-    <p>
-      Below are the operations currently available to your account
-    </p>
-    <ul>
-      <n:hasRole name="${AdminsService.ADMIN_ROLE}">
+      <p>
+        Nimble is an easy to use application base that takes advantage of Java, Groovy and the Grails web framework. Nimble takes care of all the common
+        bits a web based application needs to be useful, saving developers months of work.
+      </p>
+      <p>
+        A Nimble powered application has all the folowing features out of the box and it works with any existing
+        Java libraries you might have as well..
+      </p>
+      <ul>
+        <li>Extensive support for the Social Web. Allow users to login using Facebook, OpenID and others</li>
+        <li>A full user management layer including user self management and administrative management</li>
         <li>
-          <g:link controller="admins" action="index" class="icon icon_user_go">Administer Application</g:link>
+          A fine grained access control engine to allow implementation of even the most complex of authorization policies including:
+          <ul>
+            <li>Roles</li>
+            <li>Groups</li>
+            <li>Permissions</li>
+          </ul>
         </li>
-      </n:hasRole>
-      <li><g:link controller="profile" action="show" class="icon icon_user">View your profile</g:link></li>
-      <li><g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link></li>
-    </ul>
+        <li>A wonderful set of professionally designed UI's to manage all Nimble features</li>
+        <li>A range of Javascript components based on <a href="http://jquery.com">JQuery</a></li>
+        <li>An extensive set of CSS classes for use with Nimble powered applications including over 1000 icons and integration with Sass</li>
+      </ul>
+      <p>
 
+      </p>
+      <p>
+        Below are the operations currently available to your account
+      </p>
+      <ul>
+        <n:hasRole name="${AdminsService.ADMIN_ROLE}">
+          <li>
+          <g:link controller="admins" action="index" class="icon icon_user_go">Administer Application</g:link>
+          </li>
+        </n:hasRole>
+        <li><g:link controller="profile" action="show" class="icon icon_user">View your profile</g:link></li>
+        <li><g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link></li>
+      </ul>
+
+    </div>
   </div>
-</div>
 
 </body>
+</html>

@@ -11,7 +11,7 @@
     </g:else>
   </g:link>
   <span id="activestatus">
-    &nbsp;<n:status id="${user.id}" clear="true"/>
+    &nbsp;<n:status id="${user.id}" clear="${clear}"/>
   </span>
 </p>
 </div>

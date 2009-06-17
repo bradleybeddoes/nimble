@@ -67,6 +67,28 @@ class ProfileController {
         return [user: user, profile: user.profile]
     }
 
+    def miniprofile = {
+        def user
+
+        if(params.id == null) {
+            log.debug("Didn't locate id in profile request, attempting to load profile of logged in user")
+            user = User.get(SecurityUtils.getSubject()?.getPrincipal())
+        }
+        else{
+            log.debug("Attempting to load profile for user id $params.id")
+            user = User.get(params.id)
+        }
+
+        if (!user) {
+            log.warn("User was not located when attempting to show profile")
+            response.sendError(500)
+            return
+        }
+
+        log.debug("Showing profile for user [$user.id]$user.username")
+        return [user: user, profile: user.profile]
+    }
+
     /*
      * TODO: Complete social account integration work, disabled for initial release
      * 

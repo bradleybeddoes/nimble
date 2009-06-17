@@ -129,14 +129,12 @@
 
 <div class="container">
 
-  <h2>User ${user.username?.encodeAsHTML()}</h2>
-
-
+  <h2>User ${user.username?.encodeAsHTML()}</h2></span>
 
   <div class="actions">
     <ul class="horizmenu">
       <li>
-        <g:link controller="profile" action="show" id="${user.id.encodeAsHTML()}" class="icon icon_user_go">Profile</g:link>
+        <span class="userhighlight user_${user.id}"><g:link controller="profile" action="show" id="${user.id.encodeAsHTML()}" class="icon icon_user_go">Profile</g:link></span>
       </li>
 
       <li>

@@ -19,7 +19,7 @@
       <g:render template="/templates/nimble/profile/left" model="[user:user, profile:profile]" />
 
       <div class="main">
-        <g:render template="/templates/nimble/profile/banner" model="[user:user, profile:profile]" />
+        <g:render template="/templates/nimble/profile/banner" model="[user:user, profile:profile, clear:true]" />
 
         <g:render template="/templates/profile/status_create" model="[user:user, profile:profile]" />
 

@@ -44,6 +44,7 @@
       success: function(res) {
         $("#membersearchresponse").empty();
         $("#membersearchresponse").append(res).show();
+        bindUserHighlight();
       },
       error: function (xhr, ajaxOptions, thrownError) {
         growl("error", "There was an error executing your search");
@@ -144,6 +145,7 @@
       success: function(res) {
         $("#currentmembers").empty().hide();
         $("#currentmembers").append(res).show();
+        bindUserHighlight();
       },
       error: function (xhr, ajaxOptions, thrownError) {
         growl("error", "Failed to list members");

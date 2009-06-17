@@ -62,6 +62,13 @@ class NimbleTagLib {
     }
 
     /**
+     * Imports Bubbles javascript to make the mouseover bubble functionality available to the current page
+     */
+    def bubbles = {attrs, body ->
+        out << render(template: "/templates/bubblesetup", contextPath: pluginContextPath)
+    }
+
+    /**
      * Imports JQuery Javascript to make the JQuery library available to the current page
      */
     def jquery = {attrs, body ->
@@ -130,7 +137,7 @@ class NimbleTagLib {
      */
     def photo = {attrs ->
         if(attrs.id == null || attrs.size == null)
-            throwTagError("Photo tag requires user id and size attributes")
+        throwTagError("Photo tag requires user id and size attributes")
 
         def id = attrs.id
         def size = attrs.size
@@ -140,7 +147,15 @@ class NimbleTagLib {
             out << render(template: "/templates/profile/photo", contextPath: pluginContextPath, model: [profile: user.profile, size:size])
             return
         }
-         throwTagError("No user located for supplied ID")
+        throwTagError("No user located for supplied ID")
+    }
+
+    /**
+     * Provides script to allow the user of the classes 'userhighlight' and 'user_X' on elements to provide
+     * mini user profile popups on mouse hover.
+     */
+    def userhighlight = {
+        out << render(template: "/templates/profile/userhighlight", contextPath: pluginContextPath)
     }
 
     /**
@@ -148,17 +163,17 @@ class NimbleTagLib {
      */
     def status = {attrs ->
         if(attrs.id == null)
-            throwTagError("Status tag requires user id")
+        throwTagError("Status tag requires user id")
 
         def id = attrs.id
         def clear = attrs.clear ?:false
         def user = User.get(id)
 
         if(user) {
-            out << render(template: "/templates/nimble/profile/currentstatus", contextPath: pluginContextPath, model: [profile: user.profile, clear:clear])
+            out << render(template: "/templates/nimble/profile/currentstatus", model: [profile: user.profile, clear:clear])
             return
         }
-         throwTagError("No user located for supplied ID")
+        throwTagError("No user located for supplied ID")
     }
 
     /**
@@ -166,7 +181,7 @@ class NimbleTagLib {
      */
     def img = {attrs ->
         if(attrs.name == null || attrs.alt == null)
-            throwTagError("Image tag requires name and alt attributes")
+        throwTagError("Image tag requires name and alt attributes")
 
         def mkp = new groovy.xml.MarkupBuilder(out)
         mkp.img(src: resource(dir: pluginContextPath, file:"images/${attrs.name}"), alt: "$attrs.alt", width: attrs.size ?: '', height: attrs.size ?: '')
@@ -177,7 +192,7 @@ class NimbleTagLib {
      */
     def socialimg = {attrs ->
         if(attrs.alt == null || attrs.name == null || attrs.size == null)
-            throwTagError("Social image tag requires size, name and alt attributes")
+        throwTagError("Social image tag requires size, name and alt attributes")
 
         def mkp = new groovy.xml.MarkupBuilder(out)
         mkp.img(src: resource(dir: pluginContextPath, file:"images/social/$attrs.size/${attrs.name}.png"), alt: "$attrs.alt")
