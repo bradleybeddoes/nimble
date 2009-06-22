@@ -35,7 +35,7 @@ class Phone {
     String number
     PhoneType type
 
-    static belongsTo = [Profile]
+    static belongsTo = [owner:Profile]
     
     static mapping = {
         sort type:'desc'

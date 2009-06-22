@@ -26,36 +26,43 @@
  *  If you have purchased a commercial version of this software it is licensed
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
-
 package intient.nimble.domain
 
-/**
- * Represents an object that we wish to store a basic set of information about
- *
- * @author Bradley Beddoes
- */
-class Details {
+import grails.test.*
 
-  String name
-  String displayName
-  String description
-  Url url
-  
-  String logo
-  String logoSmall
+class LanguageTests extends GrailsUnitTestCase {
+    def scheme = 'scheme'
+    def codes = ['val','val2']
 
+    protected void setUp() {
+        super.setUp()
+    }
 
+    protected void tearDown() {
+        super.tearDown()
+    }
 
-  static belongsTo = [FederationProvider, SocialMediaService]
-  
-  static constraints = {
-    name(nullable: true, blank: false)
-    displayName(nullable: true, blank: false)
-    logo(nullable: true, blank: false)
-    logoSmall(nullable: true, blank: false)
-    url(nullable: true)
-    description(nullable: true, blank: false)
-  }
+    Language createValidLanguage() {
+        def language = new Language(scheme:scheme, codes:codes)
+    }
+
+    void testLanguageCreation() {
+        def language = createValidLanguage()
+
+        assertEquals scheme, language.scheme
+        assertTrue codes.containsAll(language.codes)
+    }
+
+    void testSchemeConstraint() {
+        mockForConstraintsTests(Language)
+        
+        def language = createValidLanguage()
+        assertTrue language.validate()
+
+        language.scheme = null
+        assertFalse language.validate()
+
+        language.scheme = ""
+        assertFalse language.validate()
+    }
 }
-
-

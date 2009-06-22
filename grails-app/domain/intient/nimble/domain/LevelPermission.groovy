@@ -40,165 +40,165 @@ import intient.nimble.domain.Permission
  */
 class LevelPermission extends Permission {
 
-  private final String tokenSep = ","
-  private final String levelSep = ":"
+    private final String tokenSep = ","
+    private final String levelSep = ":"
 
-  static hasMany = [
-          first: String,
-          second: String,
-          third: String,
-          fourth: String,
-          fifth: String,
-          sixth: String
-  ]
+    static hasMany = [
+        first: String,
+        second: String,
+        third: String,
+        fourth: String,
+        fifth: String,
+        sixth: String
+    ]
 
-  static mapping = {
-    cache usage: 'read-write', include: 'all'
-  }
-
-  static constraints = {
-    first(nullable: false, minSize: 1)
-    second(nullable: true)
-    third(nullable: true)
-    fourth(nullable: true)
-    fifth(nullable: true)
-    sixth(nullable: true)
-  }
-
-  def LevelPermission() {
-    type = Permission.defaultPerm
-  }
-
-  def buildTarget() {
-    def target = ""                                         
-
-    first.eachWithIndex {token, i ->
-      target = target + token
-      if (i != (first.size() - 1))
-        target = target + tokenSep   //Add level token seperator
+    static mapping = {
+        cache usage: 'read-write', include: 'all'
     }
 
-    if (second && second.size() > 0) {
-      target = target + levelSep
+    static constraints = {
+        first(nullable: false, minSize: 1)
+        second(nullable: true)
+        third(nullable: true)
+        fourth(nullable: true)
+        fifth(nullable: true)
+        sixth(nullable: true)
+    }
 
-      second.eachWithIndex {token, i ->
-        target = target + token
-        if (i != (second.size() - 1))
-          target = target + tokenSep   //Add level token seperator
-      }
+    def LevelPermission() {
+        type = Permission.defaultPerm
+    }
 
-      if (third && third.size() > 0) {
-        target = target + levelSep
+    def buildTarget() {
+        def target = ""
 
-        third.eachWithIndex {token, i ->
-          target = target + token
-          if (i != (third.size() - 1))
+        first?.eachWithIndex {token, i ->
+            target = target + token
+            if (i != (first.size() - 1))
             target = target + tokenSep   //Add level token seperator
         }
 
-        if (fourth && fourth.size() > 0) {
-          target = target + levelSep
-
-          fourth.eachWithIndex {token, i ->
-            target = target + token
-            if (i != (fourth.size() - 1))
-              target = target + tokenSep   //Add level token seperator
-          }
-
-          if (fifth && fifth.size() > 0) {
+        if (second && second.size() > 0) {
             target = target + levelSep
 
-            fifth.eachWithIndex {token, i ->
-              target = target + token
-              if (i != (fifth.size() - 1))
-                target = target + tokenSep   //Add level token seperator
-
-            }
-
-            if (sixth && sixth.size() > 0) {
-              target = target + levelSep
-
-              sixth.eachWithIndex {token, i ->
+            second.eachWithIndex {token, i ->
                 target = target + token
-                if (i != (sixth.size() - 1))
-                  target = target + tokenSep   //Add level token seperator
-
-              }
+                if (i != (second.size() - 1))
+                target = target + tokenSep   //Add level token seperator
             }
-          }
+
+            if (third && third.size() > 0) {
+                target = target + levelSep
+
+                third.eachWithIndex {token, i ->
+                    target = target + token
+                    if (i != (third.size() - 1))
+                    target = target + tokenSep   //Add level token seperator
+                }
+
+                if (fourth && fourth.size() > 0) {
+                    target = target + levelSep
+
+                    fourth.eachWithIndex {token, i ->
+                        target = target + token
+                        if (i != (fourth.size() - 1))
+                        target = target + tokenSep   //Add level token seperator
+                    }
+
+                    if (fifth && fifth.size() > 0) {
+                        target = target + levelSep
+
+                        fifth.eachWithIndex {token, i ->
+                            target = target + token
+                            if (i != (fifth.size() - 1))
+                            target = target + tokenSep   //Add level token seperator
+                        }
+
+                        if (sixth && sixth.size() > 0) {
+                            target = target + levelSep
+
+                            sixth.eachWithIndex {token, i ->
+                                target = target + token
+                                if (i != (sixth.size() - 1))
+                                target = target + tokenSep   //Add level token seperator
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
+
+        // Sanitize ordering so things are easy for human consumption more then anything
+        target = target.split(':').collect{ it.split(',').sort().join(',') }.join(':')
+        this.target = target
     }
 
-    this.target = target
-  }
+    /**
+     * Populates this LevelPermission with data represented by passed in values. Removes any previously
+     * set level values in this instance. Each sector should be a individual string and NOT contain sector seperators
+     *
+     * @first First sector represented as string, may contain token seperators
+     * @second Second sector represented as string, may contain token seperators
+     * @third Third sector represented as string, may contain token seperators
+     * @fourth Fourth sector represented as string, may contain token seperators
+     * @fifth Fifth sector represented as string, may contain token seperators
+     * @sixth Sixth sector represented as string, may contain token seperators
+     *
+     * @return void - Will populate errors if problems found in any sector, does not persist object
+     */
+    public populate(first, second, third, fourth, fifth, sixth) {
 
-  /**
-   * Populates this LevelPermission with data represented by passed in values. Removes any previously
-   * set level values in this instance. Each sector should be a individual string and NOT contain sector seperators
-   *
-   * @first First sector represented as string, may contain token seperators
-   * @second Second sector represented as string, may contain token seperators
-   * @third Third sector represented as string, may contain token seperators
-   * @fourth Fourth sector represented as string, may contain token seperators
-   * @fifth Fifth sector represented as string, may contain token seperators
-   * @sixth Sixth sector represented as string, may contain token seperators
-   *
-   * @return void - Will populate errors if problems found in any sector, does not persist object
-   */
-  public populate(first, second, third, fourth, fifth, sixth) {
-
-    if (first == null || first.contains(this.levelSep)) {
-      this.errors.rejectValue('target', 'levelpermission.invalid.first.sector')
-      return
-    }
-    this.first = first.split(this.tokenSep) as List
-
-    if (second) {
-      if (second.contains(this.levelSep)) {
-        this.errors.rejectValue('target', 'levelpermission.invalid.second.sector')
-        return
-      }
-
-      this.second = second.split(this.tokenSep) as List
-
-      if (third) {
-        if (third.contains(this.levelSep)) {
-          this.errors.rejectValue('target', 'levelpermission.invalid.third.sector')
-          return
-        }
-
-        this.third = third.split(this.tokenSep) as List
-
-        if (fourth) {
-          if (fourth.contains(this.levelSep)) {
-            this.errors.rejectValue('target', 'levelpermission.invalid.fourth.sector')
+        if (first == null || first.contains(this.levelSep)) {
+            this.errors.rejectValue('target', 'levelpermission.invalid.first.sector')
             return
-          }
-
-          this.fourth = fourth.split(this.tokenSep) as List
-
-          if (fifth) {
-            if (fifth.contains(this.levelSep)) {
-              this.errors.rejectValue('target', 'levelpermission.invalid.fifth.sector')
-              return
-            }
-
-            this.fifth = fifth.split(this.tokenSep) as List
-
-            if (sixth) {
-              if (sixth.contains(this.levelSep)) {
-                this.errors.rejectValue('target', 'levelpermission.invalid.sixth.sector')
-                return
-              }
-
-              this.sixth = sixth.split(this.tokenSep) as List
-            }
-          }
         }
-      }
-    }
+        this.first = first.split(this.tokenSep) as List
 
-    buildTarget()
-  }
+        if (second) {
+            if (second.contains(this.levelSep)) {
+                this.errors.rejectValue('target', 'levelpermission.invalid.second.sector')
+                return
+            }
+
+            this.second = second.split(this.tokenSep) as List
+
+            if (third) {
+                if (third.contains(this.levelSep)) {
+                    this.errors.rejectValue('target', 'levelpermission.invalid.third.sector')
+                    return
+                }
+
+                this.third = third.split(this.tokenSep) as List
+
+                if (fourth) {
+                    if (fourth.contains(this.levelSep)) {
+                        this.errors.rejectValue('target', 'levelpermission.invalid.fourth.sector')
+                        return
+                    }
+
+                    this.fourth = fourth.split(this.tokenSep) as List
+
+                    if (fifth) {
+                        if (fifth.contains(this.levelSep)) {
+                            this.errors.rejectValue('target', 'levelpermission.invalid.fifth.sector')
+                            return
+                        }
+
+                        this.fifth = fifth.split(this.tokenSep) as List
+
+                        if (sixth) {
+                            if (sixth.contains(this.levelSep)) {
+                                this.errors.rejectValue('target', 'levelpermission.invalid.sixth.sector')
+                                return
+                            }
+
+                            this.sixth = sixth.split(this.tokenSep) as List
+                        }
+                    }
+                }
+            }
+        }
+
+        buildTarget()
+    }
 }

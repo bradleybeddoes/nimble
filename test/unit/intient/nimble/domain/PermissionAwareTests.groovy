@@ -26,36 +26,47 @@
  *  If you have purchased a commercial version of this software it is licensed
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
-
 package intient.nimble.domain
 
-/**
- * Represents an object that we wish to store a basic set of information about
- *
- * @author Bradley Beddoes
- */
-class Details {
+import grails.test.*
 
-  String name
-  String displayName
-  String description
-  Url url
-  
-  String logo
-  String logoSmall
+class PermissionAwareTests extends GrailsUnitTestCase {
 
+    def perm1 = new Permission()
+    def perm2 = new Permission()
+    def perm3 = new Permission()
 
+    protected void setUp() {
+        super.setUp()
+    }
 
-  static belongsTo = [FederationProvider, SocialMediaService]
-  
-  static constraints = {
-    name(nullable: true, blank: false)
-    displayName(nullable: true, blank: false)
-    logo(nullable: true, blank: false)
-    logoSmall(nullable: true, blank: false)
-    url(nullable: true)
-    description(nullable: true, blank: false)
-  }
+    protected void tearDown() {
+        super.tearDown()
+    }
+
+    PermissionAware createValidPermissionAware() {
+        def permissionAware = new PermissionAware(permissions:[perm1,perm2,perm3])
+        return permissionAware
+    }
+
+    void testPermissionAwareCreation() {
+        def permissionAware = createValidPermissionAware()
+
+        assertTrue permissionAware.permissions.contains(perm1)
+        assertTrue permissionAware.permissions.contains(perm2)
+        assertTrue permissionAware.permissions.contains(perm3)
+    }
+
+    void testPermissionsConstraint() {
+        mockForConstraintsTests(PermissionAware)
+        def permissionAware = createValidPermissionAware()
+
+        assertTrue permissionAware.validate()
+
+        permissionAware.permissions = []
+        assertTrue permissionAware.validate()
+
+        permissionAware.permissions = null
+        assertTrue permissionAware.validate()
+    }
 }
-
-

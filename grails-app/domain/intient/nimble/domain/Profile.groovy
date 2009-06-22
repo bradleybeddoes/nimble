@@ -60,16 +60,15 @@ class Profile {
     Date lastUpdated
 
     def beforeInsert = {
-        // Do MD5 hash of email for Gravatar
         hashEmail()
     }
 
     def beforeUpdate = {
-        // Do MD5 hash of email for Gravatar
         hashEmail()
     }
 
     def hashEmail = {
+        // Do MD5 hash of email for Gravatar
         if(email) {
             def hasher = new Md5Hash(email)
             emailHash = hasher.toHex()
@@ -89,7 +88,7 @@ class Profile {
     ]
 
     static mapping = {
-        ache usage: 'read-write', include: 'all'
+        cache usage: 'read-write', include: 'all'
     }
 
     static constraints = {

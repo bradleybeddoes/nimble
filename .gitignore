@@ -4,5 +4,7 @@ classes
 stacktrace.log
 
 web-app/plugins/*
+test/reports/*
+
 
 *.zip

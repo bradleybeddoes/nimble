@@ -39,7 +39,7 @@ class LoginRecord {
   String remoteHost
   String userAgent
   
-  Date time
+  Date dateCreated
 
   static belongsTo = [owner: User]
 
@@ -47,7 +47,7 @@ class LoginRecord {
     remoteAddr(nullable: false, blank: false)
     remoteHost(nullable: false, blank: false)
     userAgent(nullable: false, blank: false)
-    time(nullable: false, blank: false)
+    dateCreated(nullable: false, blank: false)
   }
 
 }

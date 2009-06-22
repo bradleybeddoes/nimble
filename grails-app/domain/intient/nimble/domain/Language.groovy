@@ -39,7 +39,7 @@ class Language {
   String scheme
 
   static hasMany = [
-          code: String
+          codes: String
   ]
 
   static constraints = {
