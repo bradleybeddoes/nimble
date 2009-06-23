@@ -30,7 +30,7 @@
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
 import intient.nimble.domain.Profile
@@ -99,6 +99,7 @@ class NimbleBootStrap {
         userProfile.bio = "Director and Lead Software Architect at Intient Pty Ltd"
         userProfile.dob = new Date()
         userProfile.gender = Gender.Male
+        userProfile.owner = user
         
         def workPh = new Phone(number:'+61 7 3102 4560  ', type: PhoneType.Business)
         def mobilePh = new Phone(number:'+61 403 768 802', type: PhoneType.Mobile)
@@ -142,7 +143,7 @@ class NimbleBootStrap {
 
         // Create example groups
         for (i in 0..15) {
-            def group = new _Group()
+            def group = new Group()
             group.name = "group${i}"
             group.description = "a test group"
             group.save()

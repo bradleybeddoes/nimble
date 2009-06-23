@@ -30,17 +30,26 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class DetailsTests extends GrailsUnitTestCase {
     
-    def name = 'name'
-    def displayName = 'displayName'
-    def description = 'description'
-    def url = new Url()
-    def logo = 'logo'
-    def logoSmall = 'logoSmall'
+    def name 
+    def displayName 
+    def description 
+    def url 
+    def logo 
+    def logoSmall 
         
     protected void setUp() {
         super.setUp()
+        name = 'name'
+        displayName = 'displayName'
+        description = 'description'
+        url = new Url()
+        logo = 'logo'
+        logoSmall = 'logoSmall'
     }
 
     protected void tearDown() {
@@ -66,8 +75,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testNameConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 
@@ -79,8 +88,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testDisplayNameConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 
@@ -92,8 +101,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testLogoConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 
@@ -105,8 +114,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testLogoSmallConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 
@@ -118,8 +127,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testUrlConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 
@@ -128,8 +137,8 @@ class DetailsTests extends GrailsUnitTestCase {
     }
 
     void testDescriptionConstraint() {
-         mockForConstraintsTests(Details)
-         def details = createValidDetails()
+        mockForConstraintsTests(Details)
+        def details = createValidDetails()
 
         assertTrue details.validate()
 

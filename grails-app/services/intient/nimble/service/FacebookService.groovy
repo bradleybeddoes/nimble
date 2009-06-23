@@ -190,8 +190,16 @@ class FacebookService implements InitializingBean {
                 def url = new Url()
                 url.location = grailsApplication.config.nimble.facebook.url
                 url.altText = grailsApplication.config.nimble.facebook.alttext
+                def savedUrl = url.save(flush:true)
 
-                details.url = url
+                if(url.hasErrors()) {
+                    url.errors.each {
+                        log.error(it)
+                    }
+                    throw new RuntimeException("Unable to create valid facebook federation provider (url)")
+                }
+
+                details.url = savedUrl
 
                 facebookFederationProvider.details = details
 

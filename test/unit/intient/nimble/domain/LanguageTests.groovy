@@ -30,12 +30,17 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class LanguageTests extends GrailsUnitTestCase {
-    def scheme = 'scheme'
-    def codes = ['val','val2']
+    def scheme 
+    def codes
 
     protected void setUp() {
         super.setUp()
+        scheme = 'scheme'
+        codes = ['val','val2']
     }
 
     protected void tearDown() {

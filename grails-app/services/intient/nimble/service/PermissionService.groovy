@@ -43,7 +43,7 @@ class PermissionService {
    * Creates a new LevelPermission object, generates target and assigns to owner.
    *
    * @param permission The populated permission object to persist
-   * @param owner An object that extends PermissionOwner (e.g. User, _Group, Role)
+   * @param owner An object that extends PermissionOwner (e.g. User, Group, Role)
    *
    * @return A permission object. The saved object is all was successful or the permission object with error details if persistence fails.
    * 

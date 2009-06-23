@@ -33,63 +33,73 @@ import grails.test.*
 /**
  * @author Bradley Beddoes
  */
-class FederationProviderTests extends GrailsUnitTestCase {
+class SocialMediaServiceTests extends GrailsUnitTestCase {
 
     def uid 
     def details 
-    def autoProvision 
-    def preferences
+    def baseProfileUrl 
 
     protected void setUp() {
         super.setUp()
-        uid = 'uid'
+
+        uid = 'serviceuid'
         details = new Details()
-        autoProvision = true
-        preferences = [:]
+        baseProfileUrl = new Url()
     }
 
     protected void tearDown() {
         super.tearDown()
     }
 
-    FederationProvider createValidFederationProvider() {
-        def federationProvider = new FederationProvider(uid:uid, details:details, autoProvision:autoProvision, preferences:preferences)
-        return federationProvider
+    SocialMediaService createValidSocialMediaService() {
+        def service = new SocialMediaService(uid:uid, details:details, baseProfileUrl:baseProfileUrl)
+        return service
     }
 
-    void testFederationProviderCreation() {
-        def federationProvider = createValidFederationProvider()
-        
-        assertEquals uid, federationProvider.uid
-        assertEquals details, federationProvider.details
-        assertEquals autoProvision, federationProvider.autoProvision
-        assertEquals preferences, federationProvider.preferences
+    void testSocialMediaServiceCreation() {
+        def service = createValidSocialMediaService()
+
+        assertEquals uid, service.uid
+        assertEquals details, service.details
+        assertEquals baseProfileUrl, service.baseProfileUrl
     }
 
     void testUidConstraint() {
-        mockForConstraintsTests(FederationProvider)
-        def federationProvider = createValidFederationProvider()
-        assertTrue federationProvider.validate()
+        mockForConstraintsTests(SocialMediaService)
+        def service = createValidSocialMediaService()
+        assertTrue service.validate()
 
-        federationProvider.uid = null
-        assertFalse federationProvider.validate()
+        service.uid = null
+        assertFalse service.validate()
+
+        service.uid = ''
+        assertFalse service.validate()
     }
 
     void testDetailsConstraint() {
-        mockForConstraintsTests(FederationProvider)
-        def federationProvider = createValidFederationProvider()
-        assertTrue federationProvider.validate()
+        mockForConstraintsTests(SocialMediaService)
+        def service = createValidSocialMediaService()
+        assertTrue service.validate()
 
-        federationProvider.details = null
-        assertFalse federationProvider.validate()
+        service.details = null
+        assertFalse service.validate()
+    }
+
+    void testBaseProfileUrlConstraint() {
+        mockForConstraintsTests(SocialMediaService)
+        def service = createValidSocialMediaService()
+        assertTrue service.validate()
+
+        service.baseProfileUrl = null
+        assertTrue service.validate()
     }
 
     void testPreferencesConstraint() {
-        mockForConstraintsTests(FederationProvider)
-        def federationProvider = createValidFederationProvider()
-        assertTrue federationProvider.validate()
+        mockForConstraintsTests(SocialMediaService)
+        def service = createValidSocialMediaService()
+        assertTrue service.validate()
 
-        federationProvider.preferences = null
-        assertTrue federationProvider.validate()
+        service.preferences = null
+        assertTrue service.validate()
     }
 }

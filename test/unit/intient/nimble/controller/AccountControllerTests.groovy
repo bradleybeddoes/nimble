@@ -26,53 +26,20 @@
  *  If you have purchased a commercial version of this software it is licensed
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
-package intient.nimble.domain
+package intient.nimble.controller
 
 import grails.test.*
 
-/**
- * @author Bradley Beddoes
- */
-class PermissionAwareTests extends GrailsUnitTestCase {
-
-    def perm1 
-    def perm2 
-    def perm3 
-
+class AccountControllerTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
-        perm1 = new Permission()
-        perm2 = new Permission()
-        perm3 = new Permission()
     }
 
     protected void tearDown() {
         super.tearDown()
     }
 
-    PermissionAware createValidPermissionAware() {
-        def permissionAware = new PermissionAware(permissions:[perm1,perm2,perm3])
-        return permissionAware
-    }
+    void testSomething() {
 
-    void testPermissionAwareCreation() {
-        def permissionAware = createValidPermissionAware()
-
-        assertTrue permissionAware.permissions.contains(perm1)
-        assertTrue permissionAware.permissions.contains(perm2)
-        assertTrue permissionAware.permissions.contains(perm3)
-    }
-
-    void testPermissionsConstraint() {
-        mockForConstraintsTests(PermissionAware)
-        def permissionAware = createValidPermissionAware()
-
-        assertTrue permissionAware.validate()
-
-        permissionAware.permissions = []
-        assertTrue permissionAware.validate()
-
-        permissionAware.permissions = null
-        assertTrue permissionAware.validate()
     }
 }

@@ -33,7 +33,7 @@ import intient.nimble.domain.Role
 import intient.nimble.service.AdminsService
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 import intient.nimble.domain.FederationProvider
 import intient.nimble.domain.Profile
 import intient.nimble.domain.LoginRecord
@@ -413,7 +413,7 @@ class UserController {
       return
     }
 
-    def groups = _Group.findAllByNameIlike(q)
+    def groups = Group.findAllByNameIlike(q)
     def nonMembers = []
 
     groups.each {
@@ -429,7 +429,7 @@ class UserController {
 
   def grantgroup = {
     def user = User.get(params.id)
-    def group = _Group.get(params.groupID)
+    def group = Group.get(params.groupID)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
@@ -463,7 +463,7 @@ class UserController {
 
   def removegroup = {
     def user = User.get(params.id)
-    def group = _Group.get(params.groupID)
+    def group = Group.get(params.groupID)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")

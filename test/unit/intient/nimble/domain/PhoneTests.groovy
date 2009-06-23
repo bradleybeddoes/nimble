@@ -30,13 +30,19 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class PhoneTests extends GrailsUnitTestCase {
-    def number = '1234567890'
-    def type = PhoneType.Mobile
-    def owner = new Profile()
+    def number 
+    def type
+    def owner 
         
     protected void setUp() {
         super.setUp()
+        number = '1234567890'
+        type = PhoneType.Mobile
+        owner = new Profile()
     }
 
     protected void tearDown() {

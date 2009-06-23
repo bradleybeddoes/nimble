@@ -24,6 +24,7 @@ class ProfileService {
     def updateStatus(def profile, def status) {
         log.debug("Adding new status with message $status.status to user [$profile.owner.id]$profile.owner.username")
 
+        status.owner = profile
         if(!status.validate()) {
             log.warn("Invalid status supplied by user [$profile.owner.id]$profile.owner.username")
             return status

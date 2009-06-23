@@ -37,7 +37,7 @@ package intient.nimble.domain
 class Feed {
 
   Details details
-  Url feedUrl
+  Url feedUrl = null
 
   Map preferences
 

@@ -30,7 +30,7 @@ package intient.nimble.service
 
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 
 /**
  * Provides methods for interacting with Nimble roles.
@@ -244,7 +244,7 @@ class RoleService {
    *
    * @throws RuntimeException When internal state requires transaction rollback
    */
-  def addGroupMember(_Group group, Role role) {
+  def addGroupMember(Group group, Role role) {
     role.addToGroups(group)
     group.addToRoles(role)
 
@@ -282,7 +282,7 @@ class RoleService {
    *
    * @throws RuntimeException When internal state requires transaction rollback
    */
-  def deleteGroupMember(_Group group, Role role) {
+  def deleteGroupMember(Group group, Role role) {
     role.removeFromGroups(group)
     group.removeFromRoles(role)
 

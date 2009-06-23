@@ -30,18 +30,29 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class LevelPermissionTests extends GrailsUnitTestCase {
-    def first = ['token01', 'token02']
-    def second = ['token03', 'token04']
-    def third = ['token05','token06']
-    def fourth = ['token07', 'token08']
-    def fifth = ['token09', 'token10']
-    def sixth = ['token11', 'token12']
+    def first
+    def second
+    def third
+    def fourth
+    def fifth
+    def sixth
 
-    def owner = new PermissionAware()
+    def owner 
         
     protected void setUp() {
         super.setUp()
+        first = ['token01', 'token02']
+        second = ['token03', 'token04']
+        third = ['token05','token06']
+        fourth = ['token07', 'token08']
+        fifth = ['token09', 'token10']
+        sixth = ['token11', 'token12']
+
+        owner = new PermissionAware()
     }
 
     protected void tearDown() {

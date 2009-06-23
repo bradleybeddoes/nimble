@@ -39,15 +39,18 @@ import intient.nimble.domain.Url
  */
 class Status {
     String status
-    Url url
+    Url url = null
 
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [Profile]
+    static belongsTo = [owner:Profile]
     
     static constraints = {
         status(nullable:false, blank:false)
         url(nullable:true)
+
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
     }
 }

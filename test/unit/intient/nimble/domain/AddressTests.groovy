@@ -31,21 +31,34 @@ package intient.nimble.domain
 import grails.test.*
 import intient.nimble.domain.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class AddressTests extends GrailsUnitTestCase {
 
-    def l1 = 'line1'
-    def l2 = 'line2'
-    def l3 = 'line3'
-    def suburb = 'suburb'
-    def city = 'city'
-    def state = 'state'
-    def postCode = '1111'
-    def country = 'australia'
-    def category = Address.HOME
-    def profile = new Profile()
+    def l1 
+    def l2 
+    def l3 
+    def suburb 
+    def city 
+    def state 
+    def postCode 
+    def country 
+    def category
+    def profile 
 
     protected void setUp() {
         super.setUp()
+        l1 = 'line1'
+        l2 = 'line2'
+        l3 = 'line3'
+        suburb = 'suburb'
+        city = 'city'
+        state = 'state'
+        postCode = '1111'
+        country = 'australia'
+        category = Address.HOME
+        profile = new Profile()
     }
 
     protected void tearDown() {

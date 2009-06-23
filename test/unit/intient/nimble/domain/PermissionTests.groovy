@@ -31,17 +31,25 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class PermissionTests extends GrailsUnitTestCase {
-
-    def type = 'type'
-    def possibleActions = 'possibleActions'
-    def actions = 'actions'
-    def target = 'target'
-    def managed = false
-    def owner = new PermissionAware()
-        
+    def type
+    def possibleActions
+    def actions
+    def target
+    def managed
+    def owner
+            
     protected void setUp() {
         super.setUp()
+        type = 'type'
+        possibleActions = 'possibleActions'
+        actions = 'actions'
+        target = 'target'
+        managed = false
+        owner = new PermissionAware()
     }
 
     protected void tearDown() {

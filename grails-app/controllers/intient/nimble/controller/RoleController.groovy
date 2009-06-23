@@ -31,7 +31,7 @@ package intient.nimble.controller
 import intient.nimble.domain.Role
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 import intient.nimble.domain.User
 import intient.nimble.domain.Profile
 
@@ -279,7 +279,7 @@ class RoleController {
 
   def addgroupmember = {
     def role = Role.get(params.id)
-    def group = _Group.get(params.groupID)
+    def group = Group.get(params.groupID)
 
     if (!role) {
       log.warn("Role identified by id '$params.id' was not located")
@@ -307,7 +307,7 @@ class RoleController {
 
   def removegroupmember = {
     def role = Role.get(params.id)
-    def group = _Group.get(params.groupID)
+    def group = Group.get(params.groupID)
 
     if (!role) {
       log.warn("Role identified by id '$params.id' was not located")
@@ -363,7 +363,7 @@ class RoleController {
     def q = "%" + params.q + "%"
     log.debug("Performing search for groups matching $q")
 
-    def groups = _Group.findAllByNameIlike(q)
+    def groups = Group.findAllByNameIlike(q)
     def nonMembers = []
 
     def role = Role.get(params.id)

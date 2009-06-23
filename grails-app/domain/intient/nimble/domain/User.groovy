@@ -31,7 +31,7 @@ package intient.nimble.domain
 import intient.nimble.domain.LoginRecord
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Role
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 
 /**
  * Represents a user within a Nimble Application
@@ -49,22 +49,20 @@ class User extends PermissionAware {
     boolean federated
     boolean remoteapi = false
 
-    Date expiration
-
     FederationProvider federationProvider
     Profile profile
 
+    Date expiration
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [_Group]
+    static belongsTo = [Group]
 
     static hasMany = [
         roles: Role,
-        groups: _Group,
+        groups: Group,
         passwdHistory: String,
         loginRecords: LoginRecord,
-        //associations: Association,
         follows: User,
         followers: User
     ]
@@ -74,14 +72,11 @@ class User extends PermissionAware {
         groups: 'eager'
     ]
 
-    //static mappedBy = [
-    //    associations: 'owner'
-    //]
-
     static mapping = {
         sort username:'desc'
     
         cache usage: 'read-write', include: 'all'
+        table "_user"
 
         roles cache: true, cascade: 'none'
         groups cache: true, cascade: 'none'
@@ -90,12 +85,16 @@ class User extends PermissionAware {
 
     static constraints = {
         username(nullable: false, blank: false, unique: true, size: 4..2048)
-        passwordHash(nullable: true, blank: true)
-        actionHash(nullable: true, blank: true)
-
-        expiration(nullable: true, blank: true)
-
+        passwordHash(nullable: true, blank: false)
+        actionHash(nullable: true, blank: false)
+   
         federationProvider(nullable: true)
+        profile(nullable:false)
+        
+        expiration(nullable: true)
+
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
     }
 
     // Transients

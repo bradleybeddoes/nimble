@@ -30,14 +30,19 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class FeedTests extends GrailsUnitTestCase {
-
-    def details = new Details()
-    def feedUrl = new Url()
-    def preferences = [:]
+    def details
+    def feedUrl
+    def preferences    
 
     protected void setUp() {
         super.setUp()
+        details = new Details()
+        feedUrl = new Url()
+        preferences = [:]
     }
 
     protected void tearDown() {

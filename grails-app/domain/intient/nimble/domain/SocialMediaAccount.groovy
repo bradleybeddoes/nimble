@@ -39,7 +39,7 @@ class SocialMediaAccount {
 
     String username
     String accountID
-    Url profile
+    Url profile = null
     SocialMediaService service
 
     Map preferences
@@ -52,8 +52,8 @@ class SocialMediaAccount {
     ]
 
     static constraints = {
-        username(nullable: true, blank: true)
-        accountID(nullable: true, blank:true)
+        username(nullable: true, blank:false)
+        accountID(nullable: true, blank:false)
         profile(nullable:true)
         urls(nullable: true)
         feeds(nullable: true)

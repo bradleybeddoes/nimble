@@ -31,8 +31,15 @@ class TwitterService {
             def url = new Url()
             url.location = grailsApplication.config.nimble.twitter.url
             url.altText = grailsApplication.config.nimble.twitter.alttext
+            def savedUrl = url.save()
+            if(url.hasErrors()) {
+                url.errors.each {
+                    log.error(it)
+                }
+                throw new RuntimeException("Unable to create valid OpenID federation provider (url)")
+            }
 
-            details.url = url
+            details.url = savedUrl
             twitterMediaService.details = details
 
             twitterMediaService.baseProfileUrl = new Url(location: grailsApplication.config.nimble.twitter.profileurl, altText: grailsApplication.config.nimble.twitter.profilealttext)

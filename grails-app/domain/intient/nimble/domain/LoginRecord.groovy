@@ -35,19 +35,22 @@ package intient.nimble.domain
  */
 class LoginRecord {
 
-  String remoteAddr
-  String remoteHost
-  String userAgent
+    String remoteAddr
+    String remoteHost
+    String userAgent
   
-  Date dateCreated
+    Date dateCreated
+    Date lastUpdated
 
-  static belongsTo = [owner: User]
+    static belongsTo = [owner: User]
 
-  static constraints = {
-    remoteAddr(nullable: false, blank: false)
-    remoteHost(nullable: false, blank: false)
-    userAgent(nullable: false, blank: false)
-    dateCreated(nullable: false, blank: false)
-  }
+    static constraints = {
+        remoteAddr(nullable: false, blank: false)
+        remoteHost(nullable: false, blank: false)
+        userAgent(nullable: false, blank: false)
+
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
+    }
 
 }

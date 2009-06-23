@@ -30,7 +30,7 @@ package intient.nimble.domain
 
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 
 /**
  * Our permission object encapsulates details that a normal Ki deployment

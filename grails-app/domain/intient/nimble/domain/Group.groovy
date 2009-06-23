@@ -26,53 +26,45 @@
  *  If you have purchased a commercial version of this software it is licensed
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
+
 package intient.nimble.domain
 
-import grails.test.*
+import intient.nimble.domain.Permission
+import intient.nimble.domain.Role
+import intient.nimble.domain.User
 
 /**
+ * Represents a grouping of users in a Nimble based appication
+ *
  * @author Bradley Beddoes
  */
-class PermissionAwareTests extends GrailsUnitTestCase {
+class Group extends PermissionAware {
 
-    def perm1 
-    def perm2 
-    def perm3 
+    String name
+    String description
+    boolean protect = false
 
-    protected void setUp() {
-        super.setUp()
-        perm1 = new Permission()
-        perm2 = new Permission()
-        perm3 = new Permission()
+    Date dateCreated
+    Date lastUpdated
+
+    static hasMany = [
+        roles: Role,
+        users: User,
+    ]
+
+    static mapping = {
+        cache usage: 'read-write', include: 'all'
+        table "_group"
+
+        users cache: true
+        roles cache: true
     }
 
-    protected void tearDown() {
-        super.tearDown()
-    }
+    static constraints = {
+        name(nullable: false, blank: false, unique: true, size:4..512)
+        description(nullable: true, blank: false)
 
-    PermissionAware createValidPermissionAware() {
-        def permissionAware = new PermissionAware(permissions:[perm1,perm2,perm3])
-        return permissionAware
-    }
-
-    void testPermissionAwareCreation() {
-        def permissionAware = createValidPermissionAware()
-
-        assertTrue permissionAware.permissions.contains(perm1)
-        assertTrue permissionAware.permissions.contains(perm2)
-        assertTrue permissionAware.permissions.contains(perm3)
-    }
-
-    void testPermissionsConstraint() {
-        mockForConstraintsTests(PermissionAware)
-        def permissionAware = createValidPermissionAware()
-
-        assertTrue permissionAware.validate()
-
-        permissionAware.permissions = []
-        assertTrue permissionAware.validate()
-
-        permissionAware.permissions = null
-        assertTrue permissionAware.validate()
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
     }
 }

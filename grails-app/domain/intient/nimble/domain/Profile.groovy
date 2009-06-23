@@ -103,10 +103,13 @@ class Profile {
         photoType(nullable: true, blank:false)
     
         currentStatus(nullable:true)
-        gender(nullable: true, blank: true)
+        gender(nullable: true)
         dob(nullable: true)
 
         preferences(nullable: true)
+
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
     }
 }
 

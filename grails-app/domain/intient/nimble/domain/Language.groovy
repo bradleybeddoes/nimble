@@ -42,6 +42,8 @@ class Language {
           codes: String
   ]
 
+  static belongsTo = [Url]
+
   static constraints = {
     scheme(nullable: false, blank: false)
   }

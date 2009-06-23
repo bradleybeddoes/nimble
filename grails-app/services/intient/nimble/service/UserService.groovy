@@ -34,7 +34,7 @@ import org.apache.ki.SecurityUtils
 
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 import intient.nimble.domain.LoginRecord
 import intient.nimble.domain.Permission
 
@@ -212,7 +212,7 @@ class UserService {
 
             user.addToRoles(defaultRole)
 
-            def savedUser = user.save(flush: true)
+            def savedUser = user.save()
             if (savedUser) {
                 defaultRole.addToUsers(savedUser)
                 defaultRole.save()
@@ -349,7 +349,6 @@ class UserService {
         record.remoteAddr = request.getRemoteAddr()
         record.remoteHost = request.getRemoteHost()
         record.userAgent = request.getHeader("User-Agent")
-        record.time = new Date()
 
         record.owner = user
         user.addToLoginRecords(record)

@@ -25,12 +25,11 @@
     <resource>intient.nimble.controller.ProfileController</resource>
     <resource>intient.nimble.controller.RoleController</resource>
     <resource>intient.nimble.controller.UserController</resource>
-    <resource>intient.nimble.domain._Group</resource>
     <resource>intient.nimble.domain.Address</resource>
-    <resource>intient.nimble.domain.Association</resource>
     <resource>intient.nimble.domain.Details</resource>
     <resource>intient.nimble.domain.FederationProvider</resource>
     <resource>intient.nimble.domain.Feed</resource>
+    <resource>intient.nimble.domain.Group</resource>
     <resource>intient.nimble.domain.Language</resource>
     <resource>intient.nimble.domain.LevelPermission</resource>
     <resource>intient.nimble.domain.LoginRecord</resource>

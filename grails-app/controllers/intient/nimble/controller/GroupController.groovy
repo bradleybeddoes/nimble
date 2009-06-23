@@ -28,7 +28,7 @@
  */
 package intient.nimble.controller
 
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 import intient.nimble.domain.User
 import intient.nimble.domain.Role
 import intient.nimble.domain.LevelPermission
@@ -61,11 +61,11 @@ class GroupController {
     if (!params.max) {
       params.max = 10
     }
-    return [groups: _Group.list(params)]
+    return [groups: Group.list(params)]
   }
 
   def show = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -78,7 +78,7 @@ class GroupController {
   }
 
   def create = {
-    def group = new _Group()
+    def group = new Group()
     [group: group]
   }
 
@@ -86,7 +86,7 @@ class GroupController {
     def name = params.name
     def description = params.description
 
-    def newGroup = new _Group()
+    def newGroup = new Group()
     newGroup.name = name
     newGroup.description = description
 
@@ -110,7 +110,7 @@ class GroupController {
   }
 
   def edit = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -124,7 +124,7 @@ class GroupController {
   }
 
   def update = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -158,7 +158,7 @@ class GroupController {
   }
 
   def delete = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -177,7 +177,7 @@ class GroupController {
   }
 
   def validname = {
-    def groups = _Group.findAllByName(params?.name)
+    def groups = Group.findAllByName(params?.name)
 
     if (groups != null && groups.size() > 0) {
       flash.type = "error"
@@ -190,7 +190,7 @@ class GroupController {
   }
 
   def listmembers = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -205,7 +205,7 @@ class GroupController {
   }
 
   def addmember = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     def user = User.get(params.userID)
 
     if (!group) {
@@ -231,7 +231,7 @@ class GroupController {
   }
 
   def removemember = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     def user = User.get(params.userID)
 
     if (!group) {
@@ -260,7 +260,7 @@ class GroupController {
   def searchnewmembers = {
     def q = "%" + params.q + "%"
 
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -293,7 +293,7 @@ class GroupController {
   }
 
   def listpermissions = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -306,7 +306,7 @@ class GroupController {
   }
 
   def createpermission = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -341,7 +341,7 @@ class GroupController {
   }
 
   def removepermission = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -368,7 +368,7 @@ class GroupController {
 
   def listroles = {
 
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -384,7 +384,7 @@ class GroupController {
   def searchroles = {
     def q = "%" + params.q + "%"
 
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 
@@ -410,7 +410,7 @@ class GroupController {
   }
 
   def grantrole = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     def role = Role.get(params.roleID)
 
     if (!group) {
@@ -448,7 +448,7 @@ class GroupController {
   }
 
   def removerole = {
-    def group = _Group.get(params.id)
+    def group = Group.get(params.id)
     def role = Role.get(params.roleID)
 
     if (!group) {

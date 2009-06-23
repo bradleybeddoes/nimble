@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.domain._Group" %>
+<%@ page import="intient.nimble.domain.Group" %>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="admin"/>
@@ -35,7 +35,7 @@
     </table>
   </div>
   <div class="paginateButtons">
-    <g:paginate total="${_Group.count().encodeAsHTML()}"/>
+    <g:paginate total="${Group.count().encodeAsHTML()}"/>
   </div>
 
 </div>

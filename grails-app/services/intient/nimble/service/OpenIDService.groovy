@@ -95,8 +95,15 @@ class OpenIDService {
                 def url = new Url()
                 url.location = grailsApplication.config.nimble.openid.url
                 url.altText = grailsApplication.config.nimble.openid.alttext
+                def savedUrl = url.save()
+                if(url.hasErrors()) {
+                    url.errors.each {
+                        log.error(it)
+                    }
+                    throw new RuntimeException("Unable to create valid OpenID federation provider (url)")
+                }
 
-                details.url = url
+                details.url = savedUrl
 
                 openidFederationProvider.details = details
 

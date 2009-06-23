@@ -30,7 +30,7 @@ package intient.nimble.domain
 
 import intient.nimble.domain.Permission
 import intient.nimble.domain.User
-import intient.nimble.domain._Group
+import intient.nimble.domain.Group
 
 /**
  * Represents a role within a Nimble application
@@ -39,27 +39,34 @@ import intient.nimble.domain._Group
  */
 class Role extends PermissionAware {
 
-  String description
-  String name
-  boolean protect = false
+    String name
+    String description
+    boolean protect = false
 
-  static hasMany = [
-          users: User,
-          groups: _Group,
-  ]
+    Date dateCreated
+    Date lastUpdated
 
-  static belongsTo = [User, _Group]
+    static hasMany = [
+        users: User,
+        groups: Group,
+    ]
 
-  static mapping = {
-    cache usage: 'read-write', include: 'all'
+    static belongsTo = [User, Group]
 
-    users cache: true
-    groups cache: true
-    permissions cache: true
-  }
+    static mapping = {
+        cache usage: 'read-write', include: 'all'
+        table "_role"
 
-  static constraints = {
-    name(blank: false, unique: true, size:4..256)
-    description()
-  }
+        users cache: true
+        groups cache: true
+        permissions cache: true
+    }
+
+    static constraints = {
+        name(blank: false, unique: true, size:4..512)
+        description(nullable:true, blank:false)
+        
+        dateCreated(nullable: true) // must be true to enable grails
+        lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
+    }
 }

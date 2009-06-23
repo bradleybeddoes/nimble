@@ -39,7 +39,7 @@ class Details {
   String name
   String displayName
   String description
-  Url url
+  Url url = null
   
   String logo
   String logoSmall

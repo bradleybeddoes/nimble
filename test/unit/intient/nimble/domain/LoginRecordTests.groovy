@@ -30,15 +30,23 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class LoginRecordTests extends GrailsUnitTestCase {
-    def remoteAddr = '1.1.1.1'
-    def remoteHost = 'remote.host'
-    def userAgent = 'userAgent'
-    def dateCreated = new Date()
-    def owner = new User()
+    def remoteAddr
+    def remoteHost
+    def userAgent 
+    def dateCreated 
+    def owner 
 
     protected void setUp() {
         super.setUp()
+        remoteAddr = '1.1.1.1'
+        remoteHost = 'remote.host'
+        userAgent = 'userAgent'
+        dateCreated = new Date()
+        owner = new User()
     }
 
     protected void tearDown() {
@@ -101,7 +109,17 @@ class LoginRecordTests extends GrailsUnitTestCase {
         assertTrue loginRecord.validate()
 
         loginRecord.dateCreated = null
-        assertFalse loginRecord.validate()
+        assertTrue loginRecord.validate()
+    }
+
+    void testLastUpdatedConstraint() {
+        mockForConstraintsTests(LoginRecord)
+
+        def loginRecord = createValidLoginRecord()
+        assertTrue loginRecord.validate()
+
+        loginRecord.lastUpdated = null
+        assertTrue loginRecord.validate()
     }
 
     void testOwnerConstraint() {

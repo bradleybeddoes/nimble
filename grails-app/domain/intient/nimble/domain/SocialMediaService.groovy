@@ -42,7 +42,9 @@ class SocialMediaService {
   Map preferences
 
   static constraints = {
+    uid(nullable:false, blank:false)
     details(nullable: false)
+    baseProfileUrl(nullable:true)
     preferences(nullable: true)
   }
 }

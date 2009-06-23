@@ -30,48 +30,93 @@ package intient.nimble.domain
 
 import grails.test.*
 
+/**
+ * @author Bradley Beddoes
+ */
 class ProfileTests extends GrailsUnitTestCase {
 
-    def fullName = 'fullName'
-    def nickName = 'nickName'
-    def email = 'test@unit.org'
-    def nonVerifiedEmail = 'non@verified.org'
-    def bio = 'unit test user biography'
-    def dob = new Date()
-    def gender = Gender.Female
+    def fullName 
+    def nickName 
+    def email
+    def nonVerifiedEmail
+    def bio 
+    def dob 
+    def gender
 
-    def photo = 'thiscouldbephotodatareally...'.bytes
-    def photoType = 'png'
+    def photo
+    def photoType 
 
-    def gravatar = false
-    def currentStatus = new Status()
+    def gravatar 
+    def currentStatus 
 
-    def dateCreated = new Date()
-    def lastUpdated = new Date()
+    def dateCreated 
+    def lastUpdated 
 
-    def website1 = new Url()
-    def website2 = new Url()
+    def website1 
+    def website2 
 
-    def alternateEmail1 = 'test@junit.org'
-    def alternateEmail2 = 'test@nounit.org'
+    def alternateEmail1
+    def alternateEmail2
 
-    def feed1 = new Feed()
-    def feed2 = new Feed()
+    def feed1 
+    def feed2 
 
-    def socialAccount1 = new SocialMediaAccount()
-    def socialAccount2 = new SocialMediaAccount()
+    def socialAccount1 
+    def socialAccount2 
 
-    def address1 = new Address()
-    def address2 = new Address()
+    def address1 
+    def address2 
 
-    def phoneNumber1 = new Phone()
-    def phoneNumber2 = new Phone()
+    def phoneNumber1 
+    def phoneNumber2 
 
-    def histStatus1 = new Status()
-    def histStatus2 = new Status()
+    def histStatus1 
+    def histStatus2 
+
+    def owner 
         
     protected void setUp() {
         super.setUp()
+
+        fullName = 'fullName'
+        nickName = 'nickName'
+        email = 'test@unit.org'
+        nonVerifiedEmail = 'non@verified.org'
+        bio = 'unit test user biography'
+        dob = new Date()
+        gender = Gender.Female
+
+        photo = 'thiscouldbephotodatareally...'.bytes
+        photoType = 'png'
+
+        gravatar = false
+        currentStatus = new Status()
+
+        dateCreated = new Date()
+        lastUpdated = new Date()
+
+        website1 = new Url()
+        website2 = new Url()
+
+        alternateEmail1 = 'test@junit.org'
+        alternateEmail2 = 'test@nounit.org'
+
+        feed1 = new Feed()
+        feed2 = new Feed()
+
+        socialAccount1 = new SocialMediaAccount()
+        socialAccount2 = new SocialMediaAccount()
+
+        address1 = new Address()
+        address2 = new Address()
+
+        phoneNumber1 = new Phone()
+        phoneNumber2 = new Phone()
+
+        histStatus1 = new Status()
+        histStatus2 = new Status()
+
+        owner = new User()
     }
 
     protected void tearDown() {
@@ -85,7 +130,7 @@ class ProfileTests extends GrailsUnitTestCase {
             lastUpdated:lastUpdated, websites:[website1,website2], alternateEmails:[alternateEmail1,alternateEmail2],
             feeds:[feed1,feed2], socialAccounts:[socialAccount1,socialAccount2],
             addresses:[address1,address2], phoneNumbers:[phoneNumber1,phoneNumber2],
-            statuses:[histStatus1,histStatus2])
+            statuses:[histStatus1,histStatus2], owner:owner)
 
         return profile
     }
@@ -128,4 +173,163 @@ class ProfileTests extends GrailsUnitTestCase {
         assertTrue profile.statuses.contains(histStatus1)
         assertTrue profile.statuses.contains(histStatus2)
     }
+
+    void testFullNameConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.fullName = ""
+        assertFalse profile.validate()
+
+        profile.fullName = null
+        assertTrue profile.validate()
+    }
+
+    void testNickNameConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.nickName = ""
+        assertFalse profile.validate()
+
+        profile.nickName = null
+        assertTrue profile.validate()
+    }
+
+    void testEmailConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+        
+        assertTrue profile.validate()
+
+        profile.email = ""
+        assertFalse profile.validate()
+
+        profile.email = null
+        assertTrue profile.validate()
+
+        profile.email = '121abcs'
+        assertFalse profile.validate()
+
+        profile.email = 'john@doe.com'
+        assertTrue profile.validate()
+
+        def profile2 = createValidProfile()
+        mockForConstraintsTests(Profile, [profile, profile2])
+
+        assertTrue profile.validate()
+        assertTrue profile2.validate()
+
+        profile2.email = 'john@doe.com'
+        assertFalse profile2.validate()
+        assertTrue profile2.errors.errorCount == 1
+        assertEquals 'email', profile2.errors.fieldError.field
+    }
+    
+    void testNonVerifiedEmailConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+        
+        assertTrue profile.validate()
+
+        profile.nonVerifiedEmail = ""
+        assertFalse profile.validate()
+
+        profile.nonVerifiedEmail = null
+        assertTrue profile.validate()
+
+        profile.nonVerifiedEmail = '121abcs'
+        assertFalse profile.validate()
+
+        profile.nonVerifiedEmail = 'john@doe.com'
+        assertTrue profile.validate()
+    }
+
+    void testPhotoConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.photo = null
+        assertTrue profile.validate()
+    }
+
+    void testPhotoTypeConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.photoType = ""
+        assertFalse profile.validate()
+
+        profile.photoType = null
+        assertTrue profile.validate()
+    }
+
+    void testCurrentStatusConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.currentStatus = null
+        assertTrue profile.validate()
+    }
+
+    void testGenderConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.gender = null
+        assertTrue profile.validate()
+    }
+
+    void testDOBConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.dob = null
+        assertTrue profile.validate()
+    }
+
+    void testPreferencesConstraint() {
+        mockForConstraintsTests(Profile)
+        def profile = createValidProfile()
+
+        assertTrue profile.validate()
+
+        profile.preferences = null
+        assertTrue profile.validate()
+    }
+
+    void testDateCreatedConstraint() {
+        mockForConstraintsTests(Profile)
+
+        def profile = createValidProfile()
+        assertTrue profile.validate()
+
+        profile.dateCreated = null
+        assertTrue profile.validate()
+    }
+
+    void testLastUpdatedConstraint() {
+        mockForConstraintsTests(Profile)
+
+        def profile = createValidProfile()
+        assertTrue profile.validate()
+
+        profile.lastUpdated = null
+        assertTrue profile.validate()
+    }
+
 }
