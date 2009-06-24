@@ -70,11 +70,16 @@ class AccountController {
         if(!user)
         return
 
-        log.debug('current ' + params.currentPassword)
+        if(!params.currentPassword) {
+            log.warn("User [$user.id]$user.username attempting to change password but has not supplied current password")
+            user.errors.reject('user.password.change.current.incorrect', 'The value supplied as the current password is not correct for this account')
+            render (view:"changepassword", model:[user:user])
+            return
+        }
+
         def pwEnc = new Sha256Hash(params.currentPassword)
         def crypt = pwEnc.toHex()
 
-        def processedUser
         def human = recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)
         if (human) {
 
@@ -90,26 +95,27 @@ class AccountController {
             user.validate()
 
             if(!user.hasErrors()) {
-                processedUser = userService.changePassword(user)
-                if(!processedUser.hasErrors()) {
+                userService.changePassword(user)
+                if(!user.hasErrors()) {
                     log.info("Changed password for user [$user.id]$user.username successfully")
                     redirect action: "changedpassword"
                     return
                 }
             }
-            log.debug("User [$user.id]$user.username password change was considered invalid")
-            render (view:"changepassword", model:[user:processedUser])
-            return
-        }
-        else {
-            log.debug("Captcha entry was invalid for user account creation")
-            resetNewUser(user)
-            user.errors.reject('invalid.captcha')
-            render(view: 'createuser', model: [user: user])
-            return
-        }
 
+            log.debug("User [$user.id]$user.username password change was considered invalid")
+            user.errors.allErrors.each {
+                log.debug it
+            }
+            render (view:"changepassword", model:[user:user])
+            return
+        }
         
+        log.debug("Captcha entry was invalid for user account creation")
+        resetNewUser(user)
+        user.errors.reject('invalid.captcha')
+        render(view: 'changepassword', model: [user: user])
+        return
     }
 
     def createuser = {
