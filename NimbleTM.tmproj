@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>grails-app/views/profile/show.gsp</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -63,20 +61,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>grails-app/controllers/intient/nimble/controller/ProfileController.groovy</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-		</dict>
 		<key>grails-app/domain/intient/nimble/domain/Address.groovy</key>
 		<dict>
 			<key>caret</key>
@@ -106,20 +90,6 @@
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
-		</dict>
-		<key>grails-app/domain/intient/nimble/domain/Association.groovy</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>33</integer>
-				<key>line</key>
-				<integer>39</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>grails-app/domain/intient/nimble/domain/PermissionAware.groovy</key>
 		<dict>
@@ -221,37 +191,7 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
-		<key>grails-app/views/profile/show.gsp</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>38</integer>
-				<key>line</key>
-				<integer>22</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>grails-app/domain/intient/nimble/domain/Phone.groovy</string>
-		<string>grails-app/domain/intient/nimble/domain/Profile.groovy</string>
-		<string>grails-app/domain/intient/nimble/domain/Association.groovy</string>
-		<string>grails-app/domain/intient/nimble/domain/User.groovy</string>
-		<string>grails-app/domain/intient/nimble/domain/PermissionAware.groovy</string>
-		<string>grails-app/conf/UrlMappings.groovy</string>
-		<string>grails-app/conf/NimbleUrlMappings.groovy</string>
-		<string>grails-app/controllers/intient/nimble/controller/ProfileController.groovy</string>
-		<string>grails-app/views/profile/show.gsp</string>
-		<string>grails-app/views/admins/index.gsp</string>
-		<string>grails-app/views/admins/list.gsp</string>
-		<string>grails-app/controllers/intient/nimble/controller/MainController.groovy</string>
-		<string>grails-app/domain/intient/nimble/domain/Address.groovy</string>
-	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
