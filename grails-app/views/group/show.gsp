@@ -77,7 +77,7 @@
 
 </div>
 
-<g:render template="/templates/admin/deletegroupconfirm"/>
+<g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
 
 </body>
 </html>

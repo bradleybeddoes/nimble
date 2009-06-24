@@ -27,7 +27,6 @@
  *  to you under the terms of your agreement made with Intient Pty Ltd.
  */
  
-import intient.nimble.boot.NimbleInternalBoot
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
@@ -49,7 +48,7 @@ class NimbleBootStrap {
   
   def nimbleService
   def userService
-  def adminService
+  def adminsService
 
   def init = {servletContext ->
 

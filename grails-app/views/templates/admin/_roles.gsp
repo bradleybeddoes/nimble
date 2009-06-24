@@ -46,8 +46,8 @@
     });
   }
 
-  function grantRole(groupID, roleID) {
-    var dataString = 'id=' + groupID + '&roleID=' + roleID;
+  function grantRole(ownerID, roleID) {
+    var dataString = 'id=' + ownerID + '&roleID=' + roleID;
     $.ajax({
       type: "POST",
       url: "${createLink(action:'grantrole')}",
@@ -63,8 +63,8 @@
     });
   }
 
-  function removeRole(groupID, roleID) {
-    var dataString = 'id=' + groupID + '&roleID=' + roleID;
+  function removeRole(ownerID, roleID) {
+    var dataString = 'id=' + ownerID + '&roleID=' + roleID;
     $.ajax({
       type: "POST",
       url: "${createLink(action:'removerole')}",

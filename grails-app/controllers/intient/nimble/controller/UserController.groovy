@@ -377,7 +377,7 @@ class UserController {
     def c = LoginRecord.createCriteria()
     def logins = c.list {
       eq("owner", user)
-      order("time")
+      order("dateCreated")
       maxResults(20)
     }
 
@@ -424,7 +424,7 @@ class UserController {
     }
 
     log.info("Search for new groups user [$user.id]$user.username can join complete, returning $nonMembers.size records")
-    render(template: '/templates/admin/groups_search', contextPath: pluginContextPath, model: [groups: nonMembers])
+    render(template: '/templates/admin/groups_search', contextPath: pluginContextPath, model: [groups: nonMembers, ownerID: user.id])
   }
 
   def grantgroup = {

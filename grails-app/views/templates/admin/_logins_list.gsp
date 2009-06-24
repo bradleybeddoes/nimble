@@ -19,7 +19,7 @@
         <td>${login.remoteAddr?.encodeAsHTML()}</td>
         <td>${login.remoteHost?.encodeAsHTML()}</td>
         <td>${login.userAgent?.encodeAsHTML()}</td>
-        <td>${login.time?.encodeAsHTML()}</td>
+        <td>${login.dateCreated?.encodeAsHTML()}</td>
       </tr>
     </g:each>
     </tbody>
