@@ -30,7 +30,7 @@ class SocialMediaAccount {
     Url profile = null
     SocialMediaService service
 
-    Map preferences
+    Map properties
 
     static belongsTo = [owner: Profile]
 
@@ -45,6 +45,6 @@ class SocialMediaAccount {
         profile(nullable:true)
         urls(nullable: true)
         feeds(nullable: true)
-        preferences(nullable: true)
+        properties(nullable: true)
     }
 }

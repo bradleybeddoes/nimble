@@ -296,7 +296,7 @@ class ProfileTests extends GrailsUnitTestCase {
 
         assertTrue profile.validate()
 
-        profile.preferences = null
+        profile.properties = null
         assertTrue profile.validate()
     }
 

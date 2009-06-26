@@ -96,10 +96,10 @@ class OpenIDService {
                 openidFederationProvider.details = details
 
                 // Setup OpenID providers whom don't require user details for discovery
-                openidFederationProvider.preferences = [:]
-                openidFederationProvider.preferences.put(OpenIDService.yahooDiscoveryService, grailsApplication.config.nimble.openid.discovery.yahoo)
-                openidFederationProvider.preferences.put(OpenIDService.googleDiscoveryService, grailsApplication.config.nimble.openid.discovery.google)
-                openidFederationProvider.preferences.put(OpenIDService.flickrDiscoveryService, grailsApplication.config.nimble.openid.discovery.flickr)
+                openidFederationProvider.properties = [:]
+                openidFederationProvider.properties.put(OpenIDService.yahooDiscoveryService, grailsApplication.config.nimble.openid.discovery.yahoo)
+                openidFederationProvider.properties.put(OpenIDService.googleDiscoveryService, grailsApplication.config.nimble.openid.discovery.google)
+                openidFederationProvider.properties.put(OpenIDService.flickrDiscoveryService, grailsApplication.config.nimble.openid.discovery.flickr)
 
                 openidFederationProvider.save()
                 if (openidFederationProvider.hasErrors()) {
@@ -124,7 +124,7 @@ class OpenIDService {
      */
     def establishDiscoveryRequest(def service, def responseUrl) {
         if (openidFederationProvider) {
-            return establishRequest(openidFederationProvider.preferences.get(service + ":discovery"), responseUrl)
+            return establishRequest(openidFederationProvider.properties.get(service + ":discovery"), responseUrl)
         }
         else {
             log.warn("Unable to complete openID setup on discovery service ${service}, OpenID federation provider not located, is your config enabled for OpenID?")

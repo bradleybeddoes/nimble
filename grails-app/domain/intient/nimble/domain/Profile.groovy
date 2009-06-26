@@ -42,7 +42,7 @@ class Profile {
     boolean gravatar = false
     Status currentStatus
 
-    Map preferences
+    Map properties
 
     Date dateCreated
     Date lastUpdated
@@ -94,7 +94,7 @@ class Profile {
         gender(nullable: true)
         dob(nullable: true)
 
-        preferences(nullable: true)
+        properties(nullable: true)
 
         dateCreated(nullable: true) // must be true to enable grails
         lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation

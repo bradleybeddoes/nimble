@@ -26,11 +26,11 @@ class Feed {
   Details details
   Url feedUrl = null
 
-  Map preferences
+  Map properties
 
   static constraints = {
     details(nullable: false)
     feedUrl(nullable:false)
-    preferences(nullable: true)
+    properties(nullable: true)
   }
 }

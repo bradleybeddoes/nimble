@@ -87,7 +87,7 @@ class SocialMediaServiceTests extends GrailsUnitTestCase {
         def service = createValidSocialMediaService()
         assertTrue service.validate()
 
-        service.preferences = null
+        service.properties = null
         assertTrue service.validate()
     }
 }

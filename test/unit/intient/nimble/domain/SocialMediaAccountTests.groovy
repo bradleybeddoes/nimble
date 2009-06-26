@@ -137,7 +137,7 @@ class SocialMediaAccountTests extends GrailsUnitTestCase {
 
         assertTrue account.validate()
 
-        account.preferences = null
+        account.properties = null
         assertTrue account.validate()
     }
 }

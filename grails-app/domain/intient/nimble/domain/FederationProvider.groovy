@@ -27,12 +27,12 @@ class FederationProvider {
   Details details
   boolean autoProvision
   
-  Map preferences
+  Map properties
 
   static constraints = {
     uid(nullable:false)
     details(nullable:false)
-    preferences(nullable: true)
+    properties(nullable: true)
   }
 
 }

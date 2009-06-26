@@ -24,13 +24,13 @@ import grails.test.*
 class FeedTests extends GrailsUnitTestCase {
     def details
     def feedUrl
-    def preferences    
+    def properties    
 
     protected void setUp() {
         super.setUp()
         details = new Details()
         feedUrl = new Url()
-        preferences = [:]
+        properties = [:]
     }
 
     protected void tearDown() {
@@ -38,7 +38,7 @@ class FeedTests extends GrailsUnitTestCase {
     }
 
     Feed createValidFeed() {
-        def feed = new Feed(details:details, feedUrl:feedUrl, preferences:preferences)
+        def feed = new Feed(details:details, feedUrl:feedUrl, properties:properties)
     }
 
     void testFeedCreation() {
@@ -46,7 +46,7 @@ class FeedTests extends GrailsUnitTestCase {
 
         assertEquals details, feed.details
         assertEquals feedUrl, feed.feedUrl
-        assertEquals preferences, feed.preferences
+        assertEquals properties, feed.properties
     }
 
     void testDetailsConstraint() {
@@ -75,7 +75,7 @@ class FeedTests extends GrailsUnitTestCase {
 
         assertTrue feed.validate()
 
-        feed.preferences = null
+        feed.properties = null
         assertTrue feed.validate()
     }
 }
