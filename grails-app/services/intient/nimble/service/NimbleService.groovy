@@ -16,6 +16,9 @@
  */
 package intient.nimble.service
 
+import org.apache.ki.SecurityUtils
+
+import intient.nimble.domain.User
 import intient.nimble.domain.Role
 
 /**

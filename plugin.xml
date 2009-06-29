@@ -5,7 +5,7 @@
   <description>\
     Nimble is an extensive application base environment for Grails.
     </description>
-  <documentation>http://intient.com/oss/nimble</documentation>
+  <documentation>http://intient.com/products/nimble</documentation>
   <resources>
     <resource>BootStrap</resource>
     <resource>Config</resource>

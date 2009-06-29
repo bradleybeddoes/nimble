@@ -18,7 +18,11 @@
 import grails.util.GrailsUtil
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.springframework.mail.javamail.JavaMailSenderImpl
+
 import org.apache.ki.authc.credential.Sha256CredentialsMatcher
+import org.apache.ki.SecurityUtils
+
+import intient.nimble.domain.User
 
 class NimbleGrailsPlugin {
 
@@ -30,8 +34,8 @@ class NimbleGrailsPlugin {
 
     // the other plugins this plugin depends on
     def dependsOn = [ ki: 0.1,
-                      mail: 0.6,
-                    ]
+        mail: 0.6,
+    ]
     
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
@@ -49,37 +53,39 @@ class NimbleGrailsPlugin {
     '''
 
     // URL to the plugin's documentation
-    def documentation = "http://intient.com/oss/nimble"
+    def documentation = "http://intient.com/products/nimble"
+
+    def observe = ['controllers']
 
     def doWithSpring = {
-      loadNimbleConfig(application)
+        loadNimbleConfig(application)
 
-      credentialMatcher(Sha256CredentialsMatcher) {
-        storedCredentialsHexEncoded = true
-      }
+        credentialMatcher(Sha256CredentialsMatcher) {
+            storedCredentialsHexEncoded = true
+        }
 
-      /*
-       * Ok we have all the config the user has supplied for Nimble,
-       * recreate any objects from dependent plugins who previously had
-       * no config
-       */
+        /*
+         * Ok we have all the config the user has supplied for Nimble,
+         * recreate any objects from dependent plugins who previously had
+         * no config
+         */
        
-      // Redefine mailSender
-      def mailConfig = application.config.nimble.messaging.mail
-      mailSender(JavaMailSenderImpl) {
+        // Redefine mailSender
+        def mailConfig = application.config.nimble.messaging.mail
+        mailSender(JavaMailSenderImpl) {
             host = mailConfig.host ?: "localhost"
             defaultEncoding = mailConfig.encoding ?: "utf-8"
             if(mailConfig.port)
-                port = mailConfig.port
+            port = mailConfig.port
             if(mailConfig.username)
-                username = mailConfig.username
+            username = mailConfig.username
             if(mailConfig.password)
-                password = mailConfig.password
+            password = mailConfig.password
             if(mailConfig.protocol)
-                protocol = mailConfig.protocol
+            protocol = mailConfig.protocol
             if(mailConfig.props instanceof Map && mailConfig.props)
-                javaMailProperties = mailConfig.props
-       } 
+            javaMailProperties = mailConfig.props
+        }
     }
 
     def doWithApplicationContext = { applicationContext ->
@@ -91,11 +97,22 @@ class NimbleGrailsPlugin {
     }
 
     def doWithDynamicMethods = { ctx ->
+        // Supply functionality to controllers
+        application.controllerClasses.each { controller ->
+            controller.metaClass.getAuthenticatedUser = {
+                def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+                if (!authUser) {
+                    log.error("Authenticated user was not able to be obtained when performing profile action")
+                    return null
+                }
 
+                return authUser
+            }
+        }
     }
 
     def onChange = { event ->
-
+        doWithDynamicMethods()
     }
 
     def onConfigChange = { event ->
@@ -103,19 +120,19 @@ class NimbleGrailsPlugin {
     }
 
     private ConfigObject loadNimbleConfig(GrailsApplication grailsApplication) {
-      def config = grailsApplication.config
-      GroovyClassLoader classLoader = new GroovyClassLoader(getClass().classLoader)
+        def config = grailsApplication.config
+        GroovyClassLoader classLoader = new GroovyClassLoader(getClass().classLoader)
 
-      // Merging default Nimble config into main application config
-      config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleConfig')))
+        // Merging default Nimble config into main application config
+        config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleConfig')))
 
-      // Merging user-defined Nimble config into main application config if provided
-      try {
-          config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('NimbleConfig')))
-      } catch (Exception ignored) {
-          // ignore, just use the defaults
-      }
+        // Merging user-defined Nimble config into main application config if provided
+        try {
+            config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('NimbleConfig')))
+        } catch (Exception ignored) {
+            // ignore, just use the defaults
+        }
 
-      return config
+        return config
     }
 }
