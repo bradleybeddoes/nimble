@@ -1,6 +1,6 @@
 <%@ page import="intient.nimble.domain.User" %>
 <head>
-  <meta name="layout" content="admin"/>
+  <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Users</title>
 </head>
 

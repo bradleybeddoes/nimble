@@ -1,7 +1,7 @@
 <%@ page import="intient.nimble.domain.Group" %>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="layout" content="admin"/>
+  <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Group List | Nimble</title>
 </head>
 <body>

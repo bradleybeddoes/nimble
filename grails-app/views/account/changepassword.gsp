@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <meta name="layout" content="app"/>
+    <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title>Change Password</title>
 
   <n:growl/>

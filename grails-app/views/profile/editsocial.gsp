@@ -4,7 +4,7 @@
 <html>
 
   <head>
-    <meta name="layout" content="app"/>
+    <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title>Profile | Edit Social Services</title>
 
   <n:growl/>

@@ -1,5 +1,5 @@
 <head>
-  <meta name="layout" content="admin"/>
+  <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Administrators</title>
 
   <script type="text/javascript">
