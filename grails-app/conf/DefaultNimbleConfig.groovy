@@ -17,6 +17,11 @@
 
 nimble {
 
+    layout {
+        application = 'app'
+        administration = 'admin'
+    }
+
     localusers {
         usernames {
             minlength = 4

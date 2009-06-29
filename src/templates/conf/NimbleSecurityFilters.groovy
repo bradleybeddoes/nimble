@@ -23,25 +23,45 @@ import intient.nimble.service.AdminsService
  */
 public class NimbleSecurityFilters extends intient.nimble.security.NimbleFilterBase {
 
-  def filters = {
+    def filters = {
 
-    login(controller: "(main)") {
-      before = {
-        accessControl {
-          true
+        // Content requiring users to be authenticated
+        secure(controller: "main") {
+            before = {
+                accessControl {
+                    true
+                }
+            }
         }
-      }
-    }
 
-   // This should be extended as the application adds more administrative functionality
-    administration(controller: "(admins|user|group|role)") {
-      before = {
-        accessControl {
-          role(AdminsService.ADMIN_ROLE)
+        profilesecure(controller: "profile") {
+            before = {
+                if(!actionName.equals('miniprofile')) {
+                    accessControl {
+                        true
+                    }
+                }
+            }
         }
-      }
-    }
 
-  }
+        // Account management requiring authentication
+        accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {
+            before = {
+                accessControl {
+                    true
+                }
+            }
+        }
+
+        // This should be extended as the application adds more administrative functionality
+        administration(controller: "(admins|user|group|role)") {
+            before = {
+                accessControl {
+                    role(AdminsService.ADMIN_ROLE)
+                }
+            }
+        }
+
+    }
 
 }

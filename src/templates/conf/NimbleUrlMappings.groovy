@@ -21,86 +21,90 @@
  * @author Bradley Beddoes
  */
 class NimbleUrlMappings {
-  static mappings = {
+    static mappings = {
 
     "/administration/adminstrators/$action?/$id?" {
-      controller = "admins"
-    }
+            controller = "admins"
+        }
 
     "/administration/users/$action?/$id?" {
-      controller = "user"
-    }
+            controller = "user"
+        }
 
     "/administration/groups/$action?/$id?" {
-      controller = "group"
-    }
+            controller = "group"
+        }
 
     "/administration/roles/$action?/$id?" {
-      controller = "role"
-    }
+            controller = "role"
+        }
 
     "/register" {
-      controller = "account"
-      action = "createuser"
-    }
+            controller = "account"
+            action = "createuser"
+        }
 
     "/register/validusername" {
-      controller = "account"
-      action = "validusername"
-    }
+            controller = "account"
+            action = "validusername"
+        }
 
     "/register/save" {
-      controller = "account"
-      action = "saveuser"
-    }
+            controller = "account"
+            action = "saveuser"
+        }
 
     "/registered" {
-      controller = "account"
-      action = "createduser"
-    }
+            controller = "account"
+            action = "createduser"
+        }
 
     "/validateuser/$id" {
-      controller = "account"
-      action = "validateuser"
-    }
+            controller = "account"
+            action = "validateuser"
+        }
 
     "/forgottenpassword" {
-      controller = "account"
-      action = "forgottenpassword"
-    }
+            controller = "account"
+            action = "forgottenpassword"
+        }
 
     "/forgottenpassword/submit" {
-      controller = "account"
-      action = "forgottenpasswordprocess"
-    }
+            controller = "account"
+            action = "forgottenpasswordprocess"
+        }
 
     "/forgottenpassword/complete" {
-      controller = "account"
-      action = "forgottenpasswordcomplete"
-    }
+            controller = "account"
+            action = "forgottenpasswordcomplete"
+        }
 
     "/forgottenpassword/external/$id?" {
-      controller = "account"
-      action = "forgottenpasswordexternal"
-    }
+            controller = "account"
+            action = "forgottenpasswordexternal"
+        }
 
     "/login" {
-      controller = "auth"
-      action = "login"
-    }
+            controller = "auth"
+            action = "login"
+        }
 
     "/logout" {
-      controller = "auth"
-      action = "logout"
-    }
+            controller = "auth"
+            action = "logout"
+        }
 
     "/unauthorized" {
-      controller = "auth"
-      action = "unauthorized"
-    }
+            controller = "auth"
+            action = "unauthorized"
+        }
 
     "/auth/$action" {
-      controller = "auth"
+            controller = "auth"
+        }
+
+    "/profile/$action?/$id?" {
+            controller = "profile"
+        }
     }
-  }
 }

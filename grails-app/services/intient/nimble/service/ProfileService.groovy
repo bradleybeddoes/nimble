@@ -102,13 +102,14 @@ class ProfileService {
     def newPhone(def profile, def phone) {
         log.debug("Attempting to add new phone entry for user [$profile.owner.id]$profile.owner.username")
 
+        phone.owner = profile
         if(!phone.validate()) {
             log.debug("New phone user [$profile.owner.id]$profile.owner.username details for are not valid")
             phone.errors.each {
                 log.debug it
             }
 
-            return phone
+            return phone 
         }
         profile.addToPhoneNumbers(phone)
 
