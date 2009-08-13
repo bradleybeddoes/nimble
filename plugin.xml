@@ -61,7 +61,7 @@
     <resource>NimbleTagLib</resource>
   </resources>
   <dependencies>
-    <plugin name='shiro' version='1.0' />
+    <plugin name='shiro' version='1.0-SNAPSHOT' />
     <plugin name='mail' version='0.6' />
   </dependencies>
 </plugin>
