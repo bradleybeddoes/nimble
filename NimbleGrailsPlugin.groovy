@@ -19,8 +19,8 @@ import grails.util.GrailsUtil
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.springframework.mail.javamail.JavaMailSenderImpl
 
-import org.apache.ki.authc.credential.Sha256CredentialsMatcher
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.authc.credential.Sha256CredentialsMatcher
+import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.User
 
@@ -33,7 +33,7 @@ class NimbleGrailsPlugin {
     def grailsVersion = "1.1 > *"
 
     // the other plugins this plugin depends on
-    def dependsOn = [ ki: 0.1,
+    def dependsOn = [ shiro: 1.0,
         mail: 0.6,
     ]
     

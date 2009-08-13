@@ -18,18 +18,18 @@ package intient.nimble.realms
 
 import intient.nimble.domain.Permission
 import intient.nimble.domain.User
-import org.apache.ki.authz.permission.AllPermission
-import org.apache.ki.authz.permission.WildcardPermission
-import org.apache.ki.authc.*
+import org.apache.shiro.authz.permission.AllPermission
+import org.apache.shiro.authz.permission.WildcardPermission
+import org.apache.shiro.authc.*
 
 /**
- * Integrates with Ki to establish a session for users accessing the system based
+ * Integrates with Shiro to establish a session for users accessing the system based
  * on authentication with locally stored accounts.
  *
  * @author Bradley Beddoes
  */
 class LocalizedRealm {
-  static authTokenClass = org.apache.ki.authc.UsernamePasswordToken
+  static authTokenClass = org.apache.shiro.authc.UsernamePasswordToken
 
   def credentialMatcher
   def sessionFactory

@@ -17,8 +17,8 @@
 
 package intient.nimble.controller
 
-import org.apache.ki.SecurityUtils
-import org.apache.ki.crypto.hash.Sha256Hash
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.crypto.hash.Sha256Hash
 
 import intient.nimble.domain.User
 import intient.nimble.domain.Profile

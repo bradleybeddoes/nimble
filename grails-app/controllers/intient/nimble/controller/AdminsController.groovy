@@ -17,7 +17,7 @@
 
 package intient.nimble.controller
 
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.Role
 import intient.nimble.service.AdminsService

@@ -31,43 +31,59 @@ class NimbleTagLib {
      * Enables growl like message popup in the page
      */
     def growl = {attrs, body ->
-        out << render(template: "/templates/growl", contextPath: pluginContextPath)
+        out << render(template: "/templates/growl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     /**
      * Enables growl message popup when the Grails application stores a message in flash scope
      */
     def flashgrowl = {attrs, body ->
-        out << render(template: "/templates/flashgrowl", contextPath: pluginContextPath)
+        out << render(template: "/templates/flashgrowl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     /**
      * Provides an inline output of the Grails application message in flash scope
      */
     def flashembed = {attrs, body ->
-        out << render(template: "/templates/flashembed", contextPath: pluginContextPath)
-    }
-
-    /**
-     * Imports Bubbles javascript to make the mouseover bubble functionality available to the current page
-     */
-    def bubbles = {attrs, body ->
-        out << render(template: "/templates/bubblesetup", contextPath: pluginContextPath)
+        out << render(template: "/templates/flashembed", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     /**
      * Imports JQuery Javascript to make the JQuery library available to the current page
      */
     def jquery = {attrs, body ->
-        out << render(template: "/templates/jquerysetup", contextPath: pluginContextPath)
+        out << render(template: "/templates/jquerysetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     /**
-     * Imports the JS required to create a Nimble menu
+     * Imports css and javascript required to create a Nimble menu
      */
     def menu = {attrs, body ->
-        out << javascript(src: "nimblemenu.js")
+        out << render(template: "/templates/nmenusetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
+
+    /**
+     * Imports css and javascript required to create a Nimble menu
+     */
+    def famfamfam = {attrs, body ->
+        out << render(template: "/templates/famfamfamsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
+    /**
+     * Imports layouts and javascript required for the administration layout
+     */
+    def admin = {attrs, body ->
+        out << render(template: "/templates/adminsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
+    /**
+     * Provides nimble session terminated message
+     */
+    def sessionterminated = {attrs, body ->
+        out << render(template: "/templates/sessionterminated", contextPath: pluginContextPath)
+    }
+
+    
 
     /**
      * provides markup to render grails error messages for beans

@@ -150,7 +150,7 @@ class RoleController {
     if (role.validate()) {
       def updatedRole = roleService.updateRole(role)
       if (!updatedRole.hasErrors()) {
-        log.info("Updated role $name with description $description")
+        log.info("Updated role $updatedRole.name with description $updatedRole.description")
 
         flash.type = "success"
         flash.message = "Role successfully updated"

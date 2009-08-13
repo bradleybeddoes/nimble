@@ -16,7 +16,7 @@
  */
 import intient.nimble.service.FacebookService
 import intient.nimble.auth.WildcardPermission
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.SecurityUtils
 import intient.nimble.domain.User
 
 /**

@@ -25,14 +25,14 @@ import intient.nimble.service.OpenIDService
 import intient.nimble.domain.FederationProvider
 import intient.nimble.auth.OpenIDToken
 import intient.nimble.domain.Gender
-import org.apache.ki.authc.UnknownAccountException
-import org.apache.ki.authc.DisabledAccountException
-import org.apache.ki.authc.SimpleAccount
-import org.apache.ki.authc.IncorrectCredentialsException
+import org.apache.shiro.authc.UnknownAccountException
+import org.apache.shiro.authc.DisabledAccountException
+import org.apache.shiro.authc.SimpleAccount
+import org.apache.shiro.authc.IncorrectCredentialsException
 import intient.nimble.domain.Gender
 
 /**
- * Integrates with Ki to establish a session for users accessing the system based
+ * Integrates with Shiro to establish a session for users accessing the system based
  * on authentication with an OpenID provider.
  *
  * @author Bradley Beddoes

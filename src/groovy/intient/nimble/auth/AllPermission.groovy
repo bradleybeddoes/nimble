@@ -22,7 +22,7 @@ package intient.nimble.auth
  *
  * @author Bradley Beddoes
  */
-class AllPermission extends org.apache.ki.authz.permission.AllPermission {
+class AllPermission extends org.apache.shiro.authz.permission.AllPermission {
 	
 }
 

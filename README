@@ -3,3 +3,8 @@ Nimble by Intient, an extensive application base for Grails.
 More details to follow.
 
 http://www.intient.com
+
+
+Using Compass to compile Sass markup
+
+jruby -S compass -w --sass-dir headland/src/sass --css-dir headland/web-app/css

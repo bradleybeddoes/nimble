@@ -16,9 +16,9 @@
  */
 package intient.nimble.controller
 
-import org.apache.ki.SecurityUtils
-import org.apache.ki.authc.AuthenticationException
-import org.apache.ki.authc.UsernamePasswordToken
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.authc.AuthenticationException
+import org.apache.shiro.authc.UsernamePasswordToken
 
 import intient.nimble.auth.FacebookConnectToken
 import javax.servlet.http.Cookie
@@ -26,8 +26,8 @@ import intient.nimble.service.FacebookService
 import intient.nimble.auth.AccountCreatedException
 import org.openid4java.message.ParameterList
 import intient.nimble.service.OpenIDService
-import org.apache.ki.authc.IncorrectCredentialsException
-import org.apache.ki.authc.DisabledAccountException
+import org.apache.shiro.authc.IncorrectCredentialsException
+import org.apache.shiro.authc.DisabledAccountException
 
 /**
  * Manages all authentication processes including integration with OpenID, Facebook etc.
@@ -38,7 +38,7 @@ class AuthController {
 
     private static String TARGET = 'intient.nimble.controller.AuthController.TARGET'
     
-    def kiSecurityManager
+    def shiroSecurityManager
     def facebookService
     def openIDService
     def userService
@@ -70,7 +70,7 @@ class AuthController {
         log.info("Attempting to authenticate user, $params.username. RememberMe is $authToken.rememberMe")
 
         try {
-            this.kiSecurityManager.login(authToken)
+            this.shiroSecurityManager.login(authToken)
             this.userService.createLoginRecord(request)
 
             def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"
@@ -231,7 +231,7 @@ class AuthController {
 
             def authToken = new FacebookConnectToken(currentFBSessionKey, currentFBSessionCookies)
             try {
-                this.kiSecurityManager.login(authToken)
+                this.shiroSecurityManager.login(authToken)
                 this.userService.createLoginRecord(request)
 
                 def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"
@@ -329,7 +329,7 @@ class AuthController {
 
         if (authToken) {
             try {
-                this.kiSecurityManager.login(authToken)
+                this.shiroSecurityManager.login(authToken)
                 this.userService.createLoginRecord(request)
 
                 def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"

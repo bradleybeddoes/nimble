@@ -21,7 +21,7 @@ import intient.nimble.domain.User
 import intient.nimble.domain.Group
 
 /**
- * Our permission object encapsulates details that a normal Ki deployment
+ * Our permission object encapsulates details that a normal Shiro deployment
  * would put into mapping tables to make life a little easier.
  *
  * By default type, possibleActions and actions are all setup to be used in the context of being

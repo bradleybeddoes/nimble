@@ -17,10 +17,10 @@
 package intient.nimble.auth
 
 import javax.servlet.http.Cookie
-import org.apache.ki.authc.AuthenticationToken
+import org.apache.shiro.authc.AuthenticationToken
 
 /**
- * Token used with Facebook Ki realm for authentication purposes.
+ * Token used with Facebook Shiro realm for authentication purposes.
  *
  * @author Bradley Beddoes
  */

@@ -63,7 +63,7 @@
     });
   }
 
-  function removeGroup(groupID) {
+  function removeGroup(ownerID, groupID) {
     var dataString = 'id=' + ownerID + '&groupID=' + groupID;
     $.ajax({
       type: "POST",

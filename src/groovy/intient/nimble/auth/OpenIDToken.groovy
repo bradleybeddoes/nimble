@@ -17,10 +17,10 @@
 package intient.nimble.auth
 
 import org.openid4java.discovery.Identifier
-import org.apache.ki.authc.AuthenticationToken
+import org.apache.shiro.authc.AuthenticationToken
 
 /**
- * Token used with OpenID Ki realm for authentication purposes
+ * Token used with OpenID Shiro realm for authentication purposes
  *
  * @author Bradley Beddoes
  */

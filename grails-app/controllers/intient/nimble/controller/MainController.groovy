@@ -17,7 +17,7 @@
 package intient.nimble.controller
 
 import intient.nimble.domain.User
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.SecurityUtils
 
 class MainController {
 

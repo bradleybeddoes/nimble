@@ -16,7 +16,7 @@
  */
 package intient.nimble.controller
 
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.User
 import intient.nimble.domain.Profile

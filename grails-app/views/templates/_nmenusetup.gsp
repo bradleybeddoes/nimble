@@ -1,0 +1,1 @@
+<script type="text/javascript" src="${createLinkTo(dir: nimblePath, file: '/js/nimblemenu.js')}"></script>

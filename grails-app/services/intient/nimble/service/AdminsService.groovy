@@ -16,7 +16,7 @@
  */
 package intient.nimble.service
 
-import org.apache.ki.authz.permission.AllPermission
+import org.apache.shiro.authz.permission.AllPermission
 
 import intient.nimble.domain.Role
 import intient.nimble.domain.User

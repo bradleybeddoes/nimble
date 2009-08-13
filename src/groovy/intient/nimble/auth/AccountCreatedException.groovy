@@ -16,7 +16,7 @@
  */
 package intient.nimble.auth
 
-import org.apache.ki.authc.AuthenticationException
+import org.apache.shiro.authc.AuthenticationException
 
 /**
  * An exception state for realms to throw when account creation fails

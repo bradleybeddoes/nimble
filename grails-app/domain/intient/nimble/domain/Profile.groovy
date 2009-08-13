@@ -16,7 +16,7 @@
  */
 package intient.nimble.domain
 
-import org.apache.ki.crypto.hash.Md5Hash
+import org.apache.shiro.crypto.hash.Md5Hash
 
 /**
  * Represents generic details users may wish to represent about themselves within

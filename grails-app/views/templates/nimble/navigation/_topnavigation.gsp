@@ -1,6 +1,11 @@
 <ul id="topnavigation_" class="horizmenu mlhorizmenu">
   <li class="${controllerName.equals('admins') ? 'current' : ''}">
   <g:link controller="admins" action="index" class="icon icon_user_suit">Administrators</g:link>
+  <ul class="submenu ${controllerName.equals('admins') ? 'submenu-active_' : ''}">
+    <li>
+      <g:link controller="admins" action="index" class="icon icon_user_suit">Manage Administrators</g:link>
+    </li>
+  </ul>
 </li>
 
 <li class="${controllerName.equals('user') ? 'current' : ''}">
@@ -29,5 +34,10 @@
 
 <li class="${controllerName.equals('group') ? 'current' : ''}">
 <g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link>
+  <ul class="submenu ${controllerName.equals('logout') ? 'submenu-active_' : ''}">
+    <li>
+      <g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link>
+    </li>
+  </ul>
 </li>
 </ul>

@@ -22,7 +22,7 @@ import intient.nimble.domain.Role
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Profile
-import org.apache.ki.authz.annotation.RequiresRoles
+import org.apache.shiro.authz.annotation.RequiresRoles
 
 /**
  * Manages Nimble groups including addition/removal of users and permissions

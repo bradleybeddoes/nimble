@@ -17,8 +17,8 @@
 package intient.nimble.service
 
 import javax.servlet.http.HttpServletRequest
-import org.apache.ki.crypto.hash.Sha256Hash
-import org.apache.ki.SecurityUtils
+import org.apache.shiro.crypto.hash.Sha256Hash
+import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.Role
 import intient.nimble.domain.User

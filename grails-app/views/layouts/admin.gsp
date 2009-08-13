@@ -11,15 +11,7 @@
   <n:flashgrowl/>
   <n:menu/>
   <n:userhighlight/>
-
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/nimble.css')}"/>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/icons.css')}"/>
-
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/administration.css')}"/>
-
-  <!--[if IE]>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/ie.css')}"/>
-  <![endif]-->
+  <n:admin/>
 
   <g:layoutHead/>
 </head>
@@ -38,7 +30,7 @@
     </div>
   </div>
 
-<g:render template="/templates/sessionterminated" contextPath="${pluginContextPath}"/>
+<n:sessionterminated/>
 
 
 </body>

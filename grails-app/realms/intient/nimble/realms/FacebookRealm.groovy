@@ -16,10 +16,10 @@
  */
 package intient.nimble.realms
 
-import org.apache.ki.authc.UnknownAccountException
-import org.apache.ki.authc.DisabledAccountException
-import org.apache.ki.authc.SimpleAccount
-import org.apache.ki.authc.IncorrectCredentialsException
+import org.apache.shiro.authc.UnknownAccountException
+import org.apache.shiro.authc.DisabledAccountException
+import org.apache.shiro.authc.SimpleAccount
+import org.apache.shiro.authc.IncorrectCredentialsException
 
 import com.google.code.facebookapi.ProfileField
 import grails.converters.JSON
@@ -37,7 +37,7 @@ import intient.nimble.domain.Details
 import intient.nimble.service.FacebookService
 
 /**
- * Integrates with Ki to establish a session for users accessing the system based
+ * Integrates with Shiro to establish a session for users accessing the system based
  * on authentication via Facebook Connect.
  *
  * @author Bradley Beddoes

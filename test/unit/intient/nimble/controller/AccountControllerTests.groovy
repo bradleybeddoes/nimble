@@ -17,9 +17,9 @@
 package intient.nimble.controller
 
 import grails.test.*
-import org.apache.ki.SecurityUtils
-import org.apache.ki.subject.Subject
-import org.apache.ki.crypto.hash.Sha256Hash
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.crypto.hash.Sha256Hash
 import org.springframework.validation.ObjectError
 
 import intient.nimble.service.*
