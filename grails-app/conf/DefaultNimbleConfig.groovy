@@ -17,6 +17,12 @@
 
 nimble {
 
+    tablenames {
+        user = "_user"
+        role = "_role"
+        group = "_group"
+    }
+
     layout {
         application = 'app'
         administration = 'admin'

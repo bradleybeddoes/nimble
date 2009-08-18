@@ -16,6 +16,8 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
@@ -26,6 +28,8 @@ import intient.nimble.domain.User
  * @author Bradley Beddoes
  */
 class Group extends PermissionAware {
+
+    static config = ConfigurationHolder.config
 
     String name
     String description
@@ -41,7 +45,7 @@ class Group extends PermissionAware {
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
-        table "_group"
+        table User.config.nimble.tablenames.group
 
         users cache: true
         roles cache: true

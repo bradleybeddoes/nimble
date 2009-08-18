@@ -5,6 +5,6 @@ stacktrace.log
 
 web-app/plugins/*
 test/reports/*
-
-
+docs/*
+unzipped/*
 *.zip

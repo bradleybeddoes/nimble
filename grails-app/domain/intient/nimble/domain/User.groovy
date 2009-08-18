@@ -16,6 +16,8 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 import intient.nimble.domain.LoginRecord
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Role
@@ -27,6 +29,8 @@ import intient.nimble.domain.Group
  * @author Bradley Beddoes
  */
 class User extends PermissionAware {
+
+    static config = ConfigurationHolder.config
 
     String username
     String passwordHash
@@ -64,7 +68,7 @@ class User extends PermissionAware {
         sort username:'desc'
     
         cache usage: 'read-write', include: 'all'
-        table "_user"
+        table User.config.nimble.tablenames.user
 
         roles cache: true, cascade: 'none'
         groups cache: true, cascade: 'none'
@@ -72,7 +76,7 @@ class User extends PermissionAware {
     }
 
     static constraints = {
-        username(nullable: false, blank: false, unique: true, size: 4..2048)
+        username(nullable: false, blank: false, unique: true, size: 4..511)
         passwordHash(nullable: true, blank: false)
         actionHash(nullable: true, blank: false)
    

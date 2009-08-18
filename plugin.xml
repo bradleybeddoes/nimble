@@ -8,6 +8,7 @@
   <documentation>http://intient.com/products/nimble</documentation>
   <resources>
     <resource>BootStrap</resource>
+    <resource>BuildConfig</resource>
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>DefaultNimbleConfig</resource>

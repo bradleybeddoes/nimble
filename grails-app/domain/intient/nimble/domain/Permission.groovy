@@ -16,6 +16,8 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 import intient.nimble.domain.Role
 import intient.nimble.domain.User
 import intient.nimble.domain.Group
