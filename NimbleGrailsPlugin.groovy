@@ -34,7 +34,7 @@ class NimbleGrailsPlugin {
 
     // the other plugins this plugin depends on
     def dependsOn = [ shiro: "1.0-SNAPSHOT",
-        mail: 0.6,
+        mail: "0.6 > *",
     ]
     
     // resources that are excluded from plugin packaging
