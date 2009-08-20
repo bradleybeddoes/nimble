@@ -98,11 +98,24 @@ class NimbleGrailsPlugin {
 
     def doWithDynamicMethods = { ctx ->
         // Supply functionality to controllers
-        application.controllerClasses.each { controller ->
+        application.controllerClasses?.each { controller ->
             controller.metaClass.getAuthenticatedUser = {
                 def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
                 if (!authUser) {
-                    log.error("Authenticated user was not able to be obtained when performing profile action")
+                    log.error("Authenticated user was not able to be obtained from metaclass")
+                    return null
+                }
+
+                return authUser
+            }
+        }
+
+        // Supply functionality to services
+        application.serviceClasses?.each { service ->
+            service.metaClass.getAuthenticatedUser = {
+                def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+                if (!authUser) {
+                    log.error("Authenticated user was not able to be obtained from metaclass")
                     return null
                 }
 
