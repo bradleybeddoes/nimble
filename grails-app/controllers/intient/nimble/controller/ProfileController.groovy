@@ -400,7 +400,7 @@ class ProfileController {
         else {
             log.warn("Security model denied attempt by user [$authUser.id]$authUser.username to modify profile of user [$user.id]$user.username")
             response.sendError(403)
-            return
+            return null
         }
     }
 }
