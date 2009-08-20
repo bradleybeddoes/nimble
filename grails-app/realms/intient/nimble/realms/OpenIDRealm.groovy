@@ -69,7 +69,7 @@ public class OpenIDRealm {
         newUser.federated = true
         newUser.federationProvider = openidFederationProvider
 
-        newUser.profile = new Profile()
+        newUser.profile = this.class.classLoader.loadClass(grailsApplication.config.nimble.profile.classname).newInstance()
         newUser.profile.owner = newUser
         
         newUser.profile.fullName = authToken.fullName

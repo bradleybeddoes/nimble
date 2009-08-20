@@ -87,7 +87,7 @@ public class FacebookRealm {
                         newUser.federated = true
                         newUser.federationProvider = facebookFederationProvider
 
-                        newUser.profile = new Profile()
+                        newUser.profile = this.class.classLoader.loadClass(grailsApplication.config.nimble.profile.classname).newInstance()
                         newUser.profile.owner = newUser
                         newUser.profile.fullName = fbProfiles.getJSONObject(0).get('name')
 
