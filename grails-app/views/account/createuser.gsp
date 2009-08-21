@@ -64,12 +64,14 @@
           </td>
         </tr>
 
-        <tr>
-          <th>Captcha</th>
-          <td>
-            <n:recaptcha/>
-          </td>
-        </tr>
+        <n:recaptcharequired>
+          <tr>
+            <th>Captcha</th>
+            <td>
+              <n:recaptcha/>
+            </td>
+          </tr>
+        </n:recaptcharequired>
 
         <tr>
           <td/>

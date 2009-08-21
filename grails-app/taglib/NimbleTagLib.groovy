@@ -134,6 +134,15 @@ class NimbleTagLib {
     }
 
     /**
+     * Renders body if captcha is currently required
+     */
+    def recaptcharequired = { attrs, body ->
+        if (recaptchaService.enabled) {
+            out << body()
+        }
+    }
+
+    /**
      * Provides markup to render the supplied users profile photo
      */
     def photo = {attrs ->
