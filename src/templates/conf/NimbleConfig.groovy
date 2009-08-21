@@ -25,8 +25,11 @@ nimble {
     url = ""
   }
 
-  internal {
+  localusers {
     authentication {
+      enabled = true
+    }
+    registration {
       enabled = true
     }
   }

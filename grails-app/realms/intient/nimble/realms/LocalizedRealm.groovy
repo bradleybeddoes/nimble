@@ -37,8 +37,8 @@ class LocalizedRealm {
 
   def authenticate(authToken) {
 
-    if (!grailsApplication.config.nimble.internal.authentication.enabled) {
-      log.debug("Authentication for username/password based tokens is not enabled for internal repository, skipping LocalizedRealm")
+    if (!grailsApplication.config.nimble.localusers.authentication.enabled) {
+      log.debug("Authentication for username/password based tokens is not enabled for local users, skipping LocalizedRealm")
       return
     }
 
