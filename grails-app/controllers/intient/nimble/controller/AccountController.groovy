@@ -107,6 +107,12 @@ class AccountController {
     }
 
     def createuser = {
+        if (!grailsApplication.config.nimble.localusers.registration.enabled) {
+            log.warn("Account registration is not enabled for local users, skipping request")
+            response.sendError(404)
+            return
+        }
+
         def user = new User()
         user.profile = new Profile()
 
@@ -115,6 +121,12 @@ class AccountController {
     }
 
     def saveuser = {
+        if (!grailsApplication.config.nimble.localusers.registration.enabled) {
+            log.warn("Account registration is not enabled for local users, skipping request")
+            response.sendError(404)
+            return
+        }
+        
         def user = new User()
         user.profile = new Profile()
         user.profile.owner = user

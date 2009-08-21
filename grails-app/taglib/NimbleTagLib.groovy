@@ -63,7 +63,7 @@ class NimbleTagLib {
     }
 
     /**
-     * Imports css and javascript required to create a Nimble menu
+     * Imports css required to use FAM FAM FAM icons in buttons etc
      */
     def famfamfam = {attrs, body ->
         out << render(template: "/templates/famfamfamsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
@@ -81,9 +81,7 @@ class NimbleTagLib {
      */
     def sessionterminated = {attrs, body ->
         out << render(template: "/templates/sessionterminated", contextPath: pluginContextPath)
-    }
-
-    
+    }    
 
     /**
      * provides markup to render grails error messages for beans
@@ -133,6 +131,15 @@ class NimbleTagLib {
             }
         }
         out << recaptchaService.createCaptcha(session, props)
+    }
+
+    /**
+     * Renders body if captcha is currently required
+     */
+    def recaptcharequired = { attrs, body ->
+        if (recaptchaService.enabled) {
+            out << body()
+        }
     }
 
     /**

@@ -2,6 +2,7 @@
 .sass-cache
 classes
 stacktrace.log
+docs.tar.gz 
 
 web-app/plugins/*
 test/reports/*

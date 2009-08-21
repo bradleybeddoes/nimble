@@ -55,35 +55,38 @@
       </div>
 
       <div class="logininteraction">
+        <g:if test="${local}">
+          <div id="local" class="loginmethod">
+            <h2>Login with a local account</h2>
 
-        <div id="local" class="loginmethod">
-          <h2>Login with a local account</h2>
+            <g:form action="signin" name="signin">
+              <fieldset>
+                <label for="username" class="append-1">Username</label>
+                <input id="username" type="text" name="username" class="title"/>
 
-          <g:form action="signin" name="signin">
-            <fieldset>
-              <label for="username" class="append-1">Username</label>
-              <input id="username" type="text" name="username" class="title"/>
+                <label for="password" class="append-1">Password</label>
+                <input id="password" type="password" name="password" class="title"/>
+              </fieldset>
 
-              <label for="password" class="append-1">Password</label>
-              <input id="password" type="password" name="password" class="title"/>
-            </fieldset>
+              <fieldset>
+                <g:checkBox id="rememberme" name="rememberme"/>
+                <label>Remember me on this computer</label>
+              </fieldset>
 
-            <fieldset>
-              <g:checkBox id="rememberme" name="rememberme"/>
-              <label>Remember me on this computer</label>
-            </fieldset>
+              <fieldset class="loginbuttons">
+                <button type="submit" class="button darkbutton icon icon_user_green">Login</button>
+              </fieldset>
 
-            <fieldset class="loginbuttons">
-              <button type="submit" class="button darkbutton icon icon_user_green">Login</button>
-            </fieldset>
+            </g:form>
 
-          </g:form>
-
-          <div class="accountoptions">
-            <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple">I've forgotten my password</g:link>
-            <a href="#" id="accountcreationpolicybtn" rel="accountcreationpolicy" class="textlink icon icon_user_go">New user</a>
+            <div class="accountoptions">
+              <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple">I've forgotten my password</g:link>
+              <g:if test="${registration}">
+                <a href="#" id="accountcreationpolicybtn" rel="accountcreationpolicy" class="textlink icon icon_user_go">New user</a>
+              </g:if>
+            </div>
           </div>
-        </div>
+        </g:if>
 
         <g:if test="${facebook}">
           <div id="facebook" class="loginmethod externalloginmethod">
@@ -198,7 +201,9 @@
 
 
       <div class="loginchoices">
-        <h2><a href="#" onClick="changeLogin('local');" class="icon icon_user_go">Login with a local account</a></h2>
+        <g:if test="${local}">
+          <h2><a href="#" onClick="changeLogin('local');" class="icon icon_user_go">Login with a local account</a></h2>
+        </g:if>
         <h2>Login with an external account</h2>
         <table>
           <tbody>
