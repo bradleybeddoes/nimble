@@ -43,6 +43,7 @@ class User extends PermissionAware {
 
     FederationProvider federationProvider
     Profile profile
+    UserDataBase data
 
     Date expiration
     Date dateCreated
@@ -82,6 +83,7 @@ class User extends PermissionAware {
    
         federationProvider(nullable: true)
         profile(nullable:false)
+        data(nullable:true)
         
         expiration(nullable: true)
 

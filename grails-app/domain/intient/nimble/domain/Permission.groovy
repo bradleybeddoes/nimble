@@ -31,6 +31,7 @@ import intient.nimble.domain.Group
 class Permission implements Serializable {
 
     static public final String defaultPerm = "intient.nimble.auth.WildcardPermission"
+    static public final String wildcardPerm = "intient.nimble.auth.WildcardPermission"
     static public final String adminPerm = "intient.nimble.auth.AllPermission"
 
     String type

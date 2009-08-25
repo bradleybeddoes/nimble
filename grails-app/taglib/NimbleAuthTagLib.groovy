@@ -52,8 +52,8 @@ class NimbleAuthTagLib {
         if (id) {
             def user = User.get(id)
 
-            if (user?.fullName)
-            out << user.fullName
+            if (user?.profile?.fullName)
+            out << user.profile.fullName
         }
     }
 
@@ -68,7 +68,7 @@ class NimbleAuthTagLib {
 
             if (user) {
                 def mkp = new groovy.xml.MarkupBuilder(out)
-                mkp.a('href': createLink(controller: 'users', action: 'show', id: id), 'class': 'icon icon_user', body()) {
+                mkp.a('href': createLink(controller: 'user', action: 'show', id: id), 'class': 'icon icon_user', body()) {
                 }
             }
         }
