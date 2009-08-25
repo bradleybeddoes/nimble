@@ -18,6 +18,7 @@ import intient.nimble.service.FacebookService
 import intient.nimble.auth.WildcardPermission
 import org.apache.shiro.SecurityUtils
 import intient.nimble.domain.User
+import intient.nimble.service.AdminsService
 
 /**
  * Provides authentication related tags to the Nimble application
@@ -90,6 +91,16 @@ class NimbleAuthTagLib {
      */
     def isNotLoggedIn = {attrs, body ->
         if (!checkAuthenticated()) {
+            out << body()
+        }
+    }
+
+    /**
+     * This tag only writes its body to the output if the current user
+     * is an administrator
+     */
+    def isAdministrator = { attrs, body ->
+        if(SecurityUtils.subject.hasRole(AdminsService.ADMIN_ROLE)) {
             out << body()
         }
     }
