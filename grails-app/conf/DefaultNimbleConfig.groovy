@@ -45,10 +45,6 @@ nimble {
         minlength = 8
     }
 
-    profile {
-        classname = "intient.nimble.domain.Profile"
-    }
-
     facebook {
         uid = "facebook"
         name = "Facebook"

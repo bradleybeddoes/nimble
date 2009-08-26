@@ -25,6 +25,10 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleSecurityFilters.groovy", tofile: "${basedir}/grails-app/conf/NimbleSecurityFilters.groovy", overwrite: false)
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleUrlMappings.groovy", tofile: "${basedir}/grails-app/conf/NimbleUrlMappings.groovy", overwrite: false)
 
+  // Domain Objects
+  copy(file:"${nimblePluginDir}/src/templates/domain/User.groovy", tofile: "${basedir}/grails-app/domain/User.groovy", overwrite: false)
+  copy(file:"${nimblePluginDir}/src/templates/domain/Profile.groovy", tofile: "${basedir}/grails-app/domain/Profile.groovy", overwrite: false)
+
   // Templates
   copy( todir: "${basedir}/grails-app/views/templates/nimble" , overwrite: false ) { fileset ( dir : "${nimblePluginDir}/grails-app/views/templates/nimble" ) }
 
