@@ -18,6 +18,7 @@ import intient.nimble.service.FacebookService
 import intient.nimble.auth.WildcardPermission
 import org.apache.shiro.SecurityUtils
 import intient.nimble.domain.User
+import intient.nimble.service.AdminsService
 
 /**
  * Provides authentication related tags to the Nimble application
@@ -52,8 +53,8 @@ class NimbleAuthTagLib {
         if (id) {
             def user = User.get(id)
 
-            if (user?.fullName)
-            out << user.fullName
+            if (user?.profile?.fullName)
+            out << user.profile.fullName
         }
     }
 
@@ -68,7 +69,7 @@ class NimbleAuthTagLib {
 
             if (user) {
                 def mkp = new groovy.xml.MarkupBuilder(out)
-                mkp.a('href': createLink(controller: 'users', action: 'show', id: id), 'class': 'icon icon_user', body()) {
+                mkp.a('href': createLink(controller: 'user', action: 'show', id: id), 'class': 'icon icon_user', body()) {
                 }
             }
         }
@@ -90,6 +91,16 @@ class NimbleAuthTagLib {
      */
     def isNotLoggedIn = {attrs, body ->
         if (!checkAuthenticated()) {
+            out << body()
+        }
+    }
+
+    /**
+     * This tag only writes its body to the output if the current user
+     * is an administrator
+     */
+    def isAdministrator = { attrs, body ->
+        if(SecurityUtils.subject.hasRole(AdminsService.ADMIN_ROLE)) {
             out << body()
         }
     }

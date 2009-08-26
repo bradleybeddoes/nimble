@@ -14,25 +14,20 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package intient.nimble.domain
+package intient.nimble
+
+import intient.nimble.domain.User
+import intient.nimble.domain.Profile
 
 /**
- * Indicates that an object extending this class is integrated into the Nimble permissions structure
- * and may provide permissions suitable for accessing specific resources.
+ * Determines correct version of class to load for classes commonly overloaded by host applications
  *
  * @author Bradley Beddoes
  */
-class PermissionAware {
+class InstanceGenerator {
 
-    static hasMany = [permissions: Permission]
+    static user = { try { InstanceGenerator.class.classLoader.loadClass("User").newInstance()} catch(ClassNotFoundException e){User.newInstance()} }
+    static profile = { try { InstanceGenerator.class.classLoader.loadClass("Profile").newInstance()} catch(ClassNotFoundException e){Profile.newInstance()} }
 
-    static mapping = {
-        cache usage: 'read-write', include: 'all'
-        permissions cache: true
-        tablePerHierarchy false
-    }
-
-    static constraints = {
-        permissions(nullable:true)
-    }
 }
+

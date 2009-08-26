@@ -36,6 +36,8 @@ import intient.nimble.domain.Details
 
 import intient.nimble.service.FacebookService
 
+import intient.nimble.InstanceGenerator
+
 /**
  * Integrates with Shiro to establish a session for users accessing the system based
  * on authentication via Facebook Connect.
@@ -80,14 +82,14 @@ public class FacebookRealm {
                     def fbProfiles = facebookClient.users_getInfo(userList, EnumSet.of(ProfileField.NAME))
 
                     if (fbProfiles.length() == 1) {
-                        User newUser = new User()
+                        User newUser = InstanceGenerator.user()
                         newUser.username = userID + FacebookService.federationProviderDiscriminator
                         newUser.enabled = true
                         newUser.external = true
                         newUser.federated = true
                         newUser.federationProvider = facebookFederationProvider
 
-                        newUser.profile = this.class.classLoader.loadClass(grailsApplication.config.nimble.profile.classname).newInstance()
+                        newUser.profile = InstanceGenerator.profile()
                         newUser.profile.owner = newUser
                         newUser.profile.fullName = fbProfiles.getJSONObject(0).get('name')
 

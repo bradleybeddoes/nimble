@@ -17,10 +17,12 @@
 
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
-import intient.nimble.domain.User
+
 import intient.nimble.domain.Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
+
+import intient.nimble.domain.User
 import intient.nimble.domain.Profile
 import intient.nimble.domain.Phone
 import intient.nimble.domain.Gender

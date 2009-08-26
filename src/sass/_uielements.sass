@@ -229,17 +229,15 @@
   li
     +nomargin
     +nopadding
-    +left
+    display = "inline"
 
     list-style-type = "none"
 
-=horizontalmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2") 
+=horizontalmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2")
   +horizontallist
-
-  position = "relative"
-
-  height = 36px
+  height = 42px
   width = 100%
+  position = "relative"
 
   :background
     :image = url(!background)
@@ -247,36 +245,44 @@
     :position = "top left"
     :repeat = "repeat-x"
 
-  li
-    :padding
-      :left = 10px
-      :right = 10px
 
-    height = 36px
-    line-height = 36px
+  li
+    +left
+    minheight = 42px
+    overflow = "visible"
+
+    :margin
+      :right = 6px
+
+    :padding
+      :left = 12px
+      :right = 12px
 
     a
       +link
-      +font-size(12px)
+      +left
+      height = 42px
+      line-height = 42px
+      display = "block"
       :font
         :weight = "normal"
-
-
+        :size = 1.2em
 
     &.current
       :background
-        :image = url("images/horizontalmenucurrentbg.png")
-
+        :color = #3e3e3e
+        :position = "bottom left"
+        :repeat = "repeat-x"
 
       a
         +link("#fff")
 
 =horizontalsubmenu(!background = "images/horizontalsubmenubg.png", !color = "#000")
   +horizontallist
-
-  position = "absolute"
-  left = 0
-  top = 36px
+  position = absolute
+  top = 42px
+  left = -9999px
+  z-index = 100
   width = 100%
 
   :background
@@ -285,16 +291,16 @@
     :position = "top left"
     :repeat = "repeat-x"
 
-  border = 0px "solid" #000
-
   li
+    :margin
+      :right = 6px
+
     :padding
-      :left = 10px
-      :right = 10px
+      :left = 12px
+      :right = 12px
 
     a
       +link("#fff")
-      line-height = 36px
 
 
 // Generic UI classes

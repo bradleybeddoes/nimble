@@ -24,6 +24,8 @@ import intient.nimble.domain.User
 import intient.nimble.domain.Profile
 import intient.nimble.domain.Role
 
+import intient.nimble.InstanceGenerator
+
 /**
  * Manages all common user account tasks.
  *
@@ -113,8 +115,8 @@ class AccountController {
             return
         }
 
-        def user = new User()
-        user.profile = new Profile()
+        def user = InstanceGenerator.user()
+        user.profile = InstanceGenerator.profile()
 
         log.debug("Starting new user creation")
         [user: user]
@@ -127,8 +129,8 @@ class AccountController {
             return
         }
         
-        def user = new User()
-        user.profile = new Profile()
+        def user = InstanceGenerator.user()
+        user.profile = InstanceGenerator.profile()
         user.profile.owner = user
         user.properties['username', 'pass', 'passConfirm'] = params
         user.profile.properties['fullName', 'email'] = params

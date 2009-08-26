@@ -35,7 +35,6 @@
     <resource>intient.nimble.domain.LevelPermission</resource>
     <resource>intient.nimble.domain.LoginRecord</resource>
     <resource>intient.nimble.domain.Permission</resource>
-    <resource>intient.nimble.domain.PermissionAware</resource>
     <resource>intient.nimble.domain.Phone</resource>
     <resource>intient.nimble.domain.Profile</resource>
     <resource>intient.nimble.domain.Role</resource>

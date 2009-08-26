@@ -27,7 +27,7 @@ import intient.nimble.domain.User
  *
  * @author Bradley Beddoes
  */
-class Group extends PermissionAware {
+class Group {
 
     static config = ConfigurationHolder.config
 
@@ -41,6 +41,7 @@ class Group extends PermissionAware {
     static hasMany = [
         roles: Role,
         users: User,
+        permissions: Permission
     ]
 
     static mapping = {
@@ -49,13 +50,16 @@ class Group extends PermissionAware {
 
         users cache: true
         roles cache: true
+        permissions cache: true, cascade: 'none'
     }
 
     static constraints = {
-        name(nullable: false, blank: false, unique: true, size:4..512)
+        name(unique: true, size:4..511)
         description(nullable: true, blank: false)
 
         dateCreated(nullable: true) // must be true to enable grails
         lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
+
+        permissions(nullable:true)
     }
 }
