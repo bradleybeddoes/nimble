@@ -27,9 +27,10 @@ import intient.nimble.domain.Group
  *
  * @author Bradley Beddoes
  */
-class Role extends PermissionAware {
+class Role {
 
     static config = ConfigurationHolder.config
+    // static userClass = { try { Role.class.classLoader.loadClass("User"); true} catch(ClassNotFoundException e){false} }
 
     String name
     String description
@@ -39,11 +40,14 @@ class Role extends PermissionAware {
     Date lastUpdated
 
     static hasMany = [
+        // This lovely piece of hackery lets us use intient.nimble.domain.user if no User class is found in the default package.
+        //users: userClass() ? Role.class.classLoader.loadClass("User") : User,
         users: User,
         groups: Group,
+        permissions: Permission
     ]
 
-    static belongsTo = [User, Group]
+    static belongsTo = [Group]
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
@@ -51,7 +55,7 @@ class Role extends PermissionAware {
 
         users cache: true
         groups cache: true
-        permissions cache: true
+        permissions cache: true, cascade: 'none'
     }
 
     static constraints = {
@@ -60,5 +64,7 @@ class Role extends PermissionAware {
         
         dateCreated(nullable: true) // must be true to enable grails
         lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
+
+        permissions(nullable:true)
     }
 }

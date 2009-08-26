@@ -18,6 +18,7 @@ package intient.nimble.service
 
 import intient.nimble.domain.User
 
+
 /**
  * Provides methods for interacting with Nimble permissions.
  *
@@ -28,7 +29,7 @@ class PermissionService {
   boolean transactional = true
 
   /**
-   * Creates a new LevelPermission object, generates target and assigns to owner.
+   * Assigns a permission object to an owner and performs checks to ensure permission is correctly applied
    *
    * @param permission The populated permission object to persist
    * @param owner An object that extends PermissionOwner (e.g. User, Group, Role)

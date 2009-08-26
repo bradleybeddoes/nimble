@@ -34,6 +34,8 @@ class AdminsService {
 
     boolean transactional = true
 
+    def permissionService
+
     /**
      * Provides administrator capability to a user account.
      *
@@ -80,16 +82,8 @@ class AdminsService {
             Permission adminPermission = new Permission(target:'*')
             adminPermission.managed = true
             adminPermission.type = Permission.adminPerm
-            user.addToPermissions(adminPermission)
 
-            if (!user.save()) {
-                log.error "Unable to grant administration permission to [$user.id]$user.username failed to modify user account"
-                user.errors.each {
-                    log.error it
-                }
-
-                throw new RuntimeException("Unable to grant administration permission to [$user.id]$user.username")
-            }
+            permissionService.createPermission(adminPermission, user)
 
             log.info "Granted administration privileges to [$user.id]$user.username"
             return true

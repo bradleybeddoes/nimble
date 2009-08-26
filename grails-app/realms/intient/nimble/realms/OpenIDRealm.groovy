@@ -62,14 +62,14 @@ public class OpenIDRealm {
 
       if (openidFederationProvider && openidFederationProvider.autoProvision) {
 
-        User newUser = new User()
+        User newUser = InstanceGenerator.user()
         newUser.username = userID + OpenIDService.federationProviderDiscriminator
         newUser.enabled = true
         newUser.external = true
         newUser.federated = true
         newUser.federationProvider = openidFederationProvider
 
-        newUser.profile = this.class.classLoader.loadClass(grailsApplication.config.nimble.profile.classname).newInstance()
+        newUser.profile = InstanceGenerator.profile()
         newUser.profile.owner = newUser
         
         newUser.profile.fullName = authToken.fullName

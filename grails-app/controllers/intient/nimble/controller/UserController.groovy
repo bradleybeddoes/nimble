@@ -127,16 +127,16 @@ class UserController {
   }
 
   def create = {
-    def user = new User()
-    user.profile = new Profile()
+    def user = InstanceGenerator.user()
+    user.profile = InstanceGenerator.profile()
 
     log.debug("Starting user creation process")
     [user: user]
   }
 
   def save = {
-    def user = new User()
-    user.profile = new Profile()
+    def user = InstanceGenerator.user()
+    user.profile = InstanceGenerator.profile()
     user.properties['username', 'pass', 'passConfirm'] = params
     user.profile.properties['fullName', 'email'] = params
     user.enabled = false

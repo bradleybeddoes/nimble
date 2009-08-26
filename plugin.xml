@@ -35,7 +35,6 @@
     <resource>intient.nimble.domain.LevelPermission</resource>
     <resource>intient.nimble.domain.LoginRecord</resource>
     <resource>intient.nimble.domain.Permission</resource>
-    <resource>intient.nimble.domain.PermissionAware</resource>
     <resource>intient.nimble.domain.Phone</resource>
     <resource>intient.nimble.domain.Profile</resource>
     <resource>intient.nimble.domain.Role</resource>
@@ -44,7 +43,6 @@
     <resource>intient.nimble.domain.Status</resource>
     <resource>intient.nimble.domain.Url</resource>
     <resource>intient.nimble.domain.User</resource>
-    <resource>intient.nimble.domain.UserDataBase</resource>
     <resource>intient.nimble.realms.FacebookRealm</resource>
     <resource>intient.nimble.realms.LocalizedRealm</resource>
     <resource>intient.nimble.realms.OpenIDRealm</resource>

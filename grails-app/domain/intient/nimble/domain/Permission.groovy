@@ -40,7 +40,7 @@ class Permission implements Serializable {
     String target
     boolean managed
 
-    static belongsTo = [owner:PermissionAware]
+    static belongsTo = [user: User, role: Role, group:Group]
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
@@ -51,5 +51,33 @@ class Permission implements Serializable {
         possibleActions(nullable: false, blank: false)
         actions(nullable: false, blank: false)
         target(nullable: false, blank: false)
+
+        user(nullable:true)
+        role(nullable:true)
+        group(nullable:true)
+    }
+
+    def setOwner (def owner) {
+        if (owner instanceof User)
+        this.user = owner
+
+        if (owner instanceof Role)
+        this.role = owner
+
+        if (owner instanceof Group)
+        this.group = owner
+    }
+
+    def getOwner() {
+        if(this.user != null)
+        return user
+
+        if(this.role != null)
+        return role
+
+        if(this.group != null)
+        return group
+
+        return null
     }
 }
