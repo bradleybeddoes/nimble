@@ -54,7 +54,7 @@ class Group {
     }
 
     static constraints = {
-        name(nullable: false, blank: false, unique: true, size:4..512)
+        name(unique: true, size:4..511)
         description(nullable: true, blank: false)
 
         dateCreated(nullable: true) // must be true to enable grails
