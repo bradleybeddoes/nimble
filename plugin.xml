@@ -1,4 +1,4 @@
-<plugin name='nimble' version='0.1' grailsVersion='1.1 &gt; *'>
+<plugin name='nimble' version='0.2' grailsVersion='1.1 &gt; *'>
   <author>Intient Pty Ltd + Open Source Contributors</author>
   <authorEmail>nimbleproject@googlegroups.com</authorEmail>
   <title>Nimble</title>
