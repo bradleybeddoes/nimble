@@ -40,6 +40,7 @@ class UserService {
     boolean transactional = true
 
     def grailsApplication
+    def permissionService
 
     /**
      * Activates a disabled user account
@@ -216,10 +217,8 @@ class UserService {
 
                 // Add default permission set
                 // Allow personal profile edit
-                Permission profileEdit = new Permission(target:"${ProfileService.editPermission}$savedUser.id")
-                profileEdit.managed = true
-                profileEdit.type = Permission.defaultPerm
-                savedUser.addToPermissions(profileEdit)
+                Permission profileEdit = new Permission(managed:true, type: Permission.defaultPerm, target:"${ProfileService.editPermission}$savedUser.id")
+                permissionService.createPermission(profileEdit, savedUser)
 
                 savedUser.save()
                 if (savedUser.hasErrors()) {

@@ -31,6 +31,8 @@ import org.apache.shiro.authc.SimpleAccount
 import org.apache.shiro.authc.IncorrectCredentialsException
 import intient.nimble.domain.Gender
 
+import intient.nimble.InstanceGenerator
+
 /**
  * Integrates with Shiro to establish a session for users accessing the system based
  * on authentication with an OpenID provider.

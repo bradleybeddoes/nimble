@@ -26,6 +26,8 @@ import intient.nimble.domain.FederationProvider
 import intient.nimble.domain.Profile
 import intient.nimble.domain.LoginRecord
 
+import intient.nimble.InstanceGenerator
+
 /**
  * Manages Nimble user accounts
  *

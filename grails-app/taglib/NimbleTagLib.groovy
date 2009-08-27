@@ -77,6 +77,13 @@ class NimbleTagLib {
     }
 
     /**
+     * Imports base Nimble provided CSS
+     */
+    def basecss = {attrs, body ->
+        out << render(template: "/templates/basecsssetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
+    /**
      * Provides nimble session terminated message
      */
     def sessionterminated = {attrs, body ->
