@@ -59,7 +59,7 @@ class Role {
     }
 
     static constraints = {
-        name(unique: true, size:4..511)
+        name(unique: true, minSize:4)
         description(nullable:true, blank:false)
         
         dateCreated(nullable: true) // must be true to enable grails

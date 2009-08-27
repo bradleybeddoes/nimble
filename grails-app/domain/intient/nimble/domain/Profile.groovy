@@ -87,7 +87,7 @@ class Profile {
         emailHash(nullable: true, blank:true)
         bio(nullable: true, blank: false)
 
-        photo(nullable: true)
+        photo(nullable: true, maxSize: 4194304)
         photoType(nullable: true, blank:false)
     
         currentStatus(nullable:true)
