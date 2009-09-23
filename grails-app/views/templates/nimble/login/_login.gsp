@@ -286,7 +286,7 @@
 
         <div class="accountoptions">
           <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple">I've forgotten my password</g:link>
-          <g:if test="${registration}>
+          <g:if test="${registration}">
             <g:link controller=" account" action="createuser" class="textlink icon icon_user_go">New User</g:link>
           </g:if>
         </div>
