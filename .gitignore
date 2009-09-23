@@ -4,6 +4,11 @@ classes
 stacktrace.log
 docs.tar.gz 
 
+*~
+*.ipr
+*.iml
+*.iws
+*.war
 web-app/plugins/*
 test/reports/*
 unzipped/*
