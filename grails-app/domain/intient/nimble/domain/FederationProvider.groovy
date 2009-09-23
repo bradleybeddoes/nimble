@@ -16,6 +16,8 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 /**
  * Represents a remote party that provides federated authentication
  *
@@ -23,11 +25,18 @@ package intient.nimble.domain
  */
 class FederationProvider {
 
+  static config = ConfigurationHolder.config
+	
   String uid
   Details details
   boolean autoProvision
   
   Map properties
+
+  static mapping = {
+      table FederationProvider.config.nimble.tablenames.federationprovider
+      uid column: FederationProvider.config.nimble.fieldnames.uid
+  }
 
   static constraints = {
     uid(nullable:false)

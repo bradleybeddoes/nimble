@@ -16,6 +16,8 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 import intient.nimble.domain.Url
 
 /**
@@ -24,6 +26,8 @@ import intient.nimble.domain.Url
  * @author Bradley Beddoes
  */
 class SocialMediaAccount {
+
+	static config = ConfigurationHolder.config
 
     String username
     String accountID
@@ -38,6 +42,10 @@ class SocialMediaAccount {
         feeds: Feed,
         urls: Url
     ]
+
+    static mapping = {
+	      table SocialMediaAccount.config.nimble.tablenames.socialmediaaccount
+	}
 
     static constraints = {
         username(nullable: true, blank:false)

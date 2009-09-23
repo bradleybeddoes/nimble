@@ -100,7 +100,8 @@ class NimbleGrailsPlugin {
         // Supply functionality to controllers
         application.controllerClasses?.each { controller ->
             controller.metaClass.getAuthenticatedUser = {
-                def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+            	def principal = SecurityUtils.getSubject()?.getPrincipal()
+            	def authUser = principal ? User.get(principal) : null
                 if (!authUser) {
                     log.error("Authenticated user was not able to be obtained from metaclass")
                     return null
@@ -113,7 +114,8 @@ class NimbleGrailsPlugin {
         // Supply functionality to services
         application.serviceClasses?.each { service ->
             service.metaClass.getAuthenticatedUser = {
-                def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+            	def principal = SecurityUtils.getSubject()?.getPrincipal()
+                def authUser = principal ? User.get(principal) : null
                 if (!authUser) {
                     log.error("Authenticated user was not able to be obtained from metaclass")
                     return null

@@ -21,6 +21,14 @@ nimble {
         user = "_user"
         role = "_role"
         group = "_group"
+        federationprovider = "federation_provider"
+        socialmediaaccount = "social_media_account"
+        socialmediaservice = "social_media_service"
+    }
+
+    fieldnames {
+    	uid = "uid"
+    	number = "number"
     }
 
     layout {

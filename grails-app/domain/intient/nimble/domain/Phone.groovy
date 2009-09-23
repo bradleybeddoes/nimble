@@ -16,10 +16,13 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 import intient.nimble.domain.Profile
 
 class Phone {
-
+	static config = ConfigurationHolder.config
+	
     String number
     PhoneType type
 
@@ -27,6 +30,7 @@ class Phone {
     
     static mapping = {
         sort type:'desc'
+        number column: Phone.config.nimble.fieldnames.number
     }
 
     static constraints = {

@@ -16,18 +16,28 @@
  */
 package intient.nimble.domain
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 /**
  * Represents an external media service
  *
  * @author Bradley Beddoes
  */
 class SocialMediaService {
+
+  static config = ConfigurationHolder.config
+	
   String uid
   Details details
 
   Url baseProfileUrl
 
   Map properties
+
+  static mapping = {
+      table SocialMediaService.config.nimble.tablenames.socialmediaservice
+      uid column: FederationProvider.config.nimble.fieldnames.uid
+  }
 
   static constraints = {
     uid(nullable:false, blank:false)
