@@ -73,7 +73,7 @@ class User {
     }
 
     static constraints = {
-        username(unique: true, minSize: 4)
+        username(blank: false, unique: true, minSize: 4, maxSize: 255)
         passwordHash(nullable: true, blank: false)
         actionHash(nullable: true, blank: false)
    
