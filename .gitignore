@@ -5,6 +5,7 @@ stacktrace.log
 docs.tar.gz 
 
 web-app/plugins/*
+target/
 test/reports/*
 unzipped/*
 docs/*
