@@ -188,7 +188,7 @@ class AccountController {
         sendMail {
             to user.profile.email
             subject grailsApplication.config.nimble.messaging.registration.subject
-            html g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: savedUser])
+            html g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: savedUser]).toString()
         }
 
         log.info("Created new account identified as $user.username with internal id $savedUser.id")
@@ -295,7 +295,7 @@ class AccountController {
                 sendMail {
                     to user.profile.email
                     subject grailsApplication.config.nimble.messaging.passwordreset.external.subject
-                    html g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user])
+                    html g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user]).toString()
                 }
 
                 redirect(action: "forgottenpasswordcomplete", id: user.id)
@@ -311,7 +311,7 @@ class AccountController {
                 sendMail {
                     to user.profile.email
                     subject grailsApplication.config.nimble.messaging.passwordreset.subject
-                    html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user])
+                    html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()
                 }
 
                 log.info("Successful password reset for user identified as [$user.id]$user.username")
