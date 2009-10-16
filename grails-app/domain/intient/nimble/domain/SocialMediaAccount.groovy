@@ -34,8 +34,6 @@ class SocialMediaAccount {
     Url profile = null
     SocialMediaService service
 
-    Map properties
-
     static belongsTo = [owner: Profile]
 
     static hasMany = [
@@ -53,6 +51,5 @@ class SocialMediaAccount {
         profile(nullable:true)
         urls(nullable: true)
         feeds(nullable: true)
-        properties(nullable: true)
     }
 }

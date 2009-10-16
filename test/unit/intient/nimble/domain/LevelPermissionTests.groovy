@@ -40,7 +40,7 @@ class LevelPermissionTests extends GrailsUnitTestCase {
         fifth = ['token09', 'token10']
         sixth = ['token11', 'token12']
 
-        owner = new PermissionAware()
+        owner = new Expando(name: "Test owner")
     }
 
     protected void tearDown() {

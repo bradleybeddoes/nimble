@@ -24,7 +24,7 @@ import intient.nimble.domain.Status
 import intient.nimble.domain.Phone
 
 import intient.nimble.service.ProfileService
-
+import intient.nimble.service.UserService
 
 class ProfileController {
 
@@ -305,7 +305,7 @@ class ProfileController {
             sendMail {
                 to user.profile.nonVerifiedEmail
                 subject grailsApplication.config.nimble.messaging.changeemail.subject
-                html g.render(template: "/templates/nimble/mail/emailchange_email", model: [user: user])
+                html g.render(template: "/templates/nimble/mail/emailchange_email", model: [user: user]).toString()
             }
 
             render template:"/templates/nimble/profile/emailupdated"

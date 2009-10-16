@@ -31,7 +31,7 @@ class FederationProvider {
   Details details
   boolean autoProvision
   
-  Map properties
+  Map props
 
   static mapping = {
       table FederationProvider.config.nimble.tablenames.federationprovider
@@ -41,7 +41,7 @@ class FederationProvider {
   static constraints = {
     uid(nullable:false)
     details(nullable:false)
-    properties(nullable: true)
+    props(nullable: true)
   }
 
 }

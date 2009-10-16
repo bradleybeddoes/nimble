@@ -262,6 +262,10 @@ class AccountControllerTests extends ControllerUnitTestCase {
 
     void testCreateUserComplete() {
         mockDomain(User, [])
+        
+        // Mock the application configuration.
+        controller.grailsApplication = new Expando(config: [nimble: [localusers: [registration: [enabled: true]]]])
+        
         def model = controller.createuser()
         assertNotNull model.user
     }

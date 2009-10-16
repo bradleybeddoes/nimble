@@ -191,7 +191,7 @@ class FacebookService implements InitializingBean {
 
                 facebookFederationProvider.details = details
 
-                facebookFederationProvider.properties = [:]
+                facebookFederationProvider.props = [:]
 
                 facebookFederationProvider.save()
                 if (facebookFederationProvider.hasErrors()) {

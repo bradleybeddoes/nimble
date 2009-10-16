@@ -32,17 +32,14 @@ class SocialMediaService {
 
   Url baseProfileUrl
 
-  Map properties
-
   static mapping = {
       table SocialMediaService.config.nimble.tablenames.socialmediaservice
-      uid column: FederationProvider.config.nimble.fieldnames.uid
+      uid column: SocialMediaService.config.nimble.fieldnames.uid
   }
 
   static constraints = {
     uid(nullable:false, blank:false)
     details(nullable: false)
     baseProfileUrl(nullable:true)
-    properties(nullable: true)
   }
 }

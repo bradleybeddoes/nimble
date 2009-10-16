@@ -18,10 +18,6 @@ package intient.nimble.domain
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.Role
-import intient.nimble.domain.User
-import intient.nimble.domain.Group
-
 /**
  * Our permission object encapsulates details that a normal Shiro deployment
  * would put into mapping tables to make life a little easier.
@@ -40,7 +36,18 @@ class Permission implements Serializable {
     String target
     boolean managed
 
+    // Explicitly declared to work around this issue:
+    //
+    //    http://jira.codehaus.org/browse/GRAILS-5238
+    //
+    // Once that's fixed, these three fields can be removed.
+    User user
+    Role role
+    Group group
+
     static belongsTo = [user: User, role: Role, group:Group]
+
+    static transients = [ "owner" ]
 
     static mapping = {
         cache usage: 'read-write', include: 'all'

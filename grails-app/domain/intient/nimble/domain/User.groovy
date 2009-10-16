@@ -18,11 +18,6 @@ package intient.nimble.domain
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.LoginRecord
-import intient.nimble.domain.Permission
-import intient.nimble.domain.Role
-import intient.nimble.domain.Group
-
 /**
  * Represents a user within a Nimble Application
  *
@@ -78,7 +73,7 @@ class User {
     }
 
     static constraints = {
-        username(unique: true, minSize: 4)
+        username(blank: false, unique: true, minSize: 4, maxSize: 255)
         passwordHash(nullable: true, blank: false)
         actionHash(nullable: true, blank: false)
    

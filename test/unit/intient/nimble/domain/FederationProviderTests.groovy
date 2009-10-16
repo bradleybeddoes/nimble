@@ -41,7 +41,7 @@ class FederationProviderTests extends GrailsUnitTestCase {
     }
 
     FederationProvider createValidFederationProvider() {
-        def federationProvider = new FederationProvider(uid:uid, details:details, autoProvision:autoProvision, properties:properties)
+        def federationProvider = new FederationProvider(uid:uid, details:details, autoProvision:autoProvision, props:properties)
         return federationProvider
     }
 
@@ -51,7 +51,7 @@ class FederationProviderTests extends GrailsUnitTestCase {
         assertEquals uid, federationProvider.uid
         assertEquals details, federationProvider.details
         assertEquals autoProvision, federationProvider.autoProvision
-        assertEquals properties, federationProvider.properties
+        assertEquals properties, federationProvider.props
     }
 
     void testUidConstraint() {
@@ -77,7 +77,7 @@ class FederationProviderTests extends GrailsUnitTestCase {
         def federationProvider = createValidFederationProvider()
         assertTrue federationProvider.validate()
 
-        federationProvider.properties = null
+        federationProvider.props = null
         assertTrue federationProvider.validate()
     }
 }
