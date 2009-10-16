@@ -26,11 +26,8 @@ class Feed {
   Details details
   Url feedUrl = null
 
-  Map properties
-
   static constraints = {
     details(nullable: false)
     feedUrl(nullable:false)
-    properties(nullable: true)
   }
 }
