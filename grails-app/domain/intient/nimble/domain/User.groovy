@@ -18,11 +18,6 @@ package intient.nimble.domain
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.LoginRecord
-import intient.nimble.domain.Permission
-import intient.nimble.domain.Role
-import intient.nimble.domain.Group
-
 /**
  * Represents a user within a Nimble Application
  *
