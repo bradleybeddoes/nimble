@@ -15,7 +15,21 @@
  *  limitations under the License.
  */
 
+import groovy.text.SimpleTemplateEngine
+
+includeTargets << grailsScript("_GrailsArgParsing")
+
 target ( default : 'Sets up a new project with a common Nimble base environment ready for customization' ) {
+
+  def user, profile
+  (user,profile) = parseArgs()
+  
+  def userbinding = [ 'classname':user, 'baseclassname':'User' ]
+  def profilebinding = [ 'classname':profile, 'baseclassname':'Profile' ]
+
+  def engine = new SimpleTemplateEngine()
+  def usertemplate = engine.createTemplate(new FileReader("${nimblePluginDir}/src/templates/domain/Base.groovy")).make(userbinding)
+  def profiletemplate = engine.createTemplate(new FileReader("${nimblePluginDir}/src/templates/domain/Base.groovy")).make(profilebinding)
 
   echo(" Jack be nimble \n Jack be quick \n Jack jump over \n The candlestick.")
 
@@ -26,8 +40,8 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleUrlMappings.groovy", tofile: "${basedir}/grails-app/conf/NimbleUrlMappings.groovy", overwrite: false)
 
   // Domain Objects
-  copy(file:"${nimblePluginDir}/src/templates/domain/User.groovy", tofile: "${basedir}/grails-app/domain/User.groovy", overwrite: false)
-  copy(file:"${nimblePluginDir}/src/templates/domain/Profile.groovy", tofile: "${basedir}/grails-app/domain/Profile.groovy", overwrite: false)
+  new File("${basedir}/grails-app/domain/${user}.groovy").write(usertemplate.toString())
+  new File("${basedir}/grails-app/domain/${profile}.groovy").write(profiletemplate.toString())
 
   // Templates
   copy( todir: "${basedir}/grails-app/views/templates/nimble" , overwrite: false ) { fileset ( dir : "${nimblePluginDir}/grails-app/views/templates/nimble" ) }
@@ -36,5 +50,27 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   mkdir( dir:"${basedir}/src/sass" )
   copy(file:"${nimblePluginDir}/src/sass/_rounded.sass", todir: "${basedir}/src/sass", overwrite: false)
   copy(file:"${nimblePluginDir}/src/sass/_uielements.sass", todir: "${basedir}/src/sass", overwrite: false)
+}
+
+def parseArgs() {
+	args = args ? args.split('\n') : []
+    switch (args.size()) {
+            case 0:
+            	    return [ "User", "Profile" ]
+                    break
+            case 2:
+                    println "Setting up nimble with custom User domain class: ${args[0]}"
+                    println "Setting up nimble with custom Profile domain class: ${args[1]}"
+                    return [args[0], args[1]]
+                    break
+            default:
+                	usage()
+                	break
+    }
+}
+
+private void usage() {
+	println 'Usage: grails jack-be-nimble <User class name> <Profile class name>'
+	System.exit(1)
 }
  
