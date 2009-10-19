@@ -280,14 +280,14 @@ class AuthController {
         def discovered
         def authRequest
 
-        def responseUrl = createLink(controller:"auth", action:"${service}resp", absolute: true)
+        StringBuffer responseUrl = new StringBuffer(createLink(controller:"auth", action:"${service}resp", absolute: true))
         if (params.openiduri != null) {
             serviceIdentifier = params.openiduri
-            (discovered, authRequest) = openIDService.establishRequest(serviceIdentifier, responseUrl)
+            (discovered, authRequest) = openIDService.establishRequest(serviceIdentifier, responseUrl.toString())
         }
         else {
             serviceIdentifier = service
-            (discovered, authRequest) = openIDService.establishDiscoveryRequest(serviceIdentifier, responseUrl)
+            (discovered, authRequest) = openIDService.establishDiscoveryRequest(serviceIdentifier, responseUrl.toString())
         }
 
         if (discovered && authRequest) {
