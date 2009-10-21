@@ -25,8 +25,6 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  */
 class FederationProvider {
 
-  static config = ConfigurationHolder.config
-	
   String uid
   Details details
   boolean autoProvision
@@ -34,8 +32,8 @@ class FederationProvider {
   Map props
 
   static mapping = {
-      table FederationProvider.config.nimble.tablenames.federationprovider
-      uid column: FederationProvider.config.nimble.fieldnames.uid
+      table ConfigurationHolder.config.nimble.tablenames.federationprovider
+      uid column: ConfigurationHolder.config.nimble.fieldnames.uid
   }
 
   static constraints = {

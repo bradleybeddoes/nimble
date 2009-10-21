@@ -25,16 +25,14 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  */
 class SocialMediaService {
 
-  static config = ConfigurationHolder.config
-	
   String uid
   Details details
 
   Url baseProfileUrl
 
   static mapping = {
-      table SocialMediaService.config.nimble.tablenames.socialmediaservice
-      uid column: SocialMediaService.config.nimble.fieldnames.uid
+      table ConfigurationHolder.config.nimble.tablenames.socialmediaservice
+      uid column: ConfigurationHolder.config.nimble.fieldnames.uid
   }
 
   static constraints = {

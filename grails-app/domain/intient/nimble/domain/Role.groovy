@@ -29,7 +29,6 @@ import intient.nimble.domain.Group
  */
 class Role {
 
-    static config = ConfigurationHolder.config
     // static userClass = { try { Role.class.classLoader.loadClass("User"); true} catch(ClassNotFoundException e){false} }
 
     String name
@@ -51,7 +50,7 @@ class Role {
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
-        table User.config.nimble.tablenames.role
+        table ConfigurationHolder.config.nimble.tablenames.role
 
         users cache: true
         groups cache: true

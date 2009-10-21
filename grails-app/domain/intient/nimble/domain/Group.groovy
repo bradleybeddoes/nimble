@@ -29,8 +29,6 @@ import intient.nimble.domain.User
  */
 class Group {
 
-    static config = ConfigurationHolder.config
-
     String name
     String description
     boolean protect = false
@@ -46,7 +44,7 @@ class Group {
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
-        table User.config.nimble.tablenames.group
+        table ConfigurationHolder.config.nimble.tablenames.group
 
         users cache: true
         roles cache: true

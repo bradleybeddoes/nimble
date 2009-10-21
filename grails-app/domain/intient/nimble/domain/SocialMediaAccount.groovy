@@ -27,8 +27,6 @@ import intient.nimble.domain.Url
  */
 class SocialMediaAccount {
 
-	static config = ConfigurationHolder.config
-
     String username
     String accountID
     Url profile = null
@@ -42,7 +40,7 @@ class SocialMediaAccount {
     ]
 
     static mapping = {
-	      table SocialMediaAccount.config.nimble.tablenames.socialmediaaccount
+	      table ConfigurationHolder.config.nimble.tablenames.socialmediaaccount
 	}
 
     static constraints = {

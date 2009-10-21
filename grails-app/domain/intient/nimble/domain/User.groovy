@@ -26,8 +26,6 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class User {
 
-    static config = ConfigurationHolder.config
-
     String username
     String passwordHash
     String actionHash
@@ -65,7 +63,7 @@ class User {
         sort username:'desc'
     
         cache usage: 'read-write', include: 'all'
-        table User.config.nimble.tablenames.user
+        table ConfigurationHolder.config.nimble.tablenames.user
 
         roles cache: true, cascade: 'none'
         groups cache: true, cascade: 'none'
