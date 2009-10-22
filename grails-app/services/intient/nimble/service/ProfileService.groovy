@@ -17,7 +17,7 @@
 package intient.nimble.service
 
 import intient.nimble.domain.Phone
-import intient.nimble.domain.Profile
+import intient.nimble.domain.ProfileBase
 
 class ProfileService {
 
@@ -163,7 +163,7 @@ class ProfileService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def updateProfile(Profile profile) {
+    def updateProfile(ProfileBase profile) {
         log.debug("Saving profile changes for user [$profile.owner.id]$profile.owner.username")
         profile.save()
 

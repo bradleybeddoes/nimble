@@ -20,8 +20,8 @@ package intient.nimble.controller
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.crypto.hash.Sha256Hash
 
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 import intient.nimble.domain.Role
 
 import intient.nimble.InstanceGenerator
@@ -202,7 +202,7 @@ class AccountController {
     }
 
     def validateuser = {
-        def user = User.get(params.id)
+        def user = UserBase.get(params.id)
 
         if (!user) {
             log.warn("User identified as [$params.id] was not located")
@@ -263,7 +263,7 @@ class AccountController {
             return
         }
 
-        def users = User.findAllByUsername(params?.username)
+        def users = UserBase.findAllByUsername(params?.username)
 
         if (users != null && users.size() > 0) {
             flash.message = "User already exists for ${params.username}"
@@ -283,7 +283,7 @@ class AccountController {
     }
 
     def forgottenpasswordprocess = {
-        def profile = Profile.findByEmail(params.email)
+        def profile = ProfileBase.findByEmail(params.email)
         if (profile) {
 
             def user = profile.owner
@@ -350,7 +350,7 @@ class AccountController {
     }
 
     private def authenticatedUser = {
-        def user = User.get(SecurityUtils.getSubject()?.getPrincipal())
+        def user = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
         if (!user) {
             log.error("Authenticated user was not able to be obtained when performing pasword change action")
             response.sendError(403)

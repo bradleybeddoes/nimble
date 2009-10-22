@@ -16,7 +16,7 @@
  */
 package intient.nimble.service
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Group
 import intient.nimble.domain.Role
 
@@ -150,7 +150,7 @@ class GroupService {
    *
    * @throws RuntimeException When internal state requires transaction rollback
    */
-  def addMember(User user, Group group) {
+  def addMember(UserBase user, Group group) {
     group.addToUsers(user)
     user.addToGroups(group)
 
@@ -190,7 +190,7 @@ class GroupService {
    *
    * @throws RuntimeException When internal state requires transaction rollback
    */
-  def deleteMember(User user, Group group) {
+  def deleteMember(UserBase user, Group group) {
     user.removeFromGroups(group)
     group.removeFromUsers(user)
 

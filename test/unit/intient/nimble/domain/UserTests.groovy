@@ -61,7 +61,7 @@ class UserTests extends GrailsUnitTestCase {
         expiration = new Date()
 
         federationProvider = new FederationProvider()
-        profile = new Profile()
+        profile = new ProfileBase()
 
         role1 = new Role()
         role2 = new Role()
@@ -75,11 +75,11 @@ class UserTests extends GrailsUnitTestCase {
         login1 = new LoginRecord()
         login2 = new LoginRecord()
 
-        follows1 = new User()
-        follows2 = new User()
+        follows1 = new UserBase()
+        follows2 = new UserBase()
 
-        follower1 = new User()
-        follower2 = new User()
+        follower1 = new UserBase()
+        follower2 = new UserBase()
 
         dateCreated = new Date()
         lastUpdated = new Date()
@@ -89,8 +89,8 @@ class UserTests extends GrailsUnitTestCase {
         super.tearDown()
     }
 
-    User createValidUser() {
-        def user = new User(username:username, passwordHash:passwordHash, actionHash:actionHash, enabled:enabled,
+    UserBase createValidUser() {
+        def user = new UserBase(username:username, passwordHash:passwordHash, actionHash:actionHash, enabled:enabled,
             external:external, federated:federated, remoteapi:remoteapi, expiration:expiration,
             federationProvider:federationProvider, profile:profile, roles:[role1,role2],
             groups:[group1,group2], passwdHistory:[pw1,pw2], loginRecords:[login1,login2], 
@@ -125,7 +125,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testUsernameConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -140,7 +140,7 @@ class UserTests extends GrailsUnitTestCase {
         def user2 = createValidUser()
         user2.username = 'username2'
         user.username = username
-        mockForConstraintsTests(User, [user,user2])
+        mockForConstraintsTests(UserBase, [user,user2])
 
         assertTrue user.validate()
         assertTrue user2.validate()
@@ -168,7 +168,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testPasswordHashConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -181,7 +181,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testActionHashConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -194,7 +194,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testFederationProviderConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -204,7 +204,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testProfileConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -214,7 +214,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testExpirationConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -224,7 +224,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testDateCreatedConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()
@@ -234,7 +234,7 @@ class UserTests extends GrailsUnitTestCase {
     }
 
     void testLastUpdatedConstraint() {
-        mockForConstraintsTests(User)
+        mockForConstraintsTests(UserBase)
 
         def user = createValidUser()
         assertTrue user.validate()

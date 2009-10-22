@@ -16,8 +16,10 @@
  */
 package intient.nimble
 
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 
 /**
  * Determines correct version of class to load for classes commonly overloaded by host applications
@@ -26,8 +28,22 @@ import intient.nimble.domain.Profile
  */
 class InstanceGenerator {
 
-    static user = { try { InstanceGenerator.class.classLoader.loadClass("User").newInstance()} catch(ClassNotFoundException e){User.newInstance()} }
-    static profile = { try { InstanceGenerator.class.classLoader.loadClass("Profile").newInstance()} catch(ClassNotFoundException e){Profile.newInstance()} }
-
+    static user = { 
+    	try { 
+    		if(ConfigurationHolder.config?.nimble?.implementation?.user)
+    			InstanceGenerator.class.classLoader.loadClass(ConfigurationHolder.config.nimble.implementation.user).newInstance()
+    		else
+    			UserBase.newInstance()
+    	} catch(ClassNotFoundException e){ UserBase.newInstance() } 
+    }
+    
+    static profile = { 
+    	try { 
+    		if(ConfigurationHolder.config?.nimble?.implementation?.profile)
+    			InstanceGenerator.class.classLoader.loadClass(ConfigurationHolder.config.nimble.implementation.profile).newInstance()
+    		else
+    			ProfileBase.newInstance()
+    	} catch(ClassNotFoundException e){ ProfileBase.newInstance() } 
+    }
 }
 

@@ -53,8 +53,8 @@ class AccountControllerTests extends ControllerUnitTestCase {
 
         //further fill out user....
 
-        def user = new User(id:1, username:'username', passwordHash:crypt, profile: new Profile())
-        mockDomain(User, [user])
+        def user = new UserBase(id:1, username:'username', passwordHash:crypt, profile: new ProfileBase())
+        mockDomain(UserBase, [user])
 
         return user
     }
@@ -98,8 +98,8 @@ class AccountControllerTests extends ControllerUnitTestCase {
         suMock = mockFor(SecurityUtils)
         suMock.demand.static.getSubject {-> [getPrincipal:{return 1}] as Subject}
 
-        def user = new User(id:1)
-        mockDomain(User, [user])
+        def user = new UserBase(id:1)
+        mockDomain(UserBase, [user])
 
         def model = controller.changepassword()
 
@@ -112,8 +112,8 @@ class AccountControllerTests extends ControllerUnitTestCase {
         suMock = mockFor(SecurityUtils)
         suMock.demand.static.getSubject {-> null}
 
-        def user = new User(id:1)
-        mockDomain(User, [user])
+        def user = new UserBase(id:1)
+        mockDomain(UserBase, [user])
 
         def model = controller.changepassword()
 
@@ -156,8 +156,8 @@ class AccountControllerTests extends ControllerUnitTestCase {
         suMock = mockFor(SecurityUtils)
         suMock.demand.static.getSubject {-> null}
 
-        def user = new User(id:1)
-        mockDomain(User, [user])
+        def user = new UserBase(id:1)
+        mockDomain(UserBase, [user])
 
         def model = controller.updatepassword()
 
@@ -261,7 +261,7 @@ class AccountControllerTests extends ControllerUnitTestCase {
     }
 
     void testCreateUserComplete() {
-        mockDomain(User, [])
+        mockDomain(UserBase, [])
         
         // Mock the application configuration.
         controller.grailsApplication = new Expando(config: [nimble: [localusers: [registration: [enabled: true]]]])

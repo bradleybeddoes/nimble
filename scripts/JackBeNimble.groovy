@@ -21,27 +21,31 @@ includeTargets << grailsScript("_GrailsArgParsing")
 
 target ( default : 'Sets up a new project with a common Nimble base environment ready for customization' ) {
 
-  def user, profile
-  (user,profile) = parseArgs()
+  def user, profile, pack, packdir
+  (pack, user, profile) = parseArgs()
+  packdir = pack.replace('.', '/')
   
-  def userbinding = [ 'classname':user, 'baseclassname':'User' ]
-  def profilebinding = [ 'classname':profile, 'baseclassname':'Profile' ]
+  def userbinding = [ 'pack':pack, 'classname':user, 'baseclassname':'UserBase' ]
+  def profilebinding = [ 'pack':pack, 'classname':profile, 'baseclassname':'ProfileBase' ]
+  def configbinding = [ 'pack':pack, 'user':user, 'profile':profile ]
 
   def engine = new SimpleTemplateEngine()
   def usertemplate = engine.createTemplate(new FileReader("${nimblePluginDir}/src/templates/domain/Base.groovy")).make(userbinding)
   def profiletemplate = engine.createTemplate(new FileReader("${nimblePluginDir}/src/templates/domain/Base.groovy")).make(profilebinding)
-
+  def configtemplate = engine.createTemplate(new FileReader("${nimblePluginDir}/src/templates/conf/NimbleConfig.groovy")).make(configbinding)
+  
   echo(" Jack be nimble \n Jack be quick \n Jack jump over \n The candlestick.")
 
   // Config
-  copy(file:"${nimblePluginDir}/src/templates/conf/NimbleConfig.groovy", tofile: "${basedir}/grails-app/conf/NimbleConfig.groovy", overwrite: false)
+  new File("${basedir}/grails-app/conf/NimbleConfig.groovy").write(configtemplate.toString())
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleBootStrap.groovy", tofile: "${basedir}/grails-app/conf/NimbleBootStrap.groovy", overwrite: false)
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleSecurityFilters.groovy", tofile: "${basedir}/grails-app/conf/NimbleSecurityFilters.groovy", overwrite: false)
   copy(file:"${nimblePluginDir}/src/templates/conf/NimbleUrlMappings.groovy", tofile: "${basedir}/grails-app/conf/NimbleUrlMappings.groovy", overwrite: false)
 
   // Domain Objects
-  new File("${basedir}/grails-app/domain/${user}.groovy").write(usertemplate.toString())
-  new File("${basedir}/grails-app/domain/${profile}.groovy").write(profiletemplate.toString())
+  mkdir(dir:"${basedir}/grails-app/domain/${packdir}")
+  new File("${basedir}/grails-app/domain/${packdir}/${user}.groovy").write(usertemplate.toString())
+  new File("${basedir}/grails-app/domain/${packdir}/${profile}.groovy").write(profiletemplate.toString())
 
   // Templates
   copy( todir: "${basedir}/grails-app/views/templates/nimble" , overwrite: false ) { fileset ( dir : "${nimblePluginDir}/grails-app/views/templates/nimble" ) }
@@ -55,13 +59,11 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
 def parseArgs() {
 	args = args ? args.split('\n') : []
     switch (args.size()) {
-            case 0:
-            	    return [ "User", "Profile" ]
-                    break
-            case 2:
-                    println "Setting up nimble with custom User domain class: ${args[0]}"
-                    println "Setting up nimble with custom Profile domain class: ${args[1]}"
-                    return [args[0], args[1]]
+            case 3:
+            		println "Using package ${args[0]} to create custom classes"
+                    println "Setting up nimble with custom User domain class: ${args[1]}"
+                    println "Setting up nimble with custom Profile domain class: ${args[2]}"
+                    return [args[0], args[1], args[2]]
                     break
             default:
                 	usage()
@@ -70,7 +72,7 @@ def parseArgs() {
 }
 
 private void usage() {
-	println 'Usage: grails jack-be-nimble <User class name> <Profile class name>'
+	println 'Usage: grails jack-be-nimble <Package> <User class name> <Profile class name>'
 	System.exit(1)
 }
  

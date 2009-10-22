@@ -34,7 +34,7 @@ class LoginRecordTests extends GrailsUnitTestCase {
         remoteHost = 'remote.host'
         userAgent = 'userAgent'
         dateCreated = new Date()
-        owner = new User()
+        owner = new UserBase()
     }
 
     protected void tearDown() {

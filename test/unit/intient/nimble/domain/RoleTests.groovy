@@ -44,9 +44,9 @@ class RoleTests extends GrailsUnitTestCase {
         name = 'name'
         protect = true
 
-        user1 = new User()
-        user2 = new User()
-        user3 = new User()
+        user1 = new UserBase()
+        user2 = new UserBase()
+        user3 = new UserBase()
 
         group1 = new Group()
         group2 = new Group()

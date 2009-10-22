@@ -17,11 +17,11 @@
 package intient.nimble.controller
 
 import intient.nimble.domain.Group
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Role
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
-import intient.nimble.domain.Profile
+import intient.nimble.domain.ProfileBase
 import org.apache.shiro.authz.annotation.RequiresRoles
 
 /**
@@ -194,7 +194,7 @@ class GroupController {
 
   def addmember = {
     def group = Group.get(params.id)
-    def user = User.get(params.userID)
+    def user = UserBase.get(params.userID)
 
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
@@ -220,7 +220,7 @@ class GroupController {
 
   def removemember = {
     def group = Group.get(params.id)
-    def user = User.get(params.userID)
+    def user = UserBase.get(params.userID)
 
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
@@ -259,8 +259,8 @@ class GroupController {
 
     log.debug("Performing search for users matching $q")
 
-    def users = User.findAllByUsernameIlike(q)
-    def profiles = Profile.findAllByFullNameIlikeOrEmailIlike(q, q)
+    def users = UserBase.findAllByUsernameIlike(q)
+    def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
     def nonMembers = []
 
     users.each {

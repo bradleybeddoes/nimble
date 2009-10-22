@@ -15,12 +15,14 @@
  *  limitations under the License.
  */
  
+
+import intient.nimble.InstanceGenerator
+
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 import intient.nimble.domain.Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
-import intient.nimble.domain.Profile
 
 /*
  * Allows applications using Nimble to undertake process at BootStrap that are related to Nimbe provided objects
@@ -45,13 +47,13 @@ class NimbleBootStrap {
     // Execute any custom Nimble related BootStrap for your application below
 
     // Create example User account
-    def user = new User()
+    def user = InstanceGenerator.user()
     user.username = "user"
     user.pass = 'useR123!'
     user.passConfirm = 'useR123!'
     user.enabled = true
 
-    Profile userProfile = new Profile()
+    def userProfile = InstanceGenerator.profile()
     userProfile.fullName = "Test User"
     userProfile.owner = user
     user.profile = userProfile
@@ -66,13 +68,13 @@ class NimbleBootStrap {
 
     // Create example Administrative account
     def admins = Role.findByName(AdminsService.ADMIN_ROLE)
-    def admin = new User()
+    def admin = InstanceGenerator.user()
     admin.username = "admin"
     admin.pass = "admiN123!"
     admin.passConfirm = "admiN123!"
     admin.enabled = true
 
-    Profile adminProfile = new Profile()
+    def adminProfile = InstanceGenerator.profile()
     adminProfile.fullName = "Administrator"
     adminProfile.owner = admin
     admin.profile = adminProfile

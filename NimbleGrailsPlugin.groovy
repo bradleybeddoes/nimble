@@ -22,12 +22,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.apache.shiro.authc.credential.Sha256CredentialsMatcher
 import org.apache.shiro.SecurityUtils
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 
 class NimbleGrailsPlugin {
 
     // the plugin version
-    def version = "0.2"
+    def version = "0.3-SNAPSHOT"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
@@ -101,7 +101,7 @@ class NimbleGrailsPlugin {
         application.controllerClasses?.each { controller ->
             controller.metaClass.getAuthenticatedUser = {
             	def principal = SecurityUtils.getSubject()?.getPrincipal()
-            	def authUser = principal ? User.get(principal) : null
+            	def authUser = principal ? UserBase.get(principal) : null
                 if (!authUser) {
                     log.error("Authenticated user was not able to be obtained from metaclass")
                     return null
@@ -115,7 +115,7 @@ class NimbleGrailsPlugin {
         application.serviceClasses?.each { service ->
             service.metaClass.getAuthenticatedUser = {
             	def principal = SecurityUtils.getSubject()?.getPrincipal()
-                def authUser = principal ? User.get(principal) : null
+                def authUser = principal ? UserBase.get(principal) : null
                 if (!authUser) {
                     log.error("Authenticated user was not able to be obtained from metaclass")
                     return null

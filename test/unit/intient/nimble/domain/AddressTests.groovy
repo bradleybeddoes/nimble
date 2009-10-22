@@ -46,7 +46,7 @@ class AddressTests extends GrailsUnitTestCase {
         postCode = '1111'
         country = 'australia'
         category = Address.HOME
-        profile = new Profile()
+        profile = new ProfileBase()
     }
 
     protected void tearDown() {

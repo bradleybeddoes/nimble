@@ -21,7 +21,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash
 import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.Role
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Group
 import intient.nimble.domain.LoginRecord
 import intient.nimble.domain.Permission
@@ -49,7 +49,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def enableUser(User user) {
+    def enableUser(UserBase user) {
         user.enabled = true
 
         def savedUser = user.save()
@@ -73,7 +73,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def disableUser(User user) {
+    def disableUser(UserBase user) {
         user.enabled = false
 
         def savedUser = user.save()
@@ -97,7 +97,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def enableRemoteApi(User user) {
+    def enableRemoteApi(UserBase user) {
         user.remoteapi = true
 
         def savedUser = user.save()
@@ -121,7 +121,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def disableRemoteApi(User user) {
+    def disableRemoteApi(UserBase user) {
         user.remoteapi = false
 
         def savedUser = user.save()
@@ -148,7 +148,7 @@ class UserService {
      *
      * @return The user object, with errors populated if change problem occured
      */
-    def changePassword(User user) {
+    def changePassword(UserBase user) {
         user.validate()
         validatePass(user)
 
@@ -179,7 +179,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def createUser(User user) {
+    def createUser(UserBase user) {
         user.validate()
 
         if (!user.external) {
@@ -254,7 +254,7 @@ class UserService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def updateUser(User user) {
+    def updateUser(UserBase user) {
 
         def updatedUser = user.save()
         if (updatedUser) {
@@ -278,7 +278,7 @@ class UserService {
      * @pre Passed user object must have been validated to ensure
      * that hibernate does not auto persist the object to the repository prior to service invocation
      */
-    def generateValidationHash(User user) {
+    def generateValidationHash(UserBase user) {
         String input = user.username + user.profile?.fullName + user.profile?.email + System.currentTimeMillis()
 
         def enc = new Sha256Hash(input)
@@ -294,7 +294,7 @@ class UserService {
      * @pre Passed user object must have been validated to ensure
      * that hibernate does not auto persist the object to the repository prior to service invocation
      */
-    def setRandomPassword(User user) {
+    def setRandomPassword(UserBase user) {
         String input = user.username + user.profile?.fullName + user.profile?.email + System.currentTimeMillis()
 
         def enc = new Sha256Hash(input)
@@ -323,7 +323,7 @@ class UserService {
      * Stores details of a successful login by a user.
      */
     def createLoginRecord(HttpServletRequest request) {
-        def user = User.get(SecurityUtils.getSubject()?.getPrincipal())
+        def user = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
         if(!user)
         {
             log.error("Attempt to create login record for unauthenticated session")
@@ -369,7 +369,7 @@ class UserService {
      * object. If the pass is valid it is encrypted and set as the value of user.passwd and
      * added to the password history
      */
-    private def validatePass(User user) {
+    private def validatePass(UserBase user) {
         log.debug("Validating user entered password")
 
         if (user.pass == null || user.pass.length() < grailsApplication.config.nimble.passwords.minlength) {

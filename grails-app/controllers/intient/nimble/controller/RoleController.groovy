@@ -20,8 +20,8 @@ import intient.nimble.domain.Role
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Group
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 
 /**
  * Manages Nimble roles including addition/removal of users, groups and permissions
@@ -210,7 +210,7 @@ class RoleController {
 
   def addmember = {
     def role = Role.get(params.id)
-    def user = User.get(params.userID)
+    def user = UserBase.get(params.userID)
 
     if (!role) {
       log.warn("Role identified by id '$params.id' was not located")
@@ -238,7 +238,7 @@ class RoleController {
 
   def removemember = {
     def role = Role.get(params.id)
-    def user = User.get(params.userID)
+    def user = UserBase.get(params.userID)
 
     if (!role) {
       log.warn("Role identified by id '$params.id' was not located")
@@ -325,8 +325,8 @@ class RoleController {
     def q = "%" + params.q + "%"
     log.debug("Performing search for users matching $q")
 
-    def users = User.findAllByUsernameIlike(q)
-    def profiles = Profile.findAllByFullNameIlikeOrEmailIlike(q, q)
+    def users = UserBase.findAllByUsernameIlike(q)
+    def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
     def nonMembers = []
 
     def role = Role.get(params.id)

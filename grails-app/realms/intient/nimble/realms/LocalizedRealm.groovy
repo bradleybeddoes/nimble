@@ -17,7 +17,7 @@
 package intient.nimble.realms
 
 import intient.nimble.domain.Permission
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import org.apache.shiro.authz.permission.AllPermission
 import org.apache.shiro.authz.permission.WildcardPermission
 import org.apache.shiro.authc.*
@@ -49,7 +49,7 @@ class LocalizedRealm {
       throw new AccountException('Null usernames are not supported by this realm.')
     }
 
-    def user = User.findByUsername(username)
+    def user = UserBase.findByUsername(username)
     if (!user) {
       throw new UnknownAccountException("No account found for user [${username}]")
     }
@@ -77,7 +77,7 @@ class LocalizedRealm {
 
     try {
       session = sessionFactory.openSession()
-      def user = session.get(User.class, new Long(principal))
+      def user = session.get(UserBase.class, new Long(principal))
 
       if (user) {
         log.debug("Determining if user [$user.id]$user.username is assigned role $roleName")
@@ -126,7 +126,7 @@ class LocalizedRealm {
 
     try {
       session = sessionFactory.openSession()
-      def user = session.get(User.class, new Long(principal))
+      def user = session.get(UserBase.class, new Long(principal))
 
       log.debug("Determining if user [$user.id]$user.username is assigned multiple roles")
 
@@ -194,7 +194,7 @@ class LocalizedRealm {
 
     try {
       session = sessionFactory.openSession()
-      def user = session.get(User.class, new Long(principal))
+      def user = session.get(UserBase.class, new Long(principal))
 
       log.debug("Determining if permissions assigned to user [$user.id]$user.username contains a permission that implies $requiredPermission")
       // Try all directly assigned permissions

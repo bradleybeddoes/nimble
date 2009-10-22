@@ -16,9 +16,6 @@
  */
 package intient.nimble.domain
 
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
-
 class Address {
 
     public static String HOME = "Home"
@@ -38,7 +35,7 @@ class Address {
 
     String category
 
-    static belongsTo = [owner:Profile]
+    static belongsTo = [owner:ProfileBase]
 
     static constraints = {
         line1(nullable: false, blank: false)

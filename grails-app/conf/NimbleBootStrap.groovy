@@ -15,6 +15,8 @@
  *  limitations under the License.
  */
 
+import intient.nimble.InstanceGenerator
+
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Role
 
@@ -22,8 +24,6 @@ import intient.nimble.domain.Group
 import intient.nimble.service.AdminsService
 import intient.nimble.service.UserService
 
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
 import intient.nimble.domain.Phone
 import intient.nimble.domain.Gender
 import intient.nimble.domain.Address
@@ -59,7 +59,7 @@ class NimbleBootStrap {
 
         // Create example User accounts
         for (i in 0..15) {
-            def user = new User()
+            def user = InstanceGenerator.user()
             user.username = "user$i"
 
             user.pass = 'useR123!'
@@ -67,7 +67,7 @@ class NimbleBootStrap {
 
             user.enabled = true
 
-            Profile userProfile = new Profile()
+            def userProfile = InstanceGenerator.profile()
             userProfile.fullName = "User $i"
             userProfile.email = "user$i@test.user"
             userProfile.owner = user
@@ -77,21 +77,23 @@ class NimbleBootStrap {
         }
 
         //Create a full featured user account
-        def user = new User()
+        def user = InstanceGenerator.user()
         user.username = "beddoes"
         user.pass = "beddoeS123!"
         user.passConfirm = "beddoeS123!"
         user.enabled = true
+        user.blah = "BLAh"
 
-        Profile userProfile = new Profile()
+        def userProfile = InstanceGenerator.profile()
         userProfile.fullName = "Bradley Beddoes"
         userProfile.email = "beddoes@intient.com"
         userProfile.bio = "Director and Lead Software Architect at Intient Pty Ltd"
         userProfile.dob = new Date()
         userProfile.gender = Gender.Male
         userProfile.owner = user
+        userProfile.blah = "Mizterz profilez blah"
         
-        def workPh = new Phone(number:'+61 7 3102 4560  ', type: PhoneType.Business)
+        def workPh = new Phone(number:'+61 7 3102 4560', type: PhoneType.Business)
         def mobilePh = new Phone(number:'+61 403 768 802', type: PhoneType.Mobile)
         userProfile.addToPhoneNumbers(workPh)
         userProfile.addToPhoneNumbers(mobilePh)
@@ -109,13 +111,13 @@ class NimbleBootStrap {
         userService.createUser(user)
 
         // Create example Administrative account
-        def admin = new User()
+        def admin = InstanceGenerator.user()
         admin.username = "admin"
         admin.pass = "admiN123!"
         admin.passConfirm = "admiN123!"
         admin.enabled = true
 
-        Profile adminProfile = new Profile()
+        def adminProfile = InstanceGenerator.profile()
         adminProfile.fullName = "Administrator"
         adminProfile.email = "test@test.com"
         adminProfile.owner = admin

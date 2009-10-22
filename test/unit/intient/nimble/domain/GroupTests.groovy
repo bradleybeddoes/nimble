@@ -41,8 +41,8 @@ class GroupTests extends GrailsUnitTestCase {
         description = 'description'
         protect = true
 
-        user1 = new User()
-        user2 = new User()
+        user1 = new UserBase()
+        user2 = new UserBase()
 
         role1 = new Role()
         role2 = new Role()

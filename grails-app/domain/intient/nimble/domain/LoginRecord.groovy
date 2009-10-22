@@ -30,7 +30,7 @@ class LoginRecord {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [owner: User]
+    static belongsTo = [owner: UserBase]
 
     static constraints = {
         remoteAddr(nullable: false, blank: false)

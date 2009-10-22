@@ -17,7 +17,7 @@
 import intient.nimble.service.FacebookService
 import intient.nimble.auth.WildcardPermission
 import org.apache.shiro.SecurityUtils
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.service.AdminsService
 
 /**
@@ -37,7 +37,7 @@ class NimbleAuthTagLib {
         Long id = SecurityUtils.getSubject()?.getPrincipal()
 
         if (id) {
-            def user = User.get(id)
+            def user = UserBase.get(id)
 
             if (user)
             out << user.username
@@ -51,7 +51,7 @@ class NimbleAuthTagLib {
         Long id = SecurityUtils.getSubject()?.getPrincipal()
 
         if (id) {
-            def user = User.get(id)
+            def user = UserBase.get(id)
 
             if (user?.profile?.fullName)
             out << user.profile.fullName
@@ -65,7 +65,7 @@ class NimbleAuthTagLib {
         Long id = SecurityUtils.getSubject()?.getPrincipal()
 
         if (id) {
-            def user = User.get(id)
+            def user = UserBase.get(id)
 
             if (user) {
                 def mkp = new groovy.xml.MarkupBuilder(out)

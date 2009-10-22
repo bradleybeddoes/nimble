@@ -1,3 +1,6 @@
+
+grails-app/domain/intient/test/*
+
 .DS_Store
 .sass-cache
 classes
@@ -16,3 +19,4 @@ unzipped/*
 docs/*
 *.zip
 plugin.xml
+

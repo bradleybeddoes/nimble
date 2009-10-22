@@ -36,7 +36,7 @@ class StatusTests extends GrailsUnitTestCase {
         url = new Url()
         dateCreated = new Date()
         lastUpdated = new Date()
-        owner = new Profile()
+        owner = new ProfileBase()
     }
 
     protected void tearDown() {

@@ -25,7 +25,7 @@ import intient.nimble.domain.FederationProvider
 import intient.nimble.domain.SocialMediaService
 import intient.nimble.domain.SocialMediaAccount
 import intient.nimble.domain.Url
-import intient.nimble.domain.Profile
+import intient.nimble.domain.ProfileBase
 
 /**
  * Provides methods for interacting with Facebook API, currently authentication focused

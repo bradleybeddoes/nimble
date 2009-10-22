@@ -32,7 +32,7 @@ class SocialMediaAccount {
     Url profile = null
     SocialMediaService service
 
-    static belongsTo = [owner: Profile]
+    static belongsTo = [owner: ProfileBase]
 
     static hasMany = [
         feeds: Feed,

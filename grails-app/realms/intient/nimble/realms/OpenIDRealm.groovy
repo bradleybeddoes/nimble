@@ -19,8 +19,8 @@ package intient.nimble.realms
 import org.openid4java.consumer.ConsumerManager
 import org.openid4java.discovery.DiscoveryInformation
 import org.openid4java.message.AuthRequest
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 import intient.nimble.service.OpenIDService
 import intient.nimble.domain.FederationProvider
 import intient.nimble.auth.OpenIDToken
@@ -57,14 +57,14 @@ public class OpenIDRealm {
     log.info "Attempting to authenticate user via OpenID"
 
     def userID = authToken.getUserID()
-    def user = User.findByUsername(userID + OpenIDService.federationProviderDiscriminator)
+    def user = UserBase.findByUsername(userID + OpenIDService.federationProviderDiscriminator)
     if (!user) {
       log.info("No account representing user $userID$OpenIDService.federationProviderDiscriminator exists")
       def openidFederationProvider = FederationProvider.findByUid(OpenIDService.federationProviderUid)
 
       if (openidFederationProvider && openidFederationProvider.autoProvision) {
 
-        User newUser = InstanceGenerator.user()
+        UserBase newUser = InstanceGenerator.user()
         newUser.username = userID + OpenIDService.federationProviderDiscriminator
         newUser.enabled = true
         newUser.external = true

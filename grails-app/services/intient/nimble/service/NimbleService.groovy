@@ -18,7 +18,7 @@ package intient.nimble.service
 
 import org.apache.shiro.SecurityUtils
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Role
 
 /**

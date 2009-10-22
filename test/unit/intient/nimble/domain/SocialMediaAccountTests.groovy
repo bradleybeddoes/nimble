@@ -41,7 +41,7 @@ class SocialMediaAccountTests extends GrailsUnitTestCase {
         accountID = '123456'
         profile = new Url()
         service = new SocialMediaService()
-        owner = new Profile()
+        owner = new ProfileBase()
 
         feed1 = new Feed()
         feed2 = new Feed()

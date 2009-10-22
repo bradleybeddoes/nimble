@@ -16,7 +16,7 @@
  */
 package intient.nimble.service
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 
 
 /**
@@ -32,7 +32,7 @@ class PermissionService {
    * Assigns a permission object to an owner and performs checks to ensure permission is correctly applied
    *
    * @param permission The populated permission object to persist
-   * @param owner An object that extends PermissionOwner (e.g. User, Group, Role)
+   * @param owner An object that extends PermissionOwner (e.g. UserBase, Group, Role)
    *
    * @return A permission object. The saved object is all was successful or the permission object with error details if persistence fails.
    * 

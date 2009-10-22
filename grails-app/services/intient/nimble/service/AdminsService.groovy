@@ -19,7 +19,7 @@ package intient.nimble.service
 import org.apache.shiro.authz.permission.AllPermission
 
 import intient.nimble.domain.Role
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Role
 import intient.nimble.domain.Permission
 
@@ -46,7 +46,7 @@ class AdminsService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def add(User user) {
+    def add(UserBase user) {
         // Grant administrative role
         def adminRole = Role.findByName(AdminsService.ADMIN_ROLE)
 
@@ -100,7 +100,7 @@ class AdminsService {
      *
      * @throws RuntimeException When internal state requires transaction rollback
      */
-    def remove(User user) {
+    def remove(UserBase user) {
         def adminRole = Role.findByName(AdminsService.ADMIN_ROLE)
 
         if (!adminRole) {

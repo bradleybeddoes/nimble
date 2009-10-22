@@ -18,14 +18,12 @@ package intient.nimble.domain
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.Profile
-
 class Phone {
 	
     String number
     PhoneType type
 
-    static belongsTo = [owner:Profile]
+    static belongsTo = [owner:ProfileBase]
     
     static mapping = {
         sort type:'desc'

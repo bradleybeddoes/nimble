@@ -31,7 +31,7 @@ class Status {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [owner:Profile]
+    static belongsTo = [owner:ProfileBase]
     
     static constraints = {
         status(nullable:false, blank:false)

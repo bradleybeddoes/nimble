@@ -16,14 +16,14 @@
  */
 package intient.nimble.controller
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Role
 import intient.nimble.service.AdminsService
 import intient.nimble.domain.LevelPermission
 import intient.nimble.domain.Permission
 import intient.nimble.domain.Group
 import intient.nimble.domain.FederationProvider
-import intient.nimble.domain.Profile
+import intient.nimble.domain.ProfileBase
 import intient.nimble.domain.LoginRecord
 
 import intient.nimble.InstanceGenerator
@@ -57,11 +57,11 @@ class UserController {
     }
 
     log.debug("Listing users")
-    [users: User.list(params)]
+    [users: UserBase.list(params)]
   }
 
   def show = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -76,7 +76,7 @@ class UserController {
   }
 
   def edit = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -91,7 +91,7 @@ class UserController {
   }
 
   def update = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -158,7 +158,7 @@ class UserController {
   }
 
   def enable = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
@@ -184,7 +184,7 @@ class UserController {
   }
 
   def disable = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
@@ -209,7 +209,7 @@ class UserController {
   }
 
   def enableapi = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
@@ -234,7 +234,7 @@ class UserController {
   }
 
   def disableapi = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
 
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
@@ -260,7 +260,7 @@ class UserController {
   }
 
   def changepassword = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -274,7 +274,7 @@ class UserController {
       log.warn("Attempt to change password on user [$user.id]$user.username that is externally managed denied")
 
       flash.type = "error"
-      flash.message = "intient.nimble.domain.User account is managed by external authentication source, can't change password"
+      flash.message = "User account is managed by external authentication source, can't change password"
       redirect action: show, id: user.id
     }
 
@@ -283,7 +283,7 @@ class UserController {
   }
 
   def changelocalpassword = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -298,7 +298,7 @@ class UserController {
   }
 
   def savepassword = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -342,7 +342,7 @@ class UserController {
       return
     }
 
-    def users = User.findAllByUsername(params?.username)
+    def users = UserBase.findAllByUsername(params?.username)
 
     if (users != null && users.size() > 0) {
       flash.message = "User already exists for ${params.username}"
@@ -354,7 +354,7 @@ class UserController {
   }
 
   def listlogins = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -377,7 +377,7 @@ class UserController {
 
   def listgroups = {
 
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -394,7 +394,7 @@ class UserController {
     def q = "%" + params.q + "%"
     log.debug("Performing search for groups matching $q")
 
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -418,7 +418,7 @@ class UserController {
   }
 
   def grantgroup = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     def group = Group.get(params.groupID)
 
     if (!user) {
@@ -452,7 +452,7 @@ class UserController {
   }
 
   def removegroup = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     def group = Group.get(params.groupID)
 
     if (!user) {
@@ -488,7 +488,7 @@ class UserController {
 
   def listpermissions = {
 
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -502,7 +502,7 @@ class UserController {
   }
 
   def createpermission = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -538,7 +538,7 @@ class UserController {
   }
 
   def removepermission = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -566,7 +566,7 @@ class UserController {
 
   def listroles = {
 
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -583,7 +583,7 @@ class UserController {
     def q = "%" + params.q + "%"
     log.debug("Performing search for roles matching $q")
 
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id '$params.id' was not located")
 
@@ -608,7 +608,7 @@ class UserController {
   }
 
   def grantrole = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     def role = Role.get(params.roleID)
 
     if (!user) {
@@ -642,7 +642,7 @@ class UserController {
   }
 
   def removerole = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     def role = Role.get(params.roleID)
 
     if (!user) {

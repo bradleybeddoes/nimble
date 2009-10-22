@@ -18,8 +18,8 @@ package intient.nimble.controller
 
 import org.apache.shiro.SecurityUtils
 
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 import intient.nimble.domain.Status
 import intient.nimble.domain.Phone
 
@@ -38,11 +38,11 @@ class ProfileController {
 
         if(params.id == null) {
             log.debug("Didn't locate id in profile request, attempting to load profile of logged in user")
-            user = User.get(SecurityUtils.getSubject()?.getPrincipal())     
+            user = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())     
         }
         else{
             log.debug("Attempting to load profile for user id $params.id")
-            user = User.get(params.id)
+            user = UserBase.get(params.id)
         }
 
         if (!user) {
@@ -60,11 +60,11 @@ class ProfileController {
 
         if(params.id == null) {
             log.debug("Didn't locate id in profile request, attempting to load profile of logged in user")
-            user = User.get(SecurityUtils.getSubject()?.getPrincipal())
+            user = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
         }
         else{
             log.debug("Attempting to load profile for user id $params.id")
-            user = User.get(params.id)
+            user = UserBase.get(params.id)
         }
 
         if (!user) {
@@ -135,7 +135,7 @@ class ProfileController {
     }
 
     def displayphoto = {
-        def user = User.get(params.id)
+        def user = UserBase.get(params.id)
 
         if(!user){
             log.warn("User was not located when attempting to show profile photo for $params.id")
@@ -284,7 +284,7 @@ class ProfileController {
         if(!user)
         return
 
-        def existingUserProfile = Profile.findByEmail(params.newemail)
+        def existingUserProfile = ProfileBase.findByEmail(params.newemail)
         if(existingUserProfile) {
             log.info("Attempt by user [$user.id]$user.username to utilize email $params.newemail but this is in use by user [$existingUserProfile.owner.id]$existingUserProfile.owner.username")
             user.profile.errors.rejectValue('email', 'user.profile.email.duplicate', 'Email address is already assocated with another account')
@@ -379,15 +379,15 @@ class ProfileController {
         return
     }
 
-    private User modificationPermitted(def id) {
-        def authUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+    private UserBase modificationPermitted(def id) {
+        def authUser = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
         if (!authUser) {
             log.error("Authenticated user was not able to be obtained when performing profile action")
             response.sendError(403)
             return null
         }
 
-        def user = User.get(id)
+        def user = UserBase.get(id)
         if (!user) {
             log.warn("User was not located when attempting to edit profile")
             response.sendError(403)
@@ -398,7 +398,7 @@ class ProfileController {
             return user
         }
         else {
-            log.warn("Security model denied attempt by user [$authUser.id]$authUser.username to modify profile of user [$user.id]$user.username")
+            log.warn("Security model denied attempt by user [$authuUser.id]$authuUser.username to modify profile of user [$user.id]$user.username")
             response.sendError(403)
             return null
         }

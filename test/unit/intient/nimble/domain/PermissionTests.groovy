@@ -36,7 +36,7 @@ class PermissionTests extends GrailsUnitTestCase {
         actions = 'actions'
         target = 'target'
         managed = false
-        owner = new User(username: "dilbert")
+        owner = new UserBase(username: "dilbert")
     }
 
     protected void tearDown() {

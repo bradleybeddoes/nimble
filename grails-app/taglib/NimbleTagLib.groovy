@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application
@@ -158,7 +158,7 @@ class NimbleTagLib {
 
         def id = attrs.id
         def size = attrs.size
-        def user = User.get(id)
+        def user = UserBase.get(id)
 
         if(user) {
             out << render(template: "/templates/profile/photo", contextPath: pluginContextPath, model: [profile: user.profile, size:size])
@@ -184,7 +184,7 @@ class NimbleTagLib {
 
         def id = attrs.id
         def clear = attrs.clear ?:false
-        def user = User.get(id)
+        def user = UserBase.get(id)
 
         if(user) {
             out << render(template: "/templates/nimble/profile/currentstatus", model: [profile: user.profile, clear:clear])

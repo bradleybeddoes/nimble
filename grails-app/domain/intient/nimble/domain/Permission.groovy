@@ -41,11 +41,11 @@ class Permission implements Serializable {
     //    http://jira.codehaus.org/browse/GRAILS-5238
     //
     // Once that's fixed, these three fields can be removed.
-    User user
+    UserBase user
     Role role
     Group group
 
-    static belongsTo = [user: User, role: Role, group:Group]
+    static belongsTo = [user: UserBase, role: Role, group:Group]
 
     static transients = [ "owner" ]
 
@@ -65,7 +65,7 @@ class Permission implements Serializable {
     }
 
     def setOwner (def owner) {
-        if (owner instanceof User)
+        if (owner instanceof UserBase)
         this.user = owner
 
         if (owner instanceof Role)

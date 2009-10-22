@@ -72,6 +72,11 @@ nimble {
               "mail.smtp.socketFactory.fallback": "false"]
         }
     }
+
+    implementation {
+    	user = "${pack}.${user}"
+    	profile = "${pack}.${profile}"
+    }
 }
 
 environments {

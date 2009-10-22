@@ -30,7 +30,7 @@ class PhoneTests extends GrailsUnitTestCase {
         super.setUp()
         number = '1234567890'
         type = PhoneType.Mobile
-        owner = new Profile()
+        owner = new ProfileBase()
     }
 
     protected void tearDown() {

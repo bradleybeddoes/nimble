@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.domain.User" %>
+<%@ page import="intient.nimble.domain.UserBase" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Users</title>
@@ -51,7 +51,7 @@
   </table>
 
   <div class="paginateButtons">
-    <g:paginate total="${User.count()}"/>
+    <g:paginate total="${UserBase.count()}"/>
   </div>
 
 </div>

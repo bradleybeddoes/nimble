@@ -26,9 +26,9 @@ import grails.converters.JSON
 
 import intient.nimble.auth.AccountCreatedException
 
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.FederationProvider
-import intient.nimble.domain.Profile
+import intient.nimble.domain.ProfileBase
 import intient.nimble.domain.SocialMediaAccount
 import intient.nimble.domain.SocialMediaService
 import intient.nimble.domain.Url
@@ -68,7 +68,7 @@ public class FacebookRealm {
 
             log.info("Facebook security verification succeeded for [$authToken.userID]$userID")
 
-            def user = User.findByUsername(userID + FacebookService.federationProviderDiscriminator)
+            def user = UserBase.findByUsername(userID + FacebookService.federationProviderDiscriminator)
             if (!user) {
                 log.info("No account representing user $userID$FacebookService.federationProviderDiscriminator exists")
                 def facebookFederationProvider = FederationProvider.findByUid(FacebookService.federationProviderUid)
@@ -82,7 +82,7 @@ public class FacebookRealm {
                     def fbProfiles = facebookClient.users_getInfo(userList, EnumSet.of(ProfileField.NAME))
 
                     if (fbProfiles.length() == 1) {
-                        User newUser = InstanceGenerator.user()
+                        UserBase newUser = InstanceGenerator.user()
                         newUser.username = userID + FacebookService.federationProviderDiscriminator
                         newUser.enabled = true
                         newUser.external = true

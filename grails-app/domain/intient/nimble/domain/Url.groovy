@@ -33,7 +33,7 @@ class Url {
     String altText
     Language lang
 
-    static belongsTo = [Details, Feed, Profile, SocialMediaAccount, SocialMediaService, Status]
+    static belongsTo = [Details, Feed, ProfileBase, SocialMediaAccount, SocialMediaService, Status]
 
     static constraints = {
         name(nullable: true, blank:false)

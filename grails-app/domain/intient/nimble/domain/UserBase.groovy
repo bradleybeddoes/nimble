@@ -18,46 +18,77 @@ package intient.nimble.domain
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.Permission
-import intient.nimble.domain.Role
-import intient.nimble.domain.UserBase
-
 /**
- * Represents a grouping of users in a Nimble based appication
+ * Represents a user within a Nimble Application
  *
  * @author Bradley Beddoes
  */
-class Group {
 
-    String name
-    String description
-    boolean protect = false
+class UserBase {
 
+    String username
+    String passwordHash
+    String actionHash
+
+    boolean enabled
+    boolean external
+    boolean federated
+    boolean remoteapi = false
+
+    FederationProvider federationProvider
+    ProfileBase profile
+
+    Date expiration
     Date dateCreated
     Date lastUpdated
 
+    static belongsTo = [Role, Group]
+
     static hasMany = [
+        passwdHistory: String,
+        loginRecords: LoginRecord,
+        follows: UserBase,
+        followers: UserBase,
         roles: Role,
-        users: UserBase,
+        groups: Group,
         permissions: Permission
     ]
 
-    static mapping = {
-        cache usage: 'read-write', include: 'all'
-        table ConfigurationHolder.config.nimble.tablenames.group
+    static fetchMode = [
+        roles: 'eager',
+        groups: 'eager'
+    ]
 
-        users cache: true
-        roles cache: true
+    static mapping = {
+        sort username:'desc'
+    
+        cache usage: 'read-write', include: 'all'
+        table ConfigurationHolder.config.nimble.tablenames.user
+
+        roles cache: true, cascade: 'none'
+        groups cache: true, cascade: 'none'
         permissions cache: true, cascade: 'none'
     }
 
     static constraints = {
-        name(blank: false, unique: true, minSize:4, maxSize: 255)
-        description(nullable: true, blank: false)
+        username(blank: false, unique: true, minSize: 4, maxSize: 255)
+        passwordHash(nullable: true, blank: false)
+        actionHash(nullable: true, blank: false)
+   
+        federationProvider(nullable: true)
+        profile(nullable:false)
+        
+        expiration(nullable: true)
 
         dateCreated(nullable: true) // must be true to enable grails
         lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation
 
         permissions(nullable:true)
     }
+
+    // Transients
+    static transients = ['pass', 'passConfirm']
+    String pass
+    String passConfirm
+
 }

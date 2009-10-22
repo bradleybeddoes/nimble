@@ -21,8 +21,8 @@ import org.apache.shiro.SecurityUtils
 
 import intient.nimble.domain.Role
 import intient.nimble.service.AdminsService
-import intient.nimble.domain.User
-import intient.nimble.domain.Profile
+import intient.nimble.domain.UserBase
+import intient.nimble.domain.ProfileBase
 
 /**
  * Manages addition and removal of super administrator role to user accounts
@@ -39,7 +39,7 @@ class AdminsController {
 
   def list = {
     def adminAuthority = Role.findByName(AdminsService.ADMIN_ROLE)
-    def authenticatedUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+    def authenticatedUser = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
 
     if(!authenticatedUser) {
       log.error("Not able to determine currently authenticated user")
@@ -51,7 +51,7 @@ class AdminsController {
   }
 
   def create = {
-    def user = User.get(params.id)
+    def user = UserBase.get(params.id)
     if (!user) {
       log.warn("User identified by id $params.id was not located")
 
@@ -75,8 +75,8 @@ class AdminsController {
   }
 
   def delete = {
-    def user = User.get(params.id)
-    def authenticatedUser = User.get(SecurityUtils.getSubject()?.getPrincipal())
+    def user = UserBase.get(params.id)
+    def authenticatedUser = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
 
     if (!user) {
       log.warn("User identified by id $params.id was not located")
@@ -111,8 +111,8 @@ class AdminsController {
 
     log.debug("Performing search for users matching $q")
 
-    def users = User.findAllByUsernameIlike(q)
-    def profiles = Profile.findAllByFullNameIlikeOrEmailIlike(q, q)
+    def users = UserBase.findAllByUsernameIlike(q)
+    def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
     def nonAdmins = []
 
     def adminAuthority = Role.findByName(AdminsService.ADMIN_ROLE)

@@ -104,15 +104,15 @@ class ProfileTests extends GrailsUnitTestCase {
         histStatus1 = new Status()
         histStatus2 = new Status()
 
-        owner = new User()
+        owner = new UserBase()
     }
 
     protected void tearDown() {
         super.tearDown()
     }
 
-    Profile createValidProfile() {
-        def profile = new Profile(fullName:fullName, nickName:nickName, email:email,
+    ProfileBase createValidProfile() {
+        def profile = new ProfileBase(fullName:fullName, nickName:nickName, email:email,
             nonVerifiedEmail:nonVerifiedEmail, bio:bio, dob:dob, gender:gender, photo:photo,
             photoType:photoType, gravatar:gravatar, currentStatus:currentStatus, dateCreated:dateCreated,
             lastUpdated:lastUpdated, websites:[website1,website2], alternateEmails:[alternateEmail1,alternateEmail2],
@@ -163,7 +163,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testFullNameConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -176,7 +176,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testNickNameConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -189,7 +189,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testEmailConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
         
         assertTrue profile.validate()
@@ -207,7 +207,7 @@ class ProfileTests extends GrailsUnitTestCase {
         assertTrue profile.validate()
 
         def profile2 = createValidProfile()
-        mockForConstraintsTests(Profile, [profile, profile2])
+        mockForConstraintsTests(ProfileBase, [profile, profile2])
 
         assertTrue profile.validate()
         assertTrue profile2.validate()
@@ -219,7 +219,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
     
     void testNonVerifiedEmailConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
         
         assertTrue profile.validate()
@@ -238,7 +238,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testPhotoConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -248,7 +248,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testPhotoTypeConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -261,7 +261,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testCurrentStatusConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -271,7 +271,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testGenderConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -281,7 +281,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testDOBConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -291,7 +291,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testPreferencesConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
         def profile = createValidProfile()
 
         assertTrue profile.validate()
@@ -301,7 +301,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testDateCreatedConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
 
         def profile = createValidProfile()
         assertTrue profile.validate()
@@ -311,7 +311,7 @@ class ProfileTests extends GrailsUnitTestCase {
     }
 
     void testLastUpdatedConstraint() {
-        mockForConstraintsTests(Profile)
+        mockForConstraintsTests(ProfileBase)
 
         def profile = createValidProfile()
         assertTrue profile.validate()

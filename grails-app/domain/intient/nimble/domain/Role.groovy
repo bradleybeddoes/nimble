@@ -19,7 +19,7 @@ package intient.nimble.domain
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 import intient.nimble.domain.Permission
-import intient.nimble.domain.User
+import intient.nimble.domain.UserBase
 import intient.nimble.domain.Group
 
 /**
@@ -29,8 +29,6 @@ import intient.nimble.domain.Group
  */
 class Role {
 
-    // static userClass = { try { Role.class.classLoader.loadClass("User"); true} catch(ClassNotFoundException e){false} }
-
     String name
     String description
     boolean protect = false
@@ -39,9 +37,7 @@ class Role {
     Date lastUpdated
 
     static hasMany = [
-        // This lovely piece of hackery lets us use intient.nimble.domain.user if no User class is found in the default package.
-        //users: userClass() ? Role.class.classLoader.loadClass("User") : User,
-        users: User,
+        users: UserBase,
         groups: Group,
         permissions: Permission
     ]
