@@ -20,7 +20,13 @@ import groovy.text.SimpleTemplateEngine
 includeTargets << grailsScript("_GrailsArgParsing")
 
 target ( default : 'Sets up a new project with a common Nimble base environment ready for customization' ) {
-
+	
+  if(new File("${basedir}/grails-app/conf/NimbleConfig.groovy").exists()) {
+        println "Existing NimbleConfig.groovy located"
+	println "This script does not currently manage Nimble upgrades, please see release documentation for any required changed to NimbleConfig.groovy or other components"
+	System.exit(1)
+  }
+	
   def user, profile, pack, packdir
   (pack, user, profile) = parseArgs()
   packdir = pack.replace('.', '/')
