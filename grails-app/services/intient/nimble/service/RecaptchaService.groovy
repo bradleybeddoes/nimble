@@ -13,6 +13,9 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+ *  
+ *  Adapted from the original Recaptcha plugin by Chad Johnston, cjohnston at megatome dot com
+ *  http://grails.org/ReCaptcha+Plugin
  */
 package intient.nimble.service
 
