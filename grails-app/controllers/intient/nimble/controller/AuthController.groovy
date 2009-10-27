@@ -72,7 +72,7 @@ class AuthController {
         log.info("Attempting to authenticate user, $params.username. RememberMe is $authToken.rememberMe")
 
         try {
-            this.shiroSecurityManager.login(authToken)
+            SecurityUtils.subject.login(authToken)
             this.userService.createLoginRecord(request)
 
             def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"
