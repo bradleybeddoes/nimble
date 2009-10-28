@@ -33,7 +33,7 @@ class NimbleGrailsPlugin {
     def grailsVersion = "1.1 > *"
 
     // the other plugins this plugin depends on
-    def dependsOn = [ shiro: "1.0-SNAPSHOT",
+    def dependsOn = [ shiro: "1.0.1",
         mail: "0.6 > *",
     ]
     
