@@ -56,7 +56,7 @@
 	</g:form>
 	
 </div>
-<g:render template="/templates/admin/deleteroleconfirm"/>
+<g:render template="/templates/admin/deleteroleconfirm" contextPath="${pluginContextPath}"/>
 
 
 </body>
