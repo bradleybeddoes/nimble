@@ -121,8 +121,9 @@ class NimbleGrailsPlugin {
         // Supply functionality to services
         application.serviceClasses?.each { service ->
             service.metaClass.getAuthenticatedUser = {
-            	def principal = SecurityUtils.getSubject()?.getPrincipal()
-
+            	def principal = SecurityUtils.getSubject()?.getPrincipal()		
+				def authUser
+				
                 if(application.config?.nimble?.implementation?.user)
 	    			authUser = NimbleGrailsPlugin.class.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
 	    		else
