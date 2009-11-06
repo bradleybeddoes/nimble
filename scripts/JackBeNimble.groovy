@@ -19,6 +19,15 @@ import groovy.text.SimpleTemplateEngine
 
 includeTargets << grailsScript("_GrailsArgParsing")
 
+USAGE = """
+    jack-be-nimble PKG USER PROFILE
+
+where
+    PKG  = The package name to use for your User and Profile classes.
+    USER = The name of your User domain class (which will be created).
+    PROFILE = The name of your Profile domain class (which will be created).
+"""
+
 target ( default : 'Sets up a new project with a common Nimble base environment ready for customization' ) {
 	
   if(new File("${basedir}/grails-app/conf/NimbleConfig.groovy").exists()) {
@@ -78,7 +87,7 @@ def parseArgs() {
 }
 
 private void usage() {
-	println 'Usage: grails jack-be-nimble <Package> <User class name> <Profile class name>'
+	println "Usage:\n${USAGE}"
 	System.exit(1)
 }
  
