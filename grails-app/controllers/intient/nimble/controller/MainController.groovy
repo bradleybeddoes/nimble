@@ -22,7 +22,10 @@ import org.apache.shiro.SecurityUtils
 class MainController {
 
     def index = {
-      // This relies on the fact that the session is autentication which is enforced by
+	
+	  log.debug 'intient.nimble.MainController - index - executed'
+	
+      // This relies on the fact that the session is authenticated which is enforced by
       // NimbleSecurityFilters, authenticatedUser is auto populated to controllers
       [user:authenticatedUser]
     }

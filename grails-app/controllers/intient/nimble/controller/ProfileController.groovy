@@ -304,6 +304,7 @@ class ProfileController {
 
             sendMail {
                 to user.profile.nonVerifiedEmail
+				from grailsApplication.config.nimble.messaging.mail.from
                 subject grailsApplication.config.nimble.messaging.changeemail.subject
                 html g.render(template: "/templates/nimble/mail/emailchange_email", model: [user: user]).toString()
             }

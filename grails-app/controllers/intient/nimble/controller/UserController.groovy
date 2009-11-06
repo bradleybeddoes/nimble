@@ -36,7 +36,7 @@ import intient.nimble.InstanceGenerator
 class UserController {
 
   static Map allowedMethods = [list: 'GET', show: 'GET', edit: 'GET', create: 'GET', save: 'POST', update: 'POST',
-          save: 'POST', enable: 'POST', disable: 'POST', enableapi: 'POST', disableapi: 'POST',
+          enable: 'POST', disable: 'POST', enableapi: 'POST', disableapi: 'POST',
           changepassword: 'GET', changelocalpassword: 'GET', savepassword: 'POST',
           validusername: 'POST', listgroups: 'GET', searchgroups: 'POST', grantgroup: 'POST',
           removegroup: 'POST', listpermissions: 'GET', createpermission: 'POST', removepermisson: 'POST',

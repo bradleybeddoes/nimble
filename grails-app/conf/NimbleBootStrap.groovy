@@ -82,7 +82,6 @@ class NimbleBootStrap {
         user.pass = "beddoeS123!"
         user.passConfirm = "beddoeS123!"
         user.enabled = true
-        user.blah = "BLAh"
 
         def userProfile = InstanceGenerator.profile()
         userProfile.fullName = "Bradley Beddoes"
@@ -91,7 +90,6 @@ class NimbleBootStrap {
         userProfile.dob = new Date()
         userProfile.gender = Gender.Male
         userProfile.owner = user
-        userProfile.blah = "Mizterz profilez blah"
         
         def workPh = new Phone(number:'+61 7 3102 4560', type: PhoneType.Business)
         def mobilePh = new Phone(number:'+61 403 768 802', type: PhoneType.Mobile)

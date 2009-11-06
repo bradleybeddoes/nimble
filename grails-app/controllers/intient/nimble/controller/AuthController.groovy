@@ -233,7 +233,7 @@ class AuthController {
 
             def authToken = new FacebookConnectToken(currentFBSessionKey, currentFBSessionCookies)
             try {
-                this.shiroSecurityManager.login(authToken)
+                SecurityUtils.subject.login(authToken)
                 this.userService.createLoginRecord(request)
 
                 def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"
@@ -331,7 +331,7 @@ class AuthController {
 
         if (authToken) {
             try {
-                this.shiroSecurityManager.login(authToken)
+                SecurityUtils.subject.login(authToken)
                 this.userService.createLoginRecord(request)
 
                 def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"

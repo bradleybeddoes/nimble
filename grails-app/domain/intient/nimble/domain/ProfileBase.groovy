@@ -19,7 +19,7 @@ package intient.nimble.domain
 import org.apache.shiro.crypto.hash.Md5Hash
 
 /**
- * Represents generic details users may wish to represent about themselves within
+ * Represents generic details users may wish to store about themselves within
  * a given application.
  *
  * @author Bradley Beddoes

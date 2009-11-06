@@ -56,7 +56,8 @@ class UserBase {
 
     static fetchMode = [
         roles: 'eager',
-        groups: 'eager'
+        groups: 'eager',
+	profile: 'eager'
     ]
 
     static mapping = {
