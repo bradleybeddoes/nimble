@@ -1,4 +1,5 @@
 
+grails-app/conf/NimbleBootStrap.groovy
 grails-app/domain/intient/test/*
 
 .DS_Store
