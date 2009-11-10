@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="${createLinkTo(dir: nimblePath, file: '/css/icons.css')}"/>
+<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/icons.css')}"/>

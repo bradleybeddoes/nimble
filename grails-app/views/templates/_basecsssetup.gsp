@@ -1,2 +1,2 @@
-<link rel="stylesheet" href="${createLinkTo(dir: nimblePath, file: '/css/nimble.css')}"/>
+<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/nimble.css')}"/>
 <n:famfamfam />

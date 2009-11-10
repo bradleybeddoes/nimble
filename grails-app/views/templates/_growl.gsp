@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="${createLinkTo(dir: nimblePath, file: '/css/jquery.jgrowl.css')}"/>
-<script type="text/javascript" src="${createLinkTo(dir: nimblePath, file: '/js/jquery/jquery.jgrowl_minimized.js')}">
+<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/jquery.jgrowl.css')}"/>
+<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/jquery/jquery.jgrowl_minimized.js')}">
   
 </script>
 

@@ -7,7 +7,7 @@
   <n:growl/>
   <n:flashgrowl/>
 
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/profile.css')}"/>
+  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/profile.css')}"/>
 
   <script type="text/javascript">
     $(function() {

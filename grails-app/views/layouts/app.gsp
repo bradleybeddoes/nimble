@@ -8,12 +8,12 @@
 
   <n:jquery/>
 
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/screen.css')}"/>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/nimble.css')}"/>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/icons.css')}"/>
+  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/screen.css')}"/>
+  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/nimble.css')}"/>
+  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/icons.css')}"/>
 
   <!--[if IE]>
-  <link rel="stylesheet" href="${createLinkTo(dir: pluginContextPath, file: '/css/ie.css')}"/>
+  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/ie.css')}"/>
   <![endif]-->
 
   <g:layoutHead/>
