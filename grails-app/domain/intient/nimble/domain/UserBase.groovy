@@ -56,8 +56,7 @@ class UserBase {
 
     static fetchMode = [
         roles: 'eager',
-        groups: 'eager',
-	profile: 'eager'
+        groups: 'eager'
     ]
 
     static mapping = {
@@ -65,6 +64,8 @@ class UserBase {
     
         cache usage: 'read-write', include: 'all'
         table ConfigurationHolder.config.nimble.tablenames.user
+
+		profile lazy: false
 
         roles cache: true, cascade: 'none'
         groups cache: true, cascade: 'none'

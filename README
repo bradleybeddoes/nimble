@@ -7,4 +7,4 @@ http://www.intient.com
 
 Using Compass to compile Sass markup
 
-jruby -S compass -w --sass-dir headland/src/sass --css-dir headland/web-app/css
+jruby -S compass -w --sass-dir src/sass --css-dir web-app/css
