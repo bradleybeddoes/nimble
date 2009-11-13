@@ -12,19 +12,19 @@
 .helppopup { margin: 0px; padding: 0px; }
 .helppopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
 .helppopup .content { padding: 18px; }
-.helppopup .buttons { float: right; padding: 18px; }
+.helppopup .buttons { padding: 12px; text-align: center; }
 .helppopup .banner { background-color: #1b4366; color: #fbfbfb; }
 
 .errorpopup { margin: 0px; padding: 0px; }
 .errorpopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
 .errorpopup .content { padding: 18px; }
-.errorpopup .buttons { float: right; padding: 18px; }
+.errorpopup .buttons { padding: 12px; text-align: center; }
 .errorpopup .banner { background-color: #870000; color: #fbfbfb; }
 
 .deletepopup { margin: 0px; padding: 0px; }
 .deletepopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
 .deletepopup .content { padding: 18px; }
-.deletepopup .buttons { float: right; padding: 18px; }
+.deletepopup .buttons { padding: 12px; text-align: center; }
 .deletepopup .banner { background-color: #870000; color: #fbfbfb; }
 
 .login { width: 750px; margin-left: auto; margin-right: auto; }

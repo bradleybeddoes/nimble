@@ -88,7 +88,14 @@ class NimbleTagLib {
      */
     def sessionterminated = {attrs, body ->
         out << render(template: "/templates/sessionterminated", contextPath: pluginContextPath)
-    }    
+    }  
+
+  	/**
+	* Provides markup to render confirmation
+	*/
+	def confirm = {attrs, body ->
+		out << render(template:"/templates/nimble/help/confirmation", contextPath: pluginContextPath)
+	}
 
     /**
      * provides markup to render grails error messages for beans
@@ -214,6 +221,13 @@ class NimbleTagLib {
         def mkp = new groovy.xml.MarkupBuilder(out)
         mkp.img(src: resource(dir: pluginContextPath, file:"images/social/$attrs.size/${attrs.name}.png"), alt: "$attrs.alt")
     }
+
+	def confirmaction = { attrs, body ->
+			if(attrs.action == null || attrs.title == null || attrs.msg == null)
+        		throwTagError("Confirm action tag requires size, name and alt attributes")
+
+			out << "<a href=\"#\" class=\"${attrs.class}\" onClick=\"confirmAction = function() { ${attrs.action} }; wasConfirmed('${attrs.title}', '${attrs.msg}');\">${body()}</a>"
+	}
 
 
 }
