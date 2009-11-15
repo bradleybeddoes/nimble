@@ -1,14 +1,16 @@
 <script type="text/javascript">
-  	var confirmAction = function() { alert('test act'); };
+  	var confirmAction;
 
   	$(function() {		
     	$("#confirmation").hide();
     	$(".confirmationbtn").modal({ hide_on_overlay_click:false});	
   	});
 
-  	function wasConfirmed(title, msg) {
+  	function wasConfirmed(title, msg, accept, cancel) {
 		$("#confirmationtitle").html(title);
 		$("#confirmationcontent").html(msg); 
+		$("#confirmaccept").html(accept);
+		$("#confirmcancel").html(cancel);
 		$(".confirmationbtn").click();
 	}
 </script>
