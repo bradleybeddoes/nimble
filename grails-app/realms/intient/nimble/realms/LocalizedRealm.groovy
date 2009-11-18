@@ -196,7 +196,7 @@ class LocalizedRealm {
       session = sessionFactory.openSession()
       def user = session.get(UserBase.class, new Long(principal))
 
-      log.debug("Determining if permissions assigned to user [$user.id]$user.username contains a permission that implies $requiredPermission")
+      log.debug("Determining if permissions assigned to user [$user.id]$user.username contain a permission that implies $requiredPermission")
       // Try all directly assigned permissions
       for (permission in user.permissions) {
         permitted = validatePermission(permission, requiredPermission)
@@ -206,7 +206,7 @@ class LocalizedRealm {
 
       // If we have no positive match try all permissions assigned to roles
       if (!permitted) {
-        log.debug("Determining if roles assigned to user [$user.id]$user.username contains a permission that implies $requiredPermission")
+        log.debug("Determining if roles assigned to user [$user.id]$user.username contain a permission that implies $requiredPermission")
 
         rolepermsearch:
         for (role in user.roles) {

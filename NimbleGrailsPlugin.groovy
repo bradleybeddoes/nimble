@@ -98,44 +98,23 @@ class NimbleGrailsPlugin {
 
     def doWithDynamicMethods = { ctx ->
 
+		// Supply functionality to filters
+		application.filtersClasses.each { filter ->
+			// Should be used after verified call to 'accessControl'
+			log.debug("Injecting Nimble methods to Filter ${filter}")
+			injectAuthn(filter, application)			
+		}
+
         // Supply functionality to controllers
         application.controllerClasses?.each { controller ->
-            controller.metaClass.getAuthenticatedUser = {
-            	def principal = SecurityUtils.getSubject()?.getPrincipal()
-            	def authUser
-
-				if(application.config?.nimble?.implementation?.user)
-	    			authUser = NimbleGrailsPlugin.class.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
-	    		else
-	    			authUser = UserBase.get(principal)
-
-                if (!authUser) {
-                    log.error("Authenticated user was not able to be obtained from metaclass")
-                    return null
-                }
-
-                return authUser
-            }
+			log.debug("Injecting Nimble methods to Controller ${controller}")
+			injectAuthn(controller, application)
         }
 
         // Supply functionality to services
         application.serviceClasses?.each { service ->
-            service.metaClass.getAuthenticatedUser = {
-            	def principal = SecurityUtils.getSubject()?.getPrincipal()		
-				def authUser
-				
-                if(application.config?.nimble?.implementation?.user)
-	    			authUser = NimbleGrailsPlugin.class.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
-	    		else
-	    			authUser = UserBase.get(principal)
-
-                if (!authUser) {
-                    log.error("Authenticated user was not able to be obtained from metaclass")
-                    return null
-                }
-
-                return authUser
-            }
+			log.debug("Injecting Nimble methods to Service ${service}")
+			injectAuthn(service, application)
         }
     }
 
@@ -146,6 +125,29 @@ class NimbleGrailsPlugin {
     def onConfigChange = { event ->
         
     }
+
+	private void injectAuthn(def clazz, def application) {
+		clazz.metaClass.getAuthenticatedSubject = {
+        	def subject = SecurityUtils.getSubject()
+            return principal
+        }
+        clazz.metaClass.getAuthenticatedUser = {
+        	def principal = SecurityUtils.getSubject()?.getPrincipal()		
+			def authUser
+			
+            if(application.config?.nimble?.implementation?.user)
+    			authUser = NimbleGrailsPlugin.class.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
+    		else
+    			authUser = UserBase.get(principal)
+
+            if (!authUser) {
+                log.error("Authenticated user was not able to be obtained from metaclass")
+                return null
+            }
+
+            return authUser
+        }
+	}
 
     private ConfigObject loadNimbleConfig(GrailsApplication grailsApplication) {
         def config = grailsApplication.config
