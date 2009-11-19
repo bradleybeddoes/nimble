@@ -134,10 +134,6 @@
   <div class="actions">
     <ul class="horizmenu">
       <li>
-        <span class="userhighlight user_${user.id}"><g:link controller="profile" action="show" id="${user.id.encodeAsHTML()}" class="icon icon_user_go">Profile</g:link></span>
-      </li>
-
-      <li>
         <g:link action="edit" id="${user.id.encodeAsHTML()}" class="icon icon_user_gray">Edit</g:link>
       </li>
 
@@ -163,7 +159,6 @@
       <li id="enableuserapi">
         <a id="enableuserapibtn" class="icon icon_world_add">Enable Remote API</a>
       </li>
-
     </ul>
   </div>
 

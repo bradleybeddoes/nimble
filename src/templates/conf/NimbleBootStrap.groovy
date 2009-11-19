@@ -18,11 +18,11 @@
 
 import intient.nimble.InstanceGenerator
 
-import intient.nimble.domain.LevelPermission
-import intient.nimble.domain.Role
-import intient.nimble.domain.Group
-import intient.nimble.service.AdminsService
-import intient.nimble.service.UserService
+import intient.nimble.core.LevelPermission
+import intient.nimble.core.Role
+import intient.nimble.core.Group
+import intient.nimble.core.AdminsService
+import intient.nimble.core.UserService
 
 /*
  * Allows applications using Nimble to undertake process at BootStrap that are related to Nimbe provided objects

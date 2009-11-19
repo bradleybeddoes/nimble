@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.domain.Role" %>
+<%@ page import="intient.nimble.core.Role" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Roles</title>

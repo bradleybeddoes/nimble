@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.service.AdminsService
+import intient.nimble.core.AdminsService
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views

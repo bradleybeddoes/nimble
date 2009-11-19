@@ -10,7 +10,6 @@
   <n:growl/>
   <n:flashgrowl/>
   <n:menu/>
-  <n:userhighlight/>
   <n:admin/>
 
   <g:layoutHead/>

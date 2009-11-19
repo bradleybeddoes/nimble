@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.domain.UserBase" %>
+<%@ page import="intient.nimble.core.UserBase" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Users</title>
@@ -23,7 +23,7 @@
     <g:each in="${users}" status="i" var="user">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-        <td><span class="userhighlight user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
+        <td><span class="user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
 
         <g:if test="${user.profile?.fullName}">
           <td valign="top" class="value">${user.profile?.fullName?.encodeAsHTML()}</td>

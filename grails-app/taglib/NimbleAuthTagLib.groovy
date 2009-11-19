@@ -14,11 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.service.FacebookService
-import intient.nimble.auth.WildcardPermission
+
 import org.apache.shiro.SecurityUtils
-import intient.nimble.domain.UserBase
-import intient.nimble.service.AdminsService
+
+import intient.nimble.auth.WildcardPermission
+
+import intient.nimble.core.UserBase
+import intient.nimble.core.AdminsService
+import intient.nimble.core.FacebookService
 
 /**
  * Provides authentication related tags to the Nimble application

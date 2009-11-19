@@ -14,7 +14,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.domain.UserBase
+
+import intient.nimble.core.*
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application
@@ -157,50 +158,6 @@ class NimbleTagLib {
     }
 
     /**
-     * Provides markup to render the supplied users profile photo
-     */
-    def photo = {attrs ->
-        if(attrs.id == null || attrs.size == null)
-        throwTagError("Photo tag requires user id and size attributes")
-
-        def id = attrs.id
-        def size = attrs.size
-        def user = UserBase.get(id)
-
-        if(user) {
-            out << render(template: "/templates/profile/photo", contextPath: pluginContextPath, model: [profile: user.profile, size:size])
-            return
-        }
-        throwTagError("No user located for supplied ID")
-    }
-
-    /**
-     * Provides script to allow the user of the classes 'userhighlight' and 'user_X' on elements to provide
-     * mini user profile popups on mouse hover.
-     */
-    def userhighlight = {
-        out << render(template: "/templates/profile/userhighlight", contextPath: pluginContextPath)
-    }
-
-    /**
-     * Providers markup to render the supplied users current status
-     */
-    def status = {attrs ->
-        if(attrs.id == null)
-        throwTagError("Status tag requires user id")
-
-        def id = attrs.id
-        def clear = attrs.clear ?:false
-        def user = UserBase.get(id)
-
-        if(user) {
-            out << render(template: "/templates/nimble/profile/currentstatus", model: [profile: user.profile, clear:clear])
-            return
-        }
-        throwTagError("No user located for supplied ID")
-    }
-
-    /**
      * Allows Nimble core and Host Apps alike to access images provided by Nimble
      */
     def img = {attrs ->
@@ -222,13 +179,15 @@ class NimbleTagLib {
         mkp.img(src: resource(dir: pluginContextPath, file:"images/social/$attrs.size/${attrs.name}.png"), alt: "$attrs.alt")
     }
 
+	/**
+	* Allows UI developers to request confirmation from a user before performing some action
+	*/
 	def confirmaction = { attrs, body ->
 			if(attrs.action == null || attrs.title == null || attrs.msg == null || attrs.accept == null || attrs.cancel == null)
         		throwTagError("Confirm action tag requires action, title, msg, accept and cancel attributes")
 
 			out << "<a href=\"#\" class=\"${attrs.class}\" onClick=\"confirmAction = function() { ${attrs.action} }; wasConfirmed('${attrs.title}', '${attrs.msg}', '${attrs.accept}', '${attrs.cancel}');\">${body()}</a>"
 	}
-
 
 }
 

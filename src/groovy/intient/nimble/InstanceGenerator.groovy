@@ -18,8 +18,8 @@ package intient.nimble
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
-import intient.nimble.domain.UserBase
-import intient.nimble.domain.ProfileBase
+import intient.nimble.core.UserBase
+import intient.nimble.core.ProfileBase
 
 /**
  * Determines correct version of class to load for classes commonly overloaded by host applications

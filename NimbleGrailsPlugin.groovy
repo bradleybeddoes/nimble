@@ -22,12 +22,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.apache.shiro.authc.credential.Sha256CredentialsMatcher
 import org.apache.shiro.SecurityUtils
 
-import intient.nimble.domain.UserBase
+import intient.nimble.core.UserBase
 
 class NimbleGrailsPlugin {
 
     // the plugin version
-    def version = "0.3-SNAPSHOT"
+    def version = "0.4-SNAPSHOT"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
@@ -129,7 +129,6 @@ class NimbleGrailsPlugin {
 	private void injectAuthn(def clazz, def application) {
 		clazz.metaClass.getAuthenticatedSubject = {
         	def subject = SecurityUtils.getSubject()
-            return principal
         }
         clazz.metaClass.getAuthenticatedUser = {
         	def principal = SecurityUtils.getSubject()?.getPrincipal()		
