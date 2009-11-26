@@ -6,8 +6,6 @@
     <title>Welcome to Nimble!</title>
 
   <n:jquery/>
-  <n:userhighlight/>
-
 </head>
 
 <body>
@@ -16,7 +14,7 @@
     <div class="welcome cleanlist">
 
       <g:if test="${user.profile?.fullName?.length() > 0}">
-        <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
+        <h1><span class="userhighlight">${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
       </g:if>
       <g:else>
         <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.username.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
@@ -57,7 +55,6 @@
           <g:link controller="admins" action="index" class="icon icon_user_go">Administer Application</g:link>
           </li>
         </n:hasRole>
-        <li><g:link controller="profile" action="show" class="icon icon_user">View your profile</g:link></li>
         <li><g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link></li>
       </ul>
 
