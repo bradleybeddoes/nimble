@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.service.AdminsService" %>
+<%@ page import="intient.nimble.core.AdminsService" %>
 
 <html>
   <head>

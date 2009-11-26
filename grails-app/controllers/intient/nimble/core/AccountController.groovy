@@ -29,10 +29,7 @@ import intient.nimble.InstanceGenerator
  */
 class AccountController {
 
-    static Map allowedMethods = [createuser: 'GET', saveuser: 'POST', createduser: 'GET',
-        validateuser: 'GET', validusername: 'POST', forgottenpassword: 'GET',
-        forgottenpasswordprocess: 'POST', forgottenpasswordcomplete: 'GET', changepassword: 'GET',
-        updatepassword: 'POST']
+    static Map allowedMethods = [saveuser: 'POST', validusername: 'POST', forgottenpasswordprocess: 'POST', updatepassword: 'POST']
 
     def userService
     def recaptchaService
@@ -42,7 +39,7 @@ class AccountController {
     def changepassword = {
         def user = authenticatedUser()
         if(!user)
-        return
+        	return
 
         [user:user]
     }
@@ -58,7 +55,7 @@ class AccountController {
 
         if(!params.currentPassword) {
             log.warn("User [$user.id]$user.username attempting to change password but has not supplied current password")
-            user.errors.reject('user.password.change.current.incorrect', 'The value supplied as the current password is not correct for this account')
+            user.errors.reject('user.password.change.current.incorrect')
             render (view:"changepassword", model:[user:user])
             return
         }
@@ -71,7 +68,7 @@ class AccountController {
 
             if(!crypt.equals(user.passwordHash)) {
                 log.warn("User [$user.id]$user.username attempting to change password but has supplied invalid current password")
-                user.errors.reject('user.password.change.current.incorrect', 'The value supplied as the current password is not correct for this account')
+                user.errors.reject('user.password.change.current.incorrect')
                 render (view:"changepassword", model:[user:user])
                 return
             }
