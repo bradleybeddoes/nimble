@@ -4,9 +4,7 @@
   <head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title>Welcome to Nimble!</title>
-
-  <n:jquery/>
-</head>
+  </head>
 
 <body>
 
