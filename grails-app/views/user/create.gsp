@@ -7,7 +7,6 @@
 
 <body>
 
-<div class="container">
   <h2>Create User Account</h2>
 
   <p>
@@ -65,8 +64,6 @@
     </div>
 
   </g:form>
-
-</div>
 
 <n:passwordpolicy/>
 </body>

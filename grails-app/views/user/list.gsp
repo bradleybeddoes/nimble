@@ -6,8 +6,6 @@
 
 <body>
 
-<div class="container">
-
   <h2>User List</h2>
 
   <table class="userlist">
@@ -53,7 +51,5 @@
   <div class="paginateButtons">
     <g:paginate total="${UserBase.count()}"/>
   </div>
-
-</div>
 
 </body>

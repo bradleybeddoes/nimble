@@ -7,8 +7,7 @@
 </head>
 
 <body>
-
-<div class="container">
+	
   <h2>Editing account ${user.username}</h2>
 
   <p>
@@ -73,7 +72,5 @@
     </table>
 
   </g:form>
-
-</div>
 
 </body>

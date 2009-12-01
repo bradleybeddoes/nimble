@@ -8,7 +8,6 @@
 
 <body>
 
-<div class="container">
 <h2>Change password for ${user.username}</h2>
 
 <p>
@@ -50,5 +49,4 @@
   </table>
 </g:form>
 
-</div>
 <n:passwordpolicy/>

@@ -8,7 +8,6 @@
 
 <body>
 
-<div class="container">
   <h2>Change local password for ${user.username}</h2>
 
   <p>
@@ -57,7 +56,6 @@
 
   </g:form>
 
-</div>
 <n:passwordpolicy/>
 
 </body>

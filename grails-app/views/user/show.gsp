@@ -8,8 +8,6 @@
 
 <body>
 
-<div class="container">
-
   <h2>User ${user.username?.encodeAsHTML()}</h2></span>
 
   <div class="details">
@@ -126,7 +124,5 @@
     </div>
 
   </div>
-
-</div>
 
 </body>
