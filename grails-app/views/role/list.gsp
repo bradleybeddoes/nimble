@@ -6,7 +6,6 @@
 
 <body>
 
-<div class="container">
   <h2>Role List</h2>
 
   <table class="rolelist">
@@ -36,5 +35,4 @@
     <g:paginate total="${Role.count()}"/>
   </div>
 
-</div>
 </body>

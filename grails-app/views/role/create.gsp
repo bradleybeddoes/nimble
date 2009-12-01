@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<div class="container">
   <h2>Create Role</h2>
 
   <p>
@@ -51,6 +50,5 @@
 
   </g:form>
 
-</div>
 </body>
 </html>

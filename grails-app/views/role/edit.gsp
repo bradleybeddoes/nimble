@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<div class="container">
 	<h2>Edit Role - ${role.name.encodeAsHTML()}</h2>
 	
 	<p>
@@ -55,7 +54,6 @@
 	
 	</g:form>
 	
-</div>
 <g:render template="/templates/admin/deleteroleconfirm" contextPath="${pluginContextPath}"/>
 
 
