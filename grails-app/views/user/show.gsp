@@ -1,128 +1,9 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>User</title>
-
   <script type="text/javascript">
-    $(function() {
-      $("#enableuserbtn").click(function () {
-        enableUser();
-      });
-
-      $("#disableuserbtn").click(function () {
-        disableUser();
-      });
-
-      $("#enableuserapibtn").click(function () {
-        enableAPI();
-      });
-
-      $("#disableuserapibtn").click(function () {
-        disableAPI();
-      });
-
-    <g:if test="${user.enabled}">
-      $("#enableuser").hide();
-      $("#enableduser").hide();
-    </g:if>
-    <g:else>
-      $("#disableuser").hide();
-      $("#disableduser").hide();
-    </g:else>
-
-    <g:if test="${user.remoteapi}">
-      $("#disabledapi").hide();
-      $("#enableuserapi").hide();
-    </g:if>
-    <g:else>
-      $("#enabledapi").hide();
-      $("#disableuserapi").hide();
-    </g:else>
-    });
-
-    function enableUser() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'enable')}",
-        data: dataString,
-        success: function(res) {
-          $("#enableuser").hide();
-          $("#enableduser").hide();
-          $("#disableuser").show();
-          $("#disableduser").show();
-          growl('success', 'Account enabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to enable this account');
-        }
-      });
-    }
-
-    function disableUser() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'disable')}",
-        data: dataString,
-        success: function(res) {
-          $("#disableuser").hide();
-          $("#disableduser").hide();
-          $("#enableuser").show();
-          $("#enableduser").show();
-          growl('success', 'Account disabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to disable this account');
-        }
-      });
-    }
-
-    function enableAPI() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'enableapi')}",
-        data: dataString,
-        success: function(res) {
-          $("#disabledapi").hide();
-          $("#enabledapi").show();
-
-          $("#disableuserapi").show();
-          $("#enableuserapi").hide();
-          growl('success', 'Remote API access enabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to enable remote api access account');
-        }
-      });
-    }
-
-    function disableAPI() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'disableapi')}",
-        data: dataString,
-        success: function(res) {
-          $("#disabledapi").show();
-          $("#enabledapi").hide();
-
-          $("#disableuserapi").hide();
-          $("#enableuserapi").show();
-          growl('success', 'Remote API access disabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to disable remote api access for this account');
-        }
-      });
-    }
-
+  	<njs:user user="${user}"/>
   </script>
-
 </head>
 
 <body>
@@ -130,37 +11,6 @@
 <div class="container">
 
   <h2>User ${user.username?.encodeAsHTML()}</h2></span>
-
-  <div class="actions">
-    <ul class="horizmenu">
-      <li>
-        <g:link action="edit" id="${user.id.encodeAsHTML()}" class="icon icon_user_gray">Edit</g:link>
-      </li>
-
-      <li>
-        <g:if test="${!user.external}">
-          <g:link action="changepassword" id="${user.id.encodeAsHTML()}" class="icon icon_key_go">Change Password</g:link>
-        </g:if>
-        <g:else>
-          <g:link action="changelocalpassword" id="${user.id.encodeAsHTML()}" class="icon icon_key_go">Change Local Password</g:link>
-        </g:else>
-      </li>
-
-      <li id="disableuser">
-        <a id="disableuserbtn" class="icon icon_user_red">Disable</a>
-      </li>
-      <li id="enableuser">
-        <a id="enableuserbtn" class="icon icon_user_green">Enable</a>
-      </li>
-
-      <li id="disableuserapi">
-        <a id="disableuserapibtn" class="icon icon_world_delete">Disable Remote API</a>
-      </li>
-      <li id="enableuserapi">
-        <a id="enableuserapibtn" class="icon icon_world_add">Enable Remote API</a>
-      </li>
-    </ul>
-  </div>
 
   <div class="details">
     <h3>Account Details</h3>

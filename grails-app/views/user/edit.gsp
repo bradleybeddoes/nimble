@@ -1,6 +1,9 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Edit User</title>
+  <script type="text/javascript">
+  	<njs:user user="${user}"/>
+  </script>
 </head>
 
 <body>

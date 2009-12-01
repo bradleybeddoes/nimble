@@ -1,15 +1,9 @@
-
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/jquery.jgrowl.css')}"/>
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/jquery/jquery.jgrowl_minimized.js')}">
-  
-</script>
-
-<script type="text/javascript">
-  function growl(type, msg) {
+//Growl
+function growl(type, msg) {
     growl(type, msg, 2000);
-  }
+}
 
-  function growl(type, msg, period) {
+function growl(type, msg, period) {
     if (type == 'success')
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_tick\'>&nbsp;</span>Success' });
 
@@ -30,5 +24,16 @@
 
     if (type == 'flagblue')
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
-  }
-</script>
+}
+
+// Session Termination
+$(function() {
+	$("#sessionterminated").hide();
+	$("#sessionterminatedmodal").modal({hide_on_overlay_click:false});
+
+	$().ajaxError(function (event, xhr, ajaxOptions, thrownError) {
+	  if ((xhr.status == 403) && (xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
+	    $("#sessionterminatedmodal").click();
+	  }
+	});
+});

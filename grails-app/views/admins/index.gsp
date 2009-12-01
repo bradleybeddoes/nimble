@@ -14,7 +14,6 @@
         success: function(res) {
           $("#admins").empty();
           $("#admins").append(res);
-          bindUserHighlight();
         },
         error: function (xhr, ajaxOptions, thrownError) {
           growl('error', 'Failed to list administrators');
@@ -31,7 +30,6 @@
         success: function(res) {
           $("#searchresponse").empty();
           $("#searchresponse").append(res);
-          bindUserHighlight();
         },
         error: function (xhr, ajaxOptions, thrownError) {
           growl('error', 'No users found');

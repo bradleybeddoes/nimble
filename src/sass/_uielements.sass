@@ -233,12 +233,11 @@
 
     list-style-type = "none"
 
-=horizontalmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2")
+=horizmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2", !currentcolor = "#fbfbfb", !linkcolor = "#f2f2f2", !currentlinkcolor = "#f2f2f2")
   +horizontallist
-  height = 42px
+  +clearfix
+  
   width = 100%
-  position = "relative"
-
   :background
     :image = url(!background)
     :color = !color
@@ -248,59 +247,27 @@
 
   li
     +left
-    minheight = 42px
     overflow = "visible"
-
     :margin
       :right = 6px
-
-    :padding
-      :left = 12px
-      :right = 12px
+    padding = 12px
 
     a
       +link
-      +left
-      height = 42px
-      line-height = 42px
+      //+left
       display = "block"
       :font
         :weight = "normal"
         :size = 1.2em
+      color = !linkcolor
 
     &.current
       :background
-        :color = #3e3e3e
+        :color = !currentcolor
         :position = "bottom left"
         :repeat = "repeat-x"
-
       a
-        +link("#fff")
-
-=horizontalsubmenu(!background = "images/horizontalsubmenubg.png", !color = "#000")
-  +horizontallist
-  position = absolute
-  top = 42px
-  left = -9999px
-  z-index = 100
-  width = 100%
-
-  :background
-    :image = url(!background)
-    :color = !color
-    :position = "top left"
-    :repeat = "repeat-x"
-
-  li
-    :margin
-      :right = 6px
-
-    :padding
-      :left = 12px
-      :right = 12px
-
-    a
-      +link("#fff")
+        color = !currentlinkcolor
 
 
 // Generic UI classes

@@ -9,19 +9,6 @@
 <div class="container">
   <h2>Group ${group.name.encodeAsHTML()}</h2>
 
-  <g:if test="${!group.protect}">
-    <div class="actions">
-      <ul class="horizmenu">
-        <li>
-          <g:link action="edit" id="${group.id.encodeAsHTML()}" class="icon icon_group_edit">Edit Group</g:link>
-        </li>
-        <li>
-          <a href="#" id="deleteconfirmbtn" rel="deleteconfirm" class="icon icon_group_delete">Delete Group</a>
-        </li>
-      </ul>
-    </div>
-  </g:if>
-
   <div class="details">
     <h3>Group Details</h3>
     <table class="datatable">

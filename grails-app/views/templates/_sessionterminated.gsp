@@ -1,17 +1,3 @@
-<script type="text/javascript">
-  $(function() {
-    $("#sessionterminated").hide();
-    $("#sessionterminatedmodal").modal({hide_on_overlay_click:false});
-
-    $().ajaxError(function (event, xhr, ajaxOptions, thrownError) {
-      if ((xhr.status == 403) && (xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
-        $("#sessionterminatedmodal").click();
-      }
-    });
-  });
-</script>
-
-
 <div id="sessionterminated">
   <div class="errorpopup">
     <div class="banner"><strong><span class="icon icon_exclamation">&nbsp;</span><strong>Session has expired</strong></strong></div>

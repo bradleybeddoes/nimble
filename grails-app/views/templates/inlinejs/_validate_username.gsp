@@ -1,4 +1,3 @@
- <script type="text/javascript">
     $(function() {
 
       $("#username").blur(function () {
@@ -25,4 +24,3 @@
       })
 
     });
-  </script>

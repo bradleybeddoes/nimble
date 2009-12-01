@@ -1,10 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-
-  <n:jquery/>
-
   <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/login.css')}"/>
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/icons.css')}"/>
 
   <title>Login</title>
 

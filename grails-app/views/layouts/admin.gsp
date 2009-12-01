@@ -22,7 +22,58 @@
       <g:render template='/templates/nimble/navigation/topnavigation'/>
     </div>
     <div id="bd">
-      <g:layoutBody/>
+      	<div class="container">
+	        <div class="localnavigation">
+				<h3>Access Control Navigation</h3>
+				<ul>
+					<li>
+						<g:link controller="user" action="list">Users</g:link>
+					</li>
+						<g:if test="${user}">
+						    <ul>
+								<li>
+								<g:link controller="user" action="show" id="${user.id}">${user.profile.fullName}</g:link>
+							
+									<ul>
+										<li>
+									        <g:link controller="user" action="edit" id="${user.id}">Edit</g:link>
+									      </li>
+									      <li>
+									          <g:link controller="user" action="changepassword" id="${user.id}">Change Password</g:link>
+									      </li>
+
+									      <li id="disableuser">
+									        <a id="disableuserbtn">Disable User</a>
+									      </li>
+									      <li id="enableuser">
+									        <a id="enableuserbtn">Enable User</a>
+									      </li>
+
+									      <li id="disableuserapi">
+									        <a id="disableuserapibtn">Disable API</a>
+									      </li>
+									      <li id="enableuserapi">
+									        <a id="enableuserapibtn">Enable API</a>
+									      </li>
+									  </ul>
+								</li>
+							</ul>
+						</g:if>
+					<li>
+						<g:link controller="role" action="list">Roles</g:link>
+					</li>
+					<li>
+						<g:link controller="group" action="list">Groups</g:link>
+					</li>
+					<li>
+						<g:link controller="admins" action="index">Admins</g:link>
+					</li>
+				</ul>
+			</div>
+			<div class="content">
+	      		<g:layoutBody/>
+			</div>
+		</div>
     </div>
     <div id="ft">
 
