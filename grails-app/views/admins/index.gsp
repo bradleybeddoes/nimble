@@ -76,7 +76,6 @@
 
 <body>
 
-<div class="container">
   <h2>Administrators</h2>
   <p>
     The following users have the administration role.
@@ -100,5 +99,5 @@
   <div id="searchresponse" class="clear">
 
   </div>
-</div>
+
 </body>

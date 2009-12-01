@@ -11,8 +11,6 @@
 
 <body>
 
-  <div class="container">
-
     <div class="accountinformation">
       <h2>Change Password</h2>
 
@@ -69,7 +67,6 @@
         </table>
       </g:form>
     </div>
-  </div>
 
 <n:passwordpolicy/>
 

@@ -8,8 +8,6 @@
 
 <body>
 
-<div class="container">
-
   <div class="accountinformation">
     <h2>Account Registration Complete</h2>
 
@@ -21,8 +19,6 @@
       and you're ready to go. Seeyou soon!.
     </p>
   </div>
-
-</div>
 
 </body>
 

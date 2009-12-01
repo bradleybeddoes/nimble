@@ -8,8 +8,6 @@
 
 <body>
 
-<div class="container">
-
   <div class="accountinformation">
     <h2>Change Password Complete</h2>
 
@@ -18,8 +16,6 @@
     </p>
     
   </div>
-
-</div>
 
 </body>
 

@@ -8,7 +8,6 @@
 
 <body>
 
-<div class="container">
   <div class="accountinformation">
     <h2>Forgotten Password - Reset Complete</h2>
 
@@ -21,7 +20,6 @@
     </p>
 
   </div>
-</div>
 
 </body>
 </html>

@@ -7,8 +7,7 @@
 </head>
 
 <body>
-
-<div class="container">
+	
   <div class="accountinformation">
     <h2>Forgotten Password</h2>
 
@@ -47,6 +46,6 @@
 
     </g:form>
   </div>
-</div>
+
 </body>
 </html>

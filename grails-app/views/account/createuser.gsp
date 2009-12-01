@@ -4,16 +4,10 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
   <title>Account Registration</title>
-
-  <n:growl/>
-  <n:flashgrowl/>
-
   <g:render template="/templates/validate_username" contextPath="${pluginContextPath}"/>
 </head>
 
 <body>
-
-<div class="container">
 
   <div class="accountinformation">
     <h2>Account Registration</h2>
@@ -84,7 +78,6 @@
       </table>
     </g:form>
   </div>
-</div>
 
 <n:usernamepolicy/>
 <n:passwordpolicy/>
