@@ -7,7 +7,6 @@
 
 <body>
 
-<div class="container">
   <h2>Edit Group - ${group.name.encodeAsHTML()}</h2>
 
   <p>
@@ -56,8 +55,6 @@
   </g:form>
 
   <g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
-
-</div>
 
 </body>
 </html>

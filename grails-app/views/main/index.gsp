@@ -8,7 +8,6 @@
 
 <body>
 
-  <div class="container">
     <div class="welcome cleanlist">
 
       <g:if test="${user.profile?.fullName?.length() > 0}">
@@ -57,7 +56,6 @@
       </ul>
 
     </div>
-  </div>
 
 </body>
 </html>

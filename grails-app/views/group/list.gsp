@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<div class="container">
   <h2>Group List</h2>
   <p>
     The following is the current list of system groups.
@@ -37,8 +36,6 @@
   <div class="paginateButtons">
     <g:paginate total="${Group.count().encodeAsHTML()}"/>
   </div>
-
-</div>
 
 </body>
 

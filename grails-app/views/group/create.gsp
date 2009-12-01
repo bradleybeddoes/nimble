@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<div class="container">
   <h2>Create Group</h2>
 
   <p>
@@ -55,8 +54,6 @@
 
     </div>
   </g:form>
-
-</div>
 
 </body>
 </html>

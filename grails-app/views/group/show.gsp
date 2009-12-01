@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<div class="container">
   <h2>Group ${group.name.encodeAsHTML()}</h2>
 
   <div class="details">
@@ -61,8 +60,6 @@
       <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parentID:group.id.encodeAsHTML(), protect:group.protect, groupmembers:false]"/>
     </div>
   </div>
-
-</div>
 
 <g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
 
