@@ -6,7 +6,7 @@
   <title>Forgotten Password | Reset Complete</title>
 </head>
 
-<body>
+<body>&nbsp;
 
   <div class="accountinformation">
     <h2>Forgotten Password - Reset Complete</h2>
