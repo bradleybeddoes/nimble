@@ -4,7 +4,11 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
   <title>Account Registration</title>
-  <g:render template="/templates/validate_username" contextPath="${pluginContextPath}"/>
+
+  <script type="text/javascript">
+  	<g:render template="/templates/inlinejs/validate_username" contextPath="${pluginContextPath}"/>
+  </script>
+
 </head>
 
 <body>

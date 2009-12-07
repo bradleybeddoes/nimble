@@ -2,7 +2,10 @@
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Create User</title>
 
-  <g:render template="/templates/header/validate_username" contextPath="${pluginContextPath}"/>
+  	<script type="text/javascript">
+  		<g:render template="/templates/inlinejs/validate_username" contextPath="${pluginContextPath}"/>
+	</script>
+	
 </head>
 
 <body>
