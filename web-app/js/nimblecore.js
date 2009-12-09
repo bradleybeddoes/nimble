@@ -1,3 +1,26 @@
+function verifyUnique(elem, elemstatus, endpoint, success, failure) {
+   var dataString = 'val=' + $(elem).val();
+   $.ajax({
+     	type: "POST",
+		url: endpoint,
+		data: dataString,
+		success: function(res) {
+		  growl('flaggreen', success, 3000);
+		  $(elem).css({'background': '#fff', 'color':'#000'});
+		  $(elemstatus).addClass('icon');
+		  $(elemstatus).addClass('icon_flag_green');
+		  $(elemstatus).removeClass('icon_flag_red');
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+		  growl('flagred', failure);
+		  $(elem).css({'color': '#9c3333'});
+		  $(elemstatus).addClass('icon');
+		  $(elemstatus).addClass('icon_flag_red');
+		  $(elemstatus).removeClass('icon_flag_green');
+		}
+	});
+}
+
 // Users
 function enableUser(id) {
   var dataString = "id="+id;

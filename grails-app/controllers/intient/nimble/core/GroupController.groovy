@@ -29,11 +29,8 @@ class GroupController {
   def roleService
   def permissionService
 
-  static Map allowedMethods = [list: 'GET', show: 'GET', create: 'GET', save: 'POST', edit: 'GET', update: 'POST',
-          delete: 'POST', validname: 'POST', listmembers: 'GET', addmember: 'POST',
-          removemember: 'POST', searchnewmembers: 'POST', listpermissions: 'GET',
-          createpermission: 'POST', removepermission: 'POST', listroles: 'GET',
-          searchroles: 'POST', grantrole: 'POST', removerole: 'POST']
+  static Map allowedMethods = [	save: 'POST', update: 'POST', delete: 'POST', validname: 'POST', addmember: 'POST', removemember: 'POST', searchnewmembers: 'POST', 
+								createpermission: 'POST', removepermission: 'POST', searchroles: 'POST', grantrole: 'POST', removerole: 'POST']
 
   def index = {
     redirect action: list
@@ -159,7 +156,13 @@ class GroupController {
   }
 
   def validname = {
-    def groups = Group.findAllByName(params?.name)
+	if (params?.val == null || params.val.length() < 4) {
+      flash.message = "Group name is invalid"
+      response.sendError(500)
+      return
+    }
+
+    def groups = Group.findAllByName(params?.val)
 
     if (groups != null && groups.size() > 0) {
       flash.type = "error"
