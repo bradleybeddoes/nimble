@@ -26,11 +26,8 @@ class RoleController {
   def permissionService
   def roleService
 
-  static Map allowedMethods = [list: 'GET', show: 'GET', create: 'GET', validname: 'POST', save: 'POST',
-          edit: 'GET', update: 'POST', delete: 'POST', listmembers: 'GET',
-          addmember: 'POST', removemember: 'POST', addgroupmember: 'POST',
-          removegroupmember: 'POST', searchnewmembers: 'POST', searchnewgroupmembers: 'POST',
-          listpermissions: 'GET', createpermission: 'POST', removepermission: 'POST']
+  static Map allowedMethods = [	validname: 'POST', save: 'POST', update: 'POST', delete: 'POST', addmember: 'POST', removemember: 'POST', addgroupmember: 'POST', 
+								removegroupmember: 'POST', searchnewmembers: 'POST', searchnewgroupmembers: 'POST', createpermission: 'POST', removepermission: 'POST'	]
 
   def index = {
     redirect action: list
@@ -62,13 +59,13 @@ class RoleController {
   }
 
   def validname = {
-    if (params?.name == null || params.name.length() < 4) {
+    if (params?.val == null || params.val.length() < 4) {
       flash.message = "Role name is invalid"
       response.sendError(500)
       return
     }
 
-    def roles = Role.findAllByName(params?.name)
+    def roles = Role.findAllByName(params?.val)
 
     if (roles != null && roles.size() > 0) {
       flash.type = "error"

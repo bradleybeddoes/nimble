@@ -1,8 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Create User</title>
-
-  <g:render template="/templates/header/validate_username" contextPath="${pluginContextPath}"/>
 </head>
 
 <body>
@@ -23,8 +21,7 @@
       <tr>
         <td class="name"><label for="username">Username</label></td>
         <td class="value">
-          <input type="text" size="30" id="username" name="username" value="${user.username?.encodeAsHTML()}" class="easyinput"/> <span class="icon icon_bullet_green">&nbsp;</span>
-          <span id="usernameavailable" class="icon">&nbsp;</span>
+		  <n:verifyfield id="username" class="easyinput" name="username" value="${fieldValue(bean: user, field: 'username')}" required="true" controller="user" action="validusername" validmsg="valid" invalidmsg="invalid" />
         </td>
       </tr>
 

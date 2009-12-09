@@ -4,8 +4,6 @@
   <head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title>Welcome to Nimble!</title>
-
-  <n:jquery/>
 </head>
 
 <body>
@@ -25,7 +23,7 @@
         bits a web based application needs to be useful, saving developers months of work.
       </p>
       <p>
-        A Nimble powered application has all the folowing features out of the box and it works with any existing
+        A Nimble powered application has all the following features out of the box and it works with any existing
         Java libraries you might have as well..
       </p>
       <ul>

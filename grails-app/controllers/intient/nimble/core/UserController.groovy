@@ -326,13 +326,13 @@ class UserController {
 
   def validusername = {
 
-    if (params.username == null || params.username.length() < 4) {
+    if (params?.val == null || params?.val?.length() < 4) {
       flash.message = "Username is invalid"
       response.sendError(500)
       return
     }
 
-    def users = UserBase.findAllByUsername(params?.username)
+    def users = UserBase.findAllByUsername(params?.val) 
 
     if (users != null && users.size() > 0) {
       flash.message = "User already exists for ${params.username}"

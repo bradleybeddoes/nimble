@@ -3,8 +3,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Create Group</title>
-
-  <g:render template="/templates/validate_name" contextPath="${pluginContextPath}"/>
 </head>
 <body>
 
@@ -25,15 +23,14 @@
       <tr>
         <th>Name</th>
         <td class="value">
-          <input type="text" id="name" name="name" value="${fieldValue(bean: role, field: 'name')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
-          <span id="nameavailable" class="icon">&nbsp;</span>
+		  <n:verifyfield id="name" class="easyinput" name="name" value="${fieldValue(bean: role, field: 'name')}" required="true" controller="role" action="validname" validmsg="valid" invalidmsg="invalid" />
         </td>
       </tr>
 
       <tr>
         <th>Description</th>
         <td class="value">
-          <input type="text" id="description" name="description" value="${fieldValue(bean: role, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
+          <input type="text" id="description" size="30" name="description" value="${fieldValue(bean: role, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
         </td>
       </tr>
 
