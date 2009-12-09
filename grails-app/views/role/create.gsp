@@ -4,10 +4,7 @@
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Create Group</title>
 
-  <script type="text/javascript">
-  	<g:render template="/templates/inlinejs/validate_name" contextPath="${pluginContextPath}"/>
-  </script>
-
+  <g:render template="/templates/validate_name" contextPath="${pluginContextPath}"/>
 </head>
 <body>
 

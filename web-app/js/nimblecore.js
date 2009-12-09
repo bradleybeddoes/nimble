@@ -1,30 +1,3 @@
-// General Purpose
-
-$(function() {
-
-  function verifyUnique(elem, elemstatus, endpoint) {
-    var dataString = 'val=' + $(elem).val();
-    $.ajax({
-      type: "POST",
-      url: endpoint,
-      data: dataString,
-      success: function(res) {
-        growl('flaggreen', 'This name is available', 3000);
-        $(elem).css({'background': '#fff', 'color':'#000'});
-        $(elemstatus).addClass('icon');
-        $(elemstatus).addClass('icon_flag_green');
-        $(elemstatus).removeClass('icon_flag_red');
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-        growl('flagred', 'Ooops this name is being used already or is invalid');
-        $("#name").css({'color': '#9c3333'});
-        $("#nameavailable").addClass('icon');
-        $("#nameavailable").addClass('icon_flag_red');
-        $("#nameavailable").removeClass('icon_flag_green');
-      }
-    });
-}
-
 // Users
 function enableUser(id) {
   var dataString = "id="+id;
