@@ -6,13 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <title>Nimble | <g:layoutTitle default="Grails"/></title>
 
-  <n:jquery/>
-  <n:growl/>
-  <n:flashgrowl/>
-  <n:menu/>
-  <n:admin/>
+  	<nh:nimblecore/>
+    <nh:nimbleui/>
+    <nh:admin/>
 
-  <g:layoutHead/>
+    <g:layoutHead/>
 </head>
 
 <body>
