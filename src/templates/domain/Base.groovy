@@ -1,7 +1,7 @@
 
 package $pack
 
-class $classname extends intient.nimble.domain.$baseclassname {
+class $classname extends intient.nimble.core.$baseclassname {
 
 	// Extend $baseclassname with your custom values here
 
