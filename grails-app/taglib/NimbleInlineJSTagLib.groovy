@@ -34,9 +34,37 @@ class NimbleInlineJSTagLib {
 	// User management
 	def user = {attrs ->
 		if(attrs.user == null)
-        	throwTagError("User state tag requires user attribute")
+        	throwTagError("User management tag requires user attribute [njs]")
 		
 		 out << render(template: "/templates/inlinejs/user", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, user:attrs.user])
+	}
+	
+	def permission = {attrs ->
+		if(attrs.parent == null)
+        	throwTagError("Permission management tag requires owner attribute [njs]")
+		
+		 out << render(template: "/templates/inlinejs/permission", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
+	}
+	
+	def role = {attrs ->
+		if(attrs.parent == null)
+        	throwTagError("Role management tag requires user attribute [njs]")
+		
+		 out << render(template: "/templates/inlinejs/role", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
+	}
+	
+	def group = {attrs ->
+		if(attrs.parent == null)
+        	throwTagError("Group management tag requires user attribute [njs]")
+		
+		 out << render(template: "/templates/inlinejs/group", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
+	}
+	
+	def member = {attrs ->
+		if(attrs.parent == null)
+        	throwTagError("Member management tag requires user attribute [njs]")
+		
+		 out << render(template: "/templates/inlinejs/member", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
 	}
 
 }

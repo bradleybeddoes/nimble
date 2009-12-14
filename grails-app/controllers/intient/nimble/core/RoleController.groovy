@@ -195,7 +195,7 @@ class RoleController {
     }
 
     log.debug("Listing role members")
-    render(template: '/templates/admin/members_list', contextPath: pluginContextPath, model: [users: role.users, groups: role.groups, protect: role.protect, groupmembers: true])
+    render(template: '/templates/admin/members_list', contextPath: pluginContextPath, model: [parent:role, users: role.users, groups: role.groups, protect: role.protect, groupmembers: true])
   }
 
   def addmember = {
@@ -334,7 +334,7 @@ class RoleController {
     }
 
     log.info("Search for new role user members complete, returning $nonMembers.size records")
-    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [users: nonMembers])
+    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [parent: role, users: nonMembers])
   }
 
   def searchnewgroupmembers = {
@@ -353,7 +353,7 @@ class RoleController {
     }
 
     log.info("Search for new role group members complete, returning $nonMembers.size records")
-    render(template: '/templates/admin/members_group_search', contextPath: pluginContextPath, model: [groups: nonMembers])
+    render(template: '/templates/admin/members_group_search', contextPath: pluginContextPath, model: [parent: role, groups: nonMembers])
   }
 
   def listpermissions = {
@@ -368,7 +368,7 @@ class RoleController {
     }
 
     log.debug("Listing permissions for role [$role.id]$role.name")
-    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: role.permissions, ownerID: role.id])
+    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: role.permissions, parent: role])
   }
 
   def createpermission = {

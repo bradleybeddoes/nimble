@@ -186,7 +186,7 @@ class GroupController {
     }
 
     log.debug("Listing members of group $group.name")
-    render(template: '/templates/admin/members_list', contextPath: pluginContextPath, model: [users: group.users, protect: group.protect, groupmembers: false])
+    render(template: '/templates/admin/members_list', contextPath: pluginContextPath, model: [parent: group, users: group.users, protect: group.protect, groupmembers: false])
   }
 
   def addmember = {
@@ -267,14 +267,14 @@ class GroupController {
       }
     }
     profiles.each {
-      if (!it.owner.roles.contains(group) && !nonMembers.contains(it.owner)) {
+      if (!it.owner.groups.contains(group) && !nonMembers.contains(it.owner)) {
         nonMembers.add(it.owner)
         log.debug("Adding user identified as [$it.owner.id]$it.owner.username based on profile to search results")
       }
     }
 
     log.info("Search for new group members complete, returning $nonMembers.size records")
-    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [users: nonMembers])
+    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [parent: group, users: nonMembers])
   }
 
   def listpermissions = {
@@ -287,7 +287,7 @@ class GroupController {
       return
     }
 
-    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: group.permissions, ownerID: group.id])
+    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: group.permissions, parent: group])
   }
 
   def createpermission = {

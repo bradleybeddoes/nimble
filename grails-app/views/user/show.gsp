@@ -3,6 +3,9 @@
   <title>User</title>
   <script type="text/javascript">
   	<njs:user user="${user}"/>
+	<njs:permission parent="${user}"/>
+	<njs:role parent="${user}"/>
+	<njs:group parent="${user}"/>
   </script>
 </head>
 
@@ -72,8 +75,6 @@
     </table>
   </div>
 
-
-
   <g:if test="${user.federated}">
     <div class="details">
       <h3>Federation Provider</h3>
@@ -97,30 +98,29 @@
     </div>
   </g:if>
 
-
   <div class="sections">
 
-    <ul id="sections_" class="horizmenu">
-      <li class="current"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
-      <li><a href="roles_" class="icon icon_cog">Roles</a></li>
-      <li><a href="groups_" class="icon icon_group">Groups</a></li>
-      <li><a href="logins_" class="icon icon_key">Logins</a></li>
+    <ul class="">
+      <li class=""><a href="#" class="icon icon_lock">Permissions</a></li>
+      <li><a href="#" class="icon icon_cog">Roles</a></li>
+      <li><a href="#" class="icon icon_group">Groups</a></li>
+      <li><a href="#" class="icon icon_key">Logins</a></li>
     </ul>
 
-    <div class="active_ sections_ permissions_">
-      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="sections_ roles_">
-      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="sections_ groups_">
-      <g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="sections_ logins_">
-      <g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>      
+    <div class="">
+      <g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[parent:user]"/>      
     </div>
 
   </div>

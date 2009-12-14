@@ -1,18 +1,9 @@
 <script type="text/javascript">
   	var confirmAction;
-
   	$(function() {		
     	$("#confirmation").hide();
     	$(".confirmationbtn").modal({ hide_on_overlay_click:false});	
   	});
-
-  	function wasConfirmed(title, msg, accept, cancel) {
-		$("#confirmationtitle").html(title);
-		$("#confirmationcontent").html(msg); 
-		$("#confirmaccept").html(accept);
-		$("#confirmcancel").html(cancel);
-		$(".confirmationbtn").click();
-	}
 </script>
 
 <div id="confirmation">

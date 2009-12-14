@@ -3,73 +3,14 @@
   <title>Administrators</title>
 
   <script type="text/javascript">
-    $(function() {
+    var adminListEndpoint = "${createLink(controller:'admins', action:'list')}";
+	var adminSearchEndpoint = "${createLink(action:'search')}";
+	var adminDeleteEndpoint = "${createLink(action:'delete')}";
+	var adminGrantEndpoint = "${createLink(action:'create')}";
+
+    $(function() {	  
       listAdministrators();
     });
-
-    function listAdministrators() {
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'list')}",
-        success: function(res) {
-          $("#admins").empty();
-          $("#admins").append(res);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'Failed to list administrators');
-        }
-      });
-    }
-
-    function searchAdministrators() {
-      var dataString = "q=" + $('#q').val();
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'search')}",
-        data: dataString,
-        success: function(res) {
-          $("#searchresponse").empty();
-          $("#searchresponse").append(res);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'No users found');
-        }
-      });
-    }
-
-    function deleteAdministrator(userID, username) {
-      var dataString = 'id=' + userID;
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'delete')}",
-        data: dataString,
-        success: function(res) {
-          growl('success', 'Revoked administrator rights from ' + username);
-          listAdministrators();
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'Failed to remove administrator rights from ' + username);
-        }
-      });
-    }
-
-    function grantAdministrator(userID, username) {
-      var dataString = 'id=' + userID;
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'create')}",
-        data: dataString,
-        success: function(res) {
-          growl('success', 'Granted administration rights to ' + username);
-          searchAdministrators();
-          listAdministrators();
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'Failed to grant administration rights to ' + username);
-        }
-      });
-    }
-
   </script>
 
 </head>

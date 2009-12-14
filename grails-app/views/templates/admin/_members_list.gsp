@@ -21,7 +21,7 @@
         <td>
           <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go">View User</g:link>
           <g:if test="${!protect}">
-            <a onClick="removeMember('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete">Remove User</a>
+            <a onClick="removeMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete">Remove User</a>
           </g:if>
         </td>
       </tr>
@@ -54,7 +54,7 @@
           <td>
             <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View Group</g:link>
             <g:if test="${!protect}">
-              <a onClick="removeGroupMember('${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete">Remove Group</a>
+              <a onClick="removeGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete">Remove Group</a>
             </g:if>
           </td>
         </tr>

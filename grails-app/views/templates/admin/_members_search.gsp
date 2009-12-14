@@ -14,7 +14,7 @@
         <td>${user?.profile?.fullName.encodeAsHTML()}</td>
         <td>
           <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go">View User</g:link>
-          <a onClick="addMember('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_add">Grant Membership</a>
+          <a onClick="addMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_add">Grant Membership</a>
         </td>
       </tr>
     </g:each>

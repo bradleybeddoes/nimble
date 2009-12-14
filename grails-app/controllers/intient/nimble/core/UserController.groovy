@@ -488,7 +488,7 @@ class UserController {
     }
 
     log.debug("Listing permissions user [$user.id]$user.username is granted")
-    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: user.permissions, ownerID: user.id])
+    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: user.permissions, parent: user])
   }
 
   def createpermission = {

@@ -19,7 +19,7 @@
           <g:else><span class="icon icon_cross">&nbsp;No</span></g:else>
         </td>
         <td>
-          <g:if test="${!perm.managed}"><button onClick="removePermission('${ownerID.encodeAsHTML()}', '${g.fieldValue(bean:perm, field:'id')}');" class="button icon icon_delete">Remove</button></g:if>
+          <g:if test="${!perm.managed}"><button onClick="removePermission('${parent.id.encodeAsHTML()}', '${g.fieldValue(bean:perm, field:'id')}');" class="button icon icon_delete">Remove</button></g:if>
           <g:else>&nbsp;</g:else>
         </td>
       </tr>

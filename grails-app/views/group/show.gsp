@@ -3,6 +3,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Group</title>
+
+  	<script type="text/javascript">
+		<njs:permission parent="${group}"/>
+		<njs:role parent="${group}"/>
+		<njs:member parent="${group}"/>
+	</script>
 </head>
 <body>
 
@@ -41,27 +47,28 @@
   </div>
 
   <div class="sections">
-
     <div>
-      <ul id="sections_" class="horizmenu">
-        <li class="current"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
-        <li class=""><a href="roles_" class="icon icon_cog">Roles</a></li>
-        <li class=""><a href="members_" class="icon icon_group">Members</a></li>
+      <ul class="">
+        <li class="current"><a href="#" class="icon icon_lock">Permissions</a></li>
+        <li class=""><a href="#" class="icon icon_cog">Roles</a></li>
+        <li class=""><a href="#" class="icon icon_group">Members</a></li>
       </ul>
     </div>
 
-    <div class="active_ sections_ permissions_">
-      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[ownerID:group.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="sections_ roles_">
-      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[ownerID:group.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="sections_ members_">
-      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parentID:group.id.encodeAsHTML(), protect:group.protect, groupmembers:false]"/>
+    <div class="">
+      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parent:group, protect:group.protect, groupmembers:false]"/>
     </div>
   </div>
 
-<g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
+  <g:form action="delete" name="deletegroup">
+  	<g:hiddenField name="id" value="${group.id.encodeAsHTML()}"/>
+  </g:form>
 
 </body>
 </html>

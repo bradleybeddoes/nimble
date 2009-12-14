@@ -14,7 +14,7 @@
         <td>${group.description.encodeAsHTML()}</td>
         <td>
           <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View Group</g:link>
-          <a onClick="addGroupMember('${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_add">Grant Membership</a>
+          <a onClick="addGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_add">Grant Membership</a>
         </td>
       </tr>
     </g:each>

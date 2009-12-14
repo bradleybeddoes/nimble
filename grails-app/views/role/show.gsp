@@ -1,6 +1,10 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title>Role</title>
+  <script type="text/javascript">
+	<njs:permission parent="${role}"/>
+	<njs:member parent="${role}"/>
+  </script>
 </head>
 <body>
 
@@ -60,21 +64,23 @@
 
   <div class="sections">
 
-    <ul id="sections_" class="horizmenu">
-      <li class="current menuoption"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
-      <li class="menuoption"><a href="members_" class="icon icon_cog">Members</a></li>
+    <ul class="">
+      <li class=""><a href="#" class="icon icon_lock">Permissions</a></li>
+      <li class=""><a href="#" class="icon icon_cog">Members</a></li>
     </ul>
 
-    <div class="active_ sections_ permissions_">
-      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[ownerID:role.id.encodeAsHTML()]"/>
+    <div class="">
+      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:role]"/>
     </div>
 
-    <div class="sections_ members_">
-      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parentID:role.id.encodeAsHTML(), protect:role.protect, groupmembers:true]"/>
+    <div class="">
+      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parent:role, protect:role.protect, groupmembers:true]"/>
     </div>
 
   </div>
 
-<g:render template="/templates/admin/deleteroleconfirm" contextPath="${pluginContextPath}"/>
+  <g:form action="delete" name="deleterole">
+  	<g:hiddenField name="id" value="${role.id.encodeAsHTML()}"/>
+  </g:form>
 
 </body>
