@@ -1,11 +1,10 @@
 <head>
-  <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
+  <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
   <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/login.css')}"/>
 
   <title>Login</title>
 
   <script type="text/javascript">
-
     $(function() {
       $(".loginmethod").hide();
       $("#loginlocal").show();
@@ -20,22 +19,6 @@
 
       $(".flash").show();
     });
-
-    function changeLogin(ident) {
-      $(".flash").hide();
-      $(".loginselector").removeClass("current");
-      $(".loginmethod").hide();
-      $("#" + ident).show("highlight");
-    }
-
-    function enableFacebookContinue() {
-      $("#loginfacebookcontinue").show();
-      $("#loginfacebookenable").hide();
-    }
-
-    function disableFacebookContinue() {
-      $("#loginfacebookcontinue").hide();
-    }
   </script>
 </head>
 
@@ -283,7 +266,7 @@
         <div class="accountoptions">
           <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple">I've forgotten my password</g:link>
           <g:if test="${registration}">
-            <g:link controller=" account" action="createuser" class="textlink icon icon_user_go">New User</g:link>
+            <g:link controller="account" action="createuser" class="textlink icon icon_user_go">New User</g:link>
           </g:if>
         </div>
       </div>

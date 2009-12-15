@@ -1,14 +1,5 @@
-<script type="text/javascript">
-
-  $(function() {
-    $("#accountcreationpolicy").hide();
-    $("#accountcreationpolicybtn").modal({hide_on_overlay_click:false});
-  });
-</script>
-
-<div id="accountcreationpolicy">
+<div id="accountcreationpolicydialog">
   <div class="helppopup">
-    <div class="banner"><strong>Welcome!</strong></div>
     <div class="content">
       <p>This service integrates with all of the following account providers</p>
       <ul>

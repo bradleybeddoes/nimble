@@ -1,38 +1,3 @@
-// General
-function verifyUnique(elem, elemstatus, endpoint, success, failure) {
-   var dataString = 'val=' + $(elem).val();
-   $.ajax({
-     	type: "POST",
-		url: endpoint,
-		data: dataString,
-		success: function(res) {
-		  growl('flaggreen', success, 3000);
-		  $(elem).css({'background': '#fff', 'color':'#000'});
-		  $(elemstatus).addClass('icon');
-		  $(elemstatus).addClass('icon_flag_green');
-		  $(elemstatus).removeClass('icon_flag_red');
-		},
-		error: function (xhr, ajaxOptions, thrownError) {
-		  growl('flagred', failure);
-		  $(elem).css({'color': '#9c3333'});
-		  $(elemstatus).addClass('icon');
-		  $(elemstatus).addClass('icon_flag_red');
-		  $(elemstatus).removeClass('icon_flag_green');
-		}
-	});
-}
-
-function wasConfirmed(title, msg, accept, cancel) {
-	$("#confirmationtitle").html(title);
-	$("#confirmationcontent").html(msg); 
-	$("#confirmaccept").html(accept);
-	$("#confirmcancel").html(cancel);
-	$(".confirmationbtn").click();
-	
-	$("#dialog").dialog('option', 'title', title);
-	$("#dialog").dialog('open');		
-}
-
 // Admins
 function listAdministrators() {
   $.ajax({

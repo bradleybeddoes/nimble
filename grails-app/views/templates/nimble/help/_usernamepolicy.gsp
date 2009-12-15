@@ -2,7 +2,7 @@
 
   $(function() {
     $("#usernamepolicy").hide();
-    $("#usernamepolicybtn").bt({contentSelector: $("#usernamepolicy"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['right'], fill: '#fbfbfb', strokeWidth: 2, strokeStyle: '#f2f2f2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
+    $("#usernamepolicybtn").bt({contentSelector: $("#usernamepolicy"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['top', 'right', 'left'], fill: '#fbfbfb', strokeWidth: 2, strokeStyle: '#f2f2f2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
 
   });
 </script>
