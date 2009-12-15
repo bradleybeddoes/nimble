@@ -20,10 +20,10 @@
       <tbody>
       <tr>
         <td>
-          <g:textField name="first_p" class="easyinput"/> <strong>:</strong>
-          <g:textField name="second_p" class="easyinput"/> <strong>:</strong>
-          <g:textField name="third_p" class="easyinput"/> <strong>:</strong>
-          <g:textField name="fourth_p" class="easyinput"/>
+          <g:textField size="15" name="first_p" class="easyinput"/> <strong>:</strong>
+          <g:textField size="15" name="second_p" class="easyinput"/> <strong>:</strong>
+          <g:textField size="15" name="third_p" class="easyinput"/> <strong>:</strong>
+          <g:textField size="15" name="fourth_p" class="easyinput"/>
         </td>
       </tr>
       </tbody>

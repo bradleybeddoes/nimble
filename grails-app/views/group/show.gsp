@@ -1,13 +1,14 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Group</title>
-
-  	<script type="text/javascript">
+	<meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
+	<title>Group</title>
+	<script type="text/javascript">
 		<njs:permission parent="${group}"/>
 		<njs:role parent="${group}"/>
 		<njs:member parent="${group}"/>
+		$(function() {
+			$("#tabs").tabs();
+		});
 	</script>
 </head>
 <body>
@@ -46,22 +47,21 @@
 
   </div>
 
-  <div class="sections">
-    <div>
-      <ul class="">
-        <li class="current"><a href="#" class="icon icon_lock">Permissions</a></li>
-        <li class=""><a href="#" class="icon icon_cog">Roles</a></li>
-        <li class=""><a href="#" class="icon icon_group">Members</a></li>
-      </ul>
-    </div>
+  <div id="tabs">
 
-    <div class="">
+      <ul>
+        <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
+        <li><a href="#tab-roles" class="icon icon_cog">Roles</a></li>
+        <li><a href="#tab-members" class="icon icon_group">Members</a></li>
+      </ul>
+
+    <div id="tab-permissions">
       <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="">
+    <div id="tab-roles">
       <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="">
+    <div id="tab-members">
       <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parent:group, protect:group.protect, groupmembers:false]"/>
     </div>
   </div>

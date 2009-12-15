@@ -14,7 +14,6 @@
   <n:errors bean="${group}"/>
 
   <g:form name="createGroup" action="save" method="post">
-    <div class="dialog">
       <table>
         <tbody>
 
@@ -32,7 +31,7 @@
             Description
           </th>
           <td valign="top" class="value">
-            <input type="text" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
+            <input type="text" size="30" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
           </td>
         </tr>
 
@@ -47,8 +46,6 @@
         </tr>
         </tbody>
       </table>
-
-    </div>
   </g:form>
 
 </body>

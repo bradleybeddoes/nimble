@@ -6,6 +6,10 @@
 	<njs:permission parent="${user}"/>
 	<njs:role parent="${user}"/>
 	<njs:group parent="${user}"/>
+	
+	$(function() {
+		$("#tabs").tabs();
+	});
   </script>
 </head>
 
@@ -98,28 +102,28 @@
     </div>
   </g:if>
 
-  <div class="sections">
+  <div id="tabs">
 
-    <ul class="">
-      <li class=""><a href="#" class="icon icon_lock">Permissions</a></li>
-      <li><a href="#" class="icon icon_cog">Roles</a></li>
-      <li><a href="#" class="icon icon_group">Groups</a></li>
-      <li><a href="#" class="icon icon_key">Logins</a></li>
+    <ul>
+      <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
+      <li><a href="#tab-roles" class="icon icon_cog">Roles</a></li>
+      <li><a href="#tab-groups" class="icon icon_group">Groups</a></li>
+      <li><a href="#tab-logins" class="icon icon_key">Logins</a></li>
     </ul>
 
-    <div class="">
+    <div id="tab-permissions">
       <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="">
+    <div id="tab-roles">
       <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="">
+    <div id="tab-groups">
       <g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="">
+    <div id="tab-logins">
       <g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[parent:user]"/>      
     </div>
 

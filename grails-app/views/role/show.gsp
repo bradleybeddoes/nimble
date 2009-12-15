@@ -4,6 +4,9 @@
   <script type="text/javascript">
 	<njs:permission parent="${role}"/>
 	<njs:member parent="${role}"/>
+	$(function() {
+		$("#tabs").tabs();
+	});
   </script>
 </head>
 <body>
@@ -62,18 +65,18 @@
 
   </div>
 
-  <div class="sections">
+  <div id="tabs">
 
-    <ul class="">
-      <li class=""><a href="#" class="icon icon_lock">Permissions</a></li>
-      <li class=""><a href="#" class="icon icon_cog">Members</a></li>
+    <ul>
+      <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
+      <li><a href="#tab-members" class="icon icon_cog">Members</a></li>
     </ul>
 
-    <div class="">
+    <div id="tab-permissions">
       <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:role]"/>
     </div>
 
-    <div class="">
+    <div id="tab-members">
       <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parent:role, protect:role.protect, groupmembers:true]"/>
     </div>
 

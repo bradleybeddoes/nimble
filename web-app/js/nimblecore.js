@@ -28,6 +28,9 @@ function wasConfirmed(title, msg, accept, cancel) {
 	$("#confirmaccept").html(accept);
 	$("#confirmcancel").html(cancel);
 	$(".confirmationbtn").click();
+	
+	$("#dialog").dialog('option', 'title', title);
+	$("#dialog").dialog('open');		
 }
 
 // Admins

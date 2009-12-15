@@ -19,9 +19,9 @@
           <td>&nbsp;</td>
         </g:else>
         <td>
-          <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go">View User</g:link>
+          <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go">View</g:link>
           <g:if test="${!protect}">
-            <a onClick="removeMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete">Remove User</a>
+            <a onClick="removeMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete">Remove</a>
           </g:if>
         </td>
       </tr>
@@ -52,9 +52,9 @@
           <td>${group.name.encodeAsHTML()}</td>
           <td>${group.description.encodeAsHTML()}</td>
           <td>
-            <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View Group</g:link>
+            <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View</g:link>
             <g:if test="${!protect}">
-              <a onClick="removeGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete">Remove Group</a>
+              <a onClick="removeGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete">Remove</a>
             </g:if>
           </td>
         </tr>
