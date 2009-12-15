@@ -1,19 +1,4 @@
-<script type="text/javascript">
-$(function() {
-	$("#dialog").dialog({
-		bgiframe: true,
-		resizable: false,
-		modal: true,
-		autoOpen: false,
-		overlay: {
-			backgroundColor: '#000',
-			opacity: 0.5
-		}
-	});
-});
-</script>
-
-<div id="dialog" title="">
+<div id="confirmationdialog" title="">
       <p id="confirmationcontent">Example confirmation message</p>
 
       <div class="buttons">

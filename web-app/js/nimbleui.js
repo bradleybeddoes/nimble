@@ -26,14 +26,37 @@ function growl(type, msg, period) {
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
 }
 
+// Dialog support
+$(function() {
+	$("#confirmationdialog").dialog({
+		bgiframe: true,
+		resizable: false,
+		modal: true,
+		autoOpen: false,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		}
+	});
+});
+
 // Session Termination
 $(function() {
-	$("#sessionterminated").hide();
-	$("#sessionterminatedmodal").modal({hide_on_overlay_click:false});
+	$("#sessionterminateddialog").dialog({
+		bgiframe: true,
+		resizable: false,
+		modal: true,
+		autoOpen: false,
+		title: 'Session Terminated',
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		}
+	});
 
 	$().ajaxError(function (event, xhr, ajaxOptions, thrownError) {
 	  if ((xhr.status == 403) && (xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
-	    $("#sessionterminatedmodal").click();
+	    $("#sessionterminateddialog").dialog('open');
 	  }
 	});
 });

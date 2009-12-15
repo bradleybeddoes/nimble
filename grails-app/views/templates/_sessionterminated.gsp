@@ -1,6 +1,5 @@
-<div id="sessionterminated">
+<div id="sessionterminateddialog">
   <div class="errorpopup">
-    <div class="banner"><strong><span class="icon icon_exclamation">&nbsp;</span><strong>Session has expired</strong></strong></div>
     <div class="content">
       Unfortunately your session has expired. This usually happens when a page is left open for long periods of time without
       performing any action. If you're experiencing this problem often contact your helpdesk for assistance.
@@ -10,4 +9,3 @@
     </div>
   </div>
 </div>
-<a href="#" id="sessionterminatedmodal" rel="sessionterminated">&nbsp;</a>
