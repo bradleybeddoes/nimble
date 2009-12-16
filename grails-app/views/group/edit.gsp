@@ -44,7 +44,6 @@
 	        <td>
 	          <div>
 	            <button class="button icon icon_group_go" type="submit">Update Group</button>
-	            <a id="deleteconfirmbtn" rel="deleteconfirm" class="button icon icon_group_delete">Delete Group</a>
 	            <g:link action="show" id="${group.id}" class="button icon icon_cross">Cancel</g:link>
 	          </div>
 	        </td>
@@ -53,8 +52,6 @@
 	    </table>
 	    
   </g:form>
-
-  <g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
 
 </body>
 </html>

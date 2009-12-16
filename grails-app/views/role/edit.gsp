@@ -43,7 +43,6 @@
 	        <td>
 	          <div>
 	          	<button class="button icon icon_cog_go" type="submit">Update Role</button>
-	    		<a id="deleteconfirmbtn" rel="deleteconfirm" class="button icon icon_cog_delete">Delete Role</a>
 	    		<g:link action="show" id="${role.id}" class="button icon icon_cross">Cancel</g:link>
 	          </div>
 	        </td>
@@ -53,9 +52,6 @@
 	  </table>
 	
 	</g:form>
-	
-<g:render template="/templates/admin/deleteroleconfirm" contextPath="${pluginContextPath}"/>
-
 
 </body>
 </html>
