@@ -6,12 +6,7 @@
 !color_button = #f2f2f2
 !color_button_text = #363636
 !color_button_border = #ccc
-!color_button_border_highlight = #eee
-
-!color_button2 = #363636
-!color_button2_text = #f2f2f2
-!color_button2_border = #666
-!color_button2_border_highlight = #868686
+!color_button_border_highlight = #eee 
 
 !link_color = #363636
 
@@ -157,20 +152,6 @@
     :size = 1.1em
     :weight = "normal"
 
-=button2(!radius=5px)
-  +button(!radius)
-
-  :background
-    :color = !color_button2
-
-  border = 1px "solid" !color_button2_border
-  :border
-    :top = 1px "solid" !color_button2_border_highlight
-    :left = 1px "solid" !color_button2_border_highlight
-
-  a
-    color = !color_button2_text
-
 =notification
   +rounded
   +font-size(14px)
@@ -271,6 +252,7 @@
 
 
 // Generic UI classes
+
 .error
   +notification
 
@@ -294,30 +276,3 @@
 
 .easyinput
   +easyinput
-
-.helppopup
-  +popup
-
-  .banner
-    :background
-      :color =  #1B4366
-
-    color = #fbfbfb
-
-.errorpopup
-  +popup
-
-  .banner
-    :background
-      :color =  #870000
-
-    color = #fbfbfb
-
-.deletepopup
-  +popup
-
-  .banner
-    :background
-      :color =  #870000
-
-    color = #fbfbfb

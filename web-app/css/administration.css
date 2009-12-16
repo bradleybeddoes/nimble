@@ -9,24 +9,6 @@
 
 .easyinput { padding: 5px; font-size: 1.2em; }
 
-.helppopup { margin: 0px; padding: 0px; }
-.helppopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.helppopup .content { padding: 18px; }
-.helppopup .buttons { padding: 12px; text-align: center; }
-.helppopup .banner { background-color: #1b4366; color: #fbfbfb; }
-
-.errorpopup { margin: 0px; padding: 0px; }
-.errorpopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.errorpopup .content { padding: 18px; }
-.errorpopup .buttons { padding: 12px; text-align: center; }
-.errorpopup .banner { background-color: #870000; color: #fbfbfb; }
-
-.deletepopup { margin: 0px; padding: 0px; }
-.deletepopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.deletepopup .content { padding: 18px; }
-.deletepopup .buttons { padding: 12px; text-align: center; }
-.deletepopup .banner { background-color: #870000; color: #fbfbfb; }
-
 table.adminslist { margin: 0px; width: 100%; }
 table.adminslist h3 { margin: 0px; padding: 0px; margin-bottom: 3px; }
 table.adminslist thead tr th { background-color: #fff; }
@@ -101,8 +83,5 @@ table.grouplist tbody tr td { padding: 9px; }
 .section .details tbody tr td { padding: 9px; }
 .section h3 { margin: 0px; padding: 0px; font-weight: bold; margin-bottom: 3px; margin-top: 3px; }
 .section h4 { margin: 0px; padding: 0px; font-weight: bold; margin-bottom: 3px; margin-top: 18px; }
-
-.actions { float: right; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-right: 0; border: 1px solid #f2f2f2; background-color: #fbfbfb; }
-.actions .horizmenu { background: none; }
 
 #currentmembers table td { width: 25%; }

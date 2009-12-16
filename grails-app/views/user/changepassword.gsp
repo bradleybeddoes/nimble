@@ -23,22 +23,26 @@
     <tr>
       <th>Password</th>
       <td>
-        <input type="password" id="pass" name="pass" class="password easyinput" value="${user.pass?.encodeAsHTML()}"/>
-        <span class="icon icon_bullet_green">&nbsp;</span>
-        <a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help"></a>
+        <input type="password" id="pass" name="pass" class="password easyinput"/>
+	  </td>
+	  <td>
+        <span class="icon icon_bullet_green" alt="required">&nbsp;</span><a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help">&nbsp;</a>
       </td>
     </tr>
 
     <tr>
       <th>Password confirmation</th>
       <td>
-        <input type="password" id="passConfirm" name="passConfirm" value="${user.passConfirm?.encodeAsHTML()}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
+        <input type="password" id="passConfirm" name="passConfirm" class="easyinput"/>
+	  </td>
+	  <td>
+		<span class="icon icon_bullet_green">&nbsp;</span>
       </td>
     </tr>
 
     <tr>
       <td/>
-      <td>
+      <td colspan="2">
         <div class="buttons">
           <button type="submit" class="button icon icon_key_go">Change Password</button>
           <g:link action="show" id="${user.id}" class="button icon icon_cross">Cancel</g:link>

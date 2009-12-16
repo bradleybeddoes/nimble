@@ -183,7 +183,11 @@ function createPermission(ownerID) {
     url: permissionCreateEndpoint,
     data: dataString,
     success: function(res) {
-      $("#addpermissionserror").empty()
+      $("#addpermissionserror").empty();
+	  $('#first_p').val('');
+	  $('#second_p').val('');
+	  $('#third_p').val('');
+	  $('#fourth_p').val('');
       listPermissions(ownerID);
       growl('success', 'Permission granted');
     },

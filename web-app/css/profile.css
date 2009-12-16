@@ -9,24 +9,6 @@
 
 .easyinput { padding: 5px; font-size: 1.2em; }
 
-.helppopup { margin: 0px; padding: 0px; }
-.helppopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.helppopup .content { padding: 18px; }
-.helppopup .buttons { padding: 12px; text-align: center; }
-.helppopup .banner { background-color: #1b4366; color: #fbfbfb; }
-
-.errorpopup { margin: 0px; padding: 0px; }
-.errorpopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.errorpopup .content { padding: 18px; }
-.errorpopup .buttons { padding: 12px; text-align: center; }
-.errorpopup .banner { background-color: #870000; color: #fbfbfb; }
-
-.deletepopup { margin: 0px; padding: 0px; }
-.deletepopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.deletepopup .content { padding: 18px; }
-.deletepopup .buttons { padding: 12px; text-align: center; }
-.deletepopup .banner { background-color: #870000; color: #fbfbfb; }
-
 .profile { margin-left: auto; margin-right: auto; width: 950px; }
 .profile .left { width: 270px; float: left; text-align: center; }
 .profile .left .photo { margin-top: 9px; margin-bottom: 9px; }
