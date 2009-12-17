@@ -220,7 +220,7 @@ class AccountController {
                 }
 
                 flash.type = "error"
-                flash.message = "${message(code: 'nimble.user.validate.error')}"
+                flash.message = message(code: 'nimble.user.validate.error')
                 redirect controller: 'auth', action: 'login'
                 return
             }

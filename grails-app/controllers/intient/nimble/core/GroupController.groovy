@@ -49,7 +49,7 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 
       flash.type = "error"
-      flash.message = "Group not found with id $params.id"
+      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       redirect action: list
       return
     }
@@ -82,7 +82,7 @@ class GroupController {
       log.info("Created new group with name '$name' and description '$description'")
 
       flash.type = "success"
-      flash.message = "New group created"
+      flash.message = message(code: 'nimble.group.create.success', args: [newGroup.name])
       redirect action: show, params: [id: createdGroup.id]
       return
     }
@@ -94,7 +94,7 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 
       flash.type = "error"
-      flash.message = "Group not found with id $params.id"
+      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       redirect action: list
       return
     }
@@ -108,7 +108,7 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 
       flash.type = "error"
-      flash.message = "Group not found with id $params.id"
+      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       redirect action: list
       return
     }
@@ -119,14 +119,15 @@ class GroupController {
       def updatedGroup = groupService.updateGroup(group)
       if (updatedGroup.hasErrors()) {
         log.warn("Attempt to update group [$group.id]$group.name failed")
-        render view: 'edit', model: [group: updateGroup]
+		flash.type = "error"
+        flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
+        render view: 'edit', model: [group: updatedGroup]
         return
       }
       else {
         log.info("Attempt to update group [$group.id]$group.name succeeded")
-
         flash.type = "success"
-        flash.message = "Group successfully updated"
+        flash.message = message(code: 'nimble.group.update.success', args: [updatedGroup.name])
         redirect action: show, params: [id: updatedGroup.id]
         return
       }
@@ -142,7 +143,7 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 
       flash.type = "error"
-      flash.message = "Group to be deleted could not be found"
+      flash.message = message(code: 'nimble.group.delete.error', args: [group.name])
       redirect action: list
       return
     }
