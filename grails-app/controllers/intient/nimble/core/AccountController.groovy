@@ -55,7 +55,7 @@ class AccountController {
 
         if(!params.currentPassword) {
             log.warn("User [$user.id]$user.username attempting to change password but has not supplied current password")
-            user.errors.reject('user.password.change.current.incorrect')
+            user.errors.reject('nimble.user.password.required')
             render (view:"changepassword", model:[user:user])
             return
         }
@@ -68,7 +68,7 @@ class AccountController {
 
             if(!crypt.equals(user.passwordHash)) {
                 log.warn("User [$user.id]$user.username attempting to change password but has supplied invalid current password")
-                user.errors.reject('user.password.change.current.incorrect')
+                user.errors.reject('nimble.user.password.nomatch')
                 render (view:"changepassword", model:[user:user])
                 return
             }
@@ -86,7 +86,7 @@ class AccountController {
                 }
             }
 
-            log.debug("User [$user.id]$user.username password change was considered invalid")
+            log.error("User [$user.id]$user.username password change was considered invalid")
             user.errors.allErrors.each {
                 log.debug it
             }
@@ -96,7 +96,7 @@ class AccountController {
         
         log.debug("Captcha entry was invalid for user account creation")
         resetNewUser(user)
-        user.errors.reject('invalid.captcha')
+        user.errors.reject('nimble.invalid.captcha')
         render(view: 'changepassword', model: [user: user])
         return
     }
@@ -137,7 +137,7 @@ class AccountController {
         // Enforce username restrictions on local accounts, letters + numbers only
         if (user.username == null || user.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !user.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
             log.debug("Supplied username of $user.username does not meet requirements for local account usernames")
-            user.errors.rejectValue('username', 'user.username.invalid')
+            user.errors.rejectValue('username', 'nimble.user.username.invalid')
         }
 
         // Enforce email address for account registrations
@@ -172,7 +172,7 @@ class AccountController {
         else {
             log.debug("Captcha entry was invalid for user account creation")
             resetNewUser(user)
-            user.errors.reject('invalid.captcha')
+            user.errors.reject('nimble.invalid.captcha')
             render(view: 'createuser', model: [user: user])
             return
         }
@@ -201,7 +201,7 @@ class AccountController {
         if (!user) {
             log.warn("User identified as [$params.id] was not located")
             flash.type = "error"
-            flash.message = "User not found with id $params.id"
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'nimble.user.label'), params.id])
             redirect controller: 'auth', action: 'login'
             return
         }
@@ -220,7 +220,7 @@ class AccountController {
                 }
 
                 flash.type = "error"
-                flash.message = "Error when attempting to validate account please try again later"
+                flash.message = "${message(code: 'nimble.user.validate.error')}"
                 redirect controller: 'auth', action: 'login'
                 return
             }
@@ -228,7 +228,7 @@ class AccountController {
             log.info("Successful validate for user identified as [$user.id]$user.username")
 
             flash.type = "success"
-            flash.message = "Your account is now valid, login to continue"
+            flash.message = message(code: 'nimble.user.validate.success')
             redirect controller: 'auth', action: 'login'
 
             return
@@ -244,7 +244,7 @@ class AccountController {
         log.warn("Attempt to validate user identified by [$user.id]$user.username but activation action hash did not match data store")
 
         flash.type = "error"
-        flash.message = "Error when attempting to validate account please try again later"
+        flash.message = message(code: 'nimble.user.validate.error')
         redirect controller: 'auth', action: 'login'
         return
     }
@@ -252,7 +252,7 @@ class AccountController {
     def validusername = {
 
         if (params.username == null || params.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !params.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
-            flash.message = "Username is invalid"
+            flash.message = message(code: 'nimble.user.validate.invalid.username')
             response.sendError(500)
             return
         }
@@ -260,12 +260,12 @@ class AccountController {
         def users = UserBase.findAllByUsername(params?.username)
 
         if (users != null && users.size() > 0) {
-            flash.message = "User already exists for ${params.username}"
+            flash.message = message(code: 'nimble.user.validate.exists')
             response.sendError(500)
             return
         }
 
-        render "valid"
+        render message(code: 'nimble.user.validate.valid.username')
     }
 
     def forgottenpassword = {
@@ -318,14 +318,14 @@ class AccountController {
             else {
                 log.debug("Captcha entry was invalid when attempting to process forgotten password for user identified by [$user.id]$user.username")
                 flash.type = "error"
-                flash.message = message(code: "invalid.captcha")
+                flash.message = message(code: 'nimble.invalid.captcha')
                 redirect(action: "forgottenpassword")
             }
         }
         else {
             log.debug("User account for supplied email address $params.email was not found when attempting to process forgotten password")
             flash.type = "error"
-            flash.message = "Unable to locate details associated with the supplied email address"
+            flash.message = message(code: 'nimble.forgottenpassword.email.invalid')
             redirect(action: "forgottenpassword")
         }
     }
@@ -338,21 +338,9 @@ class AccountController {
         log.debug("New user creation failed, resetting user input to accepted state")
 
         if (user.profile?.email.equals('invalid'))
-        user.profile.email = ''
+        	user.profile.email = ''
 
-        // Clear password, force re-entry
         user.pass = ""
         user.passConfirm = ""
-    }
-
-    private def authenticatedUser = {
-        def user = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
-        if (!user) {
-            log.error("Authenticated user was not able to be obtained when performing pasword change action")
-            response.sendError(403)
-            return null
-        }
-
-        return user
     }
 }
