@@ -51,52 +51,50 @@ class AdminsController {
       log.warn("User identified by id $params.id was not located")
 
       response.sendError(500)
-      render 'Unable to locate user'
+      render message(code: 'nimble.user.nonexistant', args: [params.id])
       return
     }
 
     def result = adminsService.add(user)
     if (result) {
       log.debug("User identified as [$user.id]$user.username was added as an administrator")
-      render 'Success'
+      render message(code: 'nimble.admin.grant.success', args: [user.username])
       return
     }
     else {
       log.warn("User identified as [$user.id]$user.username was unable to be made an administrator")
       response.sendError(500)
-      render 'Unable to save administrator changes'
+      render message(code: 'nimble.admin.grant.failed', args: [user.username])
       return
     }
   }
 
   def delete = {
     def user = UserBase.get(params.id)
-    def authenticatedUser = UserBase.get(SecurityUtils.getSubject()?.getPrincipal())
 
     if (!user) {
-      log.warn("User identified by id $params.id was not located")
-
+      log.warn("User identified by id $params.id was not located")  
+      render message(code: 'nimble.user.nonexistant', args: [params.id])
       response.sendError(500)
-      render 'Unable to save administrator changes'
       return
     }
 
     if(user == authenticatedUser) {
-      log.warn("Administrators are not able to remove themselves from the administrative role")
+      log.warn("Administrators are not able to remove themselves from the administrative role") 
+      render message(code: 'nimble.admin.revoke.self', args: [user.username])
       response.sendError(500)
-      render 'Unable to save administrator changes. Attempt to remove own administrative rights'
       return
     }
 
     def result = adminsService.remove(user)
     if (result) {
-      render 'Success'
+      render message(code: 'nimble.admin.revoke.success', args: [user.username])
       return
     }
     else {
       log.warn("User identified as [$user.id]$user.username was unable to be removed as an administrator")
-      response.sendError(500)
-      render 'Unable to save administrator changes'
+      render message(code: 'nimble.admin.revoke.error', args: [user.username])
+	  response.sendError(500)
       return
     }
   }

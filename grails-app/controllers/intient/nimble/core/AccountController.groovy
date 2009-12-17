@@ -250,9 +250,8 @@ class AccountController {
     }
 
     def validusername = {
-
         if (params.username == null || params.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !params.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
-            flash.message = message(code: 'nimble.user.validate.invalid.username')
+            flash.message = message(code: 'nimble.user.username.invalid')
             response.sendError(500)
             return
         }
@@ -260,12 +259,12 @@ class AccountController {
         def users = UserBase.findAllByUsername(params?.username)
 
         if (users != null && users.size() > 0) {
-            flash.message = message(code: 'nimble.user.validate.exists')
+            flash.message = message(code: 'nimble.user.username.invalid')
             response.sendError(500)
             return
         }
 
-        render message(code: 'nimble.user.validate.valid.username')
+        render message(code: 'nimble.user.username.valid')
     }
 
     def forgottenpassword = {
@@ -325,7 +324,7 @@ class AccountController {
         else {
             log.debug("User account for supplied email address $params.email was not found when attempting to process forgotten password")
             flash.type = "error"
-            flash.message = message(code: 'nimble.forgottenpassword.email.invalid')
+            flash.message = message(code: 'nimble.user.forgottenpassword.noaccount')
             redirect(action: "forgottenpassword")
         }
     }
