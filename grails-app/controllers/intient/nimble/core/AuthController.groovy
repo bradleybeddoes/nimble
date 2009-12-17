@@ -43,9 +43,7 @@ class AuthController {
     def userService
     def grailsApplication
 
-    static Map allowedMethods = [ login: 'GET', signin: 'POST', logout: 'GET', signout: 'GET',
-        unauthorized: 'GET', facebook: 'GET']
-
+    static Map allowedMethods = [ signin: 'POST' ]
 
     def index = { redirect(action: 'login', params: params) }
 
@@ -56,7 +54,7 @@ class AuthController {
         def openid = grailsApplication.config.nimble.openid.federationprovider.enabled
 
         if(params.targetUri)
-        session.setAttribute(AuthController.TARGET, params.targetUri)
+        	session.setAttribute(AuthController.TARGET, params.targetUri)
 
         render(template: "/templates/nimble/login/login", model: [local: local, registration: registration, facebook: facebook, openid: openid, username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri])
     }
@@ -64,9 +62,8 @@ class AuthController {
     def signin = {
         def authToken = new UsernamePasswordToken(params.username, params.password)
 
-        if (params.rememberMe) {
+        if (params.rememberMe)
             authToken.rememberMe = true
-        }
 
         log.info("Attempting to authenticate user, $params.username. RememberMe is $authToken.rememberMe")
 
@@ -78,8 +75,6 @@ class AuthController {
             session.removeAttribute(AuthController.TARGET)
 
             log.info("Authenticated user, $params.username. Directing to content $targetUri")
-
-            log.info "Redirecting to '${targetUri}'."
             redirect(uri: targetUri)
             return
         }
@@ -88,21 +83,21 @@ class AuthController {
             log.debug(e)
       
             flash.type = 'error'
-            flash.message = message(code: "login.failed.credentials")
+            flash.message = message(code: "nimble.login.failed.credentials")
         }
         catch (DisabledAccountException e) {
             log.info "Attempt to login to disabled account for user '${params.username}'."
             log.debug(e)
 
             flash.type = 'error'
-            flash.message = message(code: "login.failed.disabled")
+            flash.message = message(code: "nimble.login.failed.disabled")
         }
         catch (AuthenticationException e) {
             log.info "General authentication failure for user '${params.username}'."
             log.debug(e)
 
             flash.type = 'error'
-            flash.message = message(code: "login.failed.general")
+            flash.message = message(code: "nimble.login.failed.general")
         }
         redirect(action: 'login')
     }
@@ -193,7 +188,7 @@ class AuthController {
         else {
             log.debug("Erronous technoratireq no username")
             flash.type = 'error'
-            flash.message = message(code: "login.technorati.no.username")
+            flash.message = message(code: "nimble.login.openid.invalid.identifier")
             redirect(action: 'login', params: [active: 'technorati'])
         }
     }
@@ -208,7 +203,6 @@ class AuthController {
      * Facebook Connect integration
      */
     def facebook = {
-
         if (!grailsApplication.config.nimble.facebook.federationprovider.enabled) {
             log.error("Authentication attempt for Facebook federation provider, denying attempt as Facebook disabled")
             response.sendError(403)
@@ -245,14 +239,14 @@ class AuthController {
                 log.warn "Facebook authentication failure - ${ex.getLocalizedMessage()}"
                 log.debug ex.printStackTrace()
                 flash.type = 'error'
-                flash.message = message(code: "login.facebook.failed")
+                flash.message = message(code: "nimble.login.facebook.error")
                 redirect(action: 'login', params: [active: 'facebook'])
             }
         }
         else {
             log.warn "Facebook authentication failure - no session cookies present"
             flash.type = 'error'
-            flash.message = message(code: "login.facebook.cookies")
+            flash.message = message(code: "nimble.login.facebook.cookies")
             redirect(action: 'login', params: [active: 'facebook'])
         }
     }
@@ -305,7 +299,7 @@ class AuthController {
             log.warn("Unable to discover details for openid service $serviceIdentifier redirecting client")
 
             flash.type = 'error'
-            flash.message = message(code: "login.${service}.internal.error.req")
+            flash.message = message(code: "nimble.login.openid.${service}.internal.error.req")
             redirect(action: 'login', params: [active: service])
         }
     }
@@ -343,7 +337,7 @@ class AuthController {
                 log.warn "OpenID authentication failure for $authToken.userID - ${ex.getLocalizedMessage()}"
                 log.debug ex.printStackTrace()
                 flash.type = 'error'
-                flash.message = message(code: "login.openid.${service}.failed")
+                flash.message = message(code: "nimble.login.openid.${service}.failed")
                 redirect(action: 'login', params: [active: service])
             }
         }
@@ -351,7 +345,7 @@ class AuthController {
             log.debug ("OpenID authentication failure")
       
             flash.type = 'error'
-            flash.message = message(code: "login.openid.${service}.internal.error.res")
+            flash.message = message(code: "nimble.login.openid.${service}.internal.error.res")
             redirect(action: 'login', params: [active: service])
         }
     }
