@@ -51,9 +51,9 @@ class GroupController {
       flash.type = "error"
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       redirect action: list
-      return
     }
-    [group: group]
+	else
+    	[group: group]
   }
 
   def create = {
@@ -65,66 +65,67 @@ class GroupController {
     def name = params.name
     def description = params.description
 
-    def newGroup = new Group()
-    newGroup.name = name
-    newGroup.description = description
-
-    log.debug("Attempting to create new group with name '$name' and description '$description'")
+	log.debug("Attempting to create new group with name '$name' and description '$description'")
     def createdGroup = groupService.createGroup(name, description, false)
     if (createdGroup.hasErrors()) {
-      // Error state for non validation or save problems
-      log.warn("Failure attempting to create new group with name '$name' and description '$description'")
-      render view: 'create', model: [group: createdGroup]
-      return
+      	// Error state for non validation or save problems
+      	log.warn("Failure attempting to create new group with name '$name' and description '$description'")
+		flash.type = "error"
+	  	flash.message = message(code: 'nimble.group.create.error', args: [createdGroup.name])
+      	render view: 'create', model: [group: createdGroup]
     }
-
-    log.info("Created new group with name '$name' and description '$description'")
-    flash.type = "success"
-    flash.message = message(code: 'nimble.group.create.success', args: [newGroup.name])
-    redirect action: show, params: [id: createdGroup.id]
+	else {
+    	log.info("Created new group with name '$name' and description '$description'")
+	    flash.type = "success"
+	    flash.message = message(code: 'nimble.group.create.success', args: [createdGroup.name])
+	    redirect action: show, params: [id: createdGroup.id]
+	}
   }
 
   def edit = {
     def group = Group.get(params.id)
     if (!group) {
-      log.warn("Group identified by id '$params.id' was not located")
-      flash.type = "error"
-      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
-      redirect action: list
-      return
+      	log.warn("Group identified by id '$params.id' was not located")
+      	flash.type = "error"
+      	flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
+      	redirect action: list
     }
-
-    [group: group]
+	else
+    	[group: group]
   }
 
   def update = {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
-
       flash.type = "error"
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       redirect action: list
-      return
     }
-
-    group.properties['name', 'description'] = params
-    if (!group.validate())
-		render view: 'edit', model: [group: group]
-		
-    def updatedGroup = groupService.updateGroup(group)
-    if (updatedGroup.hasErrors()) {
-       log.warn("Attempt to update group [$group.id]$group.name failed")
-	   flash.type = "error"
-       flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
-       render view: 'edit', model: [group: updatedGroup]
-     }
-     else {
-       log.info("Attempt to update group [$group.id]$group.name succeeded")
-       flash.type = "success"
-       flash.message = message(code: 'nimble.group.update.success', args: [updatedGroup.name])
-       redirect action: show, params: [id: updatedGroup.id]
-     }
+	else {
+    	group.properties['name', 'description'] = params
+	    if (!group.validate()) {
+			log.warn("Attempt to update group [$group.id]$group.name failed")
+			flash.type = "error"
+		    flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
+			render view: 'edit', model: [group: group]
+		}
+		else {
+	    	def updatedGroup = groupService.updateGroup(group)
+		    if (updatedGroup.hasErrors()) {
+		       log.warn("Attempt to update group [$group.id]$group.name failed")
+			   flash.type = "error"
+		       flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
+		       render view: 'edit', model: [group: updatedGroup]
+		     }
+		     else {
+		       log.info("Attempt to update group [$group.id]$group.name succeeded")
+		       flash.type = "success"
+		       flash.message = message(code: 'nimble.group.update.success', args: [updatedGroup.name])
+		       redirect action: show, params: [id: updatedGroup.id]
+		     }
+		}
+	}
   }
 
   def delete = {
@@ -253,7 +254,7 @@ class GroupController {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
-      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
+      render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
     }
 	else
@@ -318,8 +319,7 @@ class GroupController {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' wass not located")
-      flash.type = "error"
-      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
+      render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
     }
 	else
@@ -353,23 +353,20 @@ class GroupController {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
-      flash.type = "error"
-      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
+      render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
     }
 	else {
 		def role = Role.get(params.roleID)
 	    if (!role) {
 	      log.warn("Role identified by id '$roleID.id' was not located")
-	      flash.type = "error"
-	      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
+	      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
 	      response.sendError(500)
 	    }
 		else {
 	    	if (role.protect) {
 		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
-		      flash.type = "error"
-		      flash.message = message(code: 'nimble.role.addmember.protected', args: [group.name, role.name])
+		      render message(code: 'nimble.role.addmember.protected', args: [group.name, role.name])
 		      response.sendError(500)
 		    }
 			else {
@@ -385,24 +382,20 @@ class GroupController {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
-      flash.type = "error"
-      flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
+      render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
     }
 	else {
 		def role = Role.get(params.roleID)
 	    if (!role) {
 	      log.warn("Role identified by id '$roleID.id' was not located")
-	      flash.type = "error"
-	      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
+	      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
 	      response.sendError(500)
 	    }
 		else {
 	    	if (role.protect) {
 		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
-      
-		      flash.type = "error"
-		      flash.message = "Unable to remove role with id $params.roleID from group with id $params.id via web interface, role is protected"
+		      render message(code: 'nimble.role.removemember.protected', args: [group.name, role.name])
 		      response.sendError(500)
 		    }
 			else {
