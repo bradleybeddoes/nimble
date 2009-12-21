@@ -49,7 +49,7 @@
 			</g:if>
 		<li>
 			<g:link controller="role" action="list">Roles</g:link>
-			<g:if test="${controllerName == 'role' && actionName == 'list'}">
+			<g:if test="${controllerName == 'role' && && actionName in ['list', 'create']}">
 				<ul>
 					<li>
 						<g:link controller="role" action="create">Create Role</g:link>
@@ -77,7 +77,7 @@
 		</li>
 		<li>
 			<g:link controller="group" action="list">Groups</g:link>
-			<g:if test="${controllerName == 'group' && actionName == 'list'}">
+			<g:if test="${controllerName == 'group' && actionName in ['list', 'create']}">
 				<ul>
 					<li>
 						<g:link controller="group" action="create">Create Group</g:link>

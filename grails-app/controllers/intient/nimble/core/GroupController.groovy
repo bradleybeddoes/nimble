@@ -155,7 +155,7 @@ class GroupController {
 	      response.sendError(500)
 	    }
 		else
-	    	render render message(code: 'nimble.group.name.valid', args: [params.val])
+	    	render message(code: 'nimble.group.name.valid', args: [params.val])
 	}
   }
 
@@ -408,7 +408,7 @@ class GroupController {
 			else {
 		    	roleService.deleteGroupMember(group, role)
 			    log.info("Removed role [$role.id]$role.name to group [$group.id]$group.name")
-			    render render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
+			    render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
 			}
 		}
     }
