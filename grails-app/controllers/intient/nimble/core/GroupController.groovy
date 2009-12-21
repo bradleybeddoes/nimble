@@ -163,7 +163,7 @@ class GroupController {
     def group = Group.get(params.id)
     if (!group) {
       	log.warn("Group identified by id '$params.id' was not located")
-	    render = message(code: 'nimble.group.nonexistant', args: [params.id])
+	    render message(code: 'nimble.group.nonexistant', args: [params.id])
 	    response.sendError(500)
     }
 	else {
@@ -174,51 +174,46 @@ class GroupController {
 
   def addmember = {
     def group = Group.get(params.id)
-    def user = UserBase.get(params.userID)
-
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
       render message(code: 'nimble.group.nonexistant', args: [params.id])
 	  response.sendError(500)
-      return
     }
-
-    if (!user) {
-      log.warn("User identified by id '$params.userID' was not located")
-	  render message(code: 'nimble.user.nonexistant', args: [params.id])
-      response.sendError(500)
-      return
-    }
-
-    groupService.addMember(user, group)
-    log.info("Added user [$user.id]$user.username to group $group.name")
-    render 'Success'
-    return
+	else {
+		def user = UserBase.get(params.userID)
+    	if (!user) {
+	      log.warn("User identified by id '$params.userID' was not located")
+		  render message(code: 'nimble.user.nonexistant', args: [params.id])
+	      response.sendError(500)
+	    }
+		else {
+	    	groupService.addMember(user, group)
+		    log.info("Added user [$user.id]$user.username to group $group.name")
+		    render message(code: 'nimble.group.addmember.success', args: [group.id, user.id])
+    	}
+	}
   }
 
   def removemember = {
     def group = Group.get(params.id)
-    def user = UserBase.get(params.userID)
-
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
 	  render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
-
-    if (!user) {
-      log.warn("User identified by id '$params.userID' was not located")
-	  render message(code: 'nimble.user.nonexistant', args: [params.id])
-      response.sendError(500)
-      return
-    }
-
-    groupService.deleteMember(user, group)
-
-    log.info("Removed user [$user.id]$user.username from group $group.name")
-    render 'Success'
-    return
+	else {
+		def user = UserBase.get(params.userID)
+    	if (!user) {
+			log.warn("User identified by id '$params.userID' was not located")
+			render message(code: 'nimble.user.nonexistant', args: [params.id])
+			response.sendError(500)
+	    }
+		else {
+	    	groupService.deleteMember(user, group)
+		    log.info("Removed user [$user.id]$user.username from group $group.name")
+		    render message(code: 'nimble.group.removemember.success', args: [group.id, user.id])
+	    }
+	}
   }
 
   def searchnewmembers = {
@@ -229,30 +224,29 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 	  render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
+	else {
+    	log.debug("Performing search for users matching $q")
 
-    log.debug("Performing search for users matching $q")
+	    def users = UserBase.findAllByUsernameIlike(q)
+	    def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
+	    def nonMembers = []
 
-    def users = UserBase.findAllByUsernameIlike(q)
-    def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
-    def nonMembers = []
-
-    users.each {
-      if (!it.groups.contains(group)) {
-        nonMembers.add(it)
-        log.debug("Adding user identified as [$it.id]$it.username to search results")
-      }
-    }
-    profiles.each {
-      if (!it.owner.groups.contains(group) && !nonMembers.contains(it.owner)) {
-        nonMembers.add(it.owner)
-        log.debug("Adding user identified as [$it.owner.id]$it.owner.username based on profile to search results")
-      }
-    }
-
-    log.info("Search for new group members complete, returning $nonMembers.size records")
-    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [parent: group, users: nonMembers])
+	    users?.each {
+	      if (!it.groups.contains(group)) {
+	        nonMembers.add(it)
+	        log.debug("Adding user identified as [$it.id]$it.username to search results")
+	      }
+	    }
+	    profiles.each {
+	      if (!it.owner.groups.contains(group) && !nonMembers.contains(it.owner)) {
+	        nonMembers.add(it.owner)
+	        log.debug("Adding user identified as [$it.owner.id]$it.owner.username based on profile to search results")
+	      }
+	    }
+	    log.info("Search for new group members complete, returning $nonMembers.size records")
+	    render(template: '/templates/admin/members_search', contextPath: pluginContextPath, model: [parent: group, users: nonMembers])
+	}
   }
 
   def listpermissions = {
@@ -261,10 +255,9 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
-
-    render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: group.permissions, parent: group])
+	else
+    	render(template: '/templates/admin/permissions_list', contextPath: pluginContextPath, model: [permissions: group.permissions, parent: group])
   }
 
   def createpermission = {
@@ -273,31 +266,30 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
       render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.status = 500
-      return
     }
+	else {
+    	LevelPermission permission = new LevelPermission()
+	    permission.populate(params.first, params.second, params.third, params.fourth, params.fifth, params.sixth)
+	    permission.managed = false
 
-    LevelPermission permission = new LevelPermission()
-    permission.populate(params.first, params.second, params.third, params.fourth, params.fifth, params.sixth)
-    permission.managed = false
-
-    if (permission.hasErrors()) {
-      log.debug("Unable to create new permission for group [$group.id]$group.name, permission details are invalid")
-      render(template: "/templates/errors", contextPath: pluginContextPath, model: [bean: permission])
-      response.status = 500
-      return
+	    if (permission.hasErrors()) {
+	      log.debug("Unable to create new permission for group [$group.id]$group.name, permission details are invalid")
+	      render(template: "/templates/errors", contextPath: pluginContextPath, model: [bean: permission])
+	      response.status = 500
+	    }
+		else {
+	    	def savedPermission = permissionService.createPermission(permission, group)
+		    if (savedPermission.hasErrors()) {
+		      log.warn("Unable to create new permission for group [$group.id]$group.name")
+		      render(template: "/templates/errors", contextPath: pluginContextPath, model: [bean: savedPermission])
+		      response.status = 500
+		    }
+			else {
+		    	log.info("Created new permission $savedPermission.id for group [$group.id]$group.name")
+			    render message(code: 'nimble.permission.create.success', args: [group.name])
+			}
+		}
     }
-
-    def savedPermission = permissionService.createPermission(permission, group)
-    if (savedPermission.hasErrors()) {
-      log.warn("Unable to create new permission for group [$group.id]$group.name")
-      render(template: "/templates/errors", contextPath: pluginContextPath, model: [bean: savedPermission])
-      response.status = 500
-      return
-    }
-
-    log.info("Created new permission $savedPermission.id for group [$group.id]$group.name")
-    render "success"
-    return
   }
 
   def removepermission = {
@@ -306,20 +298,19 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
       render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.status = 500
-      return
     }
-
-    def permission = Permission.get(params.permID)
-    if (!permission) {
-      render message(code: 'nimble.permission.nonexistant', args: [params.permID])
-      response.status = 500
-      return
-    }
-
-    permissionService.deletePermission(permission)
-    log.info("Removed permission $permission.id for group [$group.id]$group.name")
-    render "success"
-    return
+	else {
+    	def permission = Permission.get(params.permID)
+	    if (!permission) {
+	      render message(code: 'nimble.permission.nonexistant', args: [params.permID])
+	      response.status = 500
+	    }
+		else {
+	    	permissionService.deletePermission(permission)
+		    log.info("Removed permission $permission.id for group [$group.id]$group.name")
+		    render message(code: 'nimble.permission.remove.success', args: [group.name])
+	    }
+	}
   }
 
   def listroles = {
@@ -330,10 +321,9 @@ class GroupController {
       flash.type = "error"
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
-
-    render(template: '/templates/admin/roles_list', contextPath: pluginContextPath, model: [roles: group.roles, ownerID: group.id])
+	else
+    	render(template: '/templates/admin/roles_list', contextPath: pluginContextPath, model: [roles: group.roles, ownerID: group.id])
   }
 
   def searchroles = {
@@ -344,57 +334,51 @@ class GroupController {
       log.warn("Group identified by id '$params.id' was not located")
 	  render message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
+	else {
+    	log.debug("Performing search for roles matching $q")
+	    def roles = Role.findAllByNameIlikeOrDescriptionIlike(q, q)
+	    def respRoles = []
+	    roles.each {
+	      if (!group.roles.contains(it) && !it.protect)
+	        respRoles.add(it)    // Eject already assigned roles for this group
+	    }
 
-    log.debug("Performing search for roles matching $q")
-    def roles = Role.findAllByNameIlikeOrDescriptionIlike(q, q)
-    def respRoles = []
-    roles.each {
-      if (!group.roles.contains(it) && !it.protect)
-        respRoles.add(it)    // Eject already assigned roles for this group
+	    log.info("Search for new group roles complete, returning $respRoles.size records")
+	    render(template: '/templates/admin/roles_search', contextPath: pluginContextPath, model: [roles: respRoles, ownerID: group.id])
     }
-
-    log.info("Search for new group roles complete, returning $respRoles.size records")
-    render(template: '/templates/admin/roles_search', contextPath: pluginContextPath, model: [roles: respRoles, ownerID: group.id])
-    return
   }
 
   def grantrole = {
     def group = Group.get(params.id)
     if (!group) {
       log.warn("Group identified by id '$params.id' was not located")
-
       flash.type = "error"
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
-
-	def role = Role.get(params.roleID)
-    if (!role) {
-      log.warn("Role identified by id '$roleID.id' was not located")
-
-      flash.type = "error"
-      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
-      response.sendError(500)
-      return
+	else {
+		def role = Role.get(params.roleID)
+	    if (!role) {
+	      log.warn("Role identified by id '$roleID.id' was not located")
+	      flash.type = "error"
+	      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
+	      response.sendError(500)
+	    }
+		else {
+	    	if (role.protect) {
+		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
+		      flash.type = "error"
+		      flash.message = message(code: 'nimble.role.addmember.protected', args: [group.name, role.name])
+		      response.sendError(500)
+		    }
+			else {
+		    	roleService.addGroupMember(group, role)
+			    log.info("Granted role [$role.id]$role.name to group [$group.id]$group.name")
+			    render message(code: 'nimble.role.addmember.success', args: [role.name, group.name])
+			}
+		}
     }
-
-    if (role.protect) {
-      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
-
-      flash.type = "error"
-      flash.message = "Unable to grant role $role.name to group $group.name via web interface, role is protected"
-      response.sendError(500)
-      return
-    }
-
-    roleService.addGroupMember(group, role)
-
-    log.info("Granted role [$role.id]$role.name to group [$group.id]$group.name")
-    render "success"
-    return
   }
 
   def removerole = {
@@ -404,31 +388,29 @@ class GroupController {
       flash.type = "error"
       flash.message = message(code: 'nimble.group.nonexistant', args: [params.id])
       response.sendError(500)
-      return
     }
-
-	def role = Role.get(params.roleID)
-    if (!role) {
-      log.warn("Role identified by id '$roleID.id' was not located")
-      flash.type = "error"
-      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
-      response.sendError(500)
-      return
-    }
-
-    if (role.protect) {
-      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
+	else {
+		def role = Role.get(params.roleID)
+	    if (!role) {
+	      log.warn("Role identified by id '$roleID.id' was not located")
+	      flash.type = "error"
+	      flash.message = message(code: 'nimble.role.nonexistant', args: [params.roleID])
+	      response.sendError(500)
+	    }
+		else {
+	    	if (role.protect) {
+		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
       
-      flash.type = "error"
-      flash.message = "Unable to remove role with id $params.roleID from group with id $params.id via web interface, role is protected"
-      response.sendError(500)
-      return
+		      flash.type = "error"
+		      flash.message = "Unable to remove role with id $params.roleID from group with id $params.id via web interface, role is protected"
+		      response.sendError(500)
+		    }
+			else {
+		    	roleService.deleteGroupMember(group, role)
+			    log.info("Removed role [$role.id]$role.name to group [$group.id]$group.name")
+			    render render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
+			}
+		}
     }
-
-    roleService.deleteGroupMember(group, role)
-
-    log.info("Removed role [$role.id]$role.name to group [$group.id]$group.name")
-    render "success"
-    return
   }
 }
