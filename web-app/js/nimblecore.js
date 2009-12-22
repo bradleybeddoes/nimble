@@ -8,7 +8,7 @@ function listAdministrators() {
       $("#admins").append(res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to list administrators');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -24,7 +24,7 @@ function searchAdministrators() {
       $("#searchresponse").append(res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'No users found');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -36,11 +36,11 @@ function deleteAdministrator(userID, username) {
     url: adminDeleteEndpoint,
     data: dataString,
     success: function(res) {
-      growl('success', 'Revoked administrator rights from ' + username);
+      growl('success', res);
       listAdministrators();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to remove administrator rights from ' + username);
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -52,12 +52,12 @@ function grantAdministrator(userID, username) {
     url: adminGrantEndpoint,
     data: dataString,
     success: function(res) {
-      growl('success', 'Granted administration rights to ' + username);
       searchAdministrators();
       listAdministrators();
+	  growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to grant administration rights to ' + username);
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -74,11 +74,11 @@ function enableUser(id) {
       $("#enableduser").hide();
       $("#disableuser").show();
       $("#disableduser").show();
-      growl('success', 'Account enabled');
+      growl('success', res);
 
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'There was an internal error when attempting to enable this account');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -94,11 +94,11 @@ function disableUser(id) {
       $("#disableduser").hide();
       $("#enableuser").show();
       $("#enableduser").show();
-      growl('success', 'Account disabled');
+      growl('success', res);
 
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'There was an internal error when attempting to disable this account');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -115,11 +115,11 @@ function enableAPI(id) {
 
       $("#disableuserapi").show();
       $("#enableuserapi").hide();
-      growl('success', 'Remote API access enabled');
+      growl('success', res);
 
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'There was an internal error when attempting to enable remote api access account');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -136,11 +136,11 @@ function disableAPI(id) {
 
       $("#disableuserapi").hide();
       $("#enableuserapi").show();
-      growl('success', 'Remote API access disabled');
+      growl('success', res);
 
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'There was an internal error when attempting to disable remote api access for this account');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -155,7 +155,7 @@ function listLogins(userID) {
       $("#loginhistory").empty().append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to list recent user logins');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -171,7 +171,7 @@ function listPermissions(ownerID) {
       $("#currentpermission").empty().append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to list permissions');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -193,7 +193,6 @@ function createPermission(ownerID) {
     },
     error: function (xhr, ajaxOptions, thrownError) {
       $("#addpermissionserror").empty().append(xhr.responseText)
-      growl('error', 'Failed to create permission');
     }
   });
 }
@@ -226,7 +225,7 @@ function searchRoles(ownerID) {
       $("#rolesearchresponse").append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "There was an error executing your search");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -241,7 +240,7 @@ function listRoles(ownerID) {
       $("#assignedroles").empty().append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to list roles');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -255,10 +254,10 @@ function grantRole(ownerID, roleID) {
     success: function(res) {
       listRoles(ownerID);
       searchRoles(ownerID);
-      growl('success', 'Role was assigned');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to assign role');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -271,10 +270,10 @@ function removeRole(ownerID, roleID) {
     data: dataString,
     success: function(res) {
       listRoles(ownerID);
-      growl('success', 'Role removed');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to remove role');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -291,7 +290,7 @@ function searchGroups(parentID) {
       $("#groupsearchresponse").append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "There was an error executing your search");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -306,7 +305,7 @@ function listGroups(parentID) {
       $("#assignedgroups").empty().append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to list groups');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -320,10 +319,10 @@ function grantGroup(parentID, groupID) {
     success: function(res) {
       listGroups(parentID);
       searchGroups(parentID);
-      growl('success', 'Group was assigned');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to assign group');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -336,10 +335,10 @@ function removeGroup(parentID, groupID) {
     data: dataString,
     success: function(res) {
       listGroups(parentID);
-      growl('success', 'Group removed');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to remove group');
+      growl('error', xhr.responseText);
     }
   });
 }
@@ -356,7 +355,7 @@ function searchMembers(ownerID) {
       $("#membersearchresponse").append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "There was an error executing your search");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -372,7 +371,7 @@ function searchGroupMembers(ownerID) {
       $("#membergroupsearchresponse").append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "There was an error executing your search");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -384,12 +383,12 @@ function addMember(ownerID, userID, username) {
     url: memberAddEndpoint,
     data: dataString,
     success: function(res) {
-      growl("success", "Added the user " + username + " as a member");
+      growl("success", res);
       listMembers(ownerID);
       searchMembers(ownerID);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "Failed to add user as a member");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -401,11 +400,11 @@ function removeMember(ownerID, userID, username) {
     url: memberRemoveEndpoint,
     data: dataString,
     success: function(res) {
-      growl("success", "Removed membership of the user " + username);
+      growl("success", res);
       listMembers(ownerID);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "Failed to remove users membership");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -417,12 +416,12 @@ function addGroupMember(ownerID, groupID, groupName) {
     url: memberAddGroupEndpoint,
     data: dataString,
     success: function(res) {
-      growl("success", "Added the group " + groupName + " as a member");
+      growl("success", res);
       listMembers(ownerID);
       searchGroupMembers(ownerID);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "Failed to add group as a member");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -434,11 +433,11 @@ function removeGroupMember(ownerID, groupID, groupName) {
     url: memberRemoveGroupEndpoint,
     data: dataString,
     success: function(res) {
-      growl("success", "Removed membership of the group " + groupName);
+      growl("success", res);
       listMembers(ownerID);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "Failed to remove groups membership");
+      growl("error", xhr.responseText);
     }
   });
 }
@@ -454,7 +453,7 @@ function listMembers(ownerID) {
       $("#currentmembers").append(res).show();
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", "Failed to list members");
+      growl("error", xhr.responseText);
     }
   });
 }
