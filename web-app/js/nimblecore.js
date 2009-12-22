@@ -189,7 +189,7 @@ function createPermission(ownerID) {
 	  $('#third_p').val('');
 	  $('#fourth_p').val('');
       listPermissions(ownerID);
-      growl('success', 'Permission granted');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
       $("#addpermissionserror").empty().append(xhr.responseText)
@@ -206,10 +206,10 @@ function removePermission(ownerID, permID) {
     data: dataString,
     success: function(res) {
       listPermissions(ownerID);
-      growl('success', 'Permission removed');
+      growl('success', res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', 'Failed to remove permission from user');
+      growl('error', xhr.responseText);
     }
   });
 }

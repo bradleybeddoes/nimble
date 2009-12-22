@@ -107,7 +107,7 @@ class GroupController {
 	    if (!group.validate()) {
 			log.warn("Attempt to update group [$group.id]$group.name failed")
 			flash.type = "error"
-		    flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
+		    flash.message = message(code: 'nimble.group.update.error', args: [group.id])
 			render view: 'edit', model: [group: group]
 		}
 		else {

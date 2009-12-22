@@ -34,14 +34,14 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 		url: endpoint,
 		data: dataString,
 		success: function(res) {
-		  growl('flaggreen', success, 3000);
+		  growl('flaggreen', res, 3000);
 		  $(elem).css({'background': '#fff', 'color':'#000'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_green');
 		  $(elemstatus).removeClass('icon_flag_red');
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
-		  growl('flagred', failure);
+		  growl('flagred', xhr.responseText);
 		  $(elem).css({'color': '#9c3333'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_red');
