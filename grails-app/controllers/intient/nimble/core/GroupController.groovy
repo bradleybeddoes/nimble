@@ -103,27 +103,27 @@ class GroupController {
       redirect action: list
     }
 	else {
-    	group.properties['name', 'description'] = params
-	    if (!group.validate()) {
-			log.warn("Attempt to update group [$group.id]$group.name failed")
-			flash.type = "error"
-		    flash.message = message(code: 'nimble.group.update.error', args: [group.id])
-			render view: 'edit', model: [group: group]
-		}
+		if (group.protect) {
+	      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+	      flash.type = "error"
+	      flash.message = message(code: 'nimble.group.protected.no.modification', args: [params.id])
+	      redirect (action: show, id: group.id)
+	    }
 		else {
-	    	def updatedGroup = groupService.updateGroup(group)
-		    if (updatedGroup.hasErrors()) {
-		       log.warn("Attempt to update group [$group.id]$group.name failed")
-			   flash.type = "error"
-		       flash.message = message(code: 'nimble.group.update.error', args: [updatedGroup.name])
-		       render view: 'edit', model: [group: updatedGroup]
-		     }
-		     else {
+    		group.properties['name', 'description'] = params
+		    if (!group.validate()) {
+				log.warn("Attempt to update group [$group.id]$group.name failed")
+				flash.type = "error"
+			    flash.message = message(code: 'nimble.group.update.error', args: [group.id])
+				render view: 'edit', model: [group: group]
+			}
+			else {
+		    	def updatedGroup = groupService.updateGroup(group)
 		       log.info("Attempt to update group [$group.id]$group.name succeeded")
 		       flash.type = "success"
 		       flash.message = message(code: 'nimble.group.update.success', args: [updatedGroup.name])
 		       redirect action: show, params: [id: updatedGroup.id]
-		     }
+			}
 		}
 	}
   }
@@ -137,10 +137,18 @@ class GroupController {
       redirect action: list
     }
 	else {
-    	groupService.deleteGroup(group)
-	    flash.type = "success"
-	    flash.message = message(code: 'nimble.group.delete.success', args: [params.id])
-	    redirect action: list
+		if (group.protect) {
+	      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+	      flash.type = "error"
+	      flash.message = message(code: 'nimble.group.protected.no.modification', args: [params.id])
+	      redirect (action: show, id: group.id)
+	    }
+		else {
+    		groupService.deleteGroup(group)
+		    flash.type = "success"
+		    flash.message = message(code: 'nimble.group.delete.success', args: [params.id])
+		    redirect action: list
+		}
 	}
   }
 
@@ -189,9 +197,16 @@ class GroupController {
 	      response.status = 500
 	    }
 		else {
-	    	groupService.addMember(user, group)
-		    log.info("Added user [$user.id]$user.username to group $group.name")
-		    render message(code: 'nimble.group.addmember.success', args: [group.id, user.id])
+			if (group.protect) {
+		      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+		      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+		      response.status = 500
+		    }
+			else {
+	    		groupService.addMember(user, group)
+			    log.info("Added user [$user.id]$user.username to group $group.name")
+			    render message(code: 'nimble.group.addmember.success', args: [group.id, user.id])
+			}
     	}
 	}
   }
@@ -211,9 +226,16 @@ class GroupController {
 			response.status = 500
 	    }
 		else {
-	    	groupService.deleteMember(user, group)
-		    log.info("Removed user [$user.id]$user.username from group $group.name")
-		    render message(code: 'nimble.group.removemember.success', args: [group.id, user.id])
+			if (group.protect) {
+		      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+		      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+		      response.status = 500
+		    }
+			else {
+	    		groupService.deleteMember(user, group)
+			    log.info("Removed user [$user.id]$user.username from group $group.name")
+			    render message(code: 'nimble.group.removemember.success', args: [group.id, user.id])
+			}
 	    }
 	}
   }
@@ -358,22 +380,29 @@ class GroupController {
       response.status = 500
     }
 	else {
-		def role = Role.get(params.roleID)
-	    if (!role) {
-	      log.warn("Role identified by id '$roleID.id' was not located")
-	      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
+		if (group.protect) {
+	      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
 	      response.status = 500
 	    }
 		else {
-	    	if (role.protect) {
-		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
-		      render message(code: 'nimble.role.addmember.protected', args: [group.name, role.name])
+			def role = Role.get(params.roleID)
+		    if (!role) {
+		      log.warn("Role identified by id '$roleID.id' was not located")
+		      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
 		      response.status = 500
 		    }
 			else {
-		    	roleService.addGroupMember(group, role)
-			    log.info("Granted role [$role.id]$role.name to group [$group.id]$group.name")
-			    render message(code: 'nimble.role.addmember.success', args: [role.name, group.name])
+		    	if (role.protect) {
+			      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
+			      render message(code: 'nimble.role.addmember.protected', args: [group.name, role.name])
+			      response.status = 500
+			    }
+				else {
+			    	roleService.addGroupMember(group, role)
+				    log.info("Granted role [$role.id]$role.name to group [$group.id]$group.name")
+				    render message(code: 'nimble.role.addmember.success', args: [role.name, group.name])
+				}
 			}
 		}
     }
@@ -387,22 +416,29 @@ class GroupController {
       response.status = 500
     }
 	else {
-		def role = Role.get(params.roleID)
-	    if (!role) {
-	      log.warn("Role identified by id '$roleID.id' was not located")
-	      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
+		if (group.protect) {
+	      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
 	      response.status = 500
 	    }
 		else {
-	    	if (role.protect) {
-		      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
-		      render message(code: 'nimble.role.removemember.protected', args: [group.name, role.name])
+			def role = Role.get(params.roleID)
+		    if (!role) {
+		      log.warn("Role identified by id '$roleID.id' was not located")
+		      render message(code: 'nimble.role.nonexistant', args: [params.roleID])
 		      response.status = 500
 		    }
 			else {
-		    	roleService.deleteGroupMember(group, role)
-			    log.info("Removed role [$role.id]$role.name to group [$group.id]$group.name")
-			    render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
+		    	if (role.protect) {
+			      log.warn("Role [$roleID.id]$role.name is protected and can not be modified via the web interface")
+			      render message(code: 'nimble.role.removemember.protected', args: [group.name, role.name])
+			      response.status = 500
+			    }
+				else {
+			    	roleService.deleteGroupMember(group, role)
+				    log.info("Removed role [$role.id]$role.name to group [$group.id]$group.name")
+				    render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
+				}
 			}
 		}
     }

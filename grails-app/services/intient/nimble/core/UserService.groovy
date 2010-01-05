@@ -159,7 +159,7 @@ class UserService {
             log.error it
         }
 
-        return user
+        throw new RuntimeException("Error saving user [$user.id]$user.username password modification")
     }
 
     /**

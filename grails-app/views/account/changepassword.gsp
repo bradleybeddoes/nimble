@@ -15,7 +15,7 @@
       <h2>Change Password</h2>
 
       <p>
-        You can change your current password below. Passwords should be changed reguarly to ensure security.
+        You can change your current password below. Passwords should be changed regularly to ensure security.
       </p>
 
       <n:errors bean="${user}"/>

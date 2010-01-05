@@ -102,8 +102,8 @@ class RoleController {
     	if (role.protect) {
 	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
 	      flash.type = "error"
-	      flash.message = message(code: 'nimble.role.addmember.protected', args: [params.id])
-	      redirect action: list
+	      flash.message = message(code: 'nimble.role.protected.no.modification', args: [params.id])
+	      redirect (action: show, id: role.id)
 	    }
 		else {
 	    	role.properties['name', 'description'] = params
@@ -144,8 +144,8 @@ class RoleController {
     	if (role.protect) {
 	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
 	      flash.type = "error"
-	      flash.message = message(code: 'nimble.role.removemember.protected', args: [params.id])
-	      redirect action: list
+	      flash.message = message(code: 'nimble.role.protected.no.modification', args: [params.id])
+	      redirect (action: show, id: role.id)
 	    }
 		else {
 	    	roleService.deleteRole(role)
@@ -195,16 +195,23 @@ class RoleController {
 	  response.status = 500
     }
 	else {
-		def user = UserBase.get(params.userID)
-    	if (!user) {
-	      log.warn("User identified by id '$params.userID' was not located")
-	      render message(code: 'nimble.user.nonexistant', args: [params.userID])
-		  response.status = 500
+		if (role.protect) {
+	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.role.protected.no.modification', args: [params.id])
+	      response.status = 500
 	    }
 		else {
-	    	roleService.addMember(user, role)
-		    log.info("Added user [$user.id]$user.username to role [$role.id]$role.name")
-		    render message(code: 'nimble.role.addmember.success', args: [role.name, user.username])
+			def user = UserBase.get(params.userID)
+	    	if (!user) {
+		      log.warn("User identified by id '$params.userID' was not located")
+		      render message(code: 'nimble.user.nonexistant', args: [params.userID])
+			  response.status = 500
+		    }
+			else {
+		    	roleService.addMember(user, role)
+			    log.info("Added user [$user.id]$user.username to role [$role.id]$role.name")
+			    render message(code: 'nimble.role.addmember.success', args: [role.name, user.username])
+			}
 		}
     }
   }
@@ -217,16 +224,23 @@ class RoleController {
       	response.status = 500 
     }
 	else {
-		def user = UserBase.get(params.userID)
-    	if (!user) {
-	      	log.warn("user identified by id '$params.userID' was not located")
-			render message(code: 'nimble.user.nonexistant', args: [params.userID])
-	      	response.status = 500
+		if (role.protect) {
+	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.role.protected.no.modification', args: [params.id])
+	      response.status = 500
 	    }
 		else {
-	    	roleService.deleteMember(user, role)
-	    	log.info("Removed user [$user.id]$user.username from role [$role.id]$role.name")
-	    	render 'Success'
+			def user = UserBase.get(params.userID)
+	    	if (!user) {
+		      	log.warn("user identified by id '$params.userID' was not located")
+				render message(code: 'nimble.user.nonexistant', args: [params.userID])
+		      	response.status = 500
+		    }
+			else {
+		    	roleService.deleteMember(user, role)
+		    	log.info("Removed user [$user.id]$user.username from role [$role.id]$role.name")
+		    	render message(code: 'nimble.role.removemember.success', args: [role.name, user.username])
+			}
 		}
     }
   }
@@ -239,16 +253,30 @@ class RoleController {
       	response.status = 500 
     }
 	else {
-    	if (!group) {
-			def group = Group.get(params.groupID)
-	      	log.warn("Group identified by id '$params.groupID' was not located")
-			render message(code: 'nimble.group.nonexistant', args: [params.groupID])
-	      	response.status = 500
+		if (role.protect) {
+	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.role.protected.no.modification', args: [params.id])
+	      response.status = 500
 	    }
 		else {
-	    	roleService.addGroupMember(group, role)
-		    log.info("Added group [$group.id]$group.name to role [$role.id]$role.name")
-		    render 'Success'
+			def group = Group.get(params.groupID)
+	    	if (!group) {
+		      	log.warn("Group identified by id '$params.groupID' was not located")
+				render message(code: 'nimble.group.nonexistant', args: [params.groupID])
+		      	response.status = 500
+		    }
+			else {
+				if (group.protect) {
+			      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+			      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+			      response.status = 500
+			    }
+				else {
+		    		roleService.addGroupMember(group, role)
+				    log.info("Added group [$group.id]$group.name to role [$role.id]$role.name")
+				    render message(code: 'nimble.role.addmember.success', args: [role.name, group.name])
+				}
+			}
 		}
     }
   }
@@ -261,16 +289,30 @@ class RoleController {
       	response.status = 500
     }
 	else {
-		def group = Group.get(params.groupID)
-    	if (!group) {
-	      log.warn("Group identified by id '$params.groupID' was not located")
-	      render message(code: 'nimble.group.nonexistant', args: [params.groupID])
+		if (role.protect) {
+	      log.warn("Role [$role.id]$role.name is protected and can't be updated via the web interface")
+	      render message(code: 'nimble.role.protected.no.modification', args: [params.id])
 	      response.status = 500
 	    }
 		else {
-	    	roleService.deleteGroupMember(group, role)
-		    log.info("Removed group [$group.id]$group.name from role [$role.id]$role.name")
-		    render 'Success'
+			def group = Group.get(params.groupID)
+	    	if (!group) {
+		      log.warn("Group identified by id '$params.groupID' was not located")
+		      render message(code: 'nimble.group.nonexistant', args: [params.groupID])
+		      response.status = 500
+		    }
+			else {
+				if (group.protect) {
+			      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
+			      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+			      response.status = 500
+			    }
+				else {
+		    		roleService.deleteGroupMember(group, role)
+				    log.info("Removed group [$group.id]$group.name from role [$role.id]$role.name")
+				    render message(code: 'nimble.role.removemember.success', args: [role.name, group.name])
+				}
+			}
 		}
     }
   }
