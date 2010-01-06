@@ -1,18 +1,18 @@
 <%@ page import="intient.nimble.core.Role" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Roles</title>
+  <title><g:message code="nimble.view.role.list.title" /></title>
 </head>
 
 <body>
 
-  <h2>Role List</h2>
+  <h2><g:message code="nimble.view.role.list.heading" /></h2>
 
   <table class="rolelist">
     <thead>
     <tr>
       <g:sortableColumn property="name" title="Name" class="first icon icon_arrow_refresh"/>
-      <th>Description</th>
+      <th><g:message code="nimble.label.name" /></th>
       <th class="last">&nbsp;</th>
     </tr>
     </thead>

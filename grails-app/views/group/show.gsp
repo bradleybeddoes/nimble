@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-	<title>Group</title>
+	<title><g:message code="nimble.view.group.show.title" /></title>
 	<script type="text/javascript">
 		<njs:permission parent="${group}"/>
 		<njs:role parent="${group}"/>
@@ -13,31 +13,31 @@
 </head>
 <body>
 
-  <h2>Group ${group.name.encodeAsHTML()}</h2>
+  <h2><g:message code="nimble.view.group.show.heading" args="[group.name.encodeAsHTML()]" /></h2>
 
   <div class="details">
-    <h3>Group Details</h3>
+    <h3><g:message code="nimble.view.group.show.details.heading" /></h3>
     <table class="datatable">
       <tbody>
       <tr>
-        <th>Name</th>
+        <th><g:message code="nimble.label.name" /></th>
         <td valign="top" class="value">${fieldValue(bean: group, field: 'name')}</td>
       </tr>
 
       <tr>
-        <th>Description</th>
+        <th><g:message code="nimble.label.description" /></th>
         <td valign="top" class="value">${fieldValue(bean: group, field: 'description')}</td>
 
       </tr>
 
       <tr>
-        <th>Protected</th>
+        <th><g:message code="nimble.label.protected" /></th>
         <td valign="top" class="value">
           <g:if test="${group.protect}">
-            <span class="icon icon_tick">&nbsp;Yes</span>
+            <span class="icon icon_tick"><g:message code="nimble.label.yes" /></span>
           </g:if>
           <g:else>
-            <span class="icon icon_cross">&nbsp;No</span>
+            <span class="icon icon_cross"><g:message code="nimble.label.no" /></span>
           </g:else>
         </td>
       </tr>
@@ -50,9 +50,9 @@
   <div id="tabs">
 
       <ul>
-        <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
-        <li><a href="#tab-roles" class="icon icon_cog">Roles</a></li>
-        <li><a href="#tab-members" class="icon icon_group">Members</a></li>
+        <li><a href="#tab-permissions" class="icon icon_lock"><g:message code="nimble.label.permissions" /></a></li>
+        <li><a href="#tab-roles" class="icon icon_cog"><g:message code="nimble.label.roles" /></a></li>
+        <li><a href="#tab-members" class="icon icon_group"><g:message code="nimble.label.members" /></a></li>
       </ul>
 
     <div id="tab-permissions">

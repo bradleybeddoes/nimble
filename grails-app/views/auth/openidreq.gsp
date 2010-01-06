@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <title>OpenID Redirection</title>
+  <title><g:message code="nimble.view.auth.openid.redirection" /></title>
 </head>
 
 <body onload="document.forms['openid-form-redirection'].submit();">
@@ -12,7 +12,7 @@
     <input type="hidden" name="${it.key}" value="${it.value}"/>
   </g:each>
 
-  <button type="submit">Continue...</button>
+  <button type="submit"><g:message code="nimble.button.continue" /></button>
   
 </form>
 

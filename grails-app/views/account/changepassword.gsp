@@ -3,7 +3,7 @@
 
   <head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-    <title>Change Password</title>
+    <title><g:message code="nimble.view.account.changepassword.initiate.title" /></title>
 
   <n:growl/>
   <n:flashgrowl/>
@@ -12,10 +12,10 @@
 <body>
 
     <div class="accountinformation">
-      <h2>Change Password</h2>
+      <h2><g:message code="nimble.view.account.changepassword.initiate.heading" /></h2>
 
       <p>
-        You can change your current password below. Passwords should be changed regularly to ensure security.
+        <g:message code="nimble.view.account.changepassword.initiate.descriptive" />
       </p>
 
       <n:errors bean="${user}"/>
@@ -25,21 +25,21 @@
           <tbody>
 
             <tr>
-              <td><label for="currentPassword">Current Password</label></td>
+              <td><label for="currentPassword"><g:message code="nimble.label.currentpassword" /></label></td>
               <td>
                 <input type="password" size="30" id="currentPassword" name="currentPassword" class="easyinput"/>
               </td>
             </tr>
 
             <tr>
-              <td><label for="pass">New Password</label></td>
+              <td><label for="pass"><g:message code="nimble.label.newpassword" /></label></td>
               <td>
                 <input type="password" size="30" id="pass" name="pass" class="password easyinput"/><a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help"></a>
               </td>
             </tr>
 
             <tr>
-              <td><label for="passConfirm">New Password Confirmation</label></td>
+              <td><label for="passConfirm"><g:message code="nimble.label.newpassword.confirmation" /></label></td>
               <td>
                 <input type="password" size="30" id="passConfirm" name="passConfirm" class="easyinput"/>
               </td>
@@ -47,7 +47,7 @@
 
             <n:recaptcharequired>
               <tr>
-                <th>Captcha</th>
+                <th><g:message code="nimble.label.captcha" /></th>
                 <td>
                   <n:recaptcha/>
                 </td>
@@ -58,7 +58,7 @@
           <tr>
             <td/>
             <td>
-              <button class="button icon icon_lock_go" type="submit">Change Password</button>
+              <button class="button icon icon_lock_go" type="submit"><g:message code="nimble.button.changepassword" /></button>
             </td>
             <td/>
           </tr>

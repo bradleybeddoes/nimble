@@ -1,19 +1,17 @@
-
 <html>
 
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-  <title><g:message code="nimble.account.changepassword.complete.label" /></title>
+  <title><g:message code="nimble.view.account.changepassword.complete.title" /></title>
 </head>
 
 <body>
 
   <div class="accountinformation">
-    <h2><g:message code="nimble.account.changepassword.complete.label" /></h2>
+    <h2><g:message code="nimble.view.account.changepassword.complete.heading" /></h2>
 
     <p>
-	  <g:message code="nimble.account.changepassword.complete.confirmation" />
-      Your password has been changed. We recommend you now <g:link controller="auth" action="logout">Logout</g:link> to update your credentials.
+	  <g:message code="nimble.view.account.changepassword.complete.descriptive" />
     </p>
     
   </div>

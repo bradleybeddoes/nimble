@@ -1,6 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Change Password</title>
+  <title><g:message code="nimble.view.user.changepassword.title" /></title>
   <script type="text/javascript">
   	<njs:user user="${user}"/>
   </script>
@@ -8,49 +8,50 @@
 
 <body>
 
-<h2>Change password for ${user.username}</h2>
+	<h2><g:message code="nimble.view.user.changepassword.heading" args="[user.username]" /></h2>
 
-<p>
-  Set a new password below. Passwords must conform to the password policy.
-</p>
+	<p>
+	  <g:message code="nimble.view.user.changepassword.descriptive" />
+	</p>
 
-<n:errors bean="${user}"/>
+	<n:errors bean="${user}"/>
 
-<g:form action="savepassword" class="passwordchange">
-  <g:hiddenField name="id" value="${user.id.encodeAsHTML()}"/>
-  <table>
-    <tbody>
-    <tr>
-      <th>Password</th>
-      <td>
-        <input type="password" id="pass" name="pass" class="password easyinput"/>
-	  </td>
-	  <td>
-        <span class="icon icon_bullet_green" alt="required">&nbsp;</span><a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help">&nbsp;</a>
-      </td>
-    </tr>
+	<g:form action="savepassword" class="passwordchange">
+	  <g:hiddenField name="id" value="${user.id.encodeAsHTML()}"/>
+	  <table>
+	    <tbody>
+	    <tr>
+	      <th><g:message code="nimble.label.password" /></th>
+	      <td>
+	        <input type="password" id="pass" name="pass" class="password easyinput"/>
+		  </td>
+		  <td>
+	        <span class="icon icon_bullet_green" alt="required">&nbsp;</span><a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help">&nbsp;</a>
+	      </td>
+	    </tr>
 
-    <tr>
-      <th>Password confirmation</th>
-      <td>
-        <input type="password" id="passConfirm" name="passConfirm" class="easyinput"/>
-	  </td>
-	  <td>
-		<span class="icon icon_bullet_green">&nbsp;</span>
-      </td>
-    </tr>
+	    <tr>
+	      <th><g:message code="nimble.label.password.confirmation" /></th>
+	      <td>
+	        <input type="password" id="passConfirm" name="passConfirm" class="easyinput"/>
+		  </td>
+		  <td>
+			<span class="icon icon_bullet_green">&nbsp;</span>
+	      </td>
+	    </tr>
 
-    <tr>
-      <td/>
-      <td colspan="2">
-        <div class="buttons">
-          <button type="submit" class="button icon icon_key_go">Change Password</button>
-          <g:link action="show" id="${user.id}" class="button icon icon_cross">Cancel</g:link>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</g:form>
+	    <tr>
+	      <td/>
+	      <td colspan="2">
+	        <div class="buttons">
+	          <button type="submit" class="button icon icon_key_go"><g:message code="nimble.button.changepassword" /></button>
+	          <g:link action="show" id="${user.id}" class="button icon icon_cross"><g:message code="nimble.link.cancel" /></g:link>
+	        </div>
+	      </td>
+	    </tr>
+	    </tbody>
+	  </table>
+	</g:form>
 
-<n:passwordpolicy/>
+	<n:passwordpolicy/>
+</body>

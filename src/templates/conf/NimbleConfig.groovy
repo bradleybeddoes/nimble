@@ -25,6 +25,12 @@ nimble {
         url = ""
     }
 
+	layout {
+        application = 'main'
+        administration = 'aaf'
+		login = 'login'
+    }
+
     localusers {
         authentication {
             enabled = true

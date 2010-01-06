@@ -2,15 +2,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Edit Group</title>
+  <title><g:message code="nimble.view.group.edit.title" /></title>
 </head>
 
 <body>
 
-  <h2>Edit Group - ${group.name.encodeAsHTML()}</h2>
+  <h2><g:message code="nimble.view.group.edit.heading" args="[group.name.encodeAsHTML()]"/></h2>
 
   <p>
-    You can modify values associated with this group below. Fields with bullets are required.
+    <g:message code="nimble.view.group.edit.descriptive" />
   </p>
 
   <n:errors bean="${group}"/>
@@ -23,7 +23,7 @@
 	
 	      <tr>
 	        <th>
-	          <label for="name">Name</label>
+	          <label for="name"><g:message code="nimble.label.name" /></label>
 	        </th>
 	        <td valign="top" class="value ">
 	          <input type="text" id="name" name="name" value="${fieldValue(bean: group, field: 'name')}" class="easyinput"/> <span class="icon icon_bullet_green">&nbsp;</span>
@@ -32,7 +32,7 @@
 	
 	      <tr>
 	        <th>
-	          <label for="description">Description</label>
+	          <label for="description"><g:message code="nimble.label.description" /></label>
 	        </th>
 	        <td valign="top" class="value ">
 	          <input type="text" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/>  <span class="icon icon_bullet_green">&nbsp;</span>
@@ -43,8 +43,8 @@
 	        <td/>
 	        <td>
 	          <div>
-	            <button class="button icon icon_group_go" type="submit">Update Group</button>
-	            <g:link action="show" id="${group.id}" class="button icon icon_cross">Cancel</g:link>
+	            <button class="button icon icon_group_go" type="submit"><g:message code="nimble.button.updategroup" /></button>
+	            <g:link action="show" id="${group.id}" class="button icon icon_cross"><g:message code="nimble.link.cancel" /></g:link>
 	          </div>
 	        </td>
 	      </tr>

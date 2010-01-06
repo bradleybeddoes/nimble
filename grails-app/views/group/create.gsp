@@ -1,14 +1,14 @@
 <html>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Create Group</title>
+  <title><g:message code="nimble.view.group.create.title" /></title>
 </head>
 <body>
 
-  <h2>Create Group</h2>
+  <h2><g:message code="nimble.view.group.create.heading" /></h2>
 
   <p>
-    Create a new group below, fields marked with a bullet are required.
+    <g:message code="nimble.view.group.create.descriptive" />
   </p>
 
   <n:errors bean="${group}"/>
@@ -19,7 +19,7 @@
 
         <tr>
           <th>
-            Name
+            <g:message code="nimble.label.name" />
           </th>
           <td valign="top" class="value">
             <n:verifyfield id="name" class="easyinput" name="name" value="${fieldValue(bean: group, field: 'name')}" required="true" controller="group" action="validname" validmsg="valid" invalidmsg="invalid" />
@@ -28,7 +28,7 @@
 
         <tr>
           <th>
-            Description
+            <g:message code="nimble.label.description" />
           </th>
           <td valign="top" class="value">
             <input type="text" size="30" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
@@ -39,8 +39,8 @@
           <td/>
           <td>
             <div class="buttons">
-              <button class="button icon icon_group_go" type="submit">Create Group</button>
-              <g:link action="list" class="button icon icon_cancel">Cancel</g:link>
+              <button class="button icon icon_group_go" type="submit"><g:message code="nimble.button.creategroup" /></button>
+              <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
             </div>
           </td>
         </tr>

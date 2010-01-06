@@ -3,18 +3,18 @@
 
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-  <title>Forgotten Password</title>
+  <title><g:message code="nimble.view.account.forgottenpassword.initiate.title" /></title>
 </head>
 
 <body>
 	
   <div class="accountinformation">
-    <h2>Forgotten Password</h2>
+    <h2><g:message code="nimble.view.account.forgottenpassword.initiate.heading" /></h2>
 
-    <p>Enter your email address and captcha answers below and we'll reset your password to something secure.</p>
-
-    <p>You'll then recieve an email with this new password, be sure to change it straight away to something only you'll know.</p>
-
+	<p>
+    	<g:message code="nimble.view.account.forgottenpassword.initiate.descriptive" />
+	</p>
+	
     <n:flashembed/>
 
     <g:form action="forgottenpasswordprocess">
@@ -22,7 +22,7 @@
       <table>
         <tbody>
         <tr>
-          <td valign="top" class="name"><label for="email">Email</label></td>
+          <td valign="top" class="name"><label for="email"><g:message code="nimble.label.email" /></label></td>
           <td valign="top" class="value">
             <input type="text" size="30" id="email" name="email" class="easyinput"/>
           </td>
@@ -30,7 +30,7 @@
 
         <n:recaptcharequired>
           <tr>
-            <th>Captcha</th>
+            <th><g:message code="nimble.label.captcha" /></th>
             <td>
               <n:recaptcha/>
             </td>
@@ -41,7 +41,7 @@
       </table>
 
       <div>
-        <button class="button icon icon_user_go" type="submit">Reset Password</button>
+        <button class="button icon icon_user_go" type="submit"><g:message code="nimble.button.resetpassword" /></button>
       </div>
 
     </g:form>

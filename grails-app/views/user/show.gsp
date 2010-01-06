@@ -1,6 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>User</title>
+  <title><g:message code="nimble.view.user.show.title" /></title>
   <script type="text/javascript">
   	<njs:user user="${user}"/>
 	<njs:permission parent="${user}"/>
@@ -15,54 +15,54 @@
 
 <body>
 
-  <h2>User ${user.username?.encodeAsHTML()}</h2></span>
+  <h2><g:message code="nimble.view.user.show.heading" args="[user.username?.encodeAsHTML()]" /></h2></span>
 
   <div class="details">
-    <h3>Account Details</h3>
+    <h3><g:message code="nimble.view.user.show.details.heading" /></h3>
     <table class="datatable">
       <tbody>
 
       <tr>
-        <th>Login Name</th>
+        <th><g:message code="nimble.label.username" /></th>
         <td>${user.username?.encodeAsHTML()}</td>
       </tr>
 
       <tr>
-        <th>Created</th>
+        <th><g:message code="nimble.label.created" /></th>
         <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.dateCreated}"/></td>
       </tr>
 
       <tr>
-        <th>Last Updated</th>
+        <th><g:message code="nimble.label.lastupdated" /></th>
         <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.lastUpdated}"/></td>
       </tr>
 
       <tr>
-        <th>Type</th>
+        <th><g:message code="nimble.label.type" /></th>
         <g:if test="${user.external}">
-          <td class="value">Externally Managed Account</td>
+          <td class="value"><g:message code="nimble.label.external.managment" /></td>
         </g:if>
         <g:else>
-          <td class="value">Locally Managed Account</td>
+          <td class="value"><g:message code="nimble.label.local.managment" /></td>
         </g:else>
       </tr>
 
       <tr>
-        <th>State</th>
+        <th><g:message code="nimble.label.state" /></th>
         <td class="value">
 
           <div id="disableduser">
-            <span class="icon icon_tick">&nbsp;</span>Enabled
+            <span class="icon icon_tick">&nbsp;</span><g:message code="nimble.label.enabled" />
           </div>
           <div id="enableduser">
-            <span class="icon icon_cross">&nbsp;</span>Disabled
+            <span class="icon icon_cross">&nbsp;</span><g:message code="nimble.label.disabled" />
           </div>
 
         </td>
       </tr>
 
       <tr>
-        <th>Remote API Access</th>
+        <th><g:message code="nimble.label.remoteapi" /></th>
         <td class="value">
 
           <div id="enabledapi">
@@ -81,11 +81,11 @@
 
   <g:if test="${user.federated}">
     <div class="details">
-      <h3>Federation Provider</h3>
+      <h3><g:message code="nimble.view.user.show.federated.heading" /></h3>
       <table>
         <tbody>
         <tr>
-          <th>Provider</th>
+          <th><g:message code="nimble.label.provider" /></th>
           <td valign="top">
             <img src="${resource(dir: "images", file: user.federationProvider.details?.logoSmall)}" alt="${user.federationProvider.details?.displayName}"/>
             <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user.federationProvider.details?.displayName}</a>
@@ -93,7 +93,7 @@
           </td>
         </tr>
         <tr>
-          <th>Description</th>
+          <th><g:message code="nimble.label.description" /></th>
           <td>${user.federationProvider.details?.description}</td>
         </tr>
 
@@ -105,10 +105,10 @@
   <div id="tabs">
 
     <ul>
-      <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
-      <li><a href="#tab-roles" class="icon icon_cog">Roles</a></li>
-      <li><a href="#tab-groups" class="icon icon_group">Groups</a></li>
-      <li><a href="#tab-logins" class="icon icon_key">Logins</a></li>
+      <li><a href="#tab-permissions" class="icon icon_lock"><g:message code="nimble.label.permissions" /></a></li>
+      <li><a href="#tab-roles" class="icon icon_cog"><g:message code="nimble.label.roles" /></a></li>
+      <li><a href="#tab-groups" class="icon icon_group"><g:message code="nimble.label.groups" /></a></li>
+      <li><a href="#tab-logins" class="icon icon_key"><g:message code="nimble.label.logins" /></a></li>
     </ul>
 
     <div id="tab-permissions">

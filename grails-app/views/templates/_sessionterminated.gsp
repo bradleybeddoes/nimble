@@ -1,10 +1,12 @@
 <div id="sessionterminateddialog">
   <div class="errorpopup">
     <div class="content">
-      Unfortunately your session has expired. This usually happens when a page is left open for long periods of time without
-      performing any action. If you're experiencing this problem often contact your helpdesk for assistance.
+	  <p>
+		<g:message code="nimble.template.sessionterminated.descriptive" />
+	  </p>
+      
       <div class="buttons">
-        <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">Login Again</a>
+        <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue"><g:message code="nimble.link.login.basic" /></a>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Role</title>
+  <title><g:message code="nimble.view.role.show.title" /></title>
   <script type="text/javascript">
 	<njs:permission parent="${role}"/>
 	<njs:member parent="${role}"/>
@@ -11,55 +11,33 @@
 </head>
 <body>
 
-  <h2>Role ${role.name.encodeAsHTML()}</h2>
-
-
-  <g:if test="${!role.protect}">
-    <div class="actions">
-      <ul class="horizmenu">
-        <li>
-          <g:link action="edit" id="${role.id.encodeAsHTML()}" class="icon icon_cog_edit">Edit Role</g:link>
-        </li>
-        <li>
-          <a href="#" id="deleteconfirmbtn" rel="deleteconfirm" class="icon icon_delete">Delete Role</a>
-        </li>
-      </ul>
-    </div>
-  </g:if>
+  <h2><g:message code="nimble.view.role.show.heading" args="[role.name.encodeAsHTML()]" /></h2>
 
   <div class="details">
-    <h3>Role Details</h3>
+    <h3><g:message code="nimble.view.role.show.details.heading" /></h3>
     <table>
       <tbody>
-      <tr>
-        <td valign="top" class="name">Name</td>
-        <td valign="top" class="value">${fieldValue(bean: role, field: 'name')}</td>
-      </tr>
+      	<tr>
+	        <td valign="top" class="name"><g:message code="nimble.label.name" /></td>
+	        <td valign="top" class="value">${fieldValue(bean: role, field: 'name')}</td>
+	      </tr>
 
-      <tr>
-        <td valign="top" class="name">Description</td>
-        <td valign="top" class="value">${fieldValue(bean: role, field: 'description')}</td>
-      </tr>
+	      <tr>
+	        <td valign="top" class="name"><g:message code="nimble.label.description" /></td>
+	        <td valign="top" class="value">${fieldValue(bean: role, field: 'description')}</td>
+	      </tr>
 
-      <tr>
-        <td valign="top" class="name">Protected</td>
-        <td valign="top" class="value">
-          <g:if test="${role.protect}">
-            <span class="icon icon_tick">&nbsp;Yes</span>
-          </g:if>
-          <g:else>
-            <span class="icon icon_cross">&nbsp;No</span>
-          </g:else>
-        </td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td>
-
-        </td>
-      </tr>
-
+	      <tr>
+	        <td valign="top" class="name"><g:message code="nimble.label.protected" /></td>
+	        <td valign="top" class="value">
+	          <g:if test="${role.protect}">
+	            <span class="icon icon_tick"><g:message code="nimble.label.yes" /></span>
+	          </g:if>
+	          <g:else>
+	            <span class="icon icon_cross"><g:message code="nimble.label.no" /></span>
+	          </g:else>
+	        </td>
+	      </tr>
       </tbody>
     </table>
 
@@ -68,8 +46,8 @@
   <div id="tabs">
 
     <ul>
-      <li><a href="#tab-permissions" class="icon icon_lock">Permissions</a></li>
-      <li><a href="#tab-members" class="icon icon_cog">Members</a></li>
+      <li><a href="#tab-permissions" class="icon icon_lock"><g:message code="nimble.label.permissions" /></a></li>
+      <li><a href="#tab-members" class="icon icon_cog"><g:message code="nimble.label.members" /></a></li>
     </ul>
 
     <div id="tab-permissions">
