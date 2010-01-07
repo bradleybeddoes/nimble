@@ -9,15 +9,9 @@
 
 <div id="usernamepolicy">
   <div class="ui-dialog ui-widget">
-    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all"><strong>Choosing a username</strong></div>
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all"><strong><g:message code="nimble.template.usernamepolicy.title" /></strong></div>
     <div class="ui-dialog-content ui-widget-content">
-      <p>Usernames must meet the following requirements</p>
-      <ul>
-        <li>Be at least 4 characters in length</li>
-        <li>Don't contain any spaces</li>
-        <li>Contain only letters and numbers</li>
-        <li>Not previously used as a username for another account</li>
-      </ul>
+      <g:message code="nimble.template.usernamepolicy" />
     </div>
   </div>
 </div>

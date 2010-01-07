@@ -12,17 +12,9 @@
 
 <div id="passwordpolicy">
   <div class="ui-dialog ui-widget">
-    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all"><strong>Setting a password</strong></div>
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all"><strong><g:message code="nimble.template.passwordpolicy.title" /></strong></div>
     <div class="ui-dialog-content ui-widget-content">
-      <p>To ensure security passwords must meet the following requirements</p>
-      <ul>
-        <li>Be at least 8 characters in length</li>
-        <li>Contain upper and lower case characters</li>
-        <li>Contain at least one number</li>
-        <li>Contain at least one symbol</li>
-        <li>Not previously used as a password on this account</li>
-      </ul>
-      <p>Ideally set a password that is considered to be in the category 'strongest' by the indicator bar.</p>
+      <g:message code="nimble.template.passwordpolicy" />
     </div>
   </div>
 </div>

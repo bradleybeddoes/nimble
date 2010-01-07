@@ -3,8 +3,8 @@
   <table class="details">
     <thead>
     <tr>
-      <th class="first">Name</th>
-      <th class="">Description</th>
+      <th class="first"><g:message code="nimble.label.name" /></th>
+      <th class=""><g:message code="nimble.label.description" /></th>
       <th class="last"></th>
     </tr>
     </thead>
@@ -27,6 +27,6 @@
 </g:if>
 <g:else>
   <p>
-    There are no roles currently assigned.
+    <g:message code="nimble.template.roles.list.noresults" />
   </p>
 </g:else>

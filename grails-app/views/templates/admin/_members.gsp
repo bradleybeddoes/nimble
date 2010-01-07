@@ -1,25 +1,25 @@
 <div id="members" class="section">
 
-  <h3>Current Members</h3>
+  <h3><g:message code="nimble.template.members.heading" /></h3>
   <div id="currentmembers">
   </div>
 
   <g:if test="${!protect}">
     <div id="showaddmembers">
-      <a id="showaddmembersbtn" class="button icon icon_group_add">Add Members</a>
+      <a id="showaddmembersbtn" class="button icon icon_group_add"><g:message code="nimble.button.addmembers" /></a>
     </div>
 
     <div id="addmembers">
-      <h4>Add Members</h4>
+      <h4><g:message code="nimble.template.members.add.heading" /></h4>
 
       <g:if test="${groupmembers}">
-        <g:radio name="memberselect" id="searchmembergroups"/><span class="icon icon_group"></span>&nbsp;Groups
-        <g:radio name="memberselect" id="searchmemberusers" checked="true"/><span class="icon icon_user"></span>&nbsp;Users
+        <g:radio name="memberselect" id="searchmembergroups"/><span class="icon icon_group"></span><g:message code="nimble.label.groups" />
+        <g:radio name="memberselect" id="searchmemberusers" checked="true"/><span class="icon icon_user"></span><g:message code="nimble.label.users" />
       </g:if>
 
       <div id="memberaddusers">
         <p>
-          To add additional users as members simply search for the user below. You can search on username, full name and email address.
+          <g:message code="nimble.template.members.add.user.descriptive" />
         </p>
 
         <div class="searchbox">
@@ -35,13 +35,13 @@
       <g:if test="${groupmembers}">
         <div id="memberaddgroups">
           <p>
-            To add additional groups as members simply search for a group name below.
+            <g:message code="nimble.template.members.add.group.descriptive" />
           </p>
 
           <div class="searchbox">
             <g:textField name="qmembersgroup" class="enhancedinput"/>
-            <button onClick="searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier">Search</button>
-            <button id="closeaddgroupmembersbtn" class="button icon icon_cross">Close</button>
+            <button onClick="searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
+            <button id="closeaddgroupmembersbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
           </div>
 
           <div id="membergroupsearchresponse" class="clear">

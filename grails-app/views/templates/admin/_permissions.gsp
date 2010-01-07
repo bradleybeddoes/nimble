@@ -1,6 +1,6 @@
 <div id="permissions" class="section">
 
-  <h3>Assigned Permissions</h3>
+  <h3><g:message code="nimble.template.permissions.heading" /></h3>
   <div id="currentpermission">
   </div>
 
@@ -9,9 +9,9 @@
   </div>
 
   <div id="addpermissions">
-    <h4>Add Permission</h4>
+    <h4><g:message code="nimble.template.permission.add.heading" /></h4>
     <p>
-      The following will create a new Wildcard permission and assign it to this user.
+      <g:message code="nimble.template.permission.add.descriptive" />
     </p>
 
     <div id="addpermissionserror"></div>
@@ -28,7 +28,7 @@
       </tr>
       </tbody>
     </table>
-    <button onClick="createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add">Add</button>
-    <button id="closepermissionsaddbtn" class="button icon icon_cross">Close</button>
+    <button onClick="createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add"><g:message code="nimble.button.addpermission" /></button>
+    <button id="closepermissionsaddbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
   </div>
 </div>

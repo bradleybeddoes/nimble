@@ -2,8 +2,8 @@
   <table class="details">
     <thead>
     <tr>
-      <th class="first">Name</th>
-      <th class="">Description</th>
+      <th class="first"><g:message code="nimble.label.name" /></th>
+      <th class=""><g:message code="nimble.label.description" /></th>
       <th class="last"></th>
     </tr>
     </thead>
@@ -13,8 +13,8 @@
         <td>${role.name?.encodeAsHTML()}</td>
         <td>${role.description?.encodeAsHTML()}</td>
         <td>
-          <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="button icon icon_cog_go">View Role</g:link>
-          <a onClick="grantRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_add">Assign Role</a>
+          <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="button icon icon_cog_go"><g:message code="nimble.link.view" /></g:link>
+          <a onClick="grantRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.assign" /></a>
         </td>
       </tr>
     </g:each>
@@ -23,6 +23,6 @@
 </g:if>
 <g:else>
   <p>
-    <strong>No roles matching your search request were found (or all matching roles are already assigned)</strong>
+    <strong><g:message code="nimble.template.roles.add.noresults" /></strong>
   </p>
 </g:else>

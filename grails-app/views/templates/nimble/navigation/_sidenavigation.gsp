@@ -1,13 +1,13 @@
 <div class="localnavigation">
-	<h3>Access Control Navigation</h3>
+	<h3><g:message code="nimble.link.users" /></h3>
 	<ul>
 		<li>
-			<g:link controller="user" action="list">Users</g:link>
+			<g:link controller="user" action="list"><g:message code="nimble.link.users" /></g:link>
 		</li>
 			<g:if test="${controllerName == 'user' && actionName == 'list'}">
 				<ul>
 					<li>
-						<g:link controller="user" action="create">Create User</g:link>
+						<g:link controller="user" action="create"><g:message code="nimble.link.createuser" /></g:link>
 					</li>
 				</ul>
 			</g:if>
@@ -23,24 +23,24 @@
 				
 						<ul>
 							<li>
-						        <g:link controller="user" action="edit" id="${user.id}">Edit</g:link>
+						        <g:link controller="user" action="edit" id="${user.id}"><g:message code="nimble.link.edit" /></g:link>
 						      </li>
 						      <li>
-						          <g:link controller="user" action="changepassword" id="${user.id}">Change Password</g:link>
+						          <g:link controller="user" action="changepassword" id="${user.id}"><g:message code="nimble.link.changepassword" /></g:link>
 						      </li>
 							  <g:if test="${actionName in ['show']}">
 						      	<li id="disableuser">
-							        <a onClick="disableUser('${user.id}'); return false;">Disable Account</a>
+							        <a onClick="disableUser('${user.id}'); return false;"><g:message code="nimble.link.disableaccount" /></a>
 							      </li>
 							      <li id="enableuser">
-							        <a onClick="enableUser('${user.id}'); return false;">Enable Account</a>
+							        <a onClick="enableUser('${user.id}'); return false;"><g:message code="nimble.link.enableaccount" /></a>
 							      </li>
 
 							      <li id="disableuserapi">
-							        <a onClick="disableAPI('${user.id}'); return false;">Disable API</a>
+							        <a onClick="disableAPI('${user.id}'); return false;"><g:message code="nimble.link.disableapi" /></a>
 							      </li>
 							      <li id="enableuserapi">
-							        <a onClick="enableAPI('${user.id}'); return false;">Enable API</a>
+							        <a onClick="enableAPI('${user.id}'); return false;"><g:message code="nimble.link.enableapi" /></a>
 							      </li>
 								</g:if>
 						  </ul>
@@ -48,11 +48,11 @@
 				</ul>
 			</g:if>
 		<li>
-			<g:link controller="role" action="list">Roles</g:link>
+			<g:link controller="role" action="list"><g:message code="nimble.link.roles" /></g:link>
 			<g:if test="${controllerName == 'role' && actionName in ['list', 'create']}">
 				<ul>
 					<li>
-						<g:link controller="role" action="create">Create Role</g:link>
+						<g:link controller="role" action="create"><g:message code="nimble.link.createrole" /></g:link>
 					</li>
 				</ul>
 			</g:if>
@@ -64,10 +64,10 @@
 						<g:if test="${!role.protect}">
 						<ul>
 							<li>
-						        <g:link controller="role" action="edit" id="${role.id}">Edit</g:link>
+						        <g:link controller="role" action="edit" id="${role.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'role.delete.confirm.msg')}" accept="${message(code: 'default.button.accept.label')}" cancel="${message(code: 'default.button.cancel.label')}" class=""><g:message code="role.delete.label" /></n:confirmaction>								
+								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.role.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="role.delete.label" /></n:confirmaction>								
 							</li>
 						</ul>
 						</g:if>
@@ -76,11 +76,11 @@
 			</g:if>
 		</li>
 		<li>
-			<g:link controller="group" action="list">Groups</g:link>
+			<g:link controller="group" action="list"><g:message code="nimble.link.groups" /></g:link>
 			<g:if test="${controllerName == 'group' && actionName in ['list', 'create']}">
 				<ul>
 					<li>
-						<g:link controller="group" action="create">Create Group</g:link>
+						<g:link controller="group" action="create"><g:message code="nimble.link.creategroup" /></g:link>
 					</li>
 				</ul>
 			</g:if>
@@ -91,10 +91,10 @@
 						<g:if test="${!group.protect}">
 						<ul>
 							<li>
-						        <g:link controller="group" action="edit" id="${group.id}">Edit</g:link>
+						        <g:link controller="group" action="edit" id="${group.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'group.delete.confirm.msg')}" accept="${message(code: 'default.button.accept.label')}" cancel="${message(code: 'default.button.cancel.label')}" class=""><g:message code="group.delete.label" /></n:confirmaction>
+								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.group.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="group.delete.label" /></n:confirmaction>
 							</li>			
 						</ul>
 						</g:if>
@@ -103,7 +103,7 @@
 			</g:if>
 		</li>
 		<li>
-			<g:link controller="admins" action="index">Admins</g:link>
+			<g:link controller="admins" action="index"><g:message code="nimble.link.admins" /></g:link>
 		</li>
 	</ul>
 </div>
