@@ -172,12 +172,17 @@ class AccountController {
         }
 
         log.info("Sending account registration confirmation email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.registration.subject")
-        sendMail {
-            to user.profile.email		
-			from grailsApplication.config.nimble.messaging.mail.from
-            subject grailsApplication.config.nimble.messaging.registration.subject
-            html g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: savedUser]).toString()
-        }
+        if(grailsApplication.config.nimble.messaging.enabled) {
+			sendMail {
+	            to user.profile.email		
+				from grailsApplication.config.nimble.messaging.mail.from
+	            subject grailsApplication.config.nimble.messaging.registration.subject
+	            html g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: savedUser]).toString()
+	        }	
+		}
+		else {
+			log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+		}
 
         log.info("Created new account identified as $user.username with internal id $savedUser.id")
 
@@ -277,12 +282,17 @@ class AccountController {
                 log.info("User identified by [$user.id]$user.username is external or federated")
 
                 log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.external.subject")
-                sendMail {
-                    to user.profile.email
-					from grailsApplication.config.nimble.messaging.mail.from
-                    subject grailsApplication.config.nimble.messaging.passwordreset.external.subject
-                    html g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user]).toString()
-                }
+                if(grailsApplication.config.nimble.messaging.enabled) {
+					sendMail {
+	                    to user.profile.email
+						from grailsApplication.config.nimble.messaging.mail.from
+	                    subject grailsApplication.config.nimble.messaging.passwordreset.external.subject
+	                    html g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user]).toString()
+	                }
+				}
+				else {
+					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+				}
 
                 redirect(action: "forgottenpasswordcomplete", id: user.id)
                 return
@@ -294,12 +304,17 @@ class AccountController {
                 userService.setRandomPassword(user)
 
                 log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.subject")
-                sendMail {
-                    to user.profile.email
-					from grailsApplication.config.nimble.messaging.mail.from
-                    subject grailsApplication.config.nimble.messaging.passwordreset.subject
-                    html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()
-                }
+                if(grailsApplication.config.nimble.messaging.enabled) {
+					sendMail {
+	                    to user.profile.email
+						from grailsApplication.config.nimble.messaging.mail.from
+	                    subject grailsApplication.config.nimble.messaging.passwordreset.subject
+	                    html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()
+	                }
+				}
+				else {
+					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+				}
 
                 log.info("Successful password reset for user identified as [$user.id]$user.username")
 
