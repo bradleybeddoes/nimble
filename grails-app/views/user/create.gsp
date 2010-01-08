@@ -56,7 +56,7 @@
     </table>
 
     <div>
-      <button class="button icon icon_user_add" type="submit"><g:message code="nimble.button.createuser" /></button>
+      <button class="button icon icon_user_add" type="submit"><g:message code="nimble.link.createuser" /></button>
       <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
     </div>
 

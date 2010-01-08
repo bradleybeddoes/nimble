@@ -154,7 +154,7 @@ class AdminsService {
                 throw new RuntimeException("Unable to revoke administration permission from [$user.id]$user.username")
             }
 
-            log.error "Revoked administration privilege from [$user.id]$user.username failed to modify user account"
+            log.info "Revoked administration privilege from [$user.id]$user.username"
             return true
         }
     }

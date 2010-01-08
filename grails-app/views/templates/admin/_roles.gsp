@@ -5,7 +5,7 @@
   </div>
 
   <div id="showaddroles">
-    <a id="showaddrolesbtn" class="button icon icon_cog_add"><g:message code="nimble.button.addroles" /></a>
+    <a id="showaddrolesbtn" class="button icon icon_cog_add"><g:message code="nimble.link.addroles" /></a>
   </div>
 
   <div id="addroles">
@@ -16,8 +16,8 @@
 
     <div class="searchbox">
       <g:textField name="qroles" class=""/>
-      <button onClick="searchRoles(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
-      <button id="closerolesearchbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
+      <button onClick="searchRoles(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+      <button id="closerolesearchbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
     </div>
 
     <div id="rolesearchresponse" class="clear">

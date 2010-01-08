@@ -37,7 +37,7 @@
         <td/>
         <td>
           <div class="buttons">
-            <button class="button icon icon_group_add" type="submit"><g:message code="nimble.button.createrole" /></button>
+            <button class="button icon icon_group_add" type="submit"><g:message code="nimble.link.createrole" /></button>
             <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
           </div>
         </td>

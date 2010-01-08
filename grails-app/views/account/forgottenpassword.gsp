@@ -41,7 +41,7 @@
       </table>
 
       <div>
-        <button class="button icon icon_user_go" type="submit"><g:message code="nimble.button.resetpassword" /></button>
+        <button class="button icon icon_user_go" type="submit"><g:message code="nimble.link.resetpassword" /></button>
       </div>
 
     </g:form>

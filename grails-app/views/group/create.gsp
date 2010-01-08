@@ -39,7 +39,7 @@
           <td/>
           <td>
             <div class="buttons">
-              <button class="button icon icon_group_go" type="submit"><g:message code="nimble.button.creategroup" /></button>
+              <button class="button icon icon_group_go" type="submit"><g:message code="nimble.link.creategroup" /></button>
               <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
             </div>
           </td>

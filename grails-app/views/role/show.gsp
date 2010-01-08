@@ -1,6 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title><g:message code="nimble.view.role.show.title" /></title>
+  <title><g:message code="nimble.view.role.show.title" args="[role.name.encodeAsHTML()]" /></title>
   <script type="text/javascript">
 	<njs:permission parent="${role}"/>
 	<njs:member parent="${role}"/>

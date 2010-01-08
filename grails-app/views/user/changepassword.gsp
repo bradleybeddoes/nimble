@@ -44,7 +44,7 @@
 	      <td/>
 	      <td colspan="2">
 	        <div class="buttons">
-	          <button type="submit" class="button icon icon_key_go"><g:message code="nimble.button.changepassword" /></button>
+	          <button type="submit" class="button icon icon_key_go"><g:message code="nimble.link.changepassword" /></button>
 	          <g:link action="show" id="${user.id}" class="button icon icon_cross"><g:message code="nimble.link.cancel" /></g:link>
 	        </div>
 	      </td>

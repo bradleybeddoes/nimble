@@ -24,8 +24,7 @@
         <tr>
           <td valign="top" class="name"><label for="username"><g:message code="nimble.label.username" /></label></td>
           <td valign="top" class="value ${hasErrors(bean: user, field: 'username', 'errors')}">
-            <input type="text" size="30" id="username" name="username" value="${user.username?.encodeAsHTML()}" class="easyinput"/> <span class="icon icon_bullet_green">&nbsp;</span><a href="#" id="usernamepolicybtn" rel="usernamepolicy" class="empty icon icon_help"></a>
-            <span id="usernameavailable" class="icon">&nbsp;</span>
+			<n:verifyfield id="username" class="easyinput" name="username" value="${fieldValue(bean: user, field: 'username')}" required="true" controller="account" action="validusername" validmsg="valid" invalidmsg="invalid" />
           </td>
         </tr>
 
@@ -69,7 +68,7 @@
         <tr>
           <td/>
           <td>
-            <button class="button icon icon_user" type="submit"><g:message code="nimble.button.registeraccount" /></button>
+            <button class="button icon icon_user" type="submit"><g:message code="nimble.link.registeraccount" /></button>
           </td>  
         </tr>
 

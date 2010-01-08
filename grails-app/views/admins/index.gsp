@@ -32,7 +32,7 @@
 
   <div class="searchbox">
     <g:textField name="q" class="easyinput"/>
-    <button onClick="searchAdministrators();" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
+    <button onClick="searchAdministrators();" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
   </div>
 
   <div id="searchresponse" class="clear">

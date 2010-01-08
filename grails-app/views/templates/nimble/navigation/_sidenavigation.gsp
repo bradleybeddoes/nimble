@@ -67,7 +67,7 @@
 						        <g:link controller="role" action="edit" id="${role.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.role.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="role.delete.label" /></n:confirmaction>								
+								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.role.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>								
 							</li>
 						</ul>
 						</g:if>
@@ -94,7 +94,7 @@
 						        <g:link controller="group" action="edit" id="${group.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.group.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="group.delete.label" /></n:confirmaction>
+								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.group.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>
 							</li>			
 						</ul>
 						</g:if>

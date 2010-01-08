@@ -12,7 +12,7 @@
     <input type="hidden" name="${it.key}" value="${it.value}"/>
   </g:each>
 
-  <button type="submit"><g:message code="nimble.button.continue" /></button>
+  <button type="submit"><g:message code="nimble.link.continue" /></button>
   
 </form>
 

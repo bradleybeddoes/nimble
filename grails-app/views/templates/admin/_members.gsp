@@ -6,7 +6,7 @@
 
   <g:if test="${!protect}">
     <div id="showaddmembers">
-      <a id="showaddmembersbtn" class="button icon icon_group_add"><g:message code="nimble.button.addmembers" /></a>
+      <a id="showaddmembersbtn" class="button icon icon_group_add"><g:message code="nimble.link.addmembers" /></a>
     </div>
 
     <div id="addmembers">
@@ -24,8 +24,8 @@
 
         <div class="searchbox">
           <g:textField name="qmembers" class="enhancedinput"/>
-          <button onClick="searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
-          <button id="closeaddmembersbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
+          <button onClick="searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+          <button id="closeaddmembersbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
         </div>
 
         <div id="membersearchresponse" class="clear">
@@ -40,8 +40,8 @@
 
           <div class="searchbox">
             <g:textField name="qmembersgroup" class="enhancedinput"/>
-            <button onClick="searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
-            <button id="closeaddgroupmembersbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
+            <button onClick="searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+            <button id="closeaddgroupmembersbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
           </div>
 
           <div id="membergroupsearchresponse" class="clear">

@@ -1,6 +1,6 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title><g:message code="nimble.view.user.show.title" /></title>
+  <title><g:message code="nimble.view.user.show.title" args="[user.username?.encodeAsHTML()]" /></title>
   <script type="text/javascript">
   	<njs:user user="${user}"/>
 	<njs:permission parent="${user}"/>

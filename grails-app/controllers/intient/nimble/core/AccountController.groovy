@@ -37,11 +37,7 @@ class AccountController {
     def grailsApplication
 
     def changepassword = {
-        def user = authenticatedUser()
-        if(!user)
-        	return
-
-        [user:user]
+        [user:authenticatedUser]
     }
 
     def changedpassword = {
@@ -49,9 +45,7 @@ class AccountController {
     }
 
     def updatepassword = {
-        def user = authenticatedUser()
-        if(!user)
-        return
+        def user = authenticatedUser
 
         if(!params.currentPassword) {
             log.warn("User [$user.id]$user.username attempting to change password but has not supplied current password")
@@ -250,21 +244,19 @@ class AccountController {
     }
 
     def validusername = {
-        if (params.username == null || params.username.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !params.username.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
-            flash.message = message(code: 'nimble.user.username.invalid')
-            response.sendError(500)
-            return
+        if (params.val == null || params.val.length() < grailsApplication.config.nimble.localusers.usernames.minlength || !params.val.matches(grailsApplication.config.nimble.localusers.usernames.validregex)) {
+            render message(code: 'nimble.user.username.invalid')
+            response.status = 500
         }
-
-        def users = UserBase.findAllByUsername(params?.username)
-
-        if (users != null && users.size() > 0) {
-            flash.message = message(code: 'nimble.user.username.invalid')
-            response.sendError(500)
-            return
-        }
-
-        render message(code: 'nimble.user.username.valid')
+		else {
+        	def users = UserBase.findAllByUsername(params?.val)
+	        if (users != null && users.size() > 0) {
+	            render message(code: 'nimble.user.username.invalid')
+	            response.status = 500
+	        }
+			else
+	        	render message(code: 'nimble.user.username.valid')
+		}
     }
 
     def forgottenpassword = {

@@ -4,9 +4,6 @@
   <head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title><g:message code="nimble.view.account.changepassword.initiate.title" /></title>
-
-  <n:growl/>
-  <n:flashgrowl/>
 </head>
 
 <body>
@@ -58,7 +55,7 @@
           <tr>
             <td/>
             <td>
-              <button class="button icon icon_lock_go" type="submit"><g:message code="nimble.button.changepassword" /></button>
+              <button class="button icon icon_lock_go" type="submit"><g:message code="nimble.link.changepassword" /></button>
             </td>
             <td/>
           </tr>

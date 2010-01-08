@@ -42,7 +42,7 @@
 	        <td/>
 	        <td>
 	          <div>
-	          	<button class="button icon icon_cog_go" type="submit"><g:message code="nimble.button.updaterole" /></button>
+	          	<button class="button icon icon_cog_go" type="submit"><g:message code="nimble.link.updaterole" /></button>
 	    		<g:link action="show" id="${role.id}" class="button icon icon_cross"><g:message code="nimble.link.cancel" /></g:link>
 	          </div>
 	        </td>
