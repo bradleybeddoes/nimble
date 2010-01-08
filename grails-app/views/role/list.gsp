@@ -23,7 +23,7 @@
         <td>${role.description?.encodeAsHTML()}</td>
         <td class="actionButtons">
           <span class="actionButton">
-            <g:link action="show" id="${role.id}" class="button icon icon_user_go">View Role</g:link>
+            <g:link action="show" id="${role.id}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
           </span>
         </td>
       </tr>

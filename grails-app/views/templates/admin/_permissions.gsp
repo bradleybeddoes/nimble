@@ -5,7 +5,7 @@
   </div>
 
   <div id="showaddpermissions">
-    <a id="showaddpermissionsbtn" class="button icon icon_group_add">Add Permission</a>
+    <a id="showaddpermissionsbtn" class="button icon icon_group_add"><g:message code="nimble.button.addpermission" /></a>
   </div>
 
   <div id="addpermissions">
@@ -28,7 +28,7 @@
       </tr>
       </tbody>
     </table>
-    <button onClick="createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add"><g:message code="nimble.button.addpermission" /></button>
+    <button onClick="createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add"><g:message code="nimble.button.createpermission" /></button>
     <button id="closepermissionsaddbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
   </div>
 </div>

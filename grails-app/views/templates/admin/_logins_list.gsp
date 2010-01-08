@@ -29,7 +29,7 @@
 <g:else>
 
   <p>
-    This user has not yet authenticated to this service.
+    <g:message code="nimble.template.logins.list.heading" />
   </p>
   
 </g:else>

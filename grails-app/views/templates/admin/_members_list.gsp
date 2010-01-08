@@ -1,5 +1,5 @@
+<h4><span class="empty icon icon_user"/><g:message code="nimble.template.members.list.users.heading" /></h4>
 <g:if test="${users?.size() > 0}">
-  <h4><span class="empty icon icon_user"/><g:message code="nimble.template.members.list.users.heading" /></h4>
   <table class="details">
     <thead>
     <tr>
@@ -35,9 +35,9 @@
   </p>
 </g:else>
 
+<h4><span class="empty icon icon_group"/><g:message code="nimble.template.members.list.groups.heading" /></h4>
 <g:if test="${groupmembers}">
   <g:if test="${groups?.size() > 0}">
-    <h4><span class="empty icon icon_group"/><g:message code="nimble.template.members.list.groups.heading" /></h4>
     <table class="details">
       <thead>
       <tr>

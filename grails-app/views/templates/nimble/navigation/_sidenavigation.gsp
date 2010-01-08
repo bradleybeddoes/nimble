@@ -1,5 +1,5 @@
 <div class="localnavigation">
-	<h3><g:message code="nimble.link.users" /></h3>
+	<h3><g:message code="nimble.template.sidenavigation.heading" /></h3>
 	<ul>
 		<li>
 			<g:link controller="user" action="list"><g:message code="nimble.link.users" /></g:link>

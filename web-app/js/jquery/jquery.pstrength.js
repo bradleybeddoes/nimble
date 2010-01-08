@@ -5,7 +5,7 @@
         return this.each(function() {
             var C = A(this).attr("id");
             var markup = "<div id=\"pstrength\">" +
-                         "<div class=\"pstrength-minchar\" id=\"" + C + "_minchar\">Current password rating is</div>" +
+                         "<div class=\"pstrength-minchar\" id=\"" + C + "_minchar\"></div>" +
                          "<div class=\"pstrength-info\" id=\"" + C + "_text\"></div>" +
                          "<div class=\"pstrength-bar\" id=\"" + C + "_bar\" style=\"border: 1px solid white; font-size: 1px; height: 5px; width: 0px;\"></div>" +
                          "</div>"

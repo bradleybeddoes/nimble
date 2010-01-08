@@ -24,8 +24,8 @@
 
         <div class="searchbox">
           <g:textField name="qmembers" class="enhancedinput"/>
-          <button onClick="searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier">Search</button>
-          <button id="closeaddmembersbtn" class="button icon icon_cross">Close</button>
+          <button onClick="searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.button.search" /></button>
+          <button id="closeaddmembersbtn" class="button icon icon_cross"><g:message code="nimble.button.close" /></button>
         </div>
 
         <div id="membersearchresponse" class="clear">
