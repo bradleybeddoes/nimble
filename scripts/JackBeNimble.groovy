@@ -69,6 +69,11 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   mkdir( dir:"${basedir}/src/sass" )
   copy(file:"${nimblePluginDir}/src/sass/_rounded.sass", todir: "${basedir}/src/sass", overwrite: false)
   copy(file:"${nimblePluginDir}/src/sass/_uielements.sass", todir: "${basedir}/src/sass", overwrite: false)
+
+  // i18n
+  copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
+  copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble_de.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
+
 }
 
 def parseArgs() {

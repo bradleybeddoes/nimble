@@ -17,6 +17,7 @@
 
       $("#loginlocal").show();
       $(".flash").show();
+	  $("#username").focus();
     });
   </script>
 </head>
@@ -37,7 +38,7 @@
           <div id="local" class="loginmethod">
             <h2><g:message code="nimble.template.login.local.heading" /></h2>
 
-            <g:form action="signin" name="signin">
+            <g:form id="locallogin" action="signin" name="signin">
               <fieldset>
                 <label for="username" class="append-1"><g:message code="nimble.label.username" /></label>
                 <input id="username" type="text" name="username" class="title"/>
