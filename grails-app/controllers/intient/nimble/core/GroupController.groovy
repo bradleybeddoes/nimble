@@ -205,7 +205,7 @@ class GroupController {
 			else {
 	    		groupService.addMember(user, group)
 			    log.info("Added user [$user.id]$user.username to group $group.name")
-			    render message(code: 'nimble.group.addmember.success', args: [group.name, user.name])
+			    render message(code: 'nimble.group.addmember.success', args: [group.name, user.username])
 			}
     	}
 	}
@@ -234,7 +234,7 @@ class GroupController {
 			else {
 	    		groupService.deleteMember(user, group)
 			    log.info("Removed user [$user.id]$user.username from group $group.name")
-			    render message(code: 'nimble.group.removemember.success', args: [group.name, user.name])
+			    render message(code: 'nimble.group.removemember.success', args: [group.name, user.username])
 			}
 	    }
 	}

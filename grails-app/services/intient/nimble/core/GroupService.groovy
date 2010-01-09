@@ -158,18 +158,18 @@ class GroupService {
       }
 
       // Invoke transaction rollback
-      throw new RuntimeException("Unable to persist group [$group.id]$group.name when attempting to add user [$user.id]$user.name membership")
+      throw new RuntimeException("Unable to persist group [$group.id]$group.name when attempting to add user [$user.id]$user.username membership")
     }
 
     def savedUser = user.save()
     if (!savedUser) {
-      log.error("Unable to persist changes to user [$user.id]$user.name")
+      log.error("Unable to persist changes to user [$user.id]$user.username")
       user.errors.each {
         log.error(it)
       }
 
       // Invoke transaction rollback
-      throw new RuntimeException("Unable to persist user [$user.id]$user.name when attempting to add user to group [$group.id]$group.name membership")
+      throw new RuntimeException("Unable to persist user [$user.id]$user.username when attempting to add user to group [$group.id]$group.name membership")
     }
 
     log.info("Added user [$user.id]$user.username to group [$group.id]$group.name successfully")
@@ -198,18 +198,18 @@ class GroupService {
       }
 
       // Invoke transaction rollback
-      throw new RuntimeException("Unable to persist group [$group.id]$group.name when attempting to remove user [$user.id]$user.name membership")
+      throw new RuntimeException("Unable to persist group [$group.id]$group.name when attempting to remove user [$user.id]$user.username membership")
     }
 
     def savedUser = user.save()
     if (!savedUser) {
-      log.error("Unable to persist changes to user [$user.id]$user.name")
+      log.error("Unable to persist changes to user [$user.id]$user.username")
       user.errors.each {
         log.error(it)
       }
 
       // Invoke transaction rollback
-      throw new RuntimeException("Unable to persist user [$user.id]$user.name when attempting to remove user from group [$group.id]$group.name membership")
+      throw new RuntimeException("Unable to persist user [$user.id]$user.username when attempting to remove user from group [$group.id]$group.name membership")
     }
 
     log.info("Removed user [$user.id]$user.username from group [$group.id]$group.name successfully")
