@@ -8,7 +8,6 @@
 
 <body>
 
-  <div class="accountinformation">
     <h2><g:message code="nimble.view.account.registeraccount.initiate.heading" /></h2>
 
     <p>
@@ -25,6 +24,7 @@
           <td valign="top" class="name"><label for="username"><g:message code="nimble.label.username" /></label></td>
           <td valign="top" class="value ${hasErrors(bean: user, field: 'username', 'errors')}">
 			<n:verifyfield id="username" class="easyinput" name="username" value="${fieldValue(bean: user, field: 'username')}" required="true" controller="account" action="validusername" validmsg="valid" invalidmsg="invalid" />
+			<a href="#" id="usernamepolicybtn" rel="usernamepolicy" class="empty icon icon_help"></a>
           </td>
         </tr>
 
@@ -75,7 +75,6 @@
         </tbody>
       </table>
     </g:form>
-  </div>
 
 <n:usernamepolicy/>
 <n:passwordpolicy/>

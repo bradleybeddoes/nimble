@@ -21,6 +21,7 @@
         <td class="name"><label for="username"><g:message code="nimble.label.username" /></label></td>
         <td class="value">
 		  <n:verifyfield id="username" class="easyinput" name="username" value="${fieldValue(bean: user, field: 'username')}" required="true" controller="user" action="validusername" validmsg="valid" invalidmsg="invalid" />
+		  <a href="#" id="usernamepolicybtn" rel="usernamepolicy" class="empty icon icon_help"></a>
         </td>
       </tr>
 
@@ -62,5 +63,6 @@
 
   </g:form>
 
+<n:usernamepolicy/>
 <n:passwordpolicy/>
 </body>

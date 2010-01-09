@@ -133,15 +133,15 @@ class LevelPermission extends Permission {
      */
     public populate(first, second, third, fourth, fifth, sixth) {
 
-        if (first == null || first.contains(this.levelSep)) {
-            this.errors.rejectValue('target', 'levelpermission.invalid.first.sector')
+        if (first == null || first == '' || first.contains(this.levelSep)) {
+            this.errors.rejectValue('target', 'nimble.levelpermission.invalid.first.sector')
             return
         }
         this.first = first.split(this.tokenSep) as List
 
         if (second) {
             if (second.contains(this.levelSep)) {
-                this.errors.rejectValue('target', 'levelpermission.invalid.second.sector')
+                this.errors.rejectValue('target', 'nimble.levelpermission.invalid.second.sector')
                 return
             }
 
@@ -149,7 +149,7 @@ class LevelPermission extends Permission {
 
             if (third) {
                 if (third.contains(this.levelSep)) {
-                    this.errors.rejectValue('target', 'levelpermission.invalid.third.sector')
+                    this.errors.rejectValue('target', 'nimble.levelpermission.invalid.third.sector')
                     return
                 }
 
@@ -157,7 +157,7 @@ class LevelPermission extends Permission {
 
                 if (fourth) {
                     if (fourth.contains(this.levelSep)) {
-                        this.errors.rejectValue('target', 'levelpermission.invalid.fourth.sector')
+                        this.errors.rejectValue('target', 'nimble.levelpermission.invalid.fourth.sector')
                         return
                     }
 
@@ -165,7 +165,7 @@ class LevelPermission extends Permission {
 
                     if (fifth) {
                         if (fifth.contains(this.levelSep)) {
-                            this.errors.rejectValue('target', 'levelpermission.invalid.fifth.sector')
+                            this.errors.rejectValue('target', 'nimble.levelpermission.invalid.fifth.sector')
                             return
                         }
 
@@ -173,7 +173,7 @@ class LevelPermission extends Permission {
 
                         if (sixth) {
                             if (sixth.contains(this.levelSep)) {
-                                this.errors.rejectValue('target', 'levelpermission.invalid.sixth.sector')
+                                this.errors.rejectValue('target', 'nimble.levelpermission.invalid.sixth.sector')
                                 return
                             }
 

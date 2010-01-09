@@ -114,7 +114,7 @@ class GroupController {
 		    if (!group.validate()) {
 				log.warn("Attempt to update group [$group.id]$group.name failed")
 				flash.type = "error"
-			    flash.message = message(code: 'nimble.group.update.error', args: [group.id])
+			    flash.message = message(code: 'nimble.group.update.error', args: [group.name])
 				render view: 'edit', model: [group: group]
 			}
 			else {
@@ -146,7 +146,7 @@ class GroupController {
 		else {
     		groupService.deleteGroup(group)
 		    flash.type = "success"
-		    flash.message = message(code: 'nimble.group.delete.success', args: [params.id])
+		    flash.message = message(code: 'nimble.group.delete.success', args: [group.name])
 		    redirect action: list
 		}
 	}
@@ -199,13 +199,13 @@ class GroupController {
 		else {
 			if (group.protect) {
 		      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
-		      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+		      render message(code: 'nimble.group.protected.no.modification', args: [group.name])
 		      response.status = 500
 		    }
 			else {
 	    		groupService.addMember(user, group)
 			    log.info("Added user [$user.id]$user.username to group $group.name")
-			    render message(code: 'nimble.group.addmember.success', args: [group.id, user.id])
+			    render message(code: 'nimble.group.addmember.success', args: [group.name, user.name])
 			}
     	}
 	}
@@ -228,13 +228,13 @@ class GroupController {
 		else {
 			if (group.protect) {
 		      log.warn("Group [$group.id]$group.name is protected and can't be updated via the web interface")
-		      render message(code: 'nimble.group.protected.no.modification', args: [params.id])
+		      render message(code: 'nimble.group.protected.no.modification', args: [group.name])
 		      response.status = 500
 		    }
 			else {
 	    		groupService.deleteMember(user, group)
 			    log.info("Removed user [$user.id]$user.username from group $group.name")
-			    render message(code: 'nimble.group.removemember.success', args: [group.id, user.id])
+			    render message(code: 'nimble.group.removemember.success', args: [group.name, user.name])
 			}
 	    }
 	}

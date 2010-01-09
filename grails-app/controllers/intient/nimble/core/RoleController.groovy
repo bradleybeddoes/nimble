@@ -110,7 +110,7 @@ class RoleController {
 		    if (!role.validate()) {			
 				log.warn("Attempt to update role [$role.id]$role.name failed")
 				flash.type = "error"
-			    flash.message = message(code: 'nimble.role.update.error', args: [role.id])
+			    flash.message = message(code: 'nimble.role.update.error', args: [role.name])
 				render view: 'edit', model: [role: role]
 			}
 			else {

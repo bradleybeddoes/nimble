@@ -69,9 +69,8 @@ class AccountController {
 
             user.pass = params.pass
             user.passConfirm = params.passConfirm
-            user.validate()
 
-            if(!user.hasErrors()) {
+            if(user.validate() && userService.validatePass(user, true)) {
                 userService.changePassword(user)
                 if(!user.hasErrors()) {
                     log.info("Changed password for user [$user.id]$user.username successfully")
@@ -181,7 +180,7 @@ class AccountController {
 	        }	
 		}
 		else {
-			log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+			log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: user]).toString()}"
 		}
 
         log.info("Created new account identified as $user.username with internal id $savedUser.id")
@@ -291,7 +290,7 @@ class AccountController {
 	                }
 				}
 				else {
-					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${g.render(template: "/templates/nimble/mail/forgottenpassword_external_email", model: [user: user]).toString()}"
 				}
 
                 redirect(action: "forgottenpasswordcomplete", id: user.id)
@@ -313,7 +312,7 @@ class AccountController {
 	                }
 				}
 				else {
-					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${html g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
+					log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${g.render(template: "/templates/nimble/mail/forgottenpassword_email", model: [user: user]).toString()}"
 				}
 
                 log.info("Successful password reset for user identified as [$user.id]$user.username")

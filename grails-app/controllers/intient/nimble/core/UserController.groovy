@@ -93,7 +93,7 @@ class UserController {
 	      	def updatedUser = userService.updateUser(user)
 	        log.info("Successfully updated details for user [$user.id]$user.username")
 	        flash.type = "success"
-	        flash.message = message(code: 'nimble.user.update.success', args: [params.id])
+	        flash.message = message(code: 'nimble.user.update.success', args: [user.username])
 	        redirect action: show, id: updatedUser.id
 	    }
 	}
@@ -171,7 +171,7 @@ class UserController {
     }
 	else {
     	user.properties['pass', 'passConfirm'] = params
-	    if (!user.validate()) {
+	    if (!user.validate() || !userService.validatePass(user, true)) {
 			log.debug("Password change for [$user.id]$user.username was invalid")
 		    render view: 'changepassword', model: [user: user]
 		}
@@ -337,7 +337,7 @@ class UserController {
 			else {
 		    	groupService.addMember(user, group)
 			    log.info("Added user [$user.id]$user.username to group [$group.id]$group.name")
-			    render message(code: 'nimble.user.group.grant.success', args: [group.name, user.username])
+			    render message(code: 'nimble.group.addmember.success', args: [group.name, user.username])
 			}
 		}
     }
@@ -366,7 +366,7 @@ class UserController {
 			else {
 		    	groupService.deleteMember(user, group)
 			    log.info("Removed user [$user.id]$user.username from group [$group.id]$group.name")
-			    render message(code: 'nimble.group.revoke.success', args: [group.name, user.username])
+			    render message(code: 'nimble.group.removemember.success', args: [group.name, user.username])
 			}
 		}
     }
@@ -445,8 +445,6 @@ class UserController {
 	}
   }
 
-///-------- grant/revoke
-
   def searchroles = {
     def q = "%" + params.q + "%"
     log.debug("Performing search for roles matching $q")
@@ -493,7 +491,7 @@ class UserController {
 			else {
 		    	roleService.addMember(user, role)
 			    log.info("Assigned user [$user.id]$user.username role [$role.id]$role.name")
-			    render message(code: 'nimble.role.grant.success', args: [role.name, user.username])
+			    render message(code: 'nimble.role.addmember.success', args: [role.name, user.username])
 			}
 		}
     }
@@ -522,7 +520,7 @@ class UserController {
 			else {
 		    	roleService.deleteMember(user, role)
 			    log.info("Removed user [$user.id]$user.username from role [$role.id]$role.name")
-			    render message(code: 'nimble.role.revoke.success', args: [role.name, user.username])
+			    render message(code: 'nimble.role.removemember.success', args: [role.name, user.username])
 			}
 		}
     }

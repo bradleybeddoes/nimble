@@ -363,46 +363,53 @@ class UserService {
      * object. If the pass is valid it is encrypted and set as the value of user.passwd and
      * added to the password history
      */
-    private def validatePass(UserBase user) {
+    public def validatePass(UserBase user) {
+		return validatePass(user, false)
+	}
+    public def validatePass(UserBase user, boolean checkOnly) {
         log.debug("Validating user entered password")
 
         if (user.pass == null || user.pass.length() < grailsApplication.config.nimble.passwords.minlength) {
             log.debug("Password to short")
-            user.errors.rejectValue('pass', 'user.password.required')
+            user.errors.rejectValue('pass', 'nimble.user.password.required')
             return false
         }
 
         if (user.passConfirm == null || user.passConfirm.length() < grailsApplication.config.nimble.passwords.minlength) {
             log.debug("Confirmation password to short")
 
-            user.errors.rejectValue('passConfirm', 'user.passconfirm.required')
+            user.errors.rejectValue('passConfirm', 'nimble.user.passconfirm.required')
             return false
         }
 
         if (!user.pass.equals(user.passConfirm)) {
             log.debug("Password does not match confirmation")
-            user.errors.rejectValue('pass', 'user.password.nomatch')
+            user.errors.rejectValue('pass', 'nimble.user.password.nomatch')
             return false
         }
 
         if (grailsApplication.config.nimble.passwords.mustcontain.lowercase && !(user.pass =~ /^.*[a-z].*$/)) {
             log.debug("Password does not contain lower case letters")
-            user.errors.rejectValue('pass', 'user.password.no.lowercase')
+            user.errors.rejectValue('pass', 'nimble.user.password.no.lowercase')
+            return false
         }
 
         if (grailsApplication.config.nimble.passwords.mustcontain.uppercase && !(user.pass =~ /^.*[A-Z].*$/)) {
             log.debug("Password does not contain uppercase letters")
-            user.errors.rejectValue('pass', 'user.password.no.uppercase')
+            user.errors.rejectValue('pass', 'nimble.user.password.no.uppercase')
+            return false
         }
 
         if (grailsApplication.config.nimble.passwords.mustcontain.numbers && !(user.pass =~ /^.*[0-9].*$/)) {
             log.debug("Password does not contain numbers")
-            user.errors.rejectValue('pass', 'user.password.no.numbers')
+            user.errors.rejectValue('pass', 'nimble.user.password.no.numbers')
+            return false
         }
 
         if (grailsApplication.config.nimble.passwords.mustcontain.symbols && !(user.pass =~ /^.*\W.*$/)) {
             log.debug("Password does not contain symbols")
-            user.errors.rejectValue('pass', 'user.password.no.symbols')
+            user.errors.rejectValue('pass', 'nimble.user.password.no.symbols')
+            return false
         }
 
         def pwEnc = new Sha256Hash(user.pass)
@@ -410,10 +417,11 @@ class UserService {
 
         if (user.passwdHistory != null && user.passwdHistory.contains(crypt)) {
             log.debug("Password was previously utilized")
-            user.errors.rejectValue('pass', 'user.password.duplicate')
+            user.errors.rejectValue('pass', 'nimble.user.password.duplicate')
+            return false
         }
 
-        if (!user.hasErrors()) {
+        if (!user.hasErrors() && !checkOnly) {
             user.passwordHash = crypt
             user.addToPasswdHistory(crypt)
         }

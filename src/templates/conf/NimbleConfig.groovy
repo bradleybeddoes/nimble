@@ -26,9 +26,9 @@ nimble {
     }
 
 	layout {
-        application = 'main'
-        administration = 'aaf'
-		login = 'login'
+        application = 'app'
+        administration = 'admin'
+		login = 'app'
     }
 
     localusers {
@@ -58,6 +58,8 @@ nimble {
     }
 
     messaging {
+		enabled = false
+		
         registration {
             subject = "Your new account is ready!"
         }

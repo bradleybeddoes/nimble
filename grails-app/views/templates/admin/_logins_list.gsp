@@ -29,7 +29,7 @@
 <g:else>
 
   <p>
-    <g:message code="nimble.template.logins.list.heading" />
+    <g:message code="nimble.template.logins.list.noresults" />
   </p>
   
 </g:else>

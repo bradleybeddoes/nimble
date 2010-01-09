@@ -8,7 +8,6 @@
 
 <body>
 
-  <div class="accountinformation">
     <h2><g:message code="nimble.view.account.registeraccount.complete.heading" /></h2>
     <p>
       <g:message code="nimble.view.account.registeraccount.complete.descriptive" />
@@ -16,7 +15,6 @@
     <p>
       <g:message code="nimble.view.account.registeraccount.complete.sentemail" />
     </p>
-  </div>
 
 </body>
 

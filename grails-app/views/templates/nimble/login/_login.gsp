@@ -109,7 +109,7 @@
           <div id="openid" class="loginmethod externalloginmethod">
             <h2><g:message code="nimble.template.login.openid.heading" /></h2>
             <p>
-              <n:socialimg name="openid" size="64"/>
+              <n:socialimg name="openid" size="64" alt="openid"/>
 			  <g:message code="nimble.template.login.openid.descriptive" />
             </p>
             <g:form controller="auth" action="openidreq">
