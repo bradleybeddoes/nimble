@@ -1,9 +1,8 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/login.css')}"/>
-
   <title><g:message code="nimble.template.login.title" /></title>
 
+  <nh:login />
   <script type="text/javascript">
     $(function() {
       $(".loginmethod").hide();
@@ -92,7 +91,7 @@
 			  <g:message code="nimble.template.login.google.descriptive" />
             </p>
             <p>
-              <a href="${createLink(controller: "auth", action: "googlereq")}" class="button icon icon_user_green">Login</a>
+              <a href="${createLink(controller: "auth", action: "googlereq")}" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></a>
             </p>
           </div>
 
@@ -103,7 +102,7 @@
 			  <g:message code="nimble.template.login.yahoo.descriptive" />
             </p>
             <p>
-              <a href="${createLink(controller: "auth", action: "yahooreq")}" class="button icon icon_user_green">Login</a>
+              <a href="${createLink(controller: "auth", action: "yahooreq")}" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></a>
             </p>
           </div>
 
@@ -116,7 +115,7 @@
             <g:form controller="auth" action="openidreq">
               <strong><g:message code="nimble.template.login.openid.identifier" /></strong>
               <input id="openiduri" type="text" name="openiduri" class="easyinput" value="http://"/>
-              <button type="submit" class="button icon icon_user_green">Login</button>
+              <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
             </g:form>
           </div>
 
@@ -145,7 +144,7 @@
               <label for="openiduri" class="append-1"><g:message code="nimble.template.login.wordpress.identifier" /></label>
               <input id="openiduri" type="text" name="openiduri" class="easyinput"/>
               <fieldset>
-                <button type="submit" class="button darkbutton icon icon_user_green">Login</button>
+                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
             </g:form>
           </div>
@@ -160,7 +159,7 @@
               <label for="openiduri" class="append-1"><g:message code="nimble.template.login.technorati.identifier" /></label>
               <input id="openiduri" type="text" name="technoratiusername" class="easyinput"/>
               <fieldset>
-                <button type="submit" class="button darkbutton icon icon_user_green">Login</button>
+                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
             </g:form>
           </div>
@@ -258,7 +257,7 @@
           </fieldset>
 
           <fieldset class="loginbuttons">
-            <button type="submit" class="button darkbutton icon icon_user_green">Login</button>
+            <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
           </fieldset>
 
         </g:form>

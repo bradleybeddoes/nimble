@@ -51,6 +51,11 @@ class NimbleHeaderTagLib {
         out << render(template: "/templates/header/famfamfamsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
+	// Imports default Nimble login UI css
+    def login = {attrs, body ->
+        out << render(template: "/templates/header/loginsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
     // Imports layouts and javascript required for the administration layout
     def admin = {attrs, body ->
         out << render(template: "/templates/header/adminsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
