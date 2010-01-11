@@ -27,6 +27,9 @@ class Role {
 
     String name
     String description
+	String realm
+	
+	boolean external = false
     boolean protect = false
 
     Date dateCreated
@@ -52,6 +55,7 @@ class Role {
     static constraints = {
         name(blank: false, unique: true, minSize:4, maxSize: 255)
         description(nullable:true, blank:false)
+		realm(nullable:true, blank:false)
         
         dateCreated(nullable: true) // must be true to enable grails
         lastUpdated(nullable: true) // auto-inject to be useful which occurs post validation

@@ -27,6 +27,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
 class UserBase {
 
     String username
+	String realm
     String passwordHash
     String actionHash
 
@@ -76,6 +77,7 @@ class UserBase {
         username(blank: false, unique: true, minSize: 4, maxSize: 255)
         passwordHash(nullable: true, blank: false)
         actionHash(nullable: true, blank: false)
+		realm(nullable: true, blank: false)
    
         federationProvider(nullable: true)
         profile(nullable:false)
