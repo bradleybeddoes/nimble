@@ -5,16 +5,16 @@ function growl(type, msg) {
 
 function growl(type, msg, period) {
     if (type == 'success')
-      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_tick\'>&nbsp;</span>Success' });
+      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_tick\'>&nbsp;</span>' });
 
     if (type == 'error')
-      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_cross\'>&nbsp;</span>Error' });
+      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
 
     if (type == 'info')
-      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_information\'>&nbsp;</span>Information' });
+      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_information\'>&nbsp;</span>' });
 
     if (type == 'help')
-      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_cross\'>&nbsp;</span>Help' });
+      $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
 
     if (type == 'flagred')
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_flag_red\'>&nbsp;</span>' });

@@ -482,10 +482,8 @@ button.button:hover { text-decoration: none; }
 .cleanlist ul { list-style-type: none; }
 .cleanlist ul li { list-style-type: none; }
 
-
 #hd { display: block; }
 
-#bd { margin: 0px; margin-top: 50px; }
-#bd .container { width: 95%; }
+#bd { margin: 0px; width: 100%; }
 
 #ft { margin: 0px; }

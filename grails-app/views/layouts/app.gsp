@@ -6,15 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
   <title><g:layoutTitle default="Grails"/></title>
 
-  <nh:jquery/>
+  <nh:nimblecore/>
+  <nh:nimbleui/>
 
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/screen.css')}"/>
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/nimble.css')}"/>
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/icons.css')}"/>
+  <nh:growl/>
 
-  <!--[if IE]>
-  <link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/ie.css')}"/>
-  <![endif]-->
+  <nh:admin/>
 
   <g:layoutHead/>
 </head>
@@ -23,7 +20,7 @@
 
 <div id="doc">
   <div id="hd">
-
+	<g:render template='/templates/nimble/nimbleheader' model="['navigation':true]"/>
   </div>
 
   <div id="bd" class="clear">

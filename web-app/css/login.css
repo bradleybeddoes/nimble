@@ -9,7 +9,7 @@
 
 .easyinput { padding: 5px; font-size: 1.2em; }
 
-.login { width: 750px; margin-left: auto; margin-right: auto; }
+.login { width: 750px; margin-left: auto; margin-right: auto; margin-top: 24px; }
 .login a { margin-left: 9px; margin-right: 9px; color: #565656; font-weight: bold; }
 
 .loginchoices { width: 350px; -moz-border-radius: 5px; -webkit-border-radius: 5px; float: left; padding: 0px; background-repeat: repeat-x; background-color: #fbfbfb; border: 1px solid #e2e2e2; }

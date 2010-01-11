@@ -12,7 +12,7 @@
 
     <g:each in="${permissions}" status="i" var="perm">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-        <td>${perm.type.encodeAsHTML()}</td>
+        <td>${perm.type.tokenize('.').last().encodeAsHTML()}</td>
         <td>${perm.target.encodeAsHTML()}</td>
         <td>
           <g:if test="${perm.managed}"><span class="icon icon_tick"><g:message code="nimble.label.yes" /></span></g:if>

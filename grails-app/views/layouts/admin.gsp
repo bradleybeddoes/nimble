@@ -10,6 +10,11 @@
     <nh:nimbleui/>
     <nh:admin/>
 
+	<nh:growl/>
+    <script type="text/javascript">
+      <njs:flashgrowl/>
+    </script>
+
     <g:layoutHead/>
 </head>
 
@@ -18,11 +23,11 @@
   <div id="doc">
 
     <div id="hd">
-      <g:render template='/templates/nimble/navigation/topnavigation'/>
+      <g:render template='/templates/nimble/nimbleheader' model="['navigation':true]"/>
     </div>
 
     <div id="bd">
-      	<div class="container">
+      	<div class="contentcontainer">
 	        <g:render template="/templates/nimble/navigation/sidenavigation" />
 			<div class="content">
 	      		<g:layoutBody/>
