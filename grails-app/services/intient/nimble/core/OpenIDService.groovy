@@ -59,8 +59,8 @@ class OpenIDService {
     }
 
     /**
-     * Integrates with extended Nimble bootstrap process, sets up Facebook Environment
-     * once all domain objects etc ave dynamic methods available to them.
+     * Integrates with extended Nimble bootstrap process, sets up OpenID Environment
+     * once all domain objects etc have dynamic methods available to them.
      */
     public void nimbleInit() {
         if (grailsApplication.config.nimble.openid.federationprovider.enabled) {

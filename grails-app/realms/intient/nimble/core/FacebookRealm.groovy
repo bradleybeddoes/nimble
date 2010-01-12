@@ -97,7 +97,7 @@ public class FacebookRealm {
                     }
                 }
                 else
-                throw new UnknownAccountException("No account representing user $userID$FacebookService.federationProviderDiscriminator exists and creation is disabled")
+                throw new UnknownAccountException("No account representing user $userID$FacebookService.federationProviderDiscriminator exists and autoProvision is false")
             }
 
             if (!user.enabled) {

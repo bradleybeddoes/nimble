@@ -49,7 +49,7 @@ class FacebookService implements InitializingBean {
 
     /**
      * Integrates with extended Nimble bootstrap process, sets up Facebook Environment
-     * once all domain objects etc ave dynamic methods available to them.
+     * once all domain objects etc have dynamic methods available to them.
      */
     public void nimbleInit() {
         createFederationProvider()
