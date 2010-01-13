@@ -88,13 +88,13 @@
           <th><g:message code="nimble.label.provider" /></th>
           <td valign="top">
             <img src="${resource(dir: "images", file: user.federationProvider.details?.logoSmall)}" alt="${user.federationProvider.details?.displayName}"/>
-            <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user.federationProvider.details?.displayName}</a>
+            <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user?.federationProvider?.details?.displayName}</a>
 
           </td>
         </tr>
         <tr>
           <th><g:message code="nimble.label.description" /></th>
-          <td>${user.federationProvider.details?.description}</td>
+          <td>${user?.federationProvider?.details?.description}</td>
         </tr>
 
         </tbody>
