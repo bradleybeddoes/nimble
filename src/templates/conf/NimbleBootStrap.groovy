@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
  */
  
 
-import intient.nimble.InstanceGenerator
+import grails.plugin.nimble.InstanceGenerator
 
-import intient.nimble.core.LevelPermission
-import intient.nimble.core.Role
-import intient.nimble.core.Group
-import intient.nimble.core.AdminsService
-import intient.nimble.core.UserService
+import grails.plugin.nimble.core.LevelPermission
+import grails.plugin.nimble.core.Role
+import grails.plugin.nimble.core.Group
+import grails.plugin.nimble.core.AdminsService
+import grails.plugin.nimble.core.UserService
 
 /*
  * Allows applications using Nimble to undertake process at BootStrap that are related to Nimbe provided objects

@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.core.UserBase" %>
+<%@ page import="grails.plugin.nimble.core.UserBase" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title><g:message code="nimble.view.user.list.title" /></title>

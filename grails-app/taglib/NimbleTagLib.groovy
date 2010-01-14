@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-import intient.nimble.core.*
+import grails.plugin.nimble.core.*
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application

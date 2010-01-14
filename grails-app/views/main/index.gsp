@@ -1,4 +1,4 @@
-<%@ page import="intient.nimble.core.AdminsService" %>
+<%@ page import="grails.plugin.nimble.core.AdminsService" %>
 
 <html>
   <head>
