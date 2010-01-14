@@ -11,7 +11,7 @@
 					</li>
 				</ul>
 			</g:if>
-			<g:if test="${controllerName == 'user' && actionName in ['show', 'edit', 'changepassword']}">
+			<g:if test="${controllerName == 'user' && actionName in ['show', 'edit', 'changepassword', 'changelocalpassword']}">
 			    <ul>
 					<li>
 						<g:if test="${user?.profile?.fullName}">
@@ -25,9 +25,14 @@
 							<li>
 						        <g:link controller="user" action="edit" id="${user.id}"><g:message code="nimble.link.edit" /></g:link>
 						      </li>
+							  <g:if test="${user.external}">
 						      <li>
-						          <g:link controller="user" action="changepassword" id="${user.id}"><g:message code="nimble.link.changepassword" /></g:link>
+						          <g:link controller="user" action="changelocalpassword" id="${user.id}"><g:message code="nimble.link.changelocalpassword" /></g:link>
 						      </li>
+							  </g:if>
+							  <g:else>
+								<g:link controller="user" action="changepassword" id="${user.id}"><g:message code="nimble.link.changepassword" /></g:link>
+							  </g:else>
 							  <g:if test="${actionName in ['show']}">
 						      	<li id="disableuser">
 							        <a onClick="disableUser('${user.id}'); return false;"><g:message code="nimble.link.disableaccount" /></a>
@@ -67,7 +72,7 @@
 						        <g:link controller="role" action="edit" id="${role.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.role.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>								
+								<n:confirmaction action="document.deleterole.submit();" title="${message(code: 'nimble.template.delete.confirm.title')}" msg="${message(code: 'nimble.role.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>								
 							</li>
 						</ul>
 						</g:if>
@@ -94,7 +99,7 @@
 						        <g:link controller="group" action="edit" id="${group.id}"><g:message code="nimble.link.edit" /></g:link>
 						    </li>
 							<li>
-								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'delete.confirm.title')}" msg="${message(code: 'nimble.group.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>
+								<n:confirmaction action="document.deletegroup.submit();" title="${message(code: 'nimble.template.delete.confirm.title')}" msg="${message(code: 'nimble.group.delete.confirm')}" accept="${message(code: 'nimble.link.accept')}" cancel="${message(code: 'nimble.link.cancel')}" class=""><g:message code="nimble.link.delete" /></n:confirmaction>
 							</li>			
 						</ul>
 						</g:if>

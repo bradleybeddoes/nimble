@@ -15,7 +15,7 @@
     <table class="grouplist">
       <thead>
       <tr>
-        <g:sortableColumn property="name" title="Name" class="first icon icon_arrow_refresh"/>
+        <g:sortableColumn property="name" titleKey="nimble.label.name" class="first icon icon_arrow_refresh"/>
         <th class=""><g:message code="nimble.label.description" /></th>
         <th class="last"/>
       </tr>

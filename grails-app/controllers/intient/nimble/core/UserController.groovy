@@ -156,8 +156,16 @@ class UserController {
 		redirect action: list
     }
 	else {
-    	log.debug("Starting local password change for user [$user.id]$user.username")
-	    [user: user]
+		if (!user.external) {
+			log.warn("Attempt to change password on user [$user.id]$user.username that is externally managed denied")
+			flash.type = "error"
+			flash.message = message(code: 'nimble.user.password.internal.nochange', args: [user.username])
+			redirect action: show, id: user.id
+	    }
+		else {
+    		log.debug("Starting local password change for user [$user.id]$user.username")
+		    [user: user]
+		}
 	}
   }
 

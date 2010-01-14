@@ -24,7 +24,7 @@
 
       <tr>
         <th><g:message code="nimble.label.username" /></th>
-        <td>${user.username?.encodeAsHTML()}</td>
+		<td>${user.username?.encodeAsHTML()}</td>
       </tr>
 
       <tr>
@@ -87,7 +87,6 @@
         <tr>
           <th><g:message code="nimble.label.provider" /></th>
           <td valign="top">
-            <img src="${resource(dir: "images", file: user.federationProvider.details?.logoSmall)}" alt="${user.federationProvider.details?.displayName}"/>
             <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user?.federationProvider?.details?.displayName}</a>
 
           </td>
