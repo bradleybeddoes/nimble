@@ -1,13 +1,13 @@
-.error { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
+.error { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
 .error p { margin: 2px; }
 
-.information { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
+.information { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
 .information p { margin: 2px; }
 
-.success { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
+.success { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
 .success p { margin: 2px; }
 
-.easyinput { padding: 5px; font-size: 1.2em; }
+.easyinput { padding: 3px; font-size: 1.1em; }
 
 table.adminslist { margin: 0px; width: 100%; }
 table.adminslist h3 { margin: 0px; padding: 0px; margin-bottom: 3px; }

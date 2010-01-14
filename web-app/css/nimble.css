@@ -16,16 +16,16 @@ q:before, q:after, blockquote:before, blockquote:after { content: ""; }
 
 img a { border: none; }
 
-.error { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
+.error { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
 .error p { margin: 2px; }
 
-.information { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
+.information { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
 .information p { margin: 2px; }
 
-.success { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
+.success { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
 .success p { margin: 2px; }
 
-.easyinput { padding: 5px; font-size: 1.2em; }
+.easyinput { padding: 3px; font-size: 1.1em; }
 
 body { line-height: 1.5; font-family: Helvetica Neue, Arial, Helvetica, sans-serif; color: #333333; font-size: 75%; }
 
@@ -445,10 +445,10 @@ a:hover { text-decoration: underline; }
 a.empty { color: #363636; cursor: pointer; text-decoration: none; }
 a.empty:hover { text-decoration: none; }
 
-a.button { margin: 0px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #363636; cursor: pointer; text-decoration: none; padding: 6px; background-color: #f2f2f2; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-left: 1px solid #eeeeee; color: #363636; font-size: 1.1em; font-weight: normal; margin-left: 6px; }
+a.button { margin: 0px; -moz-border-radius: 3px; -webkit-border-radius: 3px; color: #363636; cursor: pointer; text-decoration: none; padding: 5px; background-color: #f2f2f2; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-left: 1px solid #eeeeee; color: #363636; font-size: 0.95em; font-weight: normal; margin-left: 6px; }
 a.button:hover { text-decoration: none; }
 
-button.button { margin: 0px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #363636; cursor: pointer; text-decoration: none; padding: 6px; background-color: #f2f2f2; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-left: 1px solid #eeeeee; color: #363636; font-size: 1.1em; font-weight: normal; }
+button.button { margin: 0px; -moz-border-radius: 3px; -webkit-border-radius: 3px; color: #363636; cursor: pointer; text-decoration: none; padding: 5px; background-color: #f2f2f2; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-left: 1px solid #eeeeee; color: #363636; font-size: 0.95em; font-weight: normal; }
 button.button:hover { text-decoration: none; }
 
 .welcome { width: 66%; margin-top: 36px; margin-left: auto; margin-right: auto; }
@@ -465,7 +465,7 @@ button.button:hover { text-decoration: none; }
 .details tbody tr td.name { font-weight: bold; }
 
 .searchbox { margin-top: 3px; margin-bottom: 3px; }
-.searchbox input { margin: 0px; float: left; padding: 5px; font-size: 1.2em; margin-left: 5px; margin-right: 5px; vertical-align: middle; }
+.searchbox input { margin: 0px; float: left; padding: 3px; font-size: 1.1em; margin-left: 5px; margin-right: 5px; vertical-align: middle; }
 
 .paginateButtons { margin: 5px; padding: 5px; }
 .paginateButtons a { color: #363636; cursor: pointer; text-decoration: none; }
