@@ -11,7 +11,12 @@
     <tbody>
     <g:each in="${users}" status="i" var="user">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-        <td><span class="userhighlight user_${user.id}">${user.username}</span></td>
+        <g:if test="${user.username.length() > 30}">
+        	<td>${user.username?.substring(0,30).encodeAsHTML()}...</td>
+		</g:if>
+		<g:else>
+			<td>${user.username?.encodeAsHTML()}</td>
+		</g:else>
         <g:if test="${user.profile?.fullName}">
           <td>${user.profile?.fullName?.encodeAsHTML()}</td>
         </g:if>

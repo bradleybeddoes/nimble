@@ -10,7 +10,12 @@
     <tbody>
     <g:each in="${users}" status="i" var="user">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-        <td<span class="userhighlight user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
+        <g:if test="${user.username.length() > 50}">
+        	<td>${user.username?.substring(0,50).encodeAsHTML()}...</td>
+		</g:if>
+		<g:else>
+			<td>${user.username?.encodeAsHTML()}</td>
+		</g:else>
         <td>${user?.profile?.fullName.encodeAsHTML()}</td>
         <td>
           <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
