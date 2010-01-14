@@ -108,18 +108,24 @@ class AdminsController {
     def profiles = ProfileBase.findAllByFullNameIlikeOrEmailIlike(q, q)
     def nonAdmins = []
 
-    def adminAuthority = Role.findByName(AdminsService.ADMIN_ROLE)
     users.each {
-      if (!it.roles.contains(adminAuthority)) {
-        nonAdmins.add(it)    // Eject users that are already admins
-        log.debug("Adding user identified as [$it.id]$it.username to search results")
+	  boolean admin = false
+      it.roles.each { role ->
+        if(role.name == AdminsService.ADMIN_ROLE)
+			admin = true
       }
+	  if(!admin)
+		nonAdmins.add(it)
     }
+
     profiles.each {
-      if (!it.owner.roles.contains(adminAuthority) && !nonAdmins.contains(it.owner)) {
-        nonAdmins.add(it.owner)    // Eject users that are already admins
-        log.debug("Adding user identified as [$it.owner.id]$it.owner.username based on profile to search results")
-      }
+		boolean admin = false
+	      it.owner.roles.each { role ->
+	        if(role.name == AdminsService.ADMIN_ROLE)
+				admin = true
+	      }
+		  if(!admin && !nonAdmins.contains(it.owner))
+			nonAdmins.add(it.owner)
     }
 
     log.info("Search for new administrators complete, returning $nonAdmins.size records")
