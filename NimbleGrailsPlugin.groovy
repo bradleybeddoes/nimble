@@ -126,10 +126,9 @@ class NimbleGrailsPlugin {
         
     }
 
-	private void injectAuthn(def clazz, def application) {
+    private void injectAuthn(def clazz, def application) {
 		clazz.metaClass.getAuthenticatedSubject = {
         	def subject = SecurityUtils.getSubject()
-            return principal
         }
         clazz.metaClass.getAuthenticatedUser = {
         	def principal = SecurityUtils.getSubject()?.getPrincipal()		
