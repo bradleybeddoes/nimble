@@ -1,1 +1,0 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/icons.css')}"/>

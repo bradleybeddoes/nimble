@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,11 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.service.FacebookService
-import intient.nimble.auth.WildcardPermission
+
 import org.apache.shiro.SecurityUtils
-import intient.nimble.domain.UserBase
-import intient.nimble.service.AdminsService
+
+import grails.plugin.nimble.auth.WildcardPermission
+
+import grails.plugin.nimble.core.UserBase
+import grails.plugin.nimble.core.AdminsService
+import grails.plugin.nimble.core.FacebookService
 
 /**
  * Provides authentication related tags to the Nimble application

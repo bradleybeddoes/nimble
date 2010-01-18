@@ -1,31 +1,13 @@
-.error { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
+.error { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #ffbaba; border: 1px solid #ffbaba; color: #D8000C; }
 .error p { margin: 2px; }
 
-.information { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
+.information { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #bde5f8; border: 1px solid #bde5f8; color: #00529B; }
 .information p { margin: 2px; }
 
-.success { -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
+.success { -moz-border-radius: 2px; -webkit-border-radius: 2px; font-size: 116.667%; margin: 3px; padding: 6px; font-weight: normal; background-color: #dff2bf; border: 1px solid #dff2bf; color: #4F8A10; }
 .success p { margin: 2px; }
 
-.easyinput { padding: 5px; font-size: 1.2em; }
-
-.helppopup { margin: 0px; padding: 0px; }
-.helppopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.helppopup .content { padding: 18px; }
-.helppopup .buttons { padding: 12px; text-align: center; }
-.helppopup .banner { background-color: #1b4366; color: #fbfbfb; }
-
-.errorpopup { margin: 0px; padding: 0px; }
-.errorpopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.errorpopup .content { padding: 18px; }
-.errorpopup .buttons { padding: 12px; text-align: center; }
-.errorpopup .banner { background-color: #870000; color: #fbfbfb; }
-
-.deletepopup { margin: 0px; padding: 0px; }
-.deletepopup .banner { font-size: 116.667%; padding: 9px; text-align: center; }
-.deletepopup .content { padding: 18px; }
-.deletepopup .buttons { padding: 12px; text-align: center; }
-.deletepopup .banner { background-color: #870000; color: #fbfbfb; }
+.easyinput { padding: 3px; font-size: 1.1em; }
 
 table.adminslist { margin: 0px; width: 100%; }
 table.adminslist h3 { margin: 0px; padding: 0px; margin-bottom: 3px; }
@@ -87,6 +69,23 @@ table.grouplist tbody tr.even td { background-color: #fbfbfb; }
 table.grouplist tbody tr td.name { font-weight: bold; }
 table.grouplist tbody tr td { padding: 9px; }
 
+#banner { overflow: hidden; display: inline-block; background-color: black; }
+#banner { display: block; }
+#banner h1 { float: left; color: #f2f2f2; padding: 12px; font-size: 1.5em; }
+#banner #userops { float: right; margin-right: 12px; font-weight: bold; color: #f2f2f2; }
+#banner #userops a { color: #f2f2f2; cursor: pointer; text-decoration: none; }
+#banner #userops a:hover { text-decoration: underline; }
+
+.localnavigation { float: left; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; width: 180px; margin: 0px; padding: 6px; background-color: #f5f5f5; border: 1px solid #d5d5d5; border-top: none; }
+.localnavigation ul { list-style-type: none; }
+.localnavigation ul li { list-style-type: none; }
+.localnavigation h3 { font-size: 1em; font-weight: bold; color: #a6a6a6; }
+.localnavigation a { font-size: 1em; font-weight: bold; color: #666666; cursor: pointer; text-decoration: none; }
+.localnavigation a:hover { text-decoration: underline; }
+.localnavigation ul { margin-left: 6px; margin-bottom: 3px; }
+
+.content { float: left; width: 770px; margin-top: 6px; margin-left: 12px; }
+
 .sections { padding: 0px; }
 
 .section { padding: 18px; border: 1px solid #f2f2f2; }
@@ -101,8 +100,5 @@ table.grouplist tbody tr td { padding: 9px; }
 .section .details tbody tr td { padding: 9px; }
 .section h3 { margin: 0px; padding: 0px; font-weight: bold; margin-bottom: 3px; margin-top: 3px; }
 .section h4 { margin: 0px; padding: 0px; font-weight: bold; margin-bottom: 3px; margin-top: 18px; }
-
-.actions { float: right; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-right: 0; border: 1px solid #f2f2f2; background-color: #fbfbfb; }
-.actions .horizmenu { background: none; }
 
 #currentmembers table td { width: 25%; }

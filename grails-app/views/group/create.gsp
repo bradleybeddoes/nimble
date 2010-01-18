@@ -1,43 +1,37 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Create Group</title>
-
-  <g:render template="/templates/validate_name" contextPath="${pluginContextPath}"/>
+  <title><g:message code="nimble.view.group.create.title" /></title>
 </head>
 <body>
 
-<div class="container">
-  <h2>Create Group</h2>
+  <h2><g:message code="nimble.view.group.create.heading" /></h2>
 
   <p>
-    Create a new group below, fields marked with a bullet are required.
+    <g:message code="nimble.view.group.create.descriptive" />
   </p>
 
   <n:errors bean="${group}"/>
 
   <g:form name="createGroup" action="save" method="post">
-    <div class="dialog">
       <table>
         <tbody>
 
         <tr>
           <th>
-            Name
+            <g:message code="nimble.label.name" />
           </th>
           <td valign="top" class="value">
-            <input type="text" id="name" name="name" value="${fieldValue(bean: group, field: 'name')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
-            <span id="nameavailable" class="icon">&nbsp;</span>
+            <n:verifyfield id="name" class="easyinput" name="name" value="${fieldValue(bean: group, field: 'name')}" required="true" controller="group" action="validname" validmsg="valid" invalidmsg="invalid" />
           </td>
         </tr>
 
         <tr>
           <th>
-            Description
+            <g:message code="nimble.label.description" />
           </th>
           <td valign="top" class="value">
-            <input type="text" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
+            <input type="text" size="30" id="description" name="description" value="${fieldValue(bean: group, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
           </td>
         </tr>
 
@@ -45,18 +39,14 @@
           <td/>
           <td>
             <div class="buttons">
-              <button class="button icon icon_group_go" type="submit">Create Group</button>
-              <g:link action="list" class="button icon icon_cancel">Cancel</g:link>
+              <button class="button icon icon_group_go" type="submit"><g:message code="nimble.link.creategroup" /></button>
+              <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
             </div>
           </td>
         </tr>
         </tbody>
       </table>
-
-    </div>
   </g:form>
-
-</div>
 
 </body>
 </html>

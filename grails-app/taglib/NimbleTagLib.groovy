@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,7 +14,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.domain.UserBase
+
+import grails.plugin.nimble.core.*
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application
@@ -28,59 +29,10 @@ class NimbleTagLib {
     def recaptchaService
 
     /**
-     * Enables growl like message popup in the page
-     */
-    def growl = {attrs, body ->
-        out << render(template: "/templates/growl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Enables growl message popup when the Grails application stores a message in flash scope
-     */
-    def flashgrowl = {attrs, body ->
-        out << render(template: "/templates/flashgrowl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
      * Provides an inline output of the Grails application message in flash scope
      */
     def flashembed = {attrs, body ->
         out << render(template: "/templates/flashembed", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Imports JQuery Javascript to make the JQuery library available to the current page
-     */
-    def jquery = {attrs, body ->
-        out << render(template: "/templates/jquerysetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Imports css and javascript required to create a Nimble menu
-     */
-    def menu = {attrs, body ->
-        out << render(template: "/templates/nmenusetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Imports css required to use FAM FAM FAM icons in buttons etc
-     */
-    def famfamfam = {attrs, body ->
-        out << render(template: "/templates/famfamfamsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Imports layouts and javascript required for the administration layout
-     */
-    def admin = {attrs, body ->
-        out << render(template: "/templates/adminsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
-    }
-
-    /**
-     * Imports base Nimble provided CSS
-     */
-    def basecss = {attrs, body ->
-        out << render(template: "/templates/basecsssetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     /**
@@ -157,50 +109,6 @@ class NimbleTagLib {
     }
 
     /**
-     * Provides markup to render the supplied users profile photo
-     */
-    def photo = {attrs ->
-        if(attrs.id == null || attrs.size == null)
-        throwTagError("Photo tag requires user id and size attributes")
-
-        def id = attrs.id
-        def size = attrs.size
-        def user = UserBase.get(id)
-
-        if(user) {
-            out << render(template: "/templates/profile/photo", contextPath: pluginContextPath, model: [profile: user.profile, size:size])
-            return
-        }
-        throwTagError("No user located for supplied ID")
-    }
-
-    /**
-     * Provides script to allow the user of the classes 'userhighlight' and 'user_X' on elements to provide
-     * mini user profile popups on mouse hover.
-     */
-    def userhighlight = {
-        out << render(template: "/templates/profile/userhighlight", contextPath: pluginContextPath)
-    }
-
-    /**
-     * Providers markup to render the supplied users current status
-     */
-    def status = {attrs ->
-        if(attrs.id == null)
-        throwTagError("Status tag requires user id")
-
-        def id = attrs.id
-        def clear = attrs.clear ?:false
-        def user = UserBase.get(id)
-
-        if(user) {
-            out << render(template: "/templates/nimble/profile/currentstatus", model: [profile: user.profile, clear:clear])
-            return
-        }
-        throwTagError("No user located for supplied ID")
-    }
-
-    /**
      * Allows Nimble core and Host Apps alike to access images provided by Nimble
      */
     def img = {attrs ->
@@ -222,13 +130,23 @@ class NimbleTagLib {
         mkp.img(src: resource(dir: pluginContextPath, file:"images/social/$attrs.size/${attrs.name}.png"), alt: "$attrs.alt")
     }
 
+	/**
+	* Allows UI developers to request confirmation from a user before performing some action
+	*/
 	def confirmaction = { attrs, body ->
-			if(attrs.action == null || attrs.title == null || attrs.msg == null || attrs.accept == null || attrs.cancel == null)
-        		throwTagError("Confirm action tag requires action, title, msg, accept and cancel attributes")
+		if(attrs.action == null || attrs.title == null || attrs.msg == null || attrs.accept == null || attrs.cancel == null)
+        	throwTagError("Confirm action tag requires action, title, msg, accept and cancel attributes")
 
-			out << "<a href=\"#\" class=\"${attrs.class}\" onClick=\"confirmAction = function() { ${attrs.action} }; wasConfirmed('${attrs.title}', '${attrs.msg}', '${attrs.accept}', '${attrs.cancel}');\">${body()}</a>"
+		out << "<a href=\"#\" class=\"${attrs.class}\" onClick=\"confirmAction = function() { ${attrs.action} }; wasConfirmed('${attrs.title}', '${attrs.msg}', '${attrs.accept}', '${attrs.cancel}');\">${body()}</a>"
 	}
-
+	
+	// Allows UI developers to request verification of contents of a field using onBlur
+	def verifyfield = { attrs, body ->
+		if(attrs.id == null || attrs.controller == null || attrs.action == null || attrs.name == null || attrs.validmsg == null || attrs.invalidmsg == null)
+			throwTagError("verifyfield tag requires id, controller, action, name, validmsg and invalidmsg attributes")
+			
+		out << render(template: "/templates/tags/verifyfield", contextPath: pluginContextPath, model: [id:attrs.id, cssclass: attrs.class, required:attrs.required, controller:attrs.controller, action:attrs.action, name:attrs.name, value:attrs.value, validmsg:attrs.validmsg, invalidmsg:attrs.invalidmsg] )
+	}
 
 }
 

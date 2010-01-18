@@ -1,19 +1,18 @@
-<%@ page import="intient.nimble.domain.Role" %>
+<%@ page import="grails.plugin.nimble.core.Role" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Roles</title>
+  <title><g:message code="nimble.view.role.list.title" /></title>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Role List</h2>
+  <h2><g:message code="nimble.view.role.list.heading" /></h2>
 
   <table class="rolelist">
     <thead>
     <tr>
-      <g:sortableColumn property="name" title="Name" class="first icon icon_arrow_refresh"/>
-      <th>Description</th>
+      <g:sortableColumn property="name" titleKey="nimble.label.name" class="first icon icon_arrow_refresh"/>
+      <th><g:message code="nimble.label.name" /></th>
       <th class="last">&nbsp;</th>
     </tr>
     </thead>
@@ -24,7 +23,7 @@
         <td>${role.description?.encodeAsHTML()}</td>
         <td class="actionButtons">
           <span class="actionButton">
-            <g:link action="show" id="${role.id}" class="button icon icon_user_go">View Role</g:link>
+            <g:link action="show" id="${role.id}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
           </span>
         </td>
       </tr>
@@ -36,5 +35,4 @@
     <g:paginate total="${Role.count()}"/>
   </div>
 
-</div>
 </body>

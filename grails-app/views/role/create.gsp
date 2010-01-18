@@ -2,17 +2,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Create Group</title>
-
-  <g:render template="/templates/validate_name" contextPath="${pluginContextPath}"/>
+  <title><g:message code="nimble.view.role.create.title" /></title>
 </head>
 <body>
 
-<div class="container">
-  <h2>Create Role</h2>
+  <h2><g:message code="nimble.view.role.create.heading" /></h2>
 
   <p>
-    Create a new role below, fields marked with green bullets are required.
+    <g:message code="nimble.view.role.create.descriptive" />
   </p>
 
   <n:errors bean="${role}"/>
@@ -23,17 +20,16 @@
       <tbody>
 
       <tr>
-        <th>Name</th>
+        <th><g:message code="nimble.label.name" /></th>
         <td class="value">
-          <input type="text" id="name" name="name" value="${fieldValue(bean: role, field: 'name')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
-          <span id="nameavailable" class="icon">&nbsp;</span>
+		  <n:verifyfield id="name" class="easyinput" name="name" value="${fieldValue(bean: role, field: 'name')}" required="true" controller="role" action="validname" validmsg="valid" invalidmsg="invalid" />
         </td>
       </tr>
 
       <tr>
-        <th>Description</th>
+        <th><g:message code="nimble.label.description" /></th>
         <td class="value">
-          <input type="text" id="description" name="description" value="${fieldValue(bean: role, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
+          <input type="text" id="description" size="30" name="description" value="${fieldValue(bean: role, field: 'description')}" class="easyinput"/><span class="icon icon_bullet_green">&nbsp;</span>
         </td>
       </tr>
 
@@ -41,8 +37,8 @@
         <td/>
         <td>
           <div class="buttons">
-            <button class="button icon icon_group_add" type="submit">Create Role</button>
-            <g:link action="list" class="button icon icon_cancel">Cancel</g:link>
+            <button class="button icon icon_group_add" type="submit"><g:message code="nimble.link.createrole" /></button>
+            <g:link action="list" class="button icon icon_cancel"><g:message code="nimble.link.cancel" /></g:link>
           </div>
         </td>
       </tr>
@@ -51,6 +47,5 @@
 
   </g:form>
 
-</div>
 </body>
 </html>

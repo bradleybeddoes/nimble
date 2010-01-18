@@ -4,34 +4,43 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-    <title>Nimble | <g:layoutTitle default="Grails"/></title>
+    <title><g:message code="nimble.layout.admin.title" /> <g:layoutTitle default="Grails"/></title>
 
-  <n:jquery/>
-  <n:growl/>
-  <n:flashgrowl/>
-  <n:menu/>
-  <n:userhighlight/>
-  <n:admin/>
+  	<nh:nimblecore/>
+    <nh:nimbleui/>
+    <nh:admin/>
 
-  <g:layoutHead/>
+	<nh:growl/>
+    <script type="text/javascript">
+      <njs:flashgrowl/>
+    </script>
+
+    <g:layoutHead/>
 </head>
 
 <body>
 
   <div id="doc">
-    <div id="hd">
-      <g:render template='/templates/nimble/navigation/topnavigation'/>
-    </div>
-    <div id="bd">
-      <g:layoutBody/>
-    </div>
-    <div id="ft">
 
+    <div id="hd">
+      <g:render template='/templates/nimble/nimbleheader' model="['navigation':true]"/>
     </div>
+
+    <div id="bd">
+      	<div class="contentcontainer">
+	        <g:render template="/templates/nimble/navigation/sidenavigation" />
+			<div class="content">
+	      		<g:layoutBody/>
+			</div>
+		</div>
+    </div>
+
+    <div id="ft">
+    </div>
+
   </div>
 
 <n:sessionterminated/>
-
 
 </body>
 

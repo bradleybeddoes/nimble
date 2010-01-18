@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -23,6 +23,12 @@ nimble {
         logo = ""
         logosmall = ""
         url = ""
+    }
+
+	layout {
+        application = 'app'
+        administration = 'admin'
+		login = 'app'
     }
 
     localusers {
@@ -52,6 +58,8 @@ nimble {
     }
 
     messaging {
+		enabled = false
+		
         registration {
             subject = "Your new account is ready!"
         }

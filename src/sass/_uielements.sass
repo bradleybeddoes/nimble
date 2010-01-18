@@ -6,12 +6,7 @@
 !color_button = #f2f2f2
 !color_button_text = #363636
 !color_button_border = #ccc
-!color_button_border_highlight = #eee
-
-!color_button2 = #363636
-!color_button2_text = #f2f2f2
-!color_button2_border = #666
-!color_button2_border_highlight = #868686
+!color_button_border_highlight = #eee 
 
 !link_color = #363636
 
@@ -55,10 +50,10 @@
   font-style = "italic"  
 
 =easyinput
-  padding = 5px
+  padding = 3px
 
   :font
-    :size = 1.2em
+    :size = 1.1em
 
 =cleanlist
   ul
@@ -136,12 +131,12 @@
     padding = 12px
     text-align = "center"
 
-=button(!radius=5px)
+=button(!radius=3px)
   +nomargin
   +rounded(!radius)
   +link(!link_color, "none")
 
-  padding = 6px
+  padding = 5px
 
   :background
     :color = !color_button
@@ -154,22 +149,8 @@
   color = !color_button_text
 
   :font
-    :size = 1.1em
+    :size = 0.95em
     :weight = "normal"
-
-=button2(!radius=5px)
-  +button(!radius)
-
-  :background
-    :color = !color_button2
-
-  border = 1px "solid" !color_button2_border
-  :border
-    :top = 1px "solid" !color_button2_border_highlight
-    :left = 1px "solid" !color_button2_border_highlight
-
-  a
-    color = !color_button2_text
 
 =notification
   +rounded
@@ -233,12 +214,11 @@
 
     list-style-type = "none"
 
-=horizontalmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2")
+=horizmenu(!background = "images/horizontalmenubg.png", !color = "#e2e2e2", !currentcolor = "#fbfbfb", !linkcolor = "#f2f2f2", !currentlinkcolor = "#f2f2f2")
   +horizontallist
-  height = 42px
+  +clearfix
+  
   width = 100%
-  position = "relative"
-
   :background
     :image = url(!background)
     :color = !color
@@ -248,62 +228,31 @@
 
   li
     +left
-    minheight = 42px
     overflow = "visible"
-
     :margin
       :right = 6px
-
-    :padding
-      :left = 12px
-      :right = 12px
+    padding = 12px
 
     a
       +link
-      +left
-      height = 42px
-      line-height = 42px
+      //+left
       display = "block"
       :font
         :weight = "normal"
         :size = 1.2em
+      color = !linkcolor
 
     &.current
       :background
-        :color = #3e3e3e
+        :color = !currentcolor
         :position = "bottom left"
         :repeat = "repeat-x"
-
       a
-        +link("#fff")
-
-=horizontalsubmenu(!background = "images/horizontalsubmenubg.png", !color = "#000")
-  +horizontallist
-  position = absolute
-  top = 42px
-  left = -9999px
-  z-index = 100
-  width = 100%
-
-  :background
-    :image = url(!background)
-    :color = !color
-    :position = "top left"
-    :repeat = "repeat-x"
-
-  li
-    :margin
-      :right = 6px
-
-    :padding
-      :left = 12px
-      :right = 12px
-
-    a
-      +link("#fff")
+        color = !currentlinkcolor
 
 
 // Generic UI classes
+
 .error
   +notification
 
@@ -327,30 +276,3 @@
 
 .easyinput
   +easyinput
-
-.helppopup
-  +popup
-
-  .banner
-    :background
-      :color =  #1B4366
-
-    color = #fbfbfb
-
-.errorpopup
-  +popup
-
-  .banner
-    :background
-      :color =  #870000
-
-    color = #fbfbfb
-
-.deletepopup
-  +popup
-
-  .banner
-    :background
-      :color =  #870000
-
-    color = #fbfbfb

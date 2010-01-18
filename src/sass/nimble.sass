@@ -3,13 +3,10 @@
 @import blueprint/screen.sass
 @import blueprint/modules/liquid.sass
 
-+blueprint
-
-// Intient Sass libraries
 @import _rounded.sass
 @import _uielements.sass
 
-// Tags
++blueprint
 
 body
   min-width: 980px
@@ -25,17 +22,9 @@ a.button
 
   margin-left = 6px
 
-a.darkbutton
-  +button2
-
-button.darkbutton
-  +button2
-
 button.button
   +button
 
-
-// Classes
 .welcome
   +span(16)
   :margin
@@ -49,17 +38,15 @@ button.button
     :left = "auto"
     :right = "auto"
 
-.horizmenu
-  +horizontalmenu
-
-.horizmenu li .submenu
-  +horizontalsubmenu
-
 .details
   +datatable(9px, 50%)
 
 .searchbox
+  :margin
+    :top = 3px
+    :bottom = 3px
   input
+    +nomargin
     +left
     +easyinput
 
@@ -88,19 +75,12 @@ button.button
   +cleanlist
 
 
-// ID's
-#doc
-
 #hd
-  display="block"
-
+  display = "block"
 
 #bd
   +nomargin
-  :margin
-    :top = 50px
-
-  .container
-    width = 95%
+  width = "100%"
 
 #ft
+  +nomargin

@@ -1,218 +1,68 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>User</title>
-
+  <title><g:message code="nimble.view.user.show.title" args="[user.username?.encodeAsHTML()]" /></title>
   <script type="text/javascript">
-    $(function() {
-      $("#enableuserbtn").click(function () {
-        enableUser();
-      });
-
-      $("#disableuserbtn").click(function () {
-        disableUser();
-      });
-
-      $("#enableuserapibtn").click(function () {
-        enableAPI();
-      });
-
-      $("#disableuserapibtn").click(function () {
-        disableAPI();
-      });
-
-    <g:if test="${user.enabled}">
-      $("#enableuser").hide();
-      $("#enableduser").hide();
-    </g:if>
-    <g:else>
-      $("#disableuser").hide();
-      $("#disableduser").hide();
-    </g:else>
-
-    <g:if test="${user.remoteapi}">
-      $("#disabledapi").hide();
-      $("#enableuserapi").hide();
-    </g:if>
-    <g:else>
-      $("#enabledapi").hide();
-      $("#disableuserapi").hide();
-    </g:else>
-    });
-
-    function enableUser() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'enable')}",
-        data: dataString,
-        success: function(res) {
-          $("#enableuser").hide();
-          $("#enableduser").hide();
-          $("#disableuser").show();
-          $("#disableduser").show();
-          growl('success', 'Account enabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to enable this account');
-        }
-      });
-    }
-
-    function disableUser() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'disable')}",
-        data: dataString,
-        success: function(res) {
-          $("#disableuser").hide();
-          $("#disableduser").hide();
-          $("#enableuser").show();
-          $("#enableduser").show();
-          growl('success', 'Account disabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to disable this account');
-        }
-      });
-    }
-
-    function enableAPI() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'enableapi')}",
-        data: dataString,
-        success: function(res) {
-          $("#disabledapi").hide();
-          $("#enabledapi").show();
-
-          $("#disableuserapi").show();
-          $("#enableuserapi").hide();
-          growl('success', 'Remote API access enabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to enable remote api access account');
-        }
-      });
-    }
-
-    function disableAPI() {
-      var dataString = "id=${user.id}";
-      $.ajax({
-        type: "POST",
-        url: "${createLink(action:'disableapi')}",
-        data: dataString,
-        success: function(res) {
-          $("#disabledapi").show();
-          $("#enabledapi").hide();
-
-          $("#disableuserapi").hide();
-          $("#enableuserapi").show();
-          growl('success', 'Remote API access disabled');
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', 'There was an internal error when attempting to disable remote api access for this account');
-        }
-      });
-    }
-
+  	<njs:user user="${user}"/>
+	<njs:permission parent="${user}"/>
+	<njs:role parent="${user}"/>
+	<njs:group parent="${user}"/>
+	
+	$(function() {
+		$("#tabs").tabs();
+	});
   </script>
-
 </head>
 
 <body>
 
-<div class="container">
-
-  <h2>User ${user.username?.encodeAsHTML()}</h2></span>
-
-  <div class="actions">
-    <ul class="horizmenu">
-      <li>
-        <span class="userhighlight user_${user.id}"><g:link controller="profile" action="show" id="${user.id.encodeAsHTML()}" class="icon icon_user_go">Profile</g:link></span>
-      </li>
-
-      <li>
-        <g:link action="edit" id="${user.id.encodeAsHTML()}" class="icon icon_user_gray">Edit</g:link>
-      </li>
-
-      <li>
-        <g:if test="${!user.external}">
-          <g:link action="changepassword" id="${user.id.encodeAsHTML()}" class="icon icon_key_go">Change Password</g:link>
-        </g:if>
-        <g:else>
-          <g:link action="changelocalpassword" id="${user.id.encodeAsHTML()}" class="icon icon_key_go">Change Local Password</g:link>
-        </g:else>
-      </li>
-
-      <li id="disableuser">
-        <a id="disableuserbtn" class="icon icon_user_red">Disable</a>
-      </li>
-      <li id="enableuser">
-        <a id="enableuserbtn" class="icon icon_user_green">Enable</a>
-      </li>
-
-      <li id="disableuserapi">
-        <a id="disableuserapibtn" class="icon icon_world_delete">Disable Remote API</a>
-      </li>
-      <li id="enableuserapi">
-        <a id="enableuserapibtn" class="icon icon_world_add">Enable Remote API</a>
-      </li>
-
-    </ul>
-  </div>
+  <h2><g:message code="nimble.view.user.show.heading" args="[user.username?.encodeAsHTML()]" /></h2></span>
 
   <div class="details">
-    <h3>Account Details</h3>
+    <h3><g:message code="nimble.view.user.show.details.heading" /></h3>
     <table class="datatable">
       <tbody>
 
       <tr>
-        <th>Login Name</th>
-        <td>${user.username?.encodeAsHTML()}</td>
+        <th><g:message code="nimble.label.username" /></th>
+		<td>${user.username?.encodeAsHTML()}</td>
       </tr>
 
       <tr>
-        <th>Created</th>
+        <th><g:message code="nimble.label.created" /></th>
         <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.dateCreated}"/></td>
       </tr>
 
       <tr>
-        <th>Last Updated</th>
+        <th><g:message code="nimble.label.lastupdated" /></th>
         <td><g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.lastUpdated}"/></td>
       </tr>
 
       <tr>
-        <th>Type</th>
+        <th><g:message code="nimble.label.type" /></th>
         <g:if test="${user.external}">
-          <td class="value">Externally Managed Account</td>
+          <td class="value"><g:message code="nimble.label.external.managment" /></td>
         </g:if>
         <g:else>
-          <td class="value">Locally Managed Account</td>
+          <td class="value"><g:message code="nimble.label.local.managment" /></td>
         </g:else>
       </tr>
 
       <tr>
-        <th>State</th>
+        <th><g:message code="nimble.label.state" /></th>
         <td class="value">
 
           <div id="disableduser">
-            <span class="icon icon_tick">&nbsp;</span>Enabled
+            <span class="icon icon_tick">&nbsp;</span><g:message code="nimble.label.enabled" />
           </div>
           <div id="enableduser">
-            <span class="icon icon_cross">&nbsp;</span>Disabled
+            <span class="icon icon_cross">&nbsp;</span><g:message code="nimble.label.disabled" />
           </div>
 
         </td>
       </tr>
 
       <tr>
-        <th>Remote API Access</th>
+        <th><g:message code="nimble.label.remoteapi" /></th>
         <td class="value">
 
           <div id="enabledapi">
@@ -229,59 +79,61 @@
     </table>
   </div>
 
+  <div id="tabs">
 
-
-  <g:if test="${user.federated}">
-    <div class="details">
-      <h3>Federation Provider</h3>
-      <table>
-        <tbody>
-        <tr>
-          <th>Provider</th>
-          <td valign="top">
-            <img src="${resource(dir: "images", file: user.federationProvider.details?.logoSmall)}" alt="${user.federationProvider.details?.displayName}"/>
-            <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user.federationProvider.details?.displayName}</a>
-
-          </td>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <td>${user.federationProvider.details?.description}</td>
-        </tr>
-
-        </tbody>
-      </table>
-    </div>
-  </g:if>
-
-
-  <div class="sections">
-
-    <ul id="sections_" class="horizmenu">
-      <li class="current"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
-      <li><a href="roles_" class="icon icon_cog">Roles</a></li>
-      <li><a href="groups_" class="icon icon_group">Groups</a></li>
-      <li><a href="logins_" class="icon icon_key">Logins</a></li>
+    <ul>
+	  <li><a href="#tab-extendedinfo" class="icon icon_user"><g:message code="nimble.label.extendedinformation" /></a></li>
+	  <g:if test="${user.federated}">
+	  <li><a href="#tab-federation" class="icon icon_world"><g:message code="nimble.label.federatedaccount" /></a></li>
+	  </g:if>
+      <li><a href="#tab-permissions" class="icon icon_lock"><g:message code="nimble.label.permissions" /></a></li>
+      <li><a href="#tab-roles" class="icon icon_cog"><g:message code="nimble.label.roles" /></a></li>
+      <li><a href="#tab-groups" class="icon icon_group"><g:message code="nimble.label.groups" /></a></li>
+      <li><a href="#tab-logins" class="icon icon_key"><g:message code="nimble.label.logins" /></a></li>
     </ul>
 
-    <div class="active_ sections_ permissions_">
-      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    <div id="tab-extendedinfo">
+		<g:render template="/templates/nimble/user/extendedinformation" contextPath="/" model="[user:user]"/>	
     </div>
 
-    <div class="sections_ roles_">
-      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+	  <g:if test="${user.federated}">
+	    <div id="tab-federation">
+	      <h3><g:message code="nimble.view.user.show.federated.heading" /></h3>
+	      <table>
+	        <tbody>
+	        <tr>
+	          <th><g:message code="nimble.label.provider" /></th>
+	          <td valign="top">
+	            <a href="${user.federationProvider.details?.url?.location}" alt="${user.federationProvider.details?.url?.altText}">${user?.federationProvider?.details?.displayName}</a>
+
+	          </td>
+	        </tr>
+	        <tr>
+	          <th><g:message code="nimble.label.description" /></th>
+	          <td>${user?.federationProvider?.details?.description}</td>
+	        </tr>
+
+	        </tbody>
+	      </table>
+	    </div>
+	  </g:if>
+
+    <div id="tab-permissions">
+      	<g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="sections_ groups_">
-      <g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>
+    <div id="tab-roles">
+      	<g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:user]"/>
     </div>
 
-    <div class="sections_ logins_">
-      <g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[ownerID:user.id.encodeAsHTML()]"/>      
+    <div id="tab-groups">
+     	<g:render template="/templates/admin/groups" contextPath="${pluginContextPath}" model="[parent:user]"/>
+    </div>
+
+    <div id="tab-logins">
+      	<g:render template="/templates/admin/logins" contextPath="${pluginContextPath}" model="[parent:user]"/>      
     </div>
 
   </div>
-
-</div>
 
 </body>

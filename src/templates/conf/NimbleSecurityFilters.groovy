@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import intient.nimble.service.AdminsService
+import grails.plugin.nimble.core.AdminsService
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
  *
  * @author Bradley Beddoes
  */
-public class NimbleSecurityFilters extends intient.nimble.security.NimbleFilterBase {
+public class NimbleSecurityFilters extends grails.plugin.nimble.security.NimbleFilterBase {
 
     def filters = {
 

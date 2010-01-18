@@ -1,5 +1,5 @@
 Nimble, an extensive application base for Grails
-Copyright (C) 2009 Intient Pty Ltd
+Copyright (C) 2010 Bradley Beddoes
 
 
                                  Apache License

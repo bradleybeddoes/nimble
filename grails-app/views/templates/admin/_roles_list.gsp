@@ -3,8 +3,8 @@
   <table class="details">
     <thead>
     <tr>
-      <th class="first">Name</th>
-      <th class="">Description</th>
+      <th class="first"><g:message code="nimble.label.name" /></th>
+      <th class=""><g:message code="nimble.label.description" /></th>
       <th class="last"></th>
     </tr>
     </thead>
@@ -14,9 +14,9 @@
         <td>${role.name?.encodeAsHTML()}</td>
         <td>${role.description?.encodeAsHTML()}</td>
         <td>
-          <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="button icon icon_cog_go">View</g:link>
+          <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="button icon icon_cog_go"><g:message code="nimble.link.view" /></g:link>
           <g:if test="${role.protect == false}">
-            <button onClick="removeRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_delete">Remove</button>
+            <button onClick="removeRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></button>
           </g:if>
           <g:else>&nbsp;</g:else>
         </td>
@@ -27,6 +27,6 @@
 </g:if>
 <g:else>
   <p>
-    There are no roles currently assigned.
+    <g:message code="nimble.template.roles.list.noresults" />
   </p>
 </g:else>

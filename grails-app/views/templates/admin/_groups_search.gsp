@@ -2,8 +2,8 @@
   <table class="details">
     <thead>
     <tr>
-      <th class="first">Name</th>
-      <th class="">Description</th>
+      <th class="first"><g:message code="nimble.label.name" /></th>
+      <th class=""><g:message code="nimble.label.description" /></th>
       <th class="last"></th>
     </tr>
     </thead>
@@ -13,8 +13,8 @@
         <td>${group.name?.encodeAsHTML()}</td>
         <td>${group.description?.encodeAsHTML()}</td>
         <td>
-          <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View Group</g:link>
-          <a onClick="grantGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_add">Assign Group</a>
+          <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
+          <a onClick="grantGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.assign" /></a>
         </td>
       </tr>
     </g:each>
@@ -23,6 +23,6 @@
 </g:if>
 <g:else>
   <p>
-    <strong>No groups matching your search request were found (or all matching groups are already assigned)</strong>
+    <strong><g:message code="nimble.template.groups.add.noresults" /></strong>
   </p>
 </g:else>

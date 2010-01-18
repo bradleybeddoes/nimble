@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/login.css')}"/>

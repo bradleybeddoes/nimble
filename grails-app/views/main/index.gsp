@@ -1,22 +1,17 @@
-<%@ page import="intient.nimble.service.AdminsService" %>
+<%@ page import="grails.plugin.nimble.core.AdminsService" %>
 
 <html>
   <head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title>Welcome to Nimble!</title>
-
-  <n:jquery/>
-  <n:userhighlight/>
-
-</head>
+  </head>
 
 <body>
 
-  <div class="container">
     <div class="welcome cleanlist">
 
       <g:if test="${user.profile?.fullName?.length() > 0}">
-        <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
+        <h1><span class="userhighlight">${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
       </g:if>
       <g:else>
         <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.username.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
@@ -27,7 +22,7 @@
         bits a web based application needs to be useful, saving developers months of work.
       </p>
       <p>
-        A Nimble powered application has all the folowing features out of the box and it works with any existing
+        A Nimble powered application has all the following features out of the box and it works with any existing
         Java libraries you might have as well..
       </p>
       <ul>
@@ -57,12 +52,10 @@
           <g:link controller="admins" action="index" class="icon icon_user_go">Administer Application</g:link>
           </li>
         </n:hasRole>
-        <li><g:link controller="profile" action="show" class="icon icon_user">View your profile</g:link></li>
         <li><g:link controller="auth" action="logout" class="icon icon_cross">Logout</g:link></li>
       </ul>
 
     </div>
-  </div>
 
 </body>
 </html>

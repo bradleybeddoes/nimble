@@ -1,10 +1,8 @@
-Nimble by Intient, an extensive application base for Grails.
+Nimble, an extensive application base for Grails.
 
-More details to follow.
+Nimble builds on the strengths of many other open source projects including Spring, Hibernate, Grails and Shiro. Like all these projects it is licensed under the fully permissive Apache 2.0 software license. Nimble can save you from months of boring, costly development work by providing all the common internal components web applications require.
 
-http://www.intient.com
+For those familliar with Grails you'll be right at home with Nimble. Nimble ships as a grails plugin and is easy to install.
 
-
-Using Compass to compile Sass markup
-
+If you'd like to use compas and sass (and there is no requirement to) once installed to jruby you can invoke as follows:
 jruby -S compass -w --sass-dir src/sass --css-dir web-app/css

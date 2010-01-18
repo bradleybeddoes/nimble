@@ -1,21 +1,19 @@
-<%@ page import="intient.nimble.domain.UserBase" %>
+<%@ page import="grails.plugin.nimble.core.UserBase" %>
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Users</title>
+  <title><g:message code="nimble.view.user.list.title" /></title>
 </head>
 
 <body>
 
-<div class="container">
-
-  <h2>User List</h2>
+  <h2><g:message code="nimble.view.user.list.heading" /></h2>
 
   <table class="userlist">
     <thead>
     <tr>
-      <g:sortableColumn property="username" title="Login Name" class="first icon icon_arrow_refresh"/>
-      <th>Full Name</th>
-      <g:sortableColumn property="enabled" title="Status" class="icon icon_arrow_refresh"/>
+      <g:sortableColumn property="username" titleKey="nimble.label.username" class="first icon icon_arrow_refresh"/>
+      <th><g:message code="nimble.label.fullname" /></th>
+      <g:sortableColumn property="enabled" titleKey="nimble.label.state" class="icon icon_arrow_refresh"/>
       <th class="last">&nbsp;</th>
     </tr>
     </thead>
@@ -23,7 +21,12 @@
     <g:each in="${users}" status="i" var="user">
       <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-        <td><span class="userhighlight user_${user.id}">${user.username?.encodeAsHTML()}</span></td>
+        <g:if test="${user.username.length() > 50}">
+        	<td>${user.username?.substring(0,50).encodeAsHTML()}...</td>
+		</g:if>
+		<g:else>
+			<td>${user.username?.encodeAsHTML()}</td>
+		</g:else>
 
         <g:if test="${user.profile?.fullName}">
           <td valign="top" class="value">${user.profile?.fullName?.encodeAsHTML()}</td>
@@ -34,15 +37,15 @@
 
         <td>
           <g:if test="${user.enabled}">
-            <span class="icon icon_tick">&nbsp;</span>Enabled
+            <span class="icon icon_tick">&nbsp;</span><g:message code="nimble.label.enabled" />
           </g:if>
           <g:else>
-            <span class="icon icon_cross">&nbsp;</span>Disabled
+            <span class="icon icon_cross">&nbsp;</span><g:message code="nimble.label.disabled" />
           </g:else>
         </td>
         <td class="actionButtons">
           <span class="actionButton">
-            <g:link action="show" id="${user.id}" class="button icon icon_user_go">View User</g:link>
+            <g:link action="show" id="${user.id}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
           </span>
         </td>
       </tr>
@@ -53,7 +56,5 @@
   <div class="paginateButtons">
     <g:paginate total="${UserBase.count()}"/>
   </div>
-
-</div>
 
 </body>

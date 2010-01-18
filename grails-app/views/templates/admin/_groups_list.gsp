@@ -3,8 +3,8 @@
   <table class="details">
     <thead>
     <tr>
-      <th class="first">Name</th>
-      <th class="">Description</th>
+      <th class="first"><g:message code="nimble.label.name" /></th>
+      <th class=""><g:message code="nimble.label.description" /></th>
       <th class="last"></th>
     </tr>
     </thead>
@@ -14,9 +14,9 @@
         <td>${group.name?.encodeAsHTML()}</td>
         <td>${group.description?.encodeAsHTML()}</td>
         <td>
-          <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View</g:link>
+          <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
           <g:if test="${group.protect == false}">
-            <a onClick="removeGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_delete">Remove</a>
+            <a onClick="removeGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
           </g:if>
           <g:else>&nbsp;</g:else>
         </td>
@@ -27,6 +27,6 @@
 </g:if>
 <g:else>
   <p>
-    This user is not currently a member of any group.
+    <g:message code="nimble.template.groups.list.noresults" />
   </p>
 </g:else>

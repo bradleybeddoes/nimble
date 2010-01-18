@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -22,12 +22,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.apache.shiro.authc.credential.Sha256CredentialsMatcher
 import org.apache.shiro.SecurityUtils
 
-import intient.nimble.domain.UserBase
+import grails.plugin.nimble.core.UserBase
 
 class NimbleGrailsPlugin {
 
     // the plugin version
-    def version = "0.3-SNAPSHOT"
+    def version = "0.4-SNAPSHOT"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
@@ -45,7 +45,7 @@ class NimbleGrailsPlugin {
                       'grails-app/conf/NimbleBootStrap.groovy',
     ]
 
-    def author = "Intient Pty Ltd + Open Source Contributors"
+    def author = "Bradley Beddoes and  open source contributors"
     def authorEmail = "nimbleproject@googlegroups.com"
     def title = "Nimble"
     def description = '''\\
@@ -53,7 +53,7 @@ class NimbleGrailsPlugin {
     '''
 
     // URL to the plugin's documentation
-    def documentation = "http://intient.com/products/nimble"
+    def documentation = "http://sites.google.com/site/nimbledoc/"
 
     def observe = ['controllers']
 
@@ -135,7 +135,7 @@ class NimbleGrailsPlugin {
 			def authUser
 			
             if(application.config?.nimble?.implementation?.user)
-    			authUser = NimbleGrailsPlugin.class.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
+    			authUser = grailsApplication.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
     		else
     			authUser = UserBase.get(principal)
 

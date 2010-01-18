@@ -1,50 +1,43 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Group</title>
+	<meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
+	<title><g:message code="nimble.view.group.show.title"  args="[group.name.encodeAsHTML()]" /></title>
+	<script type="text/javascript">
+		<njs:permission parent="${group}"/>
+		<njs:role parent="${group}"/>
+		<njs:member parent="${group}"/>
+		$(function() {
+			$("#tabs").tabs();
+		});
+	</script>
 </head>
 <body>
 
-<div class="container">
-  <h2>Group ${group.name.encodeAsHTML()}</h2>
-
-  <g:if test="${!group.protect}">
-    <div class="actions">
-      <ul class="horizmenu">
-        <li>
-          <g:link action="edit" id="${group.id.encodeAsHTML()}" class="icon icon_group_edit">Edit Group</g:link>
-        </li>
-        <li>
-          <a href="#" id="deleteconfirmbtn" rel="deleteconfirm" class="icon icon_group_delete">Delete Group</a>
-        </li>
-      </ul>
-    </div>
-  </g:if>
+  <h2><g:message code="nimble.view.group.show.heading" args="[group.name.encodeAsHTML()]" /></h2>
 
   <div class="details">
-    <h3>Group Details</h3>
+    <h3><g:message code="nimble.view.group.show.details.heading" /></h3>
     <table class="datatable">
       <tbody>
       <tr>
-        <th>Name</th>
+        <th><g:message code="nimble.label.name" /></th>
         <td valign="top" class="value">${fieldValue(bean: group, field: 'name')}</td>
       </tr>
 
       <tr>
-        <th>Description</th>
+        <th><g:message code="nimble.label.description" /></th>
         <td valign="top" class="value">${fieldValue(bean: group, field: 'description')}</td>
 
       </tr>
 
       <tr>
-        <th>Protected</th>
+        <th><g:message code="nimble.label.protected" /></th>
         <td valign="top" class="value">
           <g:if test="${group.protect}">
-            <span class="icon icon_tick">&nbsp;Yes</span>
+            <span class="icon icon_tick"><g:message code="nimble.label.yes" /></span>
           </g:if>
           <g:else>
-            <span class="icon icon_cross">&nbsp;No</span>
+            <span class="icon icon_cross"><g:message code="nimble.label.no" /></span>
           </g:else>
         </td>
       </tr>
@@ -54,30 +47,28 @@
 
   </div>
 
-  <div class="sections">
+  <div id="tabs">
 
-    <div>
-      <ul id="sections_" class="horizmenu">
-        <li class="current"><a href="permissions_" class="icon icon_lock">Permissions</a></li>
-        <li class=""><a href="roles_" class="icon icon_cog">Roles</a></li>
-        <li class=""><a href="members_" class="icon icon_group">Members</a></li>
+      <ul>
+        <li><a href="#tab-permissions" class="icon icon_lock"><g:message code="nimble.label.permissions" /></a></li>
+        <li><a href="#tab-roles" class="icon icon_cog"><g:message code="nimble.label.roles" /></a></li>
+        <li><a href="#tab-members" class="icon icon_group"><g:message code="nimble.label.members" /></a></li>
       </ul>
-    </div>
 
-    <div class="active_ sections_ permissions_">
-      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[ownerID:group.id.encodeAsHTML()]"/>
+    <div id="tab-permissions">
+      <g:render template="/templates/admin/permissions" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="sections_ roles_">
-      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[ownerID:group.id.encodeAsHTML()]"/>
+    <div id="tab-roles">
+      <g:render template="/templates/admin/roles" contextPath="${pluginContextPath}" model="[parent:group]"/>
     </div>
-    <div class="sections_ members_">
-      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parentID:group.id.encodeAsHTML(), protect:group.protect, groupmembers:false]"/>
+    <div id="tab-members">
+      <g:render template="/templates/admin/members" contextPath="${pluginContextPath}" model="[parent:group, protect:group.protect, groupmembers:false]"/>
     </div>
   </div>
 
-</div>
-
-<g:render template="/templates/admin/deletegroupconfirm" contextPath="${pluginContextPath}"/>
+  <g:form action="delete" name="deletegroup">
+  	<g:hiddenField name="id" value="${group.id.encodeAsHTML()}"/>
+  </g:form>
 
 </body>
 </html>

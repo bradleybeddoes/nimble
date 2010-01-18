@@ -1,23 +1,22 @@
-<%@ page import="intient.nimble.domain.Group" %>
+<%@ page import="grails.plugin.nimble.core.Group" %>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
-  <title>Group List | Nimble</title>
+  <title><g:message code="nimble.view.group.list.title" /></title>
 </head>
 <body>
 
-<div class="container">
-  <h2>Group List</h2>
+  <h2><g:message code="nimble.view.group.list.heading" /></h2>
   <p>
-    The following is the current list of system groups.
+    <g:message code="nimble.view.group.edit.descriptive" />
   </p>
 
   <div>
     <table class="grouplist">
       <thead>
       <tr>
-        <g:sortableColumn property="name" title="Name" class="first icon icon_arrow_refresh"/>
-        <th class="">Description</th>
+        <g:sortableColumn property="name" titleKey="nimble.label.name" class="first icon icon_arrow_refresh"/>
+        <th class=""><g:message code="nimble.label.description" /></th>
         <th class="last"/>
       </tr>
       </thead>
@@ -27,7 +26,7 @@
 
           <td>${fieldValue(bean: group, field: 'name')}</td>
           <td>${fieldValue(bean: group, field: 'description')}</td>
-          <td><g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go">View Group</g:link>
+          <td><g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
 
         </tr>
       </g:each>
@@ -37,8 +36,6 @@
   <div class="paginateButtons">
     <g:paginate total="${Group.count().encodeAsHTML()}"/>
   </div>
-
-</div>
 
 </body>
 

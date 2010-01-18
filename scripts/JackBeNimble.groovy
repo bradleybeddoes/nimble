@@ -1,6 +1,6 @@
 /*
  *  Nimble, an extensive application base for Grails
- *  Copyright (C) 2009 Intient Pty Ltd
+ *  Copyright (C) 2010 Bradley Beddoes
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -69,6 +69,11 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   mkdir( dir:"${basedir}/src/sass" )
   copy(file:"${nimblePluginDir}/src/sass/_rounded.sass", todir: "${basedir}/src/sass", overwrite: false)
   copy(file:"${nimblePluginDir}/src/sass/_uielements.sass", todir: "${basedir}/src/sass", overwrite: false)
+
+  // i18n
+  copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
+  copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble_de.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
+
 }
 
 def parseArgs() {
