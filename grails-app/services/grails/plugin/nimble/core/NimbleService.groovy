@@ -34,7 +34,7 @@ class NimbleService {
      * Integrates with extended Nimble bootstrap process, sets up basic Nimble environment
      * once all domain objects etc ave dynamic methods available to them.
      */
-    def init = {
+    public void init() {
 
         // Perform all base Nimble setup
         def userRole = Role.findByName(UserService.USER_ROLE)
