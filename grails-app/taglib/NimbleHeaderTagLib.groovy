@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-import grails.plugin.nimble.core.*
+import grails.plugins.nimble.core.*
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application

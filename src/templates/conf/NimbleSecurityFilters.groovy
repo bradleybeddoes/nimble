@@ -14,14 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import grails.plugin.nimble.core.AdminsService
+import grails.plugins.nimble.core.AdminsService
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
  *
  * @author Bradley Beddoes
  */
-public class NimbleSecurityFilters extends grails.plugin.nimble.security.NimbleFilterBase {
+public class NimbleSecurityFilters extends grails.plugins.nimble.security.NimbleFilterBase {
 
     def filters = {
 

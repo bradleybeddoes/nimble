@@ -22,7 +22,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.apache.shiro.authc.credential.Sha256CredentialsMatcher
 import org.apache.shiro.SecurityUtils
 
-import grails.plugin.nimble.core.UserBase
+import grails.plugins.nimble.core.UserBase
 
 class NimbleGrailsPlugin {
 

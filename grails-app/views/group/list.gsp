@@ -1,4 +1,4 @@
-<%@ page import="grails.plugin.nimble.core.Group" %>
+<%@ page import="grails.plugins.nimble.core.Group" %>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>

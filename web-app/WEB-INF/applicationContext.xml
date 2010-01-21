@@ -10,7 +10,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="grailsResourceLoader" ref="grailsResourceLoader" />
 	</bean>
 
-	<bean id="pluginManager" class="org.codehaus.groovy.grails.plugins.GrailsPluginManagerFactoryBean">
+	<bean id="pluginManager" class="org.codehaus.groovy.grails.pluginss.GrailsPluginManagerFactoryBean">
 		<description>A bean that manages Grails plugins</description>
         <property name="grailsDescriptor" value="/WEB-INF/grails.xml" />
         <property name="application" ref="grailsApplication" />

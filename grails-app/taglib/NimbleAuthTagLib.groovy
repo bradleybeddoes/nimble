@@ -17,11 +17,11 @@
 
 import org.apache.shiro.SecurityUtils
 
-import grails.plugin.nimble.auth.WildcardPermission
+import grails.plugins.nimble.auth.WildcardPermission
 
-import grails.plugin.nimble.core.UserBase
-import grails.plugin.nimble.core.AdminsService
-import grails.plugin.nimble.core.FacebookService
+import grails.plugins.nimble.core.UserBase
+import grails.plugins.nimble.core.AdminsService
+import grails.plugins.nimble.core.FacebookService
 
 /**
  * Provides authentication related tags to the Nimble application
