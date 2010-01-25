@@ -107,7 +107,7 @@ class AuthController {
     }
 
     def signout = {
-        log.info("Signing out user")
+        log.info("Signing out user ${authUser.username}")
         SecurityUtils.subject?.logout()
         redirect(uri: '/')
     }
