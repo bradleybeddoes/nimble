@@ -14,7 +14,7 @@
         <h1><span class="userhighlight">${user.profile.fullName.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
       </g:if>
       <g:else>
-        <h1><span class="userhighlight"><n:photo id="${user.id}" size="50"/>${user.username.encodeAsHTML()}</span>, Welcome to Nimble!</h1>
+        <h1>${user.username.encodeAsHTML()}, Welcome to Nimble!</h1>
       </g:else>
 
       <p>
