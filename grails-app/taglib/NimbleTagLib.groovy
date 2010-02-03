@@ -64,7 +64,7 @@ class NimbleTagLib {
      * Provides markup to render the default password policy
      */
     def passwordpolicy = {attrs, body ->
-        out << render(template: "/templates/nimble/help/passwordpolicy")
+        out << render(template: "/templates/nimble/help/passwordpolicy", contextPath: pluginContextPath)
     }
 
     /**

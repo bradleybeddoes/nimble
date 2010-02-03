@@ -1,4 +1,4 @@
-<g:javascript src="jquery/jquery.pstrength.js"/>
+<g:javascript src="jquery/jquery.pstrength.js" contextPath="${pluginContextPath}"/>
 <script type="text/javascript">
 
   $(function() {
