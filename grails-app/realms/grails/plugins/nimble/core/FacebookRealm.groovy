@@ -82,9 +82,6 @@ public class FacebookRealm {
                         newUser.profile.owner = newUser
                         newUser.profile.fullName = fbProfiles.getJSONObject(0).get('name')
 
-                        // Create a social media account for facebook, FB Connect implies an account :).
-                        facebookService.create(newUser.profile, userID)
-
                         user = userService.createUser(newUser)
                         if (user.hasErrors()) {
                             log.warn("Error creating user account from facebook credentials for $userID$FacebookService.federationProviderDiscriminator")
