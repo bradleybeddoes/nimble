@@ -34,16 +34,6 @@ public class NimbleSecurityFilters extends grails.plugins.nimble.security.Nimble
             }
         }
 
-        profilesecure(controller: "profile") {
-            before = {
-                if(!actionName.equals('miniprofile')) {
-                    accessControl {
-                        true
-                    }
-                }
-            }
-        }
-
         // Account management requiring authentication
         accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {
             before = {

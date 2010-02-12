@@ -102,9 +102,5 @@ class NimbleUrlMappings {
     "/auth/$action" {
             controller = "auth"
         }
-
-    "/profile/$action?/$id?" {
-            controller = "profile"
-        }
     }
 }
