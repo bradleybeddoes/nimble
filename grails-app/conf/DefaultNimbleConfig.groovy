@@ -18,12 +18,16 @@
 nimble {
 
     tablenames {
-        user = "_user"
-        role = "_role"
-        group = "_group"
-        federationprovider = "federation_provider"
-        socialmediaaccount = "social_media_account"
-        socialmediaservice = "social_media_service"
+        user =  "_user"
+        role =  "_role"
+        group =  "_group"
+        federationProvider =  "federation_provider"
+        profileBase = "profile_base"
+        loginRecord = "login_record"
+        details =  "details"
+        permission = "permission"
+        levelPermission = "level_permission"
+        url = "url"
     }
 
     fieldnames {
