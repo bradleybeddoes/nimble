@@ -60,7 +60,7 @@
             <div class="accountoptions">
               <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple"><g:message code="nimble.link.forgottenpassword" /></g:link>
               <g:if test="${registration}">
-                <a href="#" id="accountcreationpolicybtn" rel="accountcreationpolicy" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
+                <a href="${createLink(controller:"account", action:"newuser")}" id="accountcreationpolicybtn" rel="accountcreationpolicy" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
               </g:if>
             </div>
           </div>
