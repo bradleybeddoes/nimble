@@ -12,10 +12,16 @@
     <p>
       <g:message code="nimble.view.account.registeraccount.complete.descriptive" />
     </p>
-    <p>
-      <g:message code="nimble.view.account.registeraccount.complete.sentemail" />
+	<g:if test="${messaging}">
+	<p>
+		<g:message code="nimble.view.account.registeraccount.complete.sentemail" />
     </p>
-
+	</g:if>
+	<g:else>
+	<p>
+		<a href="${createLink(controller:'profile')}"><g:message code="nimble.view.account.registeraccount.complete.continue" default="Continue..."/></a>
+	</p>
+	</g:else>
 </body>
 
 </html>

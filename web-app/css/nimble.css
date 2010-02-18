@@ -484,6 +484,6 @@ button.button:hover { text-decoration: none; }
 
 #hd { display: block; }
 
-#bd { margin: 0px; width: 100%; }
+#bd { margin: 5px 0px 0px 10px; width: 100%; }
 
 #ft { margin: 0px; }
