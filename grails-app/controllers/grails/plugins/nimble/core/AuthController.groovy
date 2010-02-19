@@ -75,10 +75,10 @@ class AuthController {
             session.removeAttribute(AuthController.TARGET)
 
             log.info("Authenticated user, $params.username.")
-            if(grailsApplication.config.nimble.authorization.onsuccess) {
-                log.info("Executing authentication callback")
-                def newUri = grailsApplication.config.nimble.authorization.onsuccess(User.get(SecurityUtils.getSubject()?.getPrincipal()), targetUri, request)
-                if(newUri != null)
+            if (userService.events["login"]) {
+                log.info("Executing login callback")
+                def newUri = userService.events["login"](SecurityUtils.getSubject()?.getPrincipal(), targetUri, request)
+                if (newUri != null)
                     targetUri = newUri
             }
             log.info("Directing to content $targetUri")
@@ -115,6 +115,12 @@ class AuthController {
 
     def signout = {
         log.info("Signing out user ${authenticatedUser?.username}")
+
+        if(userService.events["login"]) {
+			log.info("Executing logout callback")
+			userService.events["logout"](authenticatedUser)
+		}
+
         SecurityUtils.subject?.logout()
         redirect(uri: '/')
     }
