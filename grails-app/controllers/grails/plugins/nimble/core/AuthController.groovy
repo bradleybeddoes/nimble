@@ -116,7 +116,7 @@ class AuthController {
     def signout = {
         log.info("Signing out user ${authenticatedUser?.username}")
 
-        if(userService.events["login"]) {
+        if(userService.events["logout"]) {
 			log.info("Executing logout callback")
 			userService.events["logout"](authenticatedUser)
 		}
