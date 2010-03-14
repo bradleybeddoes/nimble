@@ -36,6 +36,8 @@ class UserService {
     def grailsApplication
     def permissionService
 
+    def events = [:]
+
     /**
      * Activates a disabled user account
      *

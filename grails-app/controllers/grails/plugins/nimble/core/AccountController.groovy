@@ -120,7 +120,7 @@ class AccountController {
         user.profile.owner = user
         user.properties['username', 'pass', 'passConfirm'] = params
         user.profile.properties['fullName', 'email'] = params
-        user.enabled = false
+        user.enabled = grailsApplication.config.nimble.localusers.provision.active
         user.external = false
 
         user.validate()
@@ -190,7 +190,7 @@ class AccountController {
     }
 
     def createduser = {
-
+		render(view: 'createduser', useractive: grailsApplication.config.nimble.localusers.provision.active)
     }
 
     def validateuser = {

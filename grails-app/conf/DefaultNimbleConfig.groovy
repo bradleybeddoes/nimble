@@ -41,6 +41,9 @@ nimble {
             minlength = 4
             validregex = '[a-zA-Z0-9]*'
         }
+		provision {
+			active = false
+		}
     }
 
     passwords {
