@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="${resource(dir: pluginContextPath, file: '/css/login.css')}"/>
+<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/login.css')}"/>
