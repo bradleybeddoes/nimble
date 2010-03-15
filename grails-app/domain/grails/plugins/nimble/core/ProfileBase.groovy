@@ -55,7 +55,7 @@ class ProfileBase {
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
-        table ConfigurationHolder.config.nimble.tablenames.profileBase
+        table ConfigurationHolder.config.nimble.tablenames.profilebase
     }
 
     static constraints = {

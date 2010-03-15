@@ -21,12 +21,12 @@ nimble {
         user =  "_user"
         role =  "_role"
         group =  "_group"
-        federationProvider =  "federation_provider"
-        profileBase = "profile_base"
-        loginRecord = "login_record"
+        federationprovider =  "federation_provider"
+        profilebase = "profile_base"
+        loginrecord = "login_record"
         details =  "details"
         permission = "permission"
-        levelPermission = "level_permission"
+        levelpermission = "level_permission"
         url = "url"
     }
 

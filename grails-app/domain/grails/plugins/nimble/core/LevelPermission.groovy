@@ -40,7 +40,7 @@ class LevelPermission extends Permission {
 
     static mapping = {
         cache usage: 'read-write', include: 'all'
-        table ConfigurationHolder.config.nimble.tablenames.levelPermission
+        table ConfigurationHolder.config.nimble.tablenames.levelpermission
     }
 
     static constraints = {

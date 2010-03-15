@@ -34,7 +34,7 @@ class LoginRecord {
     static belongsTo = [owner: UserBase]
 
     static mapping = {
-        table ConfigurationHolder.config.nimble.tablenames.loginRecord
+        table ConfigurationHolder.config.nimble.tablenames.loginrecord
     } 
     static constraints = {
         remoteAddr(nullable: false, blank: false)
