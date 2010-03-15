@@ -120,8 +120,8 @@ class AccountController {
         user.profile.owner = user
         user.properties['username', 'pass', 'passConfirm'] = params
         user.profile.properties['fullName', 'email'] = params
-        user.enabled = !grailsApplication.config.nimble.messaging.enabled // if messaging is disabled, we cannot validate accounts
-		user.external = false
+        user.enabled = grailsApplication.config.nimble.localusers.provision.active
+        user.external = false
 
         user.validate()
 
@@ -190,8 +190,7 @@ class AccountController {
     }
 
     def createduser = {
-		def messaging = grailsApplication.config.nimble.messaging.enabled
-		render(view: 'createduser', model: [messaging: messaging])
+		render(view: 'createduser', useractive: grailsApplication.config.nimble.localusers.provision.active)
     }
 
     def validateuser = {

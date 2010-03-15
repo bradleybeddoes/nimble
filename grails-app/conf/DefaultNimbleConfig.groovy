@@ -18,12 +18,16 @@
 nimble {
 
     tablenames {
-        user = "_user"
-        role = "_role"
-        group = "_group"
-        federationprovider = "federation_provider"
-        socialmediaaccount = "social_media_account"
-        socialmediaservice = "social_media_service"
+        user =  "_user"
+        role =  "_role"
+        group =  "_group"
+        federationprovider =  "federation_provider"
+        profilebase = "profile_base"
+        loginrecord = "login_record"
+        details =  "details"
+        permission = "permission"
+        levelpermission = "level_permission"
+        url = "url"
     }
 
     fieldnames {
@@ -41,6 +45,9 @@ nimble {
             minlength = 4
             validregex = '[a-zA-Z0-9]*'
         }
+		provision {
+			active = false
+		}
     }
 
     passwords {

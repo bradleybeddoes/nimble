@@ -16,6 +16,7 @@
  */
 package grails.plugins.nimble.core
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 /**
  * Represents a system that a user logged into a Nimble based application from
  *
@@ -32,6 +33,9 @@ class LoginRecord {
 
     static belongsTo = [owner: UserBase]
 
+    static mapping = {
+        table ConfigurationHolder.config.nimble.tablenames.loginrecord
+    } 
     static constraints = {
         remoteAddr(nullable: false, blank: false)
         remoteHost(nullable: false, blank: false)

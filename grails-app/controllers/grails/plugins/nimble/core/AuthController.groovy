@@ -77,7 +77,7 @@ class AuthController {
             log.info("Authenticated user, $params.username.")
             if (userService.events["login"]) {
                 log.info("Executing login callback")
-                def newUri = userService.events["login"](SecurityUtils.getSubject()?.getPrincipal(), targetUri, request)
+                def newUri = userService.events["login"](authenticatedUser, targetUri, request)
                 if (newUri != null)
                     targetUri = newUri
             }
