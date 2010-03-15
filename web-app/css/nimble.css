@@ -395,6 +395,10 @@ input.span-24, textarea.span-24, select.span-24 { width: 100% !important; }
 
 .push-24 { margin: 0 -960px 1.5em 960px; }
 
+.prepend-top { margin-top: 1.5em; }
+
+.append-bottom { margin-bottom: 1.5em; }
+
 .showgrid { background: url('/images/grid.png'); }
 
 .error { padding: .8em; margin-bottom: 1em; border: 2px solid #dddddd; background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
@@ -484,6 +488,6 @@ button.button:hover { text-decoration: none; }
 
 #hd { display: block; }
 
-#bd { margin: 0; padding: 5px 0px 0px 10px; width: 99%; }
+#bd { margin: 0px; width: 99%; padding: 5px 0 0 10px; }
 
 #ft { margin: 0px; }
