@@ -16,6 +16,7 @@
  */
 package grails.plugins.nimble.core
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 /**
  * Represents a web based url with extended information for display purposes.
  * A Url object does not belong to any parent object as its use is general in nature,
@@ -34,6 +35,9 @@ class Url {
 
     static belongsTo = [Details, ProfileBase]
 
+    static mapping = {
+        table ConfigurationHolder.config.nimble.tablenames.url
+    }
     static constraints = {
         name(nullable: true, blank:false)
         description(nullable: true, blank:false)

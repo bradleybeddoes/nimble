@@ -74,7 +74,14 @@ class AuthController {
             def targetUri = session.getAttribute(AuthController.TARGET) ?: "/"
             session.removeAttribute(AuthController.TARGET)
 
-            log.info("Authenticated user, $params.username. Directing to content $targetUri")
+            log.info("Authenticated user, $params.username.")
+            if (userService.events["login"]) {
+                log.info("Executing login callback")
+                def newUri = userService.events["login"](authenticatedUser, targetUri, request)
+                if (newUri != null)
+                    targetUri = newUri
+            }
+            log.info("Directing to content $targetUri")
             redirect(uri: targetUri)
             return
         }
@@ -108,6 +115,12 @@ class AuthController {
 
     def signout = {
         log.info("Signing out user ${authenticatedUser?.username}")
+
+        if(userService.events["logout"]) {
+			log.info("Executing logout callback")
+			userService.events["logout"](authenticatedUser)
+		}
+
         SecurityUtils.subject?.logout()
         redirect(uri: '/')
     }
