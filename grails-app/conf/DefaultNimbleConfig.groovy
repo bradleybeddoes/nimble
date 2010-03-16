@@ -32,6 +32,8 @@ nimble {
         permission = "permission"
         levelpermission = "level_permission"
         url = "url"
+		socialmediaaccount = "social_media_account"
+		socialmediaservice = "social_media_service"
     }
 
     fieldnames {
