@@ -38,6 +38,7 @@ nimble {
     layout {
         application = 'app'
         administration = 'admin'
+        jslibrary = 'jquery'
     }
 
     localusers {

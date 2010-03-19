@@ -1,4 +1,4 @@
-<g:javascript src="jquery/jquery.pstrength.js" contextPath="${pluginContextPath}"/>
+<g:javascript src="${grailsApplication.config.nimble.layout.jslibrary}/pstrength.js" contextPath="${pluginContextPath}"/>
 <script type="text/javascript">
 
   $(function() {

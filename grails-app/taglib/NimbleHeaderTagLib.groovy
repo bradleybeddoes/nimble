@@ -43,7 +43,7 @@ class NimbleHeaderTagLib {
 
 	// Imports JQuery Javascript to make the JQuery library available to the current page
     def jquery = {attrs, body ->
-        out << render(template: "/templates/header/jquerysetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "setup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
 	// Imports css required to use FAM FAM FAM icons in buttons etc

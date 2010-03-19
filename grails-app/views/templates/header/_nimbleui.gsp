@@ -1,1 +1,1 @@
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/nimbleui.js')}"></script>
+<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/' + grailsApplication.config.nimble.layout.jslibrary + '/nimbleui.js')}"></script>
