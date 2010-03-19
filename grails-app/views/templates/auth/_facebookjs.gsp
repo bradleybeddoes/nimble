@@ -1,3 +1,4 @@
+<g:if test="${facebook}">
 <g:if test="${secure}">
   <script type="text/javascript" src="https://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"></script>
 </g:if>
@@ -13,3 +14,4 @@
   FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdreciever')}', {"ifUserConnected" : enableFacebookContinue});
   </g:else>
 </script>
+</g:if>
