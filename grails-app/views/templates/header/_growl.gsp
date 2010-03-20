@@ -1,2 +1,0 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/jquery.jgrowl.css')}"/>
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/' + grailsApplication.config.nimble.layout.jslibrary + '/jgrowl.js')}"></script>

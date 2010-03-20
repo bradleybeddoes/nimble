@@ -1,4 +1,4 @@
-<div id="sessionterminateddialog">
+<div id="sessionterminateddialog" style="display:none">
   <div class="errorpopup">
     <div class="content">
 	  <p>

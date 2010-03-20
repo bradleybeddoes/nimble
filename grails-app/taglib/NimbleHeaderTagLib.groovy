@@ -28,22 +28,27 @@ class NimbleHeaderTagLib {
 
 	// Enables js for Nimble core UI features
     def nimblecore = {attrs ->
-        out << render(template: "/templates/header/nimblecore", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/nimblecore", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
 	// Enables js for Nimble supplied UI features
     def nimbleui = {attrs ->
-        out << render(template: "/templates/header/nimbleui", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/nimbleui", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     // Enables growl like message popup in the page
     def growl = {attrs, body ->
-        out << render(template: "/templates/header/growl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/growl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
 	// Imports JQuery Javascript to make the JQuery library available to the current page
-    def jquery = {attrs, body ->
-        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "setup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    def jsetup = {attrs, body ->
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/setup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
+    // imports library to do password strength test
+    def pstrength = {attrs, body ->
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/pstrength", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
 	// Imports css required to use FAM FAM FAM icons in buttons etc

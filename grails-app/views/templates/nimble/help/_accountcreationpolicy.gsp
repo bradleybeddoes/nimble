@@ -1,4 +1,4 @@
-<div id="accountcreationpolicydialog">
+<div id="accountcreationpolicydialog" style="display:none">
   <div class="helppopup">
     <div class="content">
 	  <g:message code="nimble.templates.accountcreationpolicy" />
