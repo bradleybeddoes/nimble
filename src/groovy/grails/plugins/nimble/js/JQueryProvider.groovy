@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.grails.plugins.jquery
+package grails.plugins.nimble.js
 
 import org.codehaus.groovy.grails.plugins.web.taglib.JavascriptProvider
 
