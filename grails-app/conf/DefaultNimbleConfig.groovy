@@ -40,6 +40,16 @@ nimble {
         administration = 'admin'
     }
 
+
+    extra {
+/**
+ * example
+        css = "/grailsAppName/css/extra.css"
+*/
+	css = ""
+    }
+
+
     localusers {
         usernames {
             minlength = 4
