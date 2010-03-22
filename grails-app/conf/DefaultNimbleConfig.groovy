@@ -52,6 +52,16 @@ nimble {
 		}
     }
 
+	fields {
+		admin {
+			user['username', 'external', 'federated']
+		}
+		enduser {
+			user['username', 'pass', 'passConfirm']
+			profile['fullName', 'email']
+		}
+	}
+
     passwords {
         mustcontain {
             lowercase = true
