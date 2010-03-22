@@ -84,7 +84,8 @@ class UserController {
       redirect action: edit, id: params.id
     }
 	else {
-    	user.properties['username', 'external', 'federated'] = params
+		def fields = grailsApplication.config.nimble.fields.admin.user
+		user.properties[fields] = params
 	    if (!user.validate()) {
 	    	log.debug("Updated details for user [$user.id]$user.username are invalid")
 		    render view: 'edit', model: [user: user]
@@ -109,8 +110,10 @@ class UserController {
   def save = {
     def user = InstanceGenerator.user()
     user.profile = InstanceGenerator.profile()
-    user.properties['username', 'pass', 'passConfirm'] = params
-    user.profile.properties['fullName', 'email'] = params
+	def userFields = grailsApplication.config.nimble.fields.enduser.user
+	def profileFields = grailsApplication.config.nimble.fields.enduser.profile
+	user.properties[userFields] = params	
+	user.profile.properties[profileFields] = params
     user.enabled = false
     user.external = false
 
