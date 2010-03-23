@@ -137,6 +137,11 @@ class AccountController {
         if (user.profile.email == null || user.profile.email.length() == 0)
         user.profile.email = 'invalid'
 
+		// Allow host application to do some validation, etc.
+		if(userService.events['beforeregister']) {
+			userService.events['beforeregister'](user)
+//			user.errors.rejectValue('password', 'user.password.doesnotmatch') 
+		}
 
         if (user.hasErrors()) {
             log.debug("Submitted values for new user are invalid")
@@ -169,6 +174,10 @@ class AccountController {
             render(view: 'createuser', model: [user: user])
             return
         }
+
+		if(userService.events['afterregister']) {
+			userService.events['afterregister'](user)
+		}
 
         log.info("Sending account registration confirmation email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.registration.subject")
         if(grailsApplication.config.nimble.messaging.enabled) {
