@@ -15,8 +15,8 @@
 
   <g:layoutHead/>
 
-<g:if test="${grailsApplication.config.nimble.extra.css!=''}">
-<link rel="stylesheet" href="${grailsApplication.config.nimble.extra.css}"/>
+<g:if test="${grailsApplication.config.nimble.layout.customcss != ''}">
+<link rel="stylesheet" href="${grailsApplication.config.nimble.layout.customcss}"/>
 </g:if>
 
 </head>

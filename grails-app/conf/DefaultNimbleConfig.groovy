@@ -38,17 +38,8 @@ nimble {
     layout {
         application = 'app'
         administration = 'admin'
+        customcss = ''
     }
-
-
-    extra {
-/**
- * example
-        css = "/grailsAppName/css/extra.css"
-*/
-	css = ""
-    }
-
 
     localusers {
         usernames {
