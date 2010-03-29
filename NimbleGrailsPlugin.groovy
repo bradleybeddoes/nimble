@@ -155,6 +155,13 @@ class NimbleGrailsPlugin {
         // Merging default Nimble config into main application config
         config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleConfig')))
 
+		// Merging default Nimble Social config into main application config if social is used.
+        try {
+            config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleSocialConfig')))
+        } catch (Exception ignored) {
+            // ignore, just use the defaults
+        }
+
         // Merging user-defined Nimble config into main application config if provided
         try {
             config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('NimbleConfig')))
