@@ -40,8 +40,8 @@
   </p>
 </g:else>
 
-<h4><span class="empty icon icon_group"/><g:message code="nimble.template.members.list.groups.heading" /></h4>
 <g:if test="${groupmembers}">
+  <h4><span class="empty icon icon_group"/><g:message code="nimble.template.members.list.groups.heading" /></h4>
   <g:if test="${groups?.size() > 0}">
     <table class="details">
       <thead>
