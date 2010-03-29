@@ -70,5 +70,7 @@
   	<g:hiddenField name="id" value="${group.id.encodeAsHTML()}"/>
   </g:form>
 
+  <n:confirm/>
+
 </body>
 </html>
