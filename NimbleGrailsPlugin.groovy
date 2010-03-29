@@ -27,7 +27,7 @@ import grails.plugins.nimble.core.UserBase
 class NimbleGrailsPlugin {
 
     // the plugin version
-    def version = "0.4-SNAPSHOT"
+    def version = "flowz-0.4-SNAPSHOT"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
