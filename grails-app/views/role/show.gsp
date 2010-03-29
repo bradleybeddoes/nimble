@@ -64,4 +64,6 @@
   	<g:hiddenField name="id" value="${role.id.encodeAsHTML()}"/>
   </g:form>
 
+	<n:confirm/>
+
 </body>
