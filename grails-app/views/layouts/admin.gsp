@@ -9,13 +9,13 @@
   	<nh:nimblecore/>
     <nh:nimbleui/>
     <nh:admin/>
-
 	<nh:growl/>
+	
     <script type="text/javascript">
       <njs:flashgrowl/>
     </script>
 
-    <g:layoutHead/>
+	<g:layoutHead/>
 </head>
 
 <body>

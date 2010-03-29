@@ -165,7 +165,7 @@ function listPermissions(ownerID) {
   var dataString = 'id=' + ownerID;
   $.ajax({
     type: "GET",
-    url: permissionListEndpoint,
+    url: window.permissionListEndpoint,
     data: dataString,
     success: function(res) {
       $("#currentpermission").empty().append(res).show();

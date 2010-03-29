@@ -40,6 +40,7 @@ nimble {
     layout {
         application = 'app'
         administration = 'admin'
+        customcss = ''
     }
 
     localusers {
