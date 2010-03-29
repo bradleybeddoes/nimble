@@ -103,6 +103,8 @@ class AccountController {
 
         def user = InstanceGenerator.user()
         user.profile = InstanceGenerator.profile()
+		user.properties = params
+		user.profile.properties = params
 
         log.debug("Starting new user creation")
         [user: user]
