@@ -16,6 +16,8 @@
 
     <n:errors bean="${user}"/>
 
+    <n:errors bean="${user.profile}"/>
+
     <g:form action="saveuser">
       <table>
         <tbody>
