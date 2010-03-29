@@ -2,6 +2,7 @@
   <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
   <title><g:message code="nimble.template.login.title" /></title>
 
+  <nh:nimbleui />
   <nh:login />
   <script type="text/javascript">
     $(function() {
@@ -60,7 +61,7 @@
             <div class="accountoptions">
               <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple"><g:message code="nimble.link.forgottenpassword" /></g:link>
               <g:if test="${registration}">
-                <a href="#" id="accountcreationpolicybtn" rel="accountcreationpolicy" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
+                <a href="#" id="accountcreationpolicybtn" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
               </g:if>
             </div>
           </div>
