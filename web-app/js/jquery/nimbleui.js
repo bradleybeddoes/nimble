@@ -1,6 +1,7 @@
 
 // General
 function verifyUnique(elem, elemstatus, endpoint, success, failure) {
+   elem='#'+elem; elemstatus='#'+elemstatus;
    var dataString = 'val=' + $(elem).val();
    $.ajax({
      	type: "POST",
@@ -12,6 +13,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_green');
 		  $(elemstatus).removeClass('icon_flag_red');
+          $(elemstatus).show();
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 		  growl('flagred', xhr.responseText);
@@ -19,6 +21,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_red');
 		  $(elemstatus).removeClass('icon_flag_green');
+          $(elemstatus).show();
 		}
 	});
 }
