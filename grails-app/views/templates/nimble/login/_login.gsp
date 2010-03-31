@@ -1,25 +1,8 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
   <title><g:message code="nimble.template.login.title" /></title>
-
   <nh:nimbleui />
   <nh:login />
-  <script type="text/javascript">
-    $(function() {
-      $(".loginmethod").hide();
-      $("#loginfacebookcontinue").hide();
-
-      var active = jQuery.url.param("active")
-      if (active)
-        changeLogin(active);
-      else
-        changeLogin('local');
-
-      $("#loginlocal").show();
-      $(".flash").show();
-	  $("#username").focus();
-    });
-  </script>
 </head>
 
 <body>
