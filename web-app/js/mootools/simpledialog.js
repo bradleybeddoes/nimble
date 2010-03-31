@@ -93,7 +93,6 @@ showModal: function()
     var self=this;
 
     var m=$('SimpleModal');
-    var ff=$$('form')[0];
     if(m) m.destroy();
     var h=document.getCoordinates().height;
     h=(h>document.body.scrollHeight?h:document.body.scrollHeight)+'px';
@@ -104,7 +103,7 @@ showModal: function()
                 'width':document.body.scrollWidth+'px',
                 'height':h,
                 'zIndex':500
-      }}).inject(ff);
+      }}).inject(document.body);
 
     window.addEvent('resize', function() {self.showModal(); });
     return m;

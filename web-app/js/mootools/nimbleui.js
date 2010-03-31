@@ -67,14 +67,20 @@ function createTabs(id) {
     });
 }
 
-
 //when the dom is ready...
 window.addEvent('domready', function() {
     Request.implement({
-            onFailure: function(xhr) {
+            onFailure: function() {
             if ((this.xhr.status == 403) && (this.xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
-                //$("sessionterminateddialog").dialog('open');
-                alert('session termintated dialog');
+                var title=$('sessionterminatedtitle').get('value');
+                var msg=$('sessionterminatedmsg').get('value');
+                var login=$('sessionterminatedlogin').get('value');
+                var content=
+                  '<p id="sessionterminatedcontent">'+msg+'</p>'+
+                  '<div class="buttons">'+
+                  '   <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">'+login+'</a>'+
+                  '</div>';
+                new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
                 return true; // it was handled
             }
             return false;  // it was not handled

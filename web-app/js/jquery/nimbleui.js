@@ -77,6 +77,17 @@ function disableFacebookContinue() {
 
 // Session Termination
 $(function() {
+    $('<div id="sessionterminateddialog" style="display:none">'+
+      '  <div class="errorpopup">'+
+      '    <div class="content" style="width:auto">'+
+      '	     <p id="sessionterminateddialogmsg"><g:message code="nimble.template.sessionterminated.descriptive" /></p>'+
+      '      <div class="buttons">'+
+      '        <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">Login</a>'+
+      '      </div>'+
+      '    </div>'+
+      '  </div>'+
+      '</div>').appendTo(document.body);
+
 	$("#sessionterminateddialog").dialog({
 		bgiframe: true,
 		resizable: false,
@@ -91,7 +102,9 @@ $(function() {
 
 	$().ajaxError(function (event, xhr, ajaxOptions, thrownError) {
 	  if ((xhr.status == 403) && (xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
-	    $("#sessionterminateddialog").dialog('open');
+        $("#sessionterminateddialogmsg").text($('#sessionterminatedmsg').val());
+        $("#sessionterminatedbtn").text($('#sessionterminatedlogin').val());
+	    $("#sessionterminateddialog").dialog('open','title', $('#sessionterminatedtitle').val());
 	  }
 	});
 });
