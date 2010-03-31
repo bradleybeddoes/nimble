@@ -58,7 +58,7 @@ class NimbleHeaderTagLib {
 
 	// Imports default Nimble login UI css
     def login = {attrs, body ->
-        out << render(template: "/templates/header/loginsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+        out << render(template: "/templates/header/" + grailsApplication.config.nimble.layout.jslibrary + "/loginsetup", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
     // Imports layouts and javascript required for the administration layout
