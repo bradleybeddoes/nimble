@@ -38,6 +38,7 @@ nimble {
     layout {
         application = 'app'
         administration = 'admin'
+        customcss = ''
         jslibrary = 'jquery'
     }
 
@@ -50,6 +51,16 @@ nimble {
 			active = false
 		}
     }
+
+	fields {
+		admin {
+			user['username', 'external', 'federated']
+		}
+		enduser {
+			user['username', 'pass', 'passConfirm']
+			profile['fullName', 'email']
+		}
+	}
 
     passwords {
         mustcontain {

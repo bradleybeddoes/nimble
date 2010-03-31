@@ -55,11 +55,20 @@ $(function() {
 		resizable: false,
 		modal: true,
 		autoOpen: false,
-		title: 'Welcome!',
+		height: "auto",
+		width: "auto",
 		overlay: {
 			backgroundColor: '#000',
 			opacity: 0.5
 		}
+	});
+	
+	$("#accountcreationpolicybtn").click(function() {
+		$("#accountcreationpolicydialog").dialog('open');
+	});
+	
+	$("#accountcreationpolicycancelbtn").click(function() {
+		$("#accountcreationpolicydialog").dialog('close');
 	});
 });
 
