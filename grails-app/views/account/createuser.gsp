@@ -1,21 +1,18 @@
-
 <html>
 
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
   <title><g:message code="nimble.view.account.registeraccount.initiate.title" /></title>
+  <nh:pstrength />
 </head>
 
 <body>
-
     <h2><g:message code="nimble.view.account.registeraccount.initiate.heading" /></h2>
-
     <p>
       <g:message code="nimble.view.account.registeraccount.initiate.descriptive" />
     </p>
 
     <n:errors bean="${user}"/>
-
     <g:form action="saveuser">
       <table>
         <tbody>
@@ -76,8 +73,10 @@
       </table>
     </g:form>
 
-<n:usernamepolicy/>
-<n:passwordpolicy/>
+<script type="text/javascript">
+createTip('usernamepolicybtn','<g:message code="nimble.template.usernamepolicy.title" />','<g:message code="nimble.template.usernamepolicy" encodeAs="JavaScript"/>');
+createTip('passwordpolicybtn','<g:message code="nimble.template.passwordpolicy.title" />','<g:message code="nimble.template.passwordpolicy" encodeAs="JavaScript"/>');
+</script>
 
 </body>
 

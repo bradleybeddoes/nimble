@@ -1,9 +1,9 @@
-
 <html>
 
-  <head>
+<head>
     <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
     <title><g:message code="nimble.view.account.changepassword.initiate.title" /></title>
+    <nh:pstrength />
 </head>
 
 <body>
@@ -65,7 +65,9 @@
       </g:form>
     </div>
 
-<n:passwordpolicy/>
+<script type="text/javascript">
+createTip('passwordpolicybtn','<g:message code="nimble.template.passwordpolicy.title" />','<g:message code="nimble.template.passwordpolicy" encodeAs="JavaScript"/>');
+</script>
 
 </body>
 
