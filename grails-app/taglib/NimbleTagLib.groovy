@@ -42,13 +42,6 @@ class NimbleTagLib {
         out << render(template: "/templates/sessionterminated", contextPath: pluginContextPath)
     }  
 
-  	/**
-	* Provides markup to render confirmation
-	*/
-	def confirm = {attrs, body ->
-		out << render(template:"/templates/nimble/help/confirmation", contextPath: pluginContextPath)
-	}
-
     /**
      * provides markup to render grails error messages for beans
      */
@@ -58,27 +51,6 @@ class NimbleTagLib {
         out << render(template: "/templates/errors", contextPath: pluginContextPath, model: [bean: bean])
         else
         out << render("Error: Details not supplied to generate error content")
-    }
-
-    /**
-     * Provides markup to render the default password policy
-     */
-    def passwordpolicy = {attrs, body ->
-        out << render(template: "/templates/nimble/help/passwordpolicy", contextPath: pluginContextPath)
-    }
-
-    /**
-     * Provides markup to render the default username policy
-     */
-    def usernamepolicy = {attrs, body ->
-        out << render(template: "/templates/nimble/help/usernamepolicy")
-    }
-
-    /**
-     * Provides markup to render the default account creation policy
-     */
-    def accountcreationpolicy = {attrs, body ->
-        out << render(template: "/templates/nimble/help/accountcreationpolicy")
     }
 
     /**

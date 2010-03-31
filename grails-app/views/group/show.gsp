@@ -6,9 +6,7 @@
 		<njs:permission parent="${group}"/>
 		<njs:role parent="${group}"/>
 		<njs:member parent="${group}"/>
-		$(function() {
-			$("#tabs").tabs();
-		});
+		createTabs('tabs');
 	</script>
 </head>
 <body>
@@ -69,8 +67,6 @@
   <g:form action="delete" name="deletegroup">
   	<g:hiddenField name="id" value="${group.id.encodeAsHTML()}"/>
   </g:form>
-
-  <n:confirm/>
 
 </body>
 </html>

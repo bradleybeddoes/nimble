@@ -44,7 +44,7 @@
             <div class="accountoptions">
               <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple"><g:message code="nimble.link.forgottenpassword" /></g:link>
               <g:if test="${registration}">
-                <a href="#" id="accountcreationpolicybtn" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
+                <g:link controller="account" action="createuser" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></g:link>
               </g:if>
             </div>
           </div>
@@ -259,7 +259,6 @@
 
 </g:else>
 
-<n:accountcreationpolicy/>
 <n:facebookConnect/>
 
 </body>

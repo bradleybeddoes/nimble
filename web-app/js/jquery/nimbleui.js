@@ -28,6 +28,14 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 
 // Dialog support
 $(function() {
+    $('<div id="confirmationdialog" title="">'+
+      '<p id="confirmationcontent">&nbsp;</p>'+
+      '<div class="buttons">'+
+	  '	  <button type="submit" id="confirmaccept" class="modal_close button icon icon_accept" onClick="confirmAction()">Accept</button>'+
+      '   <a id="confirmcancel" onClick="$(\'#confirmationdialog\').dialog(\'close\');" class="modal_close button icon icon_cancel">Cancel</a>'+    
+      '</div>'+
+      '</div>').appendTo(document.body);
+
 	$("#confirmationdialog").dialog({
 		bgiframe: true,
 		resizable: false,
@@ -50,21 +58,6 @@ function wasConfirmed(title, msg, accept, cancel) {
 	$("#confirmationdialog").dialog('option', 'title', title);
 	$("#confirmationdialog").dialog('open');		
 }
-
-// Login
-$(function() {
-	$("#accountcreationpolicydialog").dialog({
-		bgiframe: true,
-		resizable: false,
-		modal: true,
-		autoOpen: false,
-		title: 'Welcome!',
-		overlay: {
-			backgroundColor: '#000',
-			opacity: 0.5
-		}
-	});
-});
 
 function changeLogin(ident) {
   $(".flash").hide();
@@ -102,3 +95,23 @@ $(function() {
 	  }
 	});
 });
+
+function createTip(id,tle,msg) {
+    $("#"+id).after(
+            '<div id="'+id+'_tip">'+
+                '<div class="ui-dialog ui-widget">'+
+                '<div class="ui-dialog-titlebar ui-widget-header ui-corner-all"><strong>'+tle+'</strong></div>'+
+                '<div class="ui-dialog-content ui-widget-content">'+msg+'</div>'+
+            '</div></div>');
+    $("#"+id+"_tip").hide();
+    $("#"+id).bt({contentSelector: $("#"+id+"_tip"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['right', 'top', 'left'], margin: 0, padding: 6, fill: '#fff', strokeWidth: 1, strokeStyle: '#c2c2c2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
+}
+
+function createTabs(id) {
+    $(function() {
+        $('#'+id).tabs();
+    });
+}
+
+
+

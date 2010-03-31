@@ -6,7 +6,6 @@ function growl(type, msg) {
 }
 
 function growl(type, msg, period) {
-    window.addEvent('domready',function() {
     if(!notimooManager)
         notimooManager = new Notimoo();
 
@@ -30,6 +29,4 @@ function growl(type, msg, period) {
 
     if (type == 'flagblue')
       notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
-        
-    });
 }
