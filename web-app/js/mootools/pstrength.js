@@ -1,115 +1,144 @@
+var PStrength=new Class(
+{
+Implements:[Options],
+options: {
+    verdicts:["Very weak","Weak","Medium","Strong","Strongest"],
+    colors:["#f00","#c06","#f60","#3c0","#3d0"],
+    scores:[10,15,30,40],
+    common:["password","sex","god","123456","123","liverpool","letmein","qwerty","monkey"],
+    minchar:8,
+    where:'before',
+    id:'required'
+},
 
-(function(A) {
-    A.extend(A.fn, {pstrength:function(B) {
-        var B = A.extend({verdects:["Very weak","Weak","Medium","Strong","Strongest"],colors:["#f00","#c06","#f60","#3c0","#3d0"],scores:[10,15,30,40],common:["password","sex","god","123456","123","liverpool","letmein","qwerty","monkey"],minchar:8}, B);
-        return this.each(function() {
-            var C = A(this).attr("id");
-            var markup = "<div id=\"pstrength\">" +
-                         "<div class=\"pstrength-minchar\" id=\"" + C + "_minchar\"></div>" +
-                         "<div class=\"pstrength-info\" id=\"" + C + "_text\"></div>" +
-                         "<div class=\"pstrength-bar\" id=\"" + C + "_bar\" style=\"border: 1px solid white; font-size: 1px; height: 5px; width: 0px;\"></div>" +
-                         "</div>"
-            A(this).before(markup);
+initialize: function(options) {
+    this.setOptions(options);
+    var o=this.options;
+    var e=$(o.id);
+    new Element('div',{'id':o.id+'_text'}).inject(e,o.where);
+    new Element('div',{'id':o.id+'_bar',styles:{'border':'1px solid white','font-size':'1px;','height':'2px','width':'0px'}}).inject(e,o.where);
+    e.addEvent('keyup',this.onkeyup.bind(this));    
+},
 
-            A(this).keyup(function() {
-                A.fn.runPassword(A(this).val(), C, B)
-            })
-        })
-    },runPassword:function(D, F, C) {
-        nPerc = A.fn.checkPassword(D, C);
-        var B = "#" + F + "_bar";
-        var E = "#" + F + "_text";
-        if (nPerc == -200) {
-            strColor = "#f00";
-            strText = "Unsafe password word!";
-            A(B).css({width:"0%"})
+onkeyup:function() {
+    var o=this.options;
+    var perc = this.checkPassword($(o.id).value);
+    var bar = $(o.id + "_bar");
+    var txt = $(o.id + "_text");
+    var strColor;
+    var strText;
+    if (perc == -200) {
+        strColor = "#f00";
+        strText = "Unsafe password word!";
+        bar.setStyles({width:"0%"});
+    } else {
+        if (perc < 0 && perc > -199) {
+            strColor = "#ccc";
+            strText = "Too short";
+            bar.setStyles({width:"5%"});
         } else {
-            if (nPerc < 0 && nPerc > -199) {
-                strColor = "#ccc";
-                strText = "Too short";
-                A(B).css({width:"5%"})
+            if (perc <= o.scores[0]) {
+                strColor = o.colors[0];
+                strText = o.verdicts[0];
+                bar.setStyles({width:"10%"});
             } else {
-                if (nPerc <= C.scores[0]) {
-                    strColor = C.colors[0];
-                    strText = C.verdects[0];
-                    A(B).css({width:"10%"})
+                if (perc > o.scores[0] && perc <= o.scores[1]) {
+                    strColor = o.colors[1];
+                    strText = o.verdicts[1];
+                    bar.setStyles({width:"25%"});
                 } else {
-                    if (nPerc > C.scores[0] && nPerc <= C.scores[1]) {
-                        strColor = C.colors[1];
-                        strText = C.verdects[1];
-                        A(B).css({width:"25%"})
+                    if (perc > o.scores[1] && perc <= o.scores[2]) {
+                        strColor = o.colors[2];
+                        strText = o.verdicts[2];
+                        bar.setStyles({width:"50%"});
                     } else {
-                        if (nPerc > C.scores[1] && nPerc <= C.scores[2]) {
-                            strColor = C.colors[2];
-                            strText = C.verdects[2];
-                            A(B).css({width:"50%"})
+                        if (perc > o.scores[2] && perc <= o.scores[3]) {
+                            strColor = o.colors[3];
+                            strText = o.verdicts[3];
+                            bar.setStyles({width:"75%"});
                         } else {
-                            if (nPerc > C.scores[2] && nPerc <= C.scores[3]) {
-                                strColor = C.colors[3];
-                                strText = C.verdects[3];
-                                A(B).css({width:"75%"})
-                            } else {
-                                strColor = C.colors[4];
-                                strText = C.verdects[4];
-                                A(B).css({width:"92%"})
-                            }
+                            strColor = o.colors[4];
+                            strText = o.verdicts[4];
+                            bar.setStyles({width:"92%"});
                         }
                     }
                 }
             }
         }
-        A(B).css({backgroundColor:strColor});
-        A(E).html("<span style='color: " + strColor + ";'>" + strText + "</span>")
-    },checkPassword:function(C, B) {
-        var F = 0;
-        var E = B.verdects[0];
-        if (C.length < B.minchar) {
-            F = (F - 100)
-        } else {
-            if (C.length >= B.minchar && C.length <= (B.minchar + 2)) {
-                F = (F + 6)
-            } else {
-                if (C.length >= (B.minchar + 3) && C.length <= (B.minchar + 4)) {
-                    F = (F + 12)
-                } else {
-                    if (C.length >= (B.minchar + 5)) {
-                        F = (F + 18)
-                    }
-                }
-            }
-        }
-        if (C.match(/[a-z]/)) {
-            F = (F + 1)
-        }
-        if (C.match(/[A-Z]/)) {
-            F = (F + 5)
-        }
-        if (C.match(/\d+/)) {
-            F = (F + 5)
-        }
-        if (C.match(/(.*[0-9].*[0-9].*[0-9])/)) {
-            F = (F + 7)
-        }
-        if (C.match(/.[!,@,#,$,%,^,&,*,?,_,~]/)) {
-            F = (F + 5)
-        }
-        if (C.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) {
-            F = (F + 7)
-        }
-        if (C.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
-            F = (F + 2)
-        }
-        if (C.match(/([a-zA-Z])/) && C.match(/([0-9])/)) {
-            F = (F + 3)
-        }
-        if (C.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/)) {
-            F = (F + 3)
-        }
-        for (var D = 0; D < B.common.length; D++) {
-            if (C.toLowerCase() == B.common[D]) {
-                F = -200
-            }
-        }
-        return F
-    }})
-})(jQuery)
+    }
+    bar.setStyles({backgroundColor:strColor});
+    txt.set('html','<span style="color:' + strColor + ';">' + strText + '</span>');
+},
+
+checkPassword: function(val) {
+    var intScore = 0;
+    // PASSWORD LENGTH
+    if (val.length<5)                         // length 4 or less
+    {
+        intScore = (intScore + 3)
+    }
+    else if (val.length>4 && val.length<8) // length between 5 and 7
+    {
+        intScore = (intScore+6)
+    }
+    else if (val.length>7 && val.length<16)// length between 8 and 15
+    {
+        intScore = (intScore+12)
+    }
+    else if (val.length>15)                    // length 16 or more
+    {
+        intScore = (intScore+18)
+    }
+    // LETTERS (Not exactly implemented as dictacted above because of my limited understanding of Regex)
+    if (val.match(/[a-z]/))                              // [verified] at least one lower case letter
+    {
+        intScore = (intScore+1)
+    }
+    if (val.match(/[A-Z]/))                              // [verified] at least one upper case letter
+    {
+        intScore = (intScore+5)
+    }
+    // NUMBERS
+    if (val.match(/\d+/))                                 // [verified] at least one number
+    {
+        intScore = (intScore+5)
+    }
+    if (val.match(/(.*[0-9].*[0-9].*[0-9])/))             // [verified] at least three numbers
+    {
+        intScore = (intScore+5)
+    }
+    // SPECIAL CHAR
+    if (val.match(/.[!,@,#,$,%,^,&,*,?,_,~]/))            // [verified] at least one special character
+    {
+        intScore = (intScore+5)
+    }
+    // [verified] at least two special characters
+    if (val.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/))
+    {
+        intScore = (intScore+5)
+    }
+    // COMBOS
+    if (val.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))        // [verified] both upper and lower case
+    {
+        intScore = (intScore+2)
+    }
+    if (val.match(/([a-zA-Z])/) && val.match(/([0-9])/)) // [verified] both letters and numbers
+    {
+        intScore = (intScore+2)
+    }
+    // [verified] letters, numbers, and special characters
+    if (val.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
+    {
+        intScore = (intScore+2)
+    }
+    return intScore;
+}
+    
+});
+
+window.nimble = window.nimble || {};
+window.nimble.PStrength = function(e,options) {
+    var o={'id':$(e).get('id')};
+    if(options) o.extend(options);
+    return new PStrength(o);
+};
