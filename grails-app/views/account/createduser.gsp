@@ -19,7 +19,7 @@
 	</g:if>
 	<g:else>
 		<p>
-			<a href="${createLink(uri:'/')}"><g:message code="nimble.view.account.registeraccount.complete.continue"/></a>
+			<a href="${createLink(uri:'/')}" class="button darkbutton icon icon_shape_square_go"><g:message code="nimble.view.account.registeraccount.complete.continue"/></a>
 		</p>
 	</g:else>
 
