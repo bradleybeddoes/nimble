@@ -761,9 +761,11 @@ jQuery.bt = {version: '0.9.5-rc1'};
           // no box argument since it has been removed from the DOM
           opts.postHide.apply(i);
           
-        }
+        };
         
-        opts.hideTip.apply(this, [box, i.btCleanup]);
+        try{
+            opts.hideTip.apply(this, [box, i.btCleanup]);
+        } catch(ex) {}
 
       }; // </ turnOff() >
   
