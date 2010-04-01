@@ -8,10 +8,11 @@
 
 <script type="text/javascript">
   <g:if test="${secure}">
-  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdrecieverssl')}', {"ifUserConnected" : enableFacebookContinue});
+  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdrecieverssl')}', {"ifUserConnected" : function() { enableFacebookContinue(); }} );
   </g:if>
   <g:else>
-  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdreciever')}', {"ifUserConnected" : enableFacebookContinue});
+  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdreciever')}', {"ifUserConnected" : function() { enableFacebookContinue(); }} );
   </g:else>
 </script>
+  
 </g:if>
