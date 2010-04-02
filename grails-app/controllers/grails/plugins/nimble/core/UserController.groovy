@@ -85,6 +85,7 @@ class UserController {
     }
 	else {
 		def fields = grailsApplication.config.nimble.fields.admin.user
+        if(!fields) fields = ['username', 'external', 'federated']
 		user.properties[fields] = params
 	    if (!user.validate()) {
 	    	log.debug("Updated details for user [$user.id]$user.username are invalid")
