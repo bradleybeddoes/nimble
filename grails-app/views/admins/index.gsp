@@ -8,9 +8,7 @@
 	var adminDeleteEndpoint = "${createLink(action:'delete')}";
 	var adminGrantEndpoint = "${createLink(action:'create')}";
 
-    $(function() {	  
-      listAdministrators();
-    });
+    listAdministrators();
   </script>
 
 </head>

@@ -1,16 +1,18 @@
 // Admins
 function listAdministrators() {
-  $.ajax({
-    type: "POST",
-    url: adminListEndpoint,
-    success: function(res) {
-      $("#admins").empty();
-      $("#admins").append(res);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
-    }
-  });
+    $(function() {
+      $.ajax({
+        type: "POST",
+        url: adminListEndpoint,
+        success: function(res) {
+          $("#admins").empty();
+          $("#admins").append(res);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          growl('error', xhr.responseText);
+        }
+      });
+    });
 }
 
 function searchAdministrators() {
