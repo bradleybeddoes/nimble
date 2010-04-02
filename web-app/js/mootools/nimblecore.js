@@ -34,7 +34,7 @@ function deleteAdministrator(userID, username) {
     var dataString = 'id=' + userID;
     new Request({
         method: "POST",
-        url: adminListEndpoint,
+        url: adminDeleteEndpoint,
         data: dataString,
         onSuccess: function(res) {
             growl('success', res);
@@ -187,10 +187,10 @@ function createPermission(ownerID) {
         data: dataString,
         onSuccess: function(res) {
             $("addpermissionserror").empty();
-            $('first_p').val('');
-            $('second_p').val('');
-            $('third_p').val('');
-            $('fourth_p').val('');
+            $('first_p').set('value','');
+            $('second_p').set('value','');
+            $('third_p').set('value','');
+            $('fourth_p').set('value','');
             listPermissions(ownerID);
             growl('success', res);
         },

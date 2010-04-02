@@ -28,7 +28,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 
 // Dialog support
 $(function() {
-    $('<div id="confirmationdialog" title="">'+
+    $('<div id="confirmationdialog" title="" style="display:none">'+
       '<p id="confirmationcontent">&nbsp;</p>'+
       '<div class="buttons">'+
 	  '	  <button type="submit" id="confirmaccept" class="modal_close button icon icon_accept" onClick="confirmAction()">Accept</button>'+
