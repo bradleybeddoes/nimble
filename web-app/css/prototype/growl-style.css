@@ -1,0 +1,25 @@
+.growl-alert{ /*A growl Alert*/
+	background: black;
+	color: white;
+	padding: 10px;
+	width: 160px;
+	margin-bottom: 30px;
+	min-height: 40px;
+	right: 30px;
+	border: solid 2px transparent;
+}
+.growl-alert-hover{border: solid 2px #BFBFBF}
+.growl-keeper{ /*The container that has all the Growl alerts in it*/
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+.growl-icon{ /*The icon that shows up with the alerts*/
+	margin-right: 5px;
+	float: left;
+}
+.growl-text{ /*The text of the update*/
+	margin-top: 3px;
+	font: 85% Helvetica, Arial, sans-serif;
+	letter-spacing: 0px;
+}
