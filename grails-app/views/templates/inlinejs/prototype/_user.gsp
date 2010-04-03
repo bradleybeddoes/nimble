@@ -4,7 +4,7 @@ var disableUserEndpoint = "${createLink(action:'disable')}";
 var enableAPIEndpoint = "${createLink(action:'enableapi')}";
 var disableAPIEndpoint = "${createLink(action:'disableapi')}";
 
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
 	listLogins('${user.id}');
 	<g:if test="${user?.enabled}">
 	  $("enableuser").hide();

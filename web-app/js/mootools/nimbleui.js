@@ -68,72 +68,35 @@ function createTabs(id) {
 }
 
 //when the dom is ready...
-window.addEvent('domready', function() {
-    Request.implement({
-            onFailure: function() {
-            if ((this.xhr.status == 403) && (this.xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
-                var title=$('sessionterminatedtitle').get('value');
-                var msg=$('sessionterminatedmsg').get('value');
-                var login=$('sessionterminatedlogin').get('value');
-                var content=
-                  '<p id="sessionterminatedcontent">'+msg+'</p>'+
-                  '<div class="buttons">'+
-                  '   <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">'+login+'</a>'+
-                  '</div>';
-                new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
-                return true; // it was handled
-            }
-            return false;  // it was not handled
+Request.implement({
+        onFailure: function() {
+        if ((this.xhr.status == 403) && (this.xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
+            var title=$('sessionterminatedtitle').get('value');
+            var msg=$('sessionterminatedmsg').get('value');
+            var login=$('sessionterminatedlogin').get('value');
+            var content=
+              '<p id="sessionterminatedcontent">'+msg+'</p>'+
+              '<div class="buttons">'+
+              '   <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">'+login+'</a>'+
+              '</div>';
+            new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
+            return true; // it was handled
         }
-    });
-    
-    Array.implement({
-        removeEvents: function() { this.each(function(e) { $(e).removeEvents(); }); return this; },
-        removeEvent: function(cls,func) { this.each(function(e) { $(e).removeEvent(cls,func); }); return this; },
-        addEvent: function(cls,func) { this.each(function(e) { $(e).addEvent(cls,func); }); return this; },
-        addClass: function(cls) { this.each(function(e) { $(e).addClass(cls); }); return this; },
-        removeClass: function(cls) { this.each(function(e) { $(e).removeClass(cls); }); return this; }
-    });
-    
-	//time to implement basic show / hide
-	Element.implement({
-		//implement show
-		show: function() {
-			this.setStyle('display','');
-            return this;
-		},
-		//implement hide
-		hide: function() {
-			this.setStyle('display','none');
-            return this;
-		},
-        // implement queue
-        queue: function(p1,p2) {
-            var name="fx";
-            if($type(p1)=='string') name=p1;
-            if($type(p1)=='function' || $type(p1)=='array') p2=p1;
-            
-            var q=this.retrieve("queue",$H({}));
-            if(!q[name]) q[name]=$A([]);
-            if($type(p2)=='array') { q[name].empty(); q[name].combine(p2); }
-            if($type(p2)=='function') q[name].push(p2);
+        return false;  // it was not handled
+    }
+});
 
-            this.store("queue",q);            
-            return q[name];
-        },
-        // implement dequeue
-        dequeue: function(name) {
-            var q=this.retrieve("queue",$H({}));
-            if(!name) name="fx";
-            if(!q[name]) return this;
-            if(q[name].length==0) return this;
-            var func=q[name].pop();
-            this.store("queue",q);
-            if(!func) return;
-            if(q[name].length>0) func(q[name][0]);
-            else func();
-            return this;
-        }
-	});
+//time to implement basic show / hide
+Element.implement({
+    //implement show
+    show: function() {
+        this.setStyle('display','');
+        return this;
+    },
+    //implement hide
+    hide: function() {
+        this.setStyle('display','none');
+        return this;
+    }
 });
 

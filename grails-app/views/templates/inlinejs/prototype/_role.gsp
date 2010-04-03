@@ -3,7 +3,7 @@ var roleListEndpoint = "${createLink(action:'listroles')}";
 var roleGrantEndpoint = "${createLink(action:'grantrole')}";
 var roleRemoveEndpoint = "${createLink(action:'removerole')}";
 
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
 	listRoles(${parent.id});
     $("addroles").hide();
 

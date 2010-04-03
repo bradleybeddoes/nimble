@@ -2,7 +2,7 @@ var permissionListEndpoint = "${createLink(action:'listpermissions')}";
 var permissionCreateEndpoint = "${createLink(action:'createpermission')}";
 var permissionRemoveEndpoint = "${createLink(action:'removepermission')}";
 
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
 	listPermissions(${parent.id});
 	$("addpermissions").hide();
 

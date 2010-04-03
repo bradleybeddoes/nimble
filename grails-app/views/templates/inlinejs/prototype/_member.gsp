@@ -6,7 +6,7 @@ var memberRemoveEndpoint = "${createLink(action:'removemember')}";
 var memberAddGroupEndpoint = "${createLink(action:'addgroupmember')}";
 var memberRemoveGroupEndpoint = "${createLink(action:'removegroupmember')}";
 
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
 	listMembers(${parent.id});
     if($("addmembers")) $("addmembers").hide();
     if($("memberaddgroups")) $("memberaddgroups").hide();

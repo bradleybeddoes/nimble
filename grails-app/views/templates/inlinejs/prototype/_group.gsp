@@ -3,7 +3,7 @@ var groupListEndpoint = "${createLink(action:'listgroups')}";
 var groupGrantEndpoint = "${createLink(action:'grantgroup')}";
 var groupRemoveEndpoint = "${createLink(action:'removegroup')}"
 
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
     $("addgroups").hide();
 
     $("showaddgroupsbtn").addEvent('click',function () {
