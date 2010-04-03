@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/login.css')}"/>
 <script type="text/javascript">
-window.addEvent('domready', function() {
+document.observe("dom:loaded", function() {
     $$(".loginmethod").each(function(e) { e.hide();});
     $("loginfacebookcontinue").hide();
 
