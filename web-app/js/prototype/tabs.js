@@ -1,5 +1,5 @@
 /*
- * MooTools 0.1
+ * ProtoTabs 0.1
  *
  * Copyright (c) 2010 licensors/jquery/AUTHORS.txt (http://jqueryui.com/about)
  * MIT (licensors/jquery/MIT-LICENSE.txt)
@@ -11,11 +11,12 @@
  * http://docs.jquery.com/UI/Tabs
  *
  * Depends:
- *	mootools - core
+ *	prototype.js
  */
-var MooTabs=new Class(
+var ProtoTabs=Class.create();
+
+ProtoTabs.prototype =
 {
-    Implements:[Options,Events],    
     version: '0.1',
     tabId: 0,
 	listId: 0,
@@ -26,7 +27,7 @@ var MooTabs=new Class(
 		cookie: null, // e.g. { expires: 7, path: '/', domain: 'jquery.com', secure: true }
 		collapsible: false,
 		disable: null,
-		disabled: [],
+		disabled: $A([]),
 		enable: null,
 		event: 'click',
 		idPrefix: 'ui-tabs-',
@@ -47,6 +48,10 @@ var MooTabs=new Class(
 
         this.tabify(true);
     },
+
+	setOptions: function(options) {
+		Object.extend(this.options, options || {});
+	},
     
 	setOption: function(key, value) {
 		if (key == 'selected') {
@@ -85,26 +90,27 @@ var MooTabs=new Class(
 
 	cleanup: function() {
 		// restore all former loading tabs labels
-		this.lis.filter(this.isProcessing).removeClass('ui-state-processing')
+		this.lis.filter(this.isProcessing).removeClassName('ui-state-processing')
                 .filter(function(itm) {var e=itm.getElement('span'); return (e&&e.retrieve('label.tabs')); } )
 				.each(function() {
 					var el = $(this);
-					el.html(el.retrieve('label.tabs')).eliminate('label.tabs');
+					el.html(el.retrieve('label.tabs')).store('label.tabs',null);
 				});
 	},
 
 	tabify: function(init) {
 
-		this.list = this.element.getElements('ol,ul')[0]; //.eq(0);
-		this.lis = this.list.getElements('li').filter(function(li) { return li.getElement('a')!=null;});
-		this.anchors = this.lis.map(function(itm) { return itm.getElement('a'); });
-		this.panels = $A([]);
+		this.list = this.element.getElementsBySelector('ol,ul')[0]; //.eq(0);
+		this.lis = $A(this.list.getElementsBySelector('li').filter(function(li) { return li.getElementsBySelector('a').length>0;}));
+		this.anchors =  $A(this.lis.map(function(itm) { return itm.getElementsBySelector('a')[0]; }));
+		this.panels = $A();
 
 		var self = this, o = this.options;
 
 		var fragmentId = /^#.+/; // Safari 2 reports '#' for an empty hash
 		this.anchors.each(function(a,i) {
-			var href = $(a).get('href');
+            a=$(a);
+			var href = a.readAttribute('href');
 
 			// For dynamically created HTML that contains a hash as href IE < 8 expands
 			// such href to the full page url with hash and then misinterprets tab as ajax.
@@ -120,12 +126,13 @@ var MooTabs=new Class(
 
 			// inline tab
 			if (fragmentId.test(href)) {
-				self.panels = self.panels.include(self.sanitizeSelector(href));
+				self.panels.push(self.sanitizeSelector(href));
+                self.panels = self.panels.uniq();
 			}
 
 			// remote tab
 			else if (href != '#') { // prevent loading the page itself if href is just "#"
-                /// TODO: mootools remote load not finished
+                /// TODO: prototype remote load not finished
                 a.store('href.tabs',href); // required for restore on destroy
                 a.store('load.tabs',href.replace(/#.*$/, ''));
 
@@ -133,11 +140,12 @@ var MooTabs=new Class(
 				a.href = '#' + id;
 				var $panel = $('#' + id);
 				if (!$panel.length) {
-					$panel = $(o.panelTemplate).attr('id', id).addClass('ui-tabs-panel ui-widget-content ui-corner-bottom')
+					$panel = $(o.panelTemplate).attr('id', id).addClassName('ui-tabs-panel ui-widget-content ui-corner-bottom')
 						.insert(self.panels[i - 1] || self.list,'after');
 					$panel.store('destroy.tabs', true);
 				}
-				self.panels = self.panels.include($panel);
+				self.panels.push($panel);
+                self.panels = self.panels.uniq();
 			}
 
 			// invalid tab href
@@ -149,10 +157,10 @@ var MooTabs=new Class(
 		// initialization from scratch
 		if (init) {
 			// attach necessary classes for styling
-			this.element.addClass('ui-tabs ui-widget ui-widget-content ui-corner-all');
-			this.list.addClass('ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
-			this.lis.addClass('ui-state-default ui-corner-top');
-			this.panels.addClass('ui-tabs-panel ui-widget-content ui-corner-bottom');
+			this.element.addClassName('ui-tabs ui-widget ui-widget-content ui-corner-all');
+			this.list.addClassName('ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
+			this.lis.addClassName('ui-state-default ui-corner-top');
+			this.panels.addClassName('ui-tabs-panel ui-widget-content ui-corner-bottom');
 
 			// Selected tab
 			// use "selected" option or try to retrieve:
@@ -168,10 +176,10 @@ var MooTabs=new Class(
 						}
 					});
 				}
-				if ($type(o.selected) != 'number' && o.cookie) {
+				if (typeof o.selected != 'number' && o.cookie) {
 					o.selected = parseInt(self.cookie(), 10);
 				}
-				if ($type(o.selected) != 'number' && this.lis.filter(this.isSelected).length) {
+				if (typeof o.selected != 'number' && this.lis.filter(this.isSelected).length) {
 					o.selected = this.lis.indexOf(this.lis.filter(this.isSelected)[0]);
 				}
 				o.selected = o.selected || (this.lis.length ? 0 : -1);
@@ -188,26 +196,19 @@ var MooTabs=new Class(
 			// A selected tab cannot become disabled.
             this.lis.filter(this.isDisabled).each(function(li,i) { o.disabled.include(i); });
 			o.disabled = o.disabled.sort();
-            o.disabled.erase(o.selected);
+            o.disabled=o.disabled.without(o.selected);
 
 			// highlight selected tab
-			this.panels.addClass('ui-tabs-hide');
-			this.lis.removeClass('ui-tabs-selected ui-state-active');
+			this.panels.addClassName('ui-tabs-hide');
+			this.lis.removeClassName('ui-tabs-selected ui-state-active');
 			if (o.selected >= 0 && this.anchors.length) { // check for length avoids error when initializing empty list
-                this.panels.each(function(itm,i) { if(i == o.selected) $(itm).removeClass('ui-tabs-hide'); });
-                this.lis.each(function(itm,i) { if(i == o.selected) $(itm).addClass('ui-tabs-selected ui-state-active'); });
+                this.panels.each(function(itm,i) { if(i == o.selected) $(itm).removeClassName('ui-tabs-hide'); });
+                this.lis.each(function(itm,i) { if(i == o.selected) $(itm).addClassName('ui-tabs-selected ui-state-active'); });
 
 				// seems to be expected behavior that the show callback is fired
-				self.element.fireEvent('show');
+				self.element.fire('show');
 				this.load(o.selected);
 			}
-
-			// clean up to avoid memory leaks in certain versions of IE 6
-			$(window).addEvent('unload', function() {
-				$A([]).combine(self.lis).combine(self.anchors).removeEvents();
-				self.lis = self.anchors = self.panels = null;
-			});
-
 		}
 		// update selected after add/remove
 		else {
@@ -215,65 +216,64 @@ var MooTabs=new Class(
 		}
 
 		// update collapsible
-		this.element[o.collapsible ? 'addClass' : 'removeClass']('ui-tabs-collapsible');
+		this.element[o.collapsible ? 'addClassName' : 'removeClassName']('ui-tabs-collapsible');
 
 		// set or update cookie after init and add/remove respectively
 		if (o.cookie) { this.cookie(o.selected, o.cookie); }
 
 		// disable tabs
 		for (var i = 0, li; (li = this.lis[i]); i++) {
-			if($(li).hasClass('ui-tabs-selected') || o.disabled.indexOf(i)<0) $(li).removeClass('ui-state-disabled');
-            else $(li).addClass('ui-state-disabled');
+			if($(li).hasClassName('ui-tabs-selected') || o.disabled.indexOf(i)<0) $(li).removeClassName('ui-state-disabled');
+            else $(li).addClassName('ui-state-disabled');
 		}
 
 		// remove all handlers before, tabify may run on existing tabs after add or option change
-		$A([]).combine(this.lis).combine(this.anchors).removeEvents();
+		this.lis.concat(this.anchors).stopObserving();
 
 		if (o.event != 'mouseover') {
 			var addState = function(state, el) {
-				if (!el.hasClass('ui-state-disabled')) {
-					el.addClass('ui-state-' + state);
+				if (!el.hasClassName('ui-state-disabled')) {
+					el.addClassName('ui-state-' + state);
 				}
 			};
 			var removeState = function(state, el) {
-				el.removeClass('ui-state-' + state);
+				el.removeClassName('ui-state-' + state);
 			};
-			this.lis.addEvent('mouseover', function() {
+			this.lis.observe('mouseover', function() {
 				addState('hover', $(this));
 			});
-			this.lis.addEvent('mouseout', function() {
+			this.lis.observe('mouseout', function() {
 				removeState('hover', $(this));
 			});
-			this.anchors.addEvent('focus', function() {
-				addState('focus', $(this).getParent('li'));
+			this.anchors.observe('focus', function() {
+				addState('focus', $(this).up('li'));
 			});
-			this.anchors.addEvent('blur', function() {
-				removeState('focus', $(this).getParent('li'));
+			this.anchors.observe('blur', function() {
+				removeState('focus', $(this).up('li'));
 			});
 		}
 
 		var showTab = function(clicked, $show) {
-				var p=$(clicked).getParent('li');
-                p.addClass('ui-tabs-selected');
-                p.addClass('ui-state-active');
-				$show.removeClass('ui-tabs-hide');
-				self.fireEvent('show');
+				var p=$(clicked).up('li');
+                p.addClassName('ui-tabs-selected');
+                p.addClassName('ui-state-active');
+				$show.removeClassName('ui-tabs-hide');
                 self.element.dequeue("tabs");
 			};
 
 		var hideTab =function(clicked, $hide, $show) {
-                self.lis.removeClass('ui-tabs-selected');
-                self.lis.removeClass('ui-state-active');
+                self.lis.removeClassName('ui-tabs-selected');
+                self.lis.removeClassName('ui-state-active');
                 showTab(clicked, $show);
-                if($type($hide)=='array') $hide.each(function(itm) { $(itm).addClass('ui-tabs-hide'); } );
-				else $($hide).addClass('ui-tabs-hide');
-                self.fireEvent('hide');
+                if(typeof $hide=='array') $hide.each(function(itm) { $(itm).addClassName('ui-tabs-hide'); } );
+				else $($hide).addClassName('ui-tabs-hide');
+                self.fire('hide');
 			};
 
-		// attach tab event handler, removeEvent to avoid duplicates from former tabifying...
-		this.anchors.addEvent(o.event, function() {
+		// attach tab event handler, stopObeserving to avoid duplicates from former tabifying...
+		this.anchors.observe(o.event, function() {
 			var el = this;
-            var $li = $(this).getParent('li');
+            var $li = $(this).up('li');
             var $hide = self.panels.filter(self.isNotHidden);
 			var $show = $(self.sanitizeSelector(this.hash));
 
@@ -281,10 +281,9 @@ var MooTabs=new Class(
 			// or is already loading or click callback returns false stop here.
 			// Check if click handler returns false last so that it is not executed
 			// for a disabled or loading tab!
-			if (($li.hasClass('ui-tabs-selected') && !o.collapsible) ||
-				$li.hasClass('ui-state-disabled') ||
-				$li.hasClass('ui-state-processing')) {
-				//self.fireEvent('select')) { //, null, self.ui(this, $show[0])) === false) {
+			if (($li.hasClassName('ui-tabs-selected') && !o.collapsible) ||
+				$li.hasClassName('ui-state-disabled') ||
+				$li.hasClassName('ui-state-processing')) {
 				this.blur();
 				return false;
 			}
@@ -295,7 +294,7 @@ var MooTabs=new Class(
 
 			// if tab may be closed
 			if (o.collapsible) {
-				if ($li.hasClass('ui-tabs-selected')) {
+				if ($li.hasClassName('ui-tabs-selected')) {
 					o.selected = -1;
 
 					if (o.cookie) {
@@ -304,7 +303,7 @@ var MooTabs=new Class(
 
 					self.element.queue("tabs", function() {
 						hideTab(el, $hide, $show);
-					}).dequeue("tabs");
+					}.bindAsEventListener(this)).dequeue("tabs");
 
 					this.blur();
 					return false;
@@ -316,7 +315,7 @@ var MooTabs=new Class(
 
 					self.element.queue("tabs", function() {
 						showTab(el, $show);
-					});
+					}.bindAsEventListener(this));
 
 					self.load(self.anchors.indexOf(this)); // TODO make passing in node possible, see also http://dev.jqueryui.com/ticket/3171
 
@@ -357,7 +356,7 @@ var MooTabs=new Class(
 		});
 
 		// disable click in any case
-		this.anchors.addEvent('click', function(){return false;});
+		this.anchors.observe('click', function(){return false;});
 	},
 
 	destroy: function() {
@@ -365,24 +364,24 @@ var MooTabs=new Class(
 
 		this.abort();
 
-		this.element.removeEvents()
-			.removeClass('ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible')
-			.eliminate('tabs');
+		this.element.stopObserving()
+			.removeClassName('ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible')
+			.store('tabs',null);
 
-		this.list.removeClass('ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
+		this.list.removeClassName('ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
 
 		this.anchors.each(function() {
 			var href = this.retrieve('href.tabs');
 			if (href) {
 				this.href = href;
 			}
-			var $this = $(this).removeEvents();
+			var $this = $(this).stopObserving();
 			$.each(['href', 'load', 'cache'], function(i, prefix) {
-				$this.eliminate(prefix + '.tabs');
+				$this.store(prefix + '.tabs',null);
 			});
 		});
 
-        $A([]).combine(this.lis).removeEvents().combine(this.panels).each(function(e) {
+        this.lis.stopObserving().combine(this.panels).each(function(e) {
 			if (this.retrieve('destroy.tabs',false)) {
 				$(this).remove();
 			}
@@ -399,7 +398,7 @@ var MooTabs=new Class(
 					'ui-widget-content',
 					'ui-corner-bottom',
 					'ui-tabs-hide'
-				]).each(function(cls) { e.removeClass(cls); });
+				]).each(function(cls) { e.removeClassName(cls); });
 			}
 		});
 
@@ -419,14 +418,14 @@ var MooTabs=new Class(
 			$li = $(o.tabTemplate.replace(/#\{href\}/g, url).replace(/#\{label\}/g, label)),
 			id = !url.indexOf('#') ? url.replace('#', '') : this.getTabId($('a', $li)[0]);
 
-		$li.addClass('ui-state-default ui-corner-top').store('destroy.tabs', true);
+		$li.addClassName('ui-state-default ui-corner-top').store('destroy.tabs', true);
 
 		// try to find an existing element before creating a new one
 		var $panel = $('#' + id);
 		if (!$panel.length) {
 			$panel = $(o.panelTemplate).attr('id', id).store('destroy.tabs', true);
 		}
-		$panel.addClass('ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide');
+		$panel.addClassName('ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide');
 
 		if (index >= this.lis.length) {
 			$li.appendTo(this.list);
@@ -444,17 +443,17 @@ var MooTabs=new Class(
 
 		if (this.anchors.length == 1) { // after tabify
 			o.selected = 0;
-			$li.addClass('ui-tabs-selected ui-state-active');
-			$panel.removeClass('ui-tabs-hide');
+			$li.addClassName('ui-tabs-selected ui-state-active');
+			$panel.removeClassName('ui-tabs-hide');
 			this.element.queue("tabs", function() {
-				self.fireEvent('show');//, null, self.ui(self.anchors[0], self.panels[0]));
+				self.fire('show');//, null, self.ui(self.anchors[0], self.panels[0]));
 			});
 
 			this.load(0);
 		}
 
 		// callback
-		this.fireEvent('add');//, null, this.ui(this.anchors[index], this.panels[index]));
+		this.fire('add');
 		return this;
 	},
 
@@ -464,7 +463,7 @@ var MooTabs=new Class(
 
 		// If selected tab was removed focus tab to the right or
 		// in case the last tab was removed the tab to the left.
-		if ($li.hasClass('ui-tabs-selected') && this.anchors.length > 1) {
+		if ($li.hasClassName('ui-tabs-selected') && this.anchors.length > 1) {
 			this.select(index + (index + 1 < this.anchors.length ? 1 : -1));
 		}
 
@@ -474,7 +473,7 @@ var MooTabs=new Class(
 		this.tabify();
 
 		// callback
-		this.fireEvent('remove');//, null, this.ui($li.find('a')[0], $panel[0]));
+		this.fire('remove');
 		return this;
 	},
 
@@ -484,24 +483,24 @@ var MooTabs=new Class(
 			return;
 		}
 
-		this.lis.eq(index).removeClass('ui-state-disabled');
+		this.lis.eq(index).removeClassName('ui-state-disabled');
 		o.disabled = $.grep(o.disabled, function(n, i) { return n != index; });
 
 		// callback
-		this.fireEvent('enable');//, null, this.ui(this.anchors[index], this.panels[index]));
+		this.fire('enable');
 		return this;
 	},
 
 	disable: function(index) {
 		var o = this.options;
 		if (index != o.selected) { // cannot disable already selected tab
-			this.lis.eq(index).addClass('ui-state-disabled');
+			this.lis.eq(index).addClassName('ui-state-disabled');
 
 			o.disabled.push(index);
 			o.disabled.sort();
 
 			// callback
-			this.fireEvent('disable');//, null, this.ui(this.anchors[index], this.panels[index]));
+			this.fire('disable');
 		}
 
 		return this;
@@ -518,14 +517,14 @@ var MooTabs=new Class(
 			index = this.options.selected;
 		}
 
-		this.anchors.eq(index).fireEvent(this.options.event);
+		this.anchors.eq(index).fire(this.options.event);
 		return this;
 	},
 
 	load: function(index) {
 		var self = this, o = this.options, a = this.anchors[index], url = a.retrieve('load.tabs');
 
-		this.abort();
+		//this.abort();
 
 		// not remote or from cache
 		if (!url || this.element.queue("tabs").length !== 0 && a.retrieve('cache.tabs')) {
@@ -534,7 +533,7 @@ var MooTabs=new Class(
 		}
 
 		// load remote from here on
-		this.lis.eq(index).addClass('ui-state-processing');
+		this.lis.eq(index).addClassName('ui-state-processing');
 
 		if (o.spinner) {
 			var span = a.getElement('span');
@@ -554,7 +553,7 @@ var MooTabs=new Class(
 				}
 
 				// callbacks
-				self.fireEvent('load');//, null, self.ui(self.anchors[index], self.panels[index]));
+				self.fire('load');
 				try {
 					o.ajaxOptions.success(r, s);
 				}
@@ -565,7 +564,7 @@ var MooTabs=new Class(
 				self.cleanup();
 
 				// callbacks
-				self.fireEvent('load');//, null, self.ui(self.anchors[index], self.panels[index]));
+				self.fire('load');
 				try {
 					// Passing index avoid a race condition when this method is
 					// called after the user has selected another tab.
@@ -604,7 +603,7 @@ var MooTabs=new Class(
 	},
 
 	url: function(index, url) {
-		this.anchors.eq(index).eliminate('cache.tabs').store('load.tabs', url);
+		this.anchors.eq(index).store('cache.tabs',null).store('load.tabs', url);
 		return this;
 	},
 
@@ -612,44 +611,53 @@ var MooTabs=new Class(
 		return this.anchors.length;
 	},
 
-    isDisabled: function(itm) { return $(itm).hasClass('ui-state-disabled'); },
-    isSelected: function(itm) { return $(itm).hasClass('ui-state-selected'); },
-    isProcessing: function(itm) { return $(itm).hasClass('ui-state-processing'); },
-    isNotHidden: function(itm) { return !$(itm).hasClass('ui-tabs-hide'); }
-});
-window.nimble = window.nimble || {};
-window.nimble.Tabs = function(e,options) {
-    var o={'id':$(e).get('id')};
-    if(options) o.extend(options);
-    return new MooTabs(o);
+    isDisabled: function(itm) { return $(itm).hasClassName('ui-state-disabled'); },
+    isSelected: function(itm) { return $(itm).hasClassName('ui-state-selected'); },
+    isProcessing: function(itm) { return $(itm).hasClassName('ui-state-processing'); },
+    isNotHidden: function(itm) { return !$(itm).hasClassName('ui-tabs-hide'); }
 };
 
-Array.implement({
-    removeEvents: function() { this.each(function(e) { $(e).removeEvents(); }); return this; },
-    removeEvent: function(cls,func) { this.each(function(e) { $(e).removeEvent(cls,func); }); return this; },
-    addEvent: function(cls,func) { this.each(function(e) { $(e).addEvent(cls,func); }); return this; },
-    addClass: function(cls) { this.each(function(e) { $(e).addClass(cls); }); return this; },
-    removeClass: function(cls) { this.each(function(e) { $(e).removeClass(cls); }); return this; }
+window.nimble = window.nimble || {};
+window.nimble.Tabs = function(e,options) {
+    var o={'id':$(e).identify()};
+    if(options) o.extend(options);
+    return new ProtoTabs(o);
+};
+
+document.observe("dom:loaded", function() {
+
+Function.prototype.method = function (name, fn) {
+    this.prototype[name] = fn;
+    return this;
+};
+
+Element.method('clear', function() {
+    this.innerHTML='';
+    return this;
 });
 
-//time to implement basic show / hide
-Element.implement({
-    // implement queue
-    queue: function(p1,p2) {
+Array.method('stopObserving', function(cls,func) { this.each(function(e) { $(e).stopObserving(cls,func); }); return this; });
+Array.method('observe', function(cls,func) { this.each(function(e) { $(e).observe(cls,func); }); return this; });
+Array.method('addClassName', function(cls) { this.each(function(e) { $(e).addClassName(cls); }); return this; });
+Array.method('removeClassName', function(cls) { this.each(function(e) { $(e).removeClassName(cls); }); return this; });
+
+Element.method('queue',function(p1,p2) {
         var name="fx";
-        if($type(p1)=='string') name=p1;
-        if($type(p1)=='function' || $type(p1)=='array') p2=p1;
+        if(typeof p1=='string') name=p1;
+        if(typeof p1=='function' || typeof p1=='array') p2=p1;
 
         var q=this.retrieve("queue",$H({}));
         if(!q[name]) q[name]=$A([]);
-        if($type(p2)=='array') { q[name].empty(); q[name].combine(p2); }
-        if($type(p2)=='function') q[name].push(p2);
+        if(typeof p2=='array') {
+            q[name]=q[name].concat(p2).uniq();
+        }
+        if(typeof p2=='function') q[name].push(p2);
 
         this.store("queue",q);
         return q[name];
-    },
-    // implement dequeue
-    dequeue: function(name) {
+    });
+
+Element.method('dequeue', function(name) {
         var q=this.retrieve("queue",$H({}));
         if(!name) name="fx";
         if(!q[name]) return this;
@@ -660,6 +668,6 @@ Element.implement({
         if(q[name].length>0) func(q[name][0]);
         else func();
         return this;
-    }
-});
+    });
 
+});
