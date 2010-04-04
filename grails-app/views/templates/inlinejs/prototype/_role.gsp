@@ -7,12 +7,12 @@ document.observe("dom:loaded", function() {
 	listRoles(${parent.id});
     $("addroles").hide();
 
-    $("showaddrolesbtn").addEvent('click',function () {
+    $("showaddrolesbtn").observe('click',function () {
       $("showaddroles").hide();
       $("addroles").show("blind");
     });
 
-    $("closerolesearchbtn").addEvent('click',function () {
+    $("closerolesearchbtn").observe('click',function () {
       $("addroles").hide();
       $("showaddroles").show();
     });

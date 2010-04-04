@@ -267,7 +267,7 @@ ProtoTabs.prototype =
                 showTab(clicked, $show);
                 if(typeof $hide=='array') $hide.each(function(itm) { $(itm).addClassName('ui-tabs-hide'); } );
 				else $($hide).addClassName('ui-tabs-hide');
-                self.fire('hide');
+                //self.fire('hide');
 			};
 
 		// attach tab event handler, stopObeserving to avoid duplicates from former tabifying...
@@ -349,7 +349,7 @@ ProtoTabs.prototype =
 			// and remove dotted border from clicked link. This is controlled via CSS
 			// in modern browsers; blur() removes focus from address bar in Firefox
 			// which can become a usability and annoying problem with tabs('rotate').
-			if (Browser.Engine.trident) {
+			if (Prototype.Browser.IE) {
 				this.blur();
 			}
 

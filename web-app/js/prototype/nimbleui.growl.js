@@ -1,15 +1,11 @@
 var growlManager = null;
 
 //Growl
-function growl(type, msg) {
-    growl(type, msg, 2000);
-}
-
 function growl(type, msg, period) {
+    if(!period) period = 3000;
     if(!growlManager)
         growlManager = new Growl;
 
-    period/=1000;
     if (type == 'success')
         growlManager.display(msg, {autohide:true, icon:'icon_tick', delay:period});
 

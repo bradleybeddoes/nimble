@@ -6,12 +6,12 @@ var groupRemoveEndpoint = "${createLink(action:'removegroup')}"
 document.observe("dom:loaded", function() {
     $("addgroups").hide();
 
-    $("showaddgroupsbtn").addEvent('click',function () {
+    $("showaddgroupsbtn").observe('click',function () {
       $("showaddgroups").hide();
       $("addgroups").show("blind");
     });
 
-    $("closegroupsearchbtn").addEvent('click',function () {
+    $("closegroupsearchbtn").observe('click',function () {
       $("addgroups").hide();
       $("showaddgroups").show();
     });

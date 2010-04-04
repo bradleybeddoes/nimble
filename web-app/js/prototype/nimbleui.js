@@ -6,7 +6,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
      	method: "POST",
 		parameters: dataString,
 		onSuccess: function(xhr) {
-		  growl('flaggreen', xhr.responseText, 3000);
+		  growl('flaggreen', xhr.responseText);
 		  $(elem).setStyle({'background': '#fff', 'color':'#000'});
 		  $(elemstatus).addClassName('icon');
 		  $(elemstatus).addClassName('icon_flag_green');
@@ -29,7 +29,7 @@ function wasConfirmed(title, msg, accept, cancel) {
       '<p id="confirmationcontent">'+msg+'</p>'+
       '<div class="buttons">'+
 	  '	  <button type="submit" id="confirmaccept" class="modal_close button icon icon_accept" onClick="confirmAction()">'+accept+'</button>'+
-      '   <a id="confirmcancel" onClick="$(\'confirmationdialog\').fireEvent(\'close\');" class="modal_close button icon icon_cancel">'+cancel+'</a>'+
+      '   <a id="confirmcancel" onClick="$(\'confirmationdialog\').fire(\'dialog:close\');" class="modal_close button icon icon_cancel">'+cancel+'</a>'+
       '</div>';
 
     new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
@@ -63,5 +63,3 @@ function createTabs(id) {
         nimble.Tabs(id);
     });
 }
-
-

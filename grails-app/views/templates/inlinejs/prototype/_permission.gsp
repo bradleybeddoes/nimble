@@ -6,12 +6,12 @@ document.observe("dom:loaded", function() {
 	listPermissions(${parent.id});
 	$("addpermissions").hide();
 
-	$("showaddpermissionsbtn").addEvent('click',function () {
+	$("showaddpermissionsbtn").observe('click',function () {
 	  $("showaddpermissions").hide();
 	  $("addpermissions").show("blind");
 	});
 
-	$("closepermissionsaddbtn").addEvent('click',function () {
+	$("closepermissionsaddbtn").observe('click',function () {
 	  $("addpermissions").hide();
 	  $("showaddpermissions").show();
 	});

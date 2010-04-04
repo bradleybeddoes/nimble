@@ -6,14 +6,14 @@ function listAdministrators() {
             $("admins").clear().insert( xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 function searchAdministrators() {
-    var dataString = "q=" + $('q').get('value');
+    var dataString = "q=" + $('q').getValue();
     new Ajax.Request(adminSearchEndpoint,{
         method: "POST",
         parameters: dataString,
@@ -21,8 +21,8 @@ function searchAdministrators() {
             $("searchresponse").clear().insert(xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -37,8 +37,8 @@ function deleteAdministrator(userID, username) {
             listAdministrators();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -54,8 +54,8 @@ function grantAdministrator(userID, username) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -74,8 +74,8 @@ function enableUser(id) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -93,8 +93,8 @@ function disableUser(id) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -112,8 +112,8 @@ function enableAPI(id) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -131,8 +131,8 @@ function disableAPI(id) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -146,8 +146,8 @@ function listLogins(userID) {
             $("loginhistory").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -162,29 +162,29 @@ function listPermissions(ownerID) {
             $("currentpermission").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 function createPermission(ownerID) {
-    var dataString = 'id=' + ownerID + '&first=' + $('first_p').get('value') + '&second=' + $('second_p').get('value') + '&third=' + $('third_p').get('value') + '&fourth=' + $('fourth_p').get('value');
+    var dataString = 'id=' + ownerID + '&first=' + $('first_p').getValue() + '&second=' + $('second_p').getValue() + '&third=' + $('third_p').getValue() + '&fourth=' + $('fourth_p').getValue();
     new Ajax.Request(permissionCreateEndpoint,{
         method: "POST",
         parameters: dataString,
         onSuccess: function(xhr) {
             $("addpermissionserror").clear();
-            $('first_p').value='';
-            $('second_p').value='';
-            $('third_p').value='';
-            $('fourth_p').value='';
+            $('first_p').setValue('');
+            $('second_p').setValue('');
+            $('third_p').setValue('');
+            $('fourth_p').setValue('');
             listPermissions(ownerID);
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            $("addpermissionserror").clear().insert(xhr.responseText)
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -199,15 +199,15 @@ function removePermission(ownerID, permID) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 // Roles
 function searchRoles(ownerID) {
-    var dataString = "id=" + ownerID + "&q=" + $('qroles').get('value');
+    var dataString = "id=" + ownerID + "&q=" + $('qroles').getValue();
     new Ajax.Request(roleSearchEndpoint,{
         method: "POST",
         parameters: dataString,
@@ -215,8 +215,8 @@ function searchRoles(ownerID) {
             $("rolesearchresponse").clear().hide().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -230,8 +230,8 @@ function listRoles(ownerID) {
             $("assignedroles").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -247,8 +247,8 @@ function grantRole(ownerID, roleID) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -263,15 +263,15 @@ function removeRole(ownerID, roleID) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 // Groups
 function searchGroups(parentID) {
-    var dataString = "id=" + parentID + "&q=" + $('qgroups').get('value');
+    var dataString = "id=" + parentID + "&q=" + $('qgroups').getValue();
     new Ajax.Request(groupSearchEndpoint,{
         method: "POST",
         parameters: dataString,
@@ -279,8 +279,8 @@ function searchGroups(parentID) {
             $("groupsearchresponse").clear().hide().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -294,8 +294,8 @@ function listGroups(parentID) {
             $("assignedgroups").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -311,8 +311,8 @@ function grantGroup(parentID, groupID) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -327,15 +327,15 @@ function removeGroup(parentID, groupID) {
             growl('success', xhr.responseText);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl('error', xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 // Members
 function searchMembers(ownerID) {
-    var dataString = "id=" + ownerID + "&q=" + $('qmembers').get('value');
+    var dataString = "id=" + ownerID + "&q=" + $('qmembers').getValue();
     new Ajax.Request(memberSearchEndpoint,{
         method: "POST",
         parameters: dataString,
@@ -343,14 +343,14 @@ function searchMembers(ownerID) {
             $("membersearchresponse").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
 
 function searchGroupMembers(ownerID) {
-    var dataString = "id=" + ownerID + "&q=" + $('qmembersgroup').get('value');
+    var dataString = "id=" + ownerID + "&q=" + $('qmembersgroup').getValue();
     new Ajax.Request(memberGroupSearchEndpoint,{
         method: "POST",
         parameters: dataString,
@@ -358,8 +358,8 @@ function searchGroupMembers(ownerID) {
             $("membergroupsearchresponse").clear().insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -375,8 +375,8 @@ function addMember(ownerID, userID, username) {
             searchMembers(ownerID);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -391,8 +391,8 @@ function removeMember(ownerID, userID, username) {
             listMembers(ownerID);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -408,8 +408,8 @@ function addGroupMember(ownerID, groupID, groupName) {
             searchGroupMembers(ownerID);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -424,8 +424,8 @@ function removeGroupMember(ownerID, groupID, groupName) {
             listMembers(ownerID);
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
@@ -440,8 +440,24 @@ function listMembers(ownerID) {
             $("currentmembers").insert(xhr.responseText).show();
         },
         onFailure: function (xhr) {
-            if (this.parent(xhr)) return;
-            growl("error", xhr.responseText);
+            if(xhr.transport.status == 403) return;
+            growl('error', xhr.transport.responseText);
         }
     });
 }
+
+Ajax.Responders.register({
+    onComplete:function(xhr) {
+        if ((xhr.transport.status == 403) && (xhr.transport.getResponseHeader("X-Nim-Session-Invalid") != null)) {
+            var title=$('sessionterminatedtitle').getValue();
+            var msg=$('sessionterminatedmsg').getValue();
+            var login=$('sessionterminatedlogin').getValue();
+            var content=
+              '<p id="sessionterminatedcontent">'+msg+'</p>'+
+              '<div class="buttons">'+
+              '   <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue">'+login+'</a>'+
+              '</div>';
+            new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
+        }
+    }
+});
