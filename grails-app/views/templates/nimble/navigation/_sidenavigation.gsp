@@ -35,17 +35,17 @@
 							  </g:else>
 							  <g:if test="${actionName in ['show']}">
 						      	<li id="disableuser">
-							        <a onClick="disableUser('${user.id}'); return false;"><g:message code="nimble.link.disableaccount" /></a>
+							        <a onClick="nimble.disableUser('${user.id}'); return false;"><g:message code="nimble.link.disableaccount" /></a>
 							      </li>
 							      <li id="enableuser">
-							        <a onClick="enableUser('${user.id}'); return false;"><g:message code="nimble.link.enableaccount" /></a>
+							        <a onClick="nimble.enableUser('${user.id}'); return false;"><g:message code="nimble.link.enableaccount" /></a>
 							      </li>
 
 							      <li id="disableuserapi">
-							        <a onClick="disableAPI('${user.id}'); return false;"><g:message code="nimble.link.disableapi" /></a>
+							        <a onClick="nimble.disableAPI('${user.id}'); return false;"><g:message code="nimble.link.disableapi" /></a>
 							      </li>
 							      <li id="enableuserapi">
-							        <a onClick="enableAPI('${user.id}'); return false;"><g:message code="nimble.link.enableapi" /></a>
+							        <a onClick="nimble.enableAPI('${user.id}'); return false;"><g:message code="nimble.link.enableapi" /></a>
 							      </li>
 								</g:if>
 						  </ul>

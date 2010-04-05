@@ -41,10 +41,7 @@ var MooTabs=new Class(
     
     initialize: function(options) {
         this.setOptions(options);
-        
-        var o=this.options;
-        this.element=$(o.id);
-
+        this.element=$(options.id);
         this.tabify(true);
     },
     
@@ -617,12 +614,6 @@ var MooTabs=new Class(
     isProcessing: function(itm) { return $(itm).hasClass('ui-state-processing'); },
     isNotHidden: function(itm) { return !$(itm).hasClass('ui-tabs-hide'); }
 });
-window.nimble = window.nimble || {};
-window.nimble.Tabs = function(e,options) {
-    var o={'id':$(e).get('id')};
-    if(options) o.extend(options);
-    return new MooTabs(o);
-};
 
 Array.implement({
     removeEvents: function() { this.each(function(e) { $(e).removeEvents(); }); return this; },

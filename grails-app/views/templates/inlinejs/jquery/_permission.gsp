@@ -1,9 +1,11 @@
-var permissionListEndpoint = "${createLink(action:'listpermissions')}";
-var permissionCreateEndpoint = "${createLink(action:'createpermission')}";
-var permissionRemoveEndpoint = "${createLink(action:'removepermission')}";
+jQuery.extend(nimble.endpoints,{
+  permission: { 'list':'${createLink(action:'listpermissions')}',
+                'remove':'${createLink(action:'removepermission')}',
+                'create':'${createLink(action:'createpermission')}' }
+});
 
 $(function() {
-	listPermissions(${parent.id});
+	nimble.listPermissions(${parent.id});
 	$("#addpermissions").hide();
 
 	$("#showaddpermissionsbtn").click(function () {

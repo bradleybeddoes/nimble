@@ -6,7 +6,7 @@
 	<njs:permission parent="${user}"/>
 	<njs:role parent="${user}"/>
 	<njs:group parent="${user}"/>
-	createTabs('tabs');
+	nimble.createTabs('tabs');
   </script>
 </head>
 

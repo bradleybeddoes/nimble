@@ -1,9 +1,9 @@
-//Growl
-function growl(type, msg) {
-    growl(type, msg, 2000);
-}
+window.nimble = window.nimble || {};
 
-function growl(type, msg, period) {
+//Growl
+window.nimble.growl = function(type, msg, period) {
+    if(!period) period = 2000;
+
     if (type == 'success')
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_tick\'>&nbsp;</span>' });
 
@@ -24,4 +24,5 @@ function growl(type, msg, period) {
 
     if (type == 'flagblue')
       $.jGrowl(msg, { life: period, header: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
-}
+};
+

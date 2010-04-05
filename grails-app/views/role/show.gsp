@@ -4,7 +4,7 @@
   <script type="text/javascript">
 	<njs:permission parent="${role}"/>
 	<njs:member parent="${role}"/>
-	createTabs('tabs');
+	nimble.createTabs('tabs');
   </script>
 </head>
 <body>

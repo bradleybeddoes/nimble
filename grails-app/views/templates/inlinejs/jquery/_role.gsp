@@ -1,10 +1,13 @@
-var roleSearchEndpoint = "${createLink(action:'searchroles')}";
-var roleListEndpoint = "${createLink(action:'listroles')}";
-var roleGrantEndpoint = "${createLink(action:'grantrole')}";
-var roleRemoveEndpoint = "${createLink(action:'removerole')}";
+jQuery.extend(nimble.endpoints,{
+role: { 'list':'${createLink(action: 'listroles')}',
+            'search':'${createLink(action: 'searchroles')}',
+            'remove':'${createLink(action: 'removerole')}',
+            'grant':'${createLink(action: 'grantrole')}'
+    }
+});
 
 $(function() {
-	listRoles(${parent.id});
+	nimble.listRoles(${parent.id});
     $("#addroles").hide();
 
     $("#showaddrolesbtn").click(function () {

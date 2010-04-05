@@ -1,6 +1,8 @@
+window.nimble = window.nimble || {};
+var nimble = window.nimble;
 
 // General
-function verifyUnique(elem, elemstatus, endpoint, success, failure) {
+nimble.verifyUnique = function(elem, elemstatus, endpoint) {
    elem='#'+elem; elemstatus='#'+elemstatus;
    var dataString = 'val=' + $(elem).val();
    $.ajax({
@@ -8,15 +10,15 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
 		url: endpoint,
 		data: dataString,
 		success: function(res) {
-		  growl('flaggreen', res, 3000);
+		  nimble.growl('flaggreen', res, 3000);
 		  $(elem).css({'background': '#fff', 'color':'#000'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_green');
 		  $(elemstatus).removeClass('icon_flag_red');
           $(elemstatus).show();
 		},
-		error: function (xhr, ajaxOptions, thrownError) {
-		  growl('flagred', xhr.responseText);
+		error: function (xhr) {
+		  nimble.growl('flagred', xhr.responseText);
 		  $(elem).css({'color': '#9c3333'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_red');
@@ -24,7 +26,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
           $(elemstatus).show();
 		}
 	});
-}
+};
 
 // Dialog support
 $(function() {
@@ -49,7 +51,7 @@ $(function() {
 	});
 });
 
-function wasConfirmed(title, msg, accept, cancel) {
+nimble.wasConfirmed = function(title, msg, accept, cancel) {
 	$("#confirmationtitle").html(title);
 	$("#confirmationcontent").html(msg); 
 	$("#confirmaccept").html(accept);
@@ -57,23 +59,23 @@ function wasConfirmed(title, msg, accept, cancel) {
 	
 	$("#confirmationdialog").dialog('option', 'title', title);
 	$("#confirmationdialog").dialog('open');		
-}
+};
 
-function changeLogin(ident) {
+nimble.changeLogin = function(ident) {
   $(".flash").hide();
   $(".loginselector").removeClass("current");
   $(".loginmethod").hide();
   $("#" + ident).show("highlight");
-}
+};
 
-function enableFacebookContinue() {
+nimble.enableFacebookContinue = function() {
   $("#loginfacebookcontinue").show();
   $("#loginfacebookenable").hide();
-}
+};
 
-function disableFacebookContinue() {
+nimble.disableFacebookContinue = function() {
   $("#loginfacebookcontinue").hide();
-}
+};
 
 // Session Termination
 $(function() {
@@ -109,7 +111,7 @@ $(function() {
 	});
 });
 
-function createTip(id,tle,msg) {
+nimble.createTip = function(id,tle,msg) {
     $(function() {
         $(document.body).after(
                 '<div id="'+id+'_tip">'+
@@ -120,13 +122,13 @@ function createTip(id,tle,msg) {
         $("#"+id+"_tip").hide();
         $("#"+id).bt({contentSelector: $("#"+id+"_tip"), width: '350px', closeWhenOthersOpen: true, shrinkToFit: 'true', positions: ['right', 'top', 'left'], margin: 0, padding: 6, fill: '#fff', strokeWidth: 1, strokeStyle: '#c2c2c2', spikeGirth: 12, spikeLength:9, hoverIntentOpts: {interval: 100, timeout: 1000}});
     });
-}
+};
 
-function createTabs(id) {
+nimble.createTabs = function(id) {
     $(function() {
         $('#'+id).tabs();
     });
-}
+};
 
 
 

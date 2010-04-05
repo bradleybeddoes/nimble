@@ -1,10 +1,14 @@
-var groupSearchEndpoint = "${createLink(action:'searchgroups')}";
-var groupListEndpoint = "${createLink(action:'listgroups')}";
-var groupGrantEndpoint = "${createLink(action:'grantgroup')}";
-var groupRemoveEndpoint = "${createLink(action:'removegroup')}"
+jQuery.extend(nimble.endpoints,{
+group: {
+    'list':'${createLink(action:'listgroups')}',
+    'search':'${createLink(action:'searchgroups')}',
+    'remove':'${createLink(action:'removegroup')}',
+    'grant':'${createLink(action:'grantgroup')}'
+  }
+});
 
 $(function() {
-    listGroups('${parent.id.encodeAsHTML()}');
+    nimble.listGroups('${parent.id.encodeAsHTML()}');
     $("#addgroups").hide();
 
     $("#showaddgroupsbtn").click(function () {

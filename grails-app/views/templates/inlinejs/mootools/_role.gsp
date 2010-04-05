@@ -1,19 +1,22 @@
-var roleSearchEndpoint = "${createLink(action:'searchroles')}";
-var roleListEndpoint = "${createLink(action:'listroles')}";
-var roleGrantEndpoint = "${createLink(action:'grantrole')}";
-var roleRemoveEndpoint = "${createLink(action:'removerole')}";
+nimble.endpoints.extend({
+role: { 'list':'${createLink(action: 'listroles')}',
+            'search':'${createLink(action: 'searchroles')}',
+            'remove':'${createLink(action: 'removerole')}',
+            'grant':'${createLink(action: 'grantrole')}'
+    }
+});
 
 window.addEvent('domready', function() {
-	listRoles(${parent.id});
+  nimble.listRoles(${parent.id});
+  $("addroles").hide();
+
+  $("showaddrolesbtn").addEvent('click',function () {
+    $("showaddroles").hide();
+    $("addroles").show("blind");
+  });
+
+  $("closerolesearchbtn").addEvent('click',function () {
     $("addroles").hide();
-
-    $("showaddrolesbtn").addEvent('click',function () {
-      $("showaddroles").hide();
-      $("addroles").show("blind");
-    });
-
-    $("closerolesearchbtn").addEvent('click',function () {
-      $("addroles").hide();
-      $("showaddroles").show();
-    });
+    $("showaddroles").show();
+  });
 });

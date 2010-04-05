@@ -14,7 +14,7 @@
         <td>${group.description.encodeAsHTML()}</td>
         <td>
           <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
-          <a onClick="addGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.grant" /></a>
+          <a onClick="nimble.addGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.grant" /></a>
         </td>
       </tr>
     </g:each>

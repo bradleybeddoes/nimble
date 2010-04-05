@@ -16,7 +16,7 @@
 
     <div class="searchbox">
       <g:textField name="qroles" class=""/>
-      <button onClick="searchRoles(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+      <button onClick="nimble.searchRoles(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
       <button id="closerolesearchbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
     </div>
 

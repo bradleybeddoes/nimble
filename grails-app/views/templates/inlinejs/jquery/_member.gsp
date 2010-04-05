@@ -1,13 +1,17 @@
-var memberListEndpoint = "${createLink(action:'listmembers')}";
-var memberSearchEndpoint = "${createLink(action:'searchnewmembers')}";
-var memberGroupSearchEndpoint = "${createLink(action:'searchnewgroupmembers')}";
-var memberAddEndpoint = "${createLink(action:'addmember')}";
-var memberRemoveEndpoint = "${createLink(action:'removemember')}";
-var memberAddGroupEndpoint = "${createLink(action:'addgroupmember')}";
-var memberRemoveGroupEndpoint = "${createLink(action:'removegroupmember')}";
+jQuery.extend(nimble.endpoints,{
+    member: {
+     'list':'${createLink(action:'listmembers')}',
+     'search':'${createLink(action:'searchnewmembers')}',
+     'remove':'${createLink(action:'removemember')}',
+     'add':'${createLink(action:'addmember')}',
+     'groupSearch':'${createLink(action:'searchnewgroupmembers')}',
+     'groupAdd':'${createLink(action:'addgroupmember')}',
+     'groupRemove':'${createLink(action:'removegroupmember')}'
+    }
+});
 
 $(function() {
-	listMembers(${parent.id});
+	nimble.listMembers(${parent.id});
     $("#addmembers").hide();
 
     $("#memberaddgroups").hide();

@@ -1,32 +1,31 @@
-var notimooManager = null;
+window.nimble = window.nimble || {};
+window.nimble.growlManager = null;
 
 //Growl
-function growl(type, msg) {
-    growl(type, msg, 2000);
-}
-
-function growl(type, msg, period) {
-    if(!notimooManager)
-        notimooManager = new Notimoo();
-
+window.nimble.growl = function(type, msg, period) {
+    if(!period) period=2000; 
+    if(!window.nimble.growlManager)
+        window.nimble.growlManager = new Notimoo();
+    
+    var m = window.nimble.growlManager;
     if (type == 'success')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_tick\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_tick\'>&nbsp;</span>' });
 
     if (type == 'error')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
 
     if (type == 'info')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_information\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_information\'>&nbsp;</span>' });
 
     if (type == 'help')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_cross\'>&nbsp;</span>' });
 
     if (type == 'flagred')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_red\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_red\'>&nbsp;</span>' });
 
     if (type == 'flaggreen')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_green\'>&nbsp;</span>' });
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_green\'>&nbsp;</span>' });
 
     if (type == 'flagblue')
-      notimooManager.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
-}
+      m.show({message: msg, visibleTime: period, title: '<span class=\'icon icon_flag_blue\'>&nbsp;</span>' });
+};

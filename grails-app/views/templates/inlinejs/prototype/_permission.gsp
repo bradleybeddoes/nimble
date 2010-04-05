@@ -1,18 +1,22 @@
-var permissionListEndpoint = "${createLink(action:'listpermissions')}";
-var permissionCreateEndpoint = "${createLink(action:'createpermission')}";
-var permissionRemoveEndpoint = "${createLink(action:'removepermission')}";
+nimble.endpoints=$H(nimble.endpoints).merge({
+  permission: {
+  'list':'${createLink(action:'listpermissions')}',
+  'remove':'${createLink(action:'removepermission')}',
+  'create':'${createLink(action:'createpermission')}'
+  }
+}).toObject();
 
 document.observe("dom:loaded", function() {
-	listPermissions(${parent.id});
-	$("addpermissions").hide();
+  nimble.listPermissions(${parent.id});
+  $("addpermissions").hide();
 
-	$("showaddpermissionsbtn").observe('click',function () {
-	  $("showaddpermissions").hide();
-	  $("addpermissions").show("blind");
-	});
+  $("showaddpermissionsbtn").observe('click',function () {
+    $("showaddpermissions").hide();
+    $("addpermissions").show("blind");
+  });
 
-	$("closepermissionsaddbtn").observe('click',function () {
-	  $("addpermissions").hide();
-	  $("showaddpermissions").show();
-	});
+  $("closepermissionsaddbtn").observe('click',function () {
+    $("addpermissions").hide();
+    $("showaddpermissions").show();
+  });
 });

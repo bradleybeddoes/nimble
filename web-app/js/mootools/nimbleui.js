@@ -1,13 +1,15 @@
+window.nimble = window.nimble || {};
+var nimble = window.nimble;
 
 // General
-function verifyUnique(elem, elemstatus, endpoint, success, failure) {
+nimble.verifyUnique = function(elem, elemstatus, endpoint) {
    var dataString = 'val=' + $(elem).get('value');
    new Request({
      	method: "POST",
 		url: endpoint,
 		data: dataString,
 		onSuccess: function(res) {
-		  growl('flaggreen', res, 3000);
+		  nimble.growl('flaggreen', res, 3000);
 		  $(elem).setStyles({'background': '#fff', 'color':'#000'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_green');
@@ -15,7 +17,7 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
           $(elemstatus).show();  
 		},
 		onFailure: function (xhr) {
-		  growl('flagred', xhr.responseText);
+		  nimble.growl('flagred', xhr.responseText);
 		  $(elem).setStyles({'color': '#9c3333'});
 		  $(elemstatus).addClass('icon');
 		  $(elemstatus).addClass('icon_flag_red');
@@ -23,9 +25,9 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
           $(elemstatus).show();
 		}
 	}).send();
-}
+};
 
-function wasConfirmed(title, msg, accept, cancel) {
+nimble.wasConfirmed = function(title, msg, accept, cancel) {
     var content=
       '<p id="confirmationcontent">'+msg+'</p>'+
       '<div class="buttons">'+
@@ -35,39 +37,39 @@ function wasConfirmed(title, msg, accept, cancel) {
 
     new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
     return false;
-}
+};
 
-function changeLogin(ident) {
+nimble.changeLogin = function(ident) {
   $$(".flash").hide();
   $$(".loginselector").removeClass("current");
   $$(".loginmethod").hide();
   $(ident).show().highlight();
-}
+};
 
-function enableFacebookContinue() {
+nimble.enableFacebookContinue = function() {
   $("loginfacebookcontinue").show();
   $("loginfacebookenable").hide();
-}
+};
 
-function disableFacebookContinue() {
+nimble.disableFacebookContinue = function() {
   $("loginfacebookcontinue").hide();
-}
+};
 
-function createTip(e,tle,msg) {
+nimble.createTip = function(e,tle,msg) {
     window.addEvent('domready', function() {
         var tip=$(e);new Tips(tip);
         tip.store('tip:title',tle);
         tip.store('tip:text',msg);
     });
-}
+};
 
-function createTabs(id) {
+nimble.createTabs = function(id) {
     window.addEvent('domready', function() {
-        nimble.Tabs(id);
+        new MooTabs({'id':id});
     });
-}
+};
 
-//when the dom is ready...
+// session timeout handler
 Request.implement({
         onFailure: function() {
         if ((this.xhr.status == 403) && (this.xhr.getResponseHeader("X-Nim-Session-Invalid") != null)) {
@@ -86,7 +88,7 @@ Request.implement({
     }
 });
 
-//time to implement basic show / hide
+// implement basic show / hide
 Element.implement({
     //implement show
     show: function() {

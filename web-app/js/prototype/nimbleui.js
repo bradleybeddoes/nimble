@@ -1,6 +1,8 @@
+window.nimble = window.nimble || {};
+var nimble = window.nimble;
 
 // General
-function verifyUnique(elem, elemstatus, endpoint, success, failure) {
+nimble.verifyUnique = function(elem, elemstatus, endpoint) {
    var dataString = 'val=' + $(elem).getValue();
    new Ajax.Request(endpoint,{
      	method: "POST",
@@ -22,9 +24,9 @@ function verifyUnique(elem, elemstatus, endpoint, success, failure) {
           $(elemstatus).show();
 		}
 	});
-}
+};
 
-function wasConfirmed(title, msg, accept, cancel) {
+nimble.wasConfirmed = function(title, msg, accept, cancel) {
     var content=
       '<p id="confirmationcontent">'+msg+'</p>'+
       '<div class="buttons">'+
@@ -34,32 +36,32 @@ function wasConfirmed(title, msg, accept, cancel) {
 
     new SimpleDialog({'id':'confirmationdialog','title':title,'content':content}).show();
     return false;
-}
+};
 
-function changeLogin(ident) {
+nimble.changeLogin = function(id) {
   $$(".flash").hide();
   $$(".loginselector").removeClassName("current");
   $$(".loginmethod").hide();
-  $(ident).show().highlight();
-}
+  $(id).show().highlight();
+};
 
-function enableFacebookContinue() {
+nimble.enableFacebookContinue = function() {
   $("loginfacebookcontinue").show();
   $("loginfacebookenable").hide();
-}
+};
 
-function disableFacebookContinue() {
+nimble.disableFacebookContinue = function() {
   $("loginfacebookcontinue").hide();
-}
+};
 
-function createTip(e,tle,msg) {
+nimble.createTip = function(e,tle,msg) {
     document.observe("dom:loaded", function() {
 		new Tooltip($(e), {title:tle, content:msg});
     });
-}
+};
 
-function createTabs(id) {
+nimble.createTabs = function(id) {
     document.observe("dom:loaded", function() {
         nimble.Tabs(id);
     });
-}
+};

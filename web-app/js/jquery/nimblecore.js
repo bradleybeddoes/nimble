@@ -1,115 +1,129 @@
+window.nimble = window.nimble || {};
+var nimble = window.nimble;
+
+// all of the endpoints that may be referenced in this script
+if(!nimble.endpoints)
+nimble.endpoints = {
+    admin: { 'list':null, 'search':null, 'remove':null, 'grant':null },
+    user: { 'logins':null, 'enableAPI':null, 'disableAPI':null, 'enable':null, 'disable':null },
+    role: { 'list':null, 'search':null, 'remove':null, 'grant':null },
+    group: { 'list':null, 'search':null, 'remove':null, 'grant':null },
+    permission: { 'list':null, 'remove':null, 'create':null },
+    member: { 'list':null, 'search':null, 'remove':null, 'add':null, 'groupSearch':null, 'groupAdd':null, 'groupRemove':null }
+};
+
 // Admins
-function listAdministrators() {
+nimble.listAdministrators = function() {
     $(function() {
       $.ajax({
         type: "POST",
-        url: adminListEndpoint,
+        url: nimble.endpoints.admin.list,
         success: function(res) {
           $("#admins").empty();
           $("#admins").append(res);
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-          growl('error', xhr.responseText);
+        error: function (xhr) {
+          nimble.growl('error', xhr.responseText);
         }
       });
     });
-}
+};
 
-function searchAdministrators() {
+nimble.searchAdministrators = function() {
   var dataString = "q=" + $('#q').val();
   $.ajax({
     type: "POST",
-    url: adminSearchEndpoint,
+    url: nimble.endpoints.admin.search,
     data: dataString,
     success: function(res) {
       $("#searchresponse").empty();
       $("#searchresponse").append(res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function deleteAdministrator(userID, username) {
+nimble.deleteAdministrator = function(userID) {
   var dataString = 'id=' + userID;
   $.ajax({
     type: "POST",
-    url: adminDeleteEndpoint,
+    url: nimble.endpoints.admin.remove,
     data: dataString,
     success: function(res) {
-      growl('success', res);
-      listAdministrators();
+      nimble.growl('success', res);
+      nimble.listAdministrators();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function grantAdministrator(userID, username) {
+nimble.grantAdministrator = function(userID) {
   var dataString = 'id=' + userID;
   $.ajax({
     type: "POST",
-    url: adminGrantEndpoint,
+    url: nimble.endpoints.admin.grant,
     data: dataString,
     success: function(res) {
-      searchAdministrators();
-      listAdministrators();
-	  growl('success', res);
+      nimble.searchAdministrators();
+      nimble.listAdministrators();
+	  nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
 // Users
-function enableUser(id) {
+nimble.enableUser = function(id) {
   var dataString = "id="+id;
   $.ajax({
     type: "POST",
-    url: enableUserEndpoint,
+    url: nimble.endpoints.user.enable,
     data: dataString,
     success: function(res) {
       $("#enableuser").hide();
       $("#enableduser").hide();
       $("#disableuser").show();
       $("#disableduser").show();
-      growl('success', res);
+      nimble.growl('success', res);
 
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function disableUser(id) {
+nimble.disableUser = function(id) {
   var dataString = "id="+id;
   $.ajax({
     type: "POST",
-    url: disableUserEndpoint,
+    url: nimble.endpoints.user.disable,
     data: dataString,
     success: function(res) {
       $("#disableuser").hide();
       $("#disableduser").hide();
       $("#enableuser").show();
       $("#enableduser").show();
-      growl('success', res);
+      nimble.growl('success', res);
 
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function enableAPI(id) {
+nimble.enableAPI = function(id) {
   var dataString = "id="+id;
   $.ajax({
     type: "POST",
-    url: enableAPIEndpoint,
+    url: nimble.endpoints.user.enableAPI,
     data: dataString,
     success: function(res) {
       $("#disabledapi").hide();
@@ -117,20 +131,20 @@ function enableAPI(id) {
 
       $("#disableuserapi").show();
       $("#enableuserapi").hide();
-      growl('success', res);
+      nimble.growl('success', res);
 
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function disableAPI(id) {
+nimble.disableAPI = function(id) {
   var dataString = "id="+id;
   $.ajax({
     type: "POST",
-    url: disableAPIEndpoint,
+    url: nimble.endpoints.user.disableAPI,
     data: dataString,
     success: function(res) {
       $("#disabledapi").show();
@@ -138,51 +152,51 @@ function disableAPI(id) {
 
       $("#disableuserapi").hide();
       $("#enableuserapi").show();
-      growl('success', res);
+      nimble.growl('success', res);
 
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function listLogins(userID) {
+nimble.listLogins = function(userID) {
   var dataString = 'id=' + userID;
   $.ajax({
     type: "GET",
-    url: userLoginsEndpoint,
+    url: nimble.endpoints.user.logins,
     data: dataString,
     success: function(res) {
       $("#loginhistory").empty().append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
 // Permissions
-function listPermissions(ownerID) {
+nimble.listPermissions = function(ownerID) {
   var dataString = 'id=' + ownerID;
   $.ajax({
     type: "GET",
-    url: permissionListEndpoint,
+    url: nimble.endpoints.permission.list,
     data: dataString,
     success: function(res) {
       $("#currentpermission").empty().append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function createPermission(ownerID) {
+nimble.createPermission = function(ownerID) {
   var dataString = 'id=' + ownerID + '&first=' + $('#first_p').val() + '&second=' + $('#second_p').val() + '&third=' + $('#third_p').val() + '&fourth=' + $('#fourth_p').val();
   $.ajax({
     type: "POST",
-    url: permissionCreateEndpoint,
+    url: nimble.endpoints.permission.create,
     data: dataString,
     success: function(res) {
       $("#addpermissionserror").empty();
@@ -190,272 +204,272 @@ function createPermission(ownerID) {
 	  $('#second_p').val('');
 	  $('#third_p').val('');
 	  $('#fourth_p').val('');
-      listPermissions(ownerID);
-      growl('success', res);
+      nimble.listPermissions(ownerID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
+    error: function (xhr) {
       $("#addpermissionserror").empty().append(xhr.responseText)
     }
   });
-}
+};
 
-function removePermission(ownerID, permID) {
+nimble.removePermission = function(ownerID, permID) {
   var dataString = 'id=' + ownerID + '&permID=' + permID;
   $.ajax({
     type: "POST",
-    url: permissionRemoveEndpoint,
+    url: nimble.endpoints.permission.remove,
     data: dataString,
     success: function(res) {
-      listPermissions(ownerID);
-      growl('success', res);
+      nimble.listPermissions(ownerID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
 // Roles
-function searchRoles(ownerID) {
+nimble.searchRoles = function(ownerID) {
   var dataString = "id=" + ownerID + "&q=" + $('#qroles').val();
   $.ajax({
     type: "POST",
-    url: roleSearchEndpoint,
+    url: nimble.endpoints.role.search,
     data: dataString,
     success: function(res) {
       $("#rolesearchresponse").empty().hide();
       $("#rolesearchresponse").append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function listRoles(ownerID) {
+nimble.listRoles = function(ownerID) {
   var dataString = 'id=' + ownerID;
   $.ajax({
     type: "GET",
-    url: roleListEndpoint,
+    url: nimble.endpoints.role.list,
     data: dataString,
     success: function(res) {
       $("#assignedroles").empty().append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function grantRole(ownerID, roleID) {
+nimble.grantRole = function(ownerID, roleID) {
   var dataString = 'id=' + ownerID + '&roleID=' + roleID;
   $.ajax({
     type: "POST",
-    url: roleGrantEndpoint,
+    url: nimble.endpoints.role.grant,
     data: dataString,
     success: function(res) {
-      listRoles(ownerID);
-      searchRoles(ownerID);
-      growl('success', res);
+      nimble.listRoles(ownerID);
+      nimble.searchRoles(ownerID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function removeRole(ownerID, roleID) {
+nimble.removeRole = function(ownerID, roleID) {
   var dataString = 'id=' + ownerID + '&roleID=' + roleID;
   $.ajax({
     type: "POST",
-    url: roleRemoveEndpoint,
+    url: nimble.endpoints.role.remove,
     data: dataString,
     success: function(res) {
-      listRoles(ownerID);
-      growl('success', res);
+      nimble.listRoles(ownerID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
 // Groups
-function searchGroups(parentID) {
+nimble.searchGroups = function(parentID) {
   var dataString = "id=" + parentID + "&q=" + $('#qgroups').val();
   $.ajax({
     type: "POST",
-    url: groupSearchEndpoint,
+    url: nimble.endpoints.group.search,
     data: dataString,
     success: function(res) {
       $("#groupsearchresponse").empty().hide();
       $("#groupsearchresponse").append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function listGroups(parentID) {
+nimble.listGroups = function(parentID) {
   var dataString = 'id=' + parentID;
   $.ajax({
     type: "GET",
-    url: groupListEndpoint,
+    url: nimble.endpoints.group.list,
     data: dataString,
     success: function(res) {
       $("#assignedgroups").empty().append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function grantGroup(parentID, groupID) {
+nimble.grantGroup = function(parentID, groupID) {
   var dataString = 'id=' + parentID + '&groupID=' + groupID;
   $.ajax({
     type: "POST",
-    url: groupGrantEndpoint,
+    url: nimble.endpoints.group.grant,
     data: dataString,
     success: function(res) {
-      listGroups(parentID);
-      searchGroups(parentID);
-      growl('success', res);
+      nimble.listGroups(parentID);
+      nimble.searchGroups(parentID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
-function removeGroup(parentID, groupID) {
+nimble.removeGroup = function(parentID, groupID) {
   var dataString = 'id=' + parentID + '&groupID=' + groupID;
   $.ajax({
     type: "POST",
-    url: groupRemoveEndpoint,
+    url: nimble.endpoints.group.remove,
     data: dataString,
     success: function(res) {
-      listGroups(parentID);
-      growl('success', res);
+      nimble.listGroups(parentID);
+      nimble.growl('success', res);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl('error', xhr.responseText);
+    error: function (xhr) {
+      nimble.growl('error', xhr.responseText);
     }
   });
-}
+};
 
 // Members
-function searchMembers(ownerID) {
+nimble.searchMembers = function(ownerID) {
   var dataString = "id=" + ownerID + "&q=" + $('#qmembers').val();
   $.ajax({
     type: "POST",
-    url: memberSearchEndpoint,
+    url: nimble.endpoints.member.search,
     data: dataString,
     success: function(res) {
       $("#membersearchresponse").empty();
       $("#membersearchresponse").append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function searchGroupMembers(ownerID) {
+nimble.searchGroupMembers = function(ownerID) {
   var dataString = "id=" + ownerID + "&q=" + $('#qmembersgroup').val();
   $.ajax({
     type: "POST",
-    url: memberGroupSearchEndpoint,
+    url: nimble.endpoints.member.groupSearch,
     data: dataString,
     success: function(res) {
       $("#membergroupsearchresponse").empty();
       $("#membergroupsearchresponse").append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function addMember(ownerID, userID, username) {
+nimble.addMember = function(ownerID, userID) {
   var dataString = 'id=' + ownerID + '&userID=' + userID;
   $.ajax({
     type: "POST",
-    url: memberAddEndpoint,
+    url: nimble.endpoints.member.add,
     data: dataString,
     success: function(res) {
-      growl("success", res);
-      listMembers(ownerID);
-      searchMembers(ownerID);
+      nimble.growl("success", res);
+      nimble.listMembers(ownerID);
+      nimble.searchMembers(ownerID);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function removeMember(ownerID, userID, username) {
+nimble.removeMember = function(ownerID, userID) {
   var dataString = 'id=' + ownerID + '&userID=' + userID;
   $.ajax({
     type: "POST",
-    url: memberRemoveEndpoint,
+    url: nimble.endpoints.member.remove,
     data: dataString,
     success: function(res) {
-      growl("success", res);
-      listMembers(ownerID);
+      nimble.growl("success", res);
+      nimble.listMembers(ownerID);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function addGroupMember(ownerID, groupID, groupName) {
+nimble.addGroupMember = function(ownerID, groupID) {
   var dataString = 'id=' + ownerID + '&groupID=' + groupID;
   $.ajax({
     type: "POST",
-    url: memberAddGroupEndpoint,
+    url: nimble.endpoints.member.groupAdd,
     data: dataString,
     success: function(res) {
-      growl("success", res);
-      listMembers(ownerID);
-      searchGroupMembers(ownerID);
+      nimble.growl("success", res);
+      nimble.listMembers(ownerID);
+      nimble.searchGroupMembers(ownerID);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function removeGroupMember(ownerID, groupID, groupName) {
+nimble.removeGroupMember = function(ownerID, groupID) {
   var dataString = 'id=' + ownerID + '&groupID=' + groupID;
   $.ajax({
     type: "POST",
-    url: memberRemoveGroupEndpoint,
+    url: nimble.endpoints.member.groupRemove,
     data: dataString,
     success: function(res) {
-      growl("success", res);
-      listMembers(ownerID);
+      nimble.growl("success", res);
+      nimble.listMembers(ownerID);
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};
 
-function listMembers(ownerID) {
+nimble.listMembers = function(ownerID) {
   var dataString = 'id=' + ownerID;
   $.ajax({
     type: "GET",
-    url: memberListEndpoint,
+    url: nimble.endpoints.member.list,
     data: dataString,
     success: function(res) {
       $("#currentmembers").empty().hide();
       $("#currentmembers").append(res).show();
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      growl("error", xhr.responseText);
+    error: function (xhr) {
+      nimble.growl("error", xhr.responseText);
     }
   });
-}
+};

@@ -31,6 +31,11 @@ class NimbleInlineJSTagLib {
         out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/flashgrowl", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
     }
 
+    // admin management
+    def admin = {attrs ->
+         out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/admin", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath])
+    }
+
 	// User management
 	def user = {attrs ->
 		if(attrs.user == null)
