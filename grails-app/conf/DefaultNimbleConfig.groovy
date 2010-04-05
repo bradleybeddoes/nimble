@@ -15,6 +15,10 @@
  *  limitations under the License.
  */
 
+// change the JavaScript library that grails & nimble use by adjusting this value
+// valid values: jquery, mootools prototype
+grails.views.javascript.library='jquery'
+
 nimble {
 
     tablenames {
@@ -39,7 +43,7 @@ nimble {
         application = 'app'
         administration = 'admin'
         customcss = ''
-        jslibrary = 'jquery'
+        jslibrary = grails.views.javascript.library
     }
 
     localusers {

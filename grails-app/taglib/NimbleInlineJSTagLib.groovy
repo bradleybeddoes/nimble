@@ -35,35 +35,35 @@ class NimbleInlineJSTagLib {
 	def user = {attrs ->
 		if(attrs.user == null)
         	throwTagError("User management tag requires user attribute [njs]")
-		
+
 		 out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/user", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, user:attrs.user])
 	}
-	
+
 	def permission = {attrs ->
 		if(attrs.parent == null)
         	throwTagError("Permission management tag requires owner attribute [njs]")
-		
+
 		 out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/permission", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
 	}
-	
+
 	def role = {attrs ->
 		if(attrs.parent == null)
         	throwTagError("Role management tag requires user attribute [njs]")
-		
+
 		 out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/role", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
 	}
-	
+
 	def group = {attrs ->
 		if(attrs.parent == null)
         	throwTagError("Group management tag requires user attribute [njs]")
-		
+
 		 out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/group", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
 	}
-	
+
 	def member = {attrs ->
 		if(attrs.parent == null)
         	throwTagError("Member management tag requires user attribute [njs]")
-		
+
 		 out << render(template: "/templates/inlinejs/" + grailsApplication.config.nimble.layout.jslibrary + "/member", contextPath: pluginContextPath, model:[nimblePath:pluginContextPath, parent:attrs.parent])
 	}
 
