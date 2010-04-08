@@ -140,7 +140,6 @@ class AccountController {
 		// Allow host application to do some validation, etc.
 		if(userService.events['beforeregister']) {
 			userService.events['beforeregister'](user)
-//			user.errors.rejectValue('password', 'user.password.doesnotmatch') 
 		}
 
         if (user.hasErrors()) {
