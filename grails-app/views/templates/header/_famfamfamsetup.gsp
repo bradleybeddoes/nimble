@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/famfamfam.css')}"/>
+<n:css src='famfamfam.css'/>

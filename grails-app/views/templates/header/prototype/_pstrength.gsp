@@ -1,4 +1,4 @@
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/prototype/pstrength.js')}"></script>
+<n:javascript src='prototype/pstrength.js'/>
 <script type="text/javascript">
 document.observe("dom:loaded", function() {
   $$('.password').each( function(e){

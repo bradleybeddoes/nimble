@@ -1,7 +1,7 @@
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/prototype/tooltip.js')}"></script>
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/prototype/tabs.js')}"></script>
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/prototype/simpledialog.js')}"></script>
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/prototype/nimbleui.js')}"></script>
+<n:javascript src='prototype/tooltip.js'/>
+<n:javascript src='prototype/tabs.js'/>
+<n:javascript src='prototype/simpledialog.js'/>
+<n:javascript src='prototype/nimbleui.js'/>
 <script type="text/javascript">
 window.nimble = window.nimble || $H({});
 var nimble = window.nimble;

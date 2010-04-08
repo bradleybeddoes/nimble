@@ -16,6 +16,7 @@
  */
 
 import grails.plugins.nimble.core.*
+import grails.util.GrailsUtil
 
 /**
  * Provides generic, mostly UI related tags to the Nimble application
@@ -27,6 +28,14 @@ class NimbleTagLib {
     static namespace = "n"
 
     def recaptchaService
+
+    def baseJsResourcePath = {
+      out << (grailsApplication.config.nimble.resources.usejsdev ? "dev" : "")
+    }
+
+    def baseCssResourcePath = {
+      out << (grailsApplication.config.nimble.resources.usecssdev ? "dev" : "")
+    }
 
     /**
      * Provides an inline output of the Grails application message in flash scope
@@ -119,6 +128,12 @@ class NimbleTagLib {
 			
 		out << render(template: "/templates/tags/verifyfield", contextPath: pluginContextPath, model: [id:attrs.id, cssclass: attrs.class, required:attrs.required, controller:attrs.controller, action:attrs.action, name:attrs.name, value:attrs.value, validmsg:attrs.validmsg, invalidmsg:attrs.invalidmsg] )
 	}
+ 
+    def javascript = { attrs ->
+      out << "<script type=\"text/javascript\" src=\"" + resource(dir: pluginContextPath, file: baseJsResourcePath() +"/js/" + attrs.src ) + "\"></script>"
+    }
 
+    def css = { attrs ->
+      out << """<link rel="stylesheet" href=\"""" + resource(dir: pluginContextPath, file: baseCssResourcePath() +"/css/" + attrs.src ) + "\"/>"
+    }
 }
-

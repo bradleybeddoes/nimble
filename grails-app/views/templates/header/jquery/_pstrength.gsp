@@ -1,4 +1,4 @@
-<script type="text/javascript" src="${resource(dir: nimblePath, file: '/js/jquery/jquery.pstrength-min.js')}"></script>
+<n:javascript src='jquery/jquery.pstrength.min.js'/>
 <script type="text/javascript">
 $(function() {
   $("#passwordpolicy").hide();

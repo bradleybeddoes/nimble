@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/login.css')}"/>
+<n:css src='login.css'/>
 <script type="text/javascript">
 document.observe("dom:loaded", function() {
     $$(".loginmethod").each(function(e) { e.hide();});
@@ -6,9 +6,9 @@ document.observe("dom:loaded", function() {
 
     var active=document.location.href.toURI().getData('active');
     if (active)
-      changeLogin(active);
+      nimble.changeLogin(active);
     else                 
-      changeLogin('local');
+      nimble.changeLogin('local');
 
     $$(".loginlocal").show();
     $$(".flash").show();

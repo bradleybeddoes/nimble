@@ -43,7 +43,12 @@ nimble {
         application = 'app'
         administration = 'admin'
         customcss = ''
+    }
+
+    resources {
         jslibrary = grails.views.javascript.library
+        usejsdev = false
+        usecssdev = false
     }
 
     localusers {
@@ -56,15 +61,15 @@ nimble {
 		}
     }
 
-	fields {
-		admin {
-			user['username', 'external', 'federated']
-		}
-		enduser {
-			user['username', 'pass', 'passConfirm']
-			profile['fullName', 'email']
-		}
-	}
+    fields {
+        admin {
+            user = ['username', 'external', 'federated']
+        }
+        enduser {
+            user = ['username', 'pass', 'passConfirm']
+            profile = ['fullName', 'email']
+        }
+    }
 
     passwords {
         mustcontain {

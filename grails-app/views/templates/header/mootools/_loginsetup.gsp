@@ -1,14 +1,14 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/login.css')}"/>
+<n:css src='login.css'/>
 <script type="text/javascript">
 window.addEvent('domready', function() {
     $$(".loginmethod").each(function(e) { e.hide();});
-    $("loginfacebookcontinue").hide();
+    if($("loginfacebookcontinue")) $("loginfacebookcontinue").hide();
 
     var active=document.location.href.toURI().getData('active');
     if (active)
-      changeLogin(active);
+      nimble.changeLogin(active);
     else                 
-      changeLogin('local');
+      nimble.changeLogin('local');
 
     $$(".loginlocal").show();
     $$(".flash").show();
