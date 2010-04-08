@@ -22,12 +22,14 @@ includeTargets << grailsScript("_GrailsArgParsing")
 eventCleanStart = {
   if(ant.antProject.properties."base.name"=='nimble') {
     def s=File.separatorChar
-    def to = "${nimblePluginDir}"+s+"web-app"+s+"js"+s
 
     // clear the destination directory
-    ant.delete(includeemptydirs:'true', verbose:'true') {
-          fileset(dir:"${to}", includes:'**/*')
-    }
+    def js = "${nimblePluginDir}"+s+"web-app"+s+"js"+s
+    ant.delete(dir:"${js}")
+    def css = "${nimblePluginDir}"+s+"web-app"+s+"css"+s
+    ant.delete(dir:"${css}")
+    def images = "${nimblePluginDir}"+s+"web-app"+s+"images"+s
+    ant.delete(dir:"${images}")
   }
 }
 
@@ -43,7 +45,7 @@ compressFiles = { fileType ->
   ant.mkdir( dir:"${to}" )
 
   // remove js files that no longer exist
-/*  def f = new File( to )
+  def f = new File( to )
   f.eachFileRecurse() { file->
     if(!file.isDirectory()) {
       def srcfile = (from+file.getAbsolutePath()).replace(to,'')
@@ -54,7 +56,7 @@ compressFiles = { fileType ->
         ant.delete(file:"${file.getAbsolutePath()}")
       }
     }
-  }*/
+  }
 
   f = new File( from )
   f.eachFileRecurse() { file->
