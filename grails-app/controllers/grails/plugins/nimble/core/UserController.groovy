@@ -84,13 +84,15 @@ class UserController {
       redirect action: edit, id: params.id
     }
 	else {
-		def fields = grailsApplication.config.nimble.fields.admin.user
-		user.properties[fields] = params
-	    if (!user.validate()) {
-	    	log.debug("Updated details for user [$user.id]$user.username are invalid")
-		    render view: 'edit', model: [user: user]
-	    } 
-		else {
+      def fields = grailsApplication.config.nimble.fields.admin.user
+      def profileFields = grailsApplication.config.nimble.fields.enduser.profile
+      user.properties[fields] = params
+      user.profile.properties[profileFields] = params
+      if (!user.validate()) {
+            log.debug("Updated details for user [$user.id]$user.username are invalid")
+            render view: 'edit', model: [user: user]
+      }
+      else {
 	      	def updatedUser = userService.updateUser(user)
 	        log.info("Successfully updated details for user [$user.id]$user.username")
 	        flash.type = "success"
@@ -110,10 +112,10 @@ class UserController {
   def save = {
     def user = InstanceGenerator.user()
     user.profile = InstanceGenerator.profile()
-	def userFields = grailsApplication.config.nimble.fields.enduser.user
-	def profileFields = grailsApplication.config.nimble.fields.enduser.profile
-	user.properties[userFields] = params	
-	user.profile.properties[profileFields] = params
+    def userFields = grailsApplication.config.nimble.fields.enduser.user
+    def profileFields = grailsApplication.config.nimble.fields.enduser.profile
+    user.properties[userFields] = params
+    user.profile.properties[profileFields] = params
     user.enabled = false
     user.external = false
 
