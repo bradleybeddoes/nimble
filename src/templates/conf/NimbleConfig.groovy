@@ -33,6 +33,9 @@ nimble {
         application = 'app'
         administration = 'admin'
 		login = 'app'
+    }
+
+    resources {
         jslibrary = grails.views.javascript.library
     }
 
@@ -106,6 +109,12 @@ environments {
                 // Include the noscript tags in the generated captcha
                 noscript = true
             }
+
+            resources {
+                jslibrary = grails.views.javascript.library
+                usejsdev = true
+                usecssdev = true
+            }
         }
     }
     production {
@@ -120,6 +129,12 @@ environments {
 
                 // Include the noscript tags in the generated captcha
                 noscript = true
+            }
+
+            resources {
+                jslibrary = grails.views.javascript.library
+                usejsdev = false
+                usecssdev = false
             }
         }
     }
