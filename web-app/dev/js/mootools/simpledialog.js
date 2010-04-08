@@ -1,4 +1,4 @@
-/*
+/*!
  * SimpleDialog Tabs 0.1
  *
  * Copyright (c) 2010 Chris Doty

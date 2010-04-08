@@ -30,7 +30,7 @@ nimble.wasConfirmed = function(title, msg, accept, cancel) {
     var content=
       '<p id="confirmationcontent">'+msg+'</p>'+
       '<div class="buttons">'+
-	  '	  <button type="submit" id="confirmaccept" class="modal_close button icon icon_accept" onClick="confirmAction()">'+accept+'</button>'+
+      '	  <a id="confirmaccept" class="modal_close button icon icon_accept" onClick="confirmAction(); $(\'confirmationdialog\').fire(\'dialog:close\');">Accept</a>'+
       '   <a id="confirmcancel" onClick="$(\'confirmationdialog\').fire(\'dialog:close\');" class="modal_close button icon icon_cancel">'+cancel+'</a>'+
       '</div>';
 

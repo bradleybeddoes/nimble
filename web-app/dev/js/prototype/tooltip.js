@@ -1,4 +1,4 @@
-/*
+/*!
  * Tooltips Class
  * A superclass to work with simple CSS selectors
  *

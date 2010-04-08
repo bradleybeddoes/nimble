@@ -1,4 +1,4 @@
-/*
+/*!
  * MooTools 0.1
  *
  * Copyright (c) 2010 licensors/jquery/AUTHORS.txt (http://jqueryui.com/about)

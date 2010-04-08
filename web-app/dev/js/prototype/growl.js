@@ -1,4 +1,4 @@
-/*
+/*!
  * growl-prototype
  *
  * Copyright (c) 2009 Prateek Saxena
