@@ -184,7 +184,7 @@
 			var o = notification.options;
 
 			var notification = $(
-				'<div class="jGrowl-notification ui-state-highlight ui-corner-all' +
+				'<div class="jGrowl-notification' +
 				((o.group != undefined && o.group != '') ? ' ' + o.group : '') + '">' +
 				'<div class="close">' + o.closeTemplate + '</div>' +
 				'<div class="header">' + o.header + '</div>' +
