@@ -2,9 +2,6 @@
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title><g:message code="nimble.view.user.changepassword.title" /></title>
   <nh:pstrength />
-  <script type="text/javascript">
-  	<njs:user user="${user}"/>
-  </script>
 </head>
 
 <body>

@@ -129,6 +129,3 @@ nimble.createTabs = function(id) {
         $('#'+id).tabs();
     });
 };
-
-
-

@@ -8,7 +8,7 @@ nimble.verifyUnique = function(elem, elemstatus, endpoint) {
      	method: "POST",
 		parameters: dataString,
 		onSuccess: function(xhr) {
-		  growl('flaggreen', xhr.responseText);
+		  nimble.growl('flaggreen', xhr.responseText);
 		  $(elem).setStyle({'background': '#fff', 'color':'#000'});
 		  $(elemstatus).addClassName('icon');
 		  $(elemstatus).addClassName('icon_flag_green');
@@ -16,7 +16,7 @@ nimble.verifyUnique = function(elem, elemstatus, endpoint) {
           $(elemstatus).show();  
 		},
 		onFailure: function (xhr) {
-		  growl('flagred', xhr.responseText);
+		  nimble.growl('flagred', xhr.responseText);
 		  $(elem).setStyle({'color': '#9c3333'});
 		  $(elemstatus).addClassName('icon');
 		  $(elemstatus).addClassName('icon_flag_red');

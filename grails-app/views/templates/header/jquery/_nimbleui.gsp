@@ -1,4 +1,4 @@
-<n:javascript src='mootools/nimbleui.js'/>
+<n:javascript src='jquery/nimbleui.js'/>
 <script type="text/javascript">
 window.nimble = window.nimble || {};
 var nimble = window.nimble;
