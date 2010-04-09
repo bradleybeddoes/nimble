@@ -8,10 +8,10 @@
 
 <script type="text/javascript">
   <g:if test="${secure}">
-  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdrecieverssl')}', {"ifUserConnected" : function() { enableFacebookContinue(); }} );
+  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdrecieverssl')}', {"ifUserConnected" : function() { nimble.enableFacebookContinue(); }} );
   </g:if>
   <g:else>
-  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdreciever')}', {"ifUserConnected" : function() { enableFacebookContinue(); }} );
+  FB.init('${apikey}', '${createLink(controller:'auth', action:'facebookxdreciever')}', {"ifUserConnected" : function() { nimble.enableFacebookContinue(); }} );
   </g:else>
 </script>
   

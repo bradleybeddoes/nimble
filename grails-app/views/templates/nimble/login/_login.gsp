@@ -164,7 +164,7 @@
 
       <div class="loginchoices">
         <g:if test="${local}">
-          <h2><a href="#" onClick="changeLogin('local');" class="icon icon_user_go"><g:message code="nimble.template.login.local.heading" /></a></h2>
+          <h2><a href="#" onClick="nimble.changeLogin('local');" class="icon icon_user_go"><g:message code="nimble.template.login.local.heading" /></a></h2>
         </g:if>
         <h2><g:message code="nimble.template.login.external.heading" /></h2>
         <table>
@@ -172,38 +172,38 @@
           <tr>
             <td>
               <g:if test="${openid}">
-                <a href="#" class="" onClick="changeLogin('openid');"><n:socialimg name="openid" size="64" alt="Login using OpenID"/><g:message code="nimble.label.openid" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('openid');"><n:socialimg name="openid" size="64" alt="Login using OpenID"/><g:message code="nimble.label.openid" /></a>
               </g:if>
             </td>
             <td>
               <g:if test="${facebook}">
-                <a href="#" class="" onClick="changeLogin('facebook');"><n:socialimg name="facebook" size="64" alt="Login using Facebook"/><g:message code="nimble.label.facebook" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('facebook');"><n:socialimg name="facebook" size="64" alt="Login using Facebook"/><g:message code="nimble.label.facebook" /></a>
               </g:if>
             </td>
           </tr>
           <g:if test="${openid}">
             <tr>
               <td>
-                <a class="" onClick="changeLogin('google');"><n:socialimg name="google" size="64" alt="Login using Google"/><g:message code="nimble.label.google" /></a>
+                <a class="" onClick="nimble.changeLogin('google');"><n:socialimg name="google" size="64" alt="Login using Google"/><g:message code="nimble.label.google" /></a>
               </td>
               <td>
-                <a class="" onClick="changeLogin('yahoo');"><n:socialimg name="yahoo" size="64" alt="Login using Yahoo!"/><g:message code="nimble.label.yahoo" /></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="#" class="" onClick="changeLogin('blogger');"><n:socialimg name="blogger" size="64" alt="Login using Blogger"/><g:message code="nimble.label.blogger" /></a>
-              </td>
-              <td>
-                <a href="#" class="" onClick="changeLogin('wordpress');"><n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/><g:message code="nimble.label.wordpress" /></a>
+                <a class="" onClick="nimble.changeLogin('yahoo');"><n:socialimg name="yahoo" size="64" alt="Login using Yahoo!"/><g:message code="nimble.label.yahoo" /></a>
               </td>
             </tr>
             <tr>
               <td>
-                <a href="#" class="" onClick="changeLogin('technorati');"><n:socialimg name="technorati" size="64" alt="Login using Technorati"/><g:message code="nimble.label.technorati" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('blogger');"><n:socialimg name="blogger" size="64" alt="Login using Blogger"/><g:message code="nimble.label.blogger" /></a>
               </td>
               <td>
-                <a href="#" class="" onClick="changeLogin('flickr');"><n:socialimg name="flickr" size="64" alt="Login using Flickr"/><g:message code="nimble.label.flickr" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('wordpress');"><n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/><g:message code="nimble.label.wordpress" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="" onClick="nimble.changeLogin('technorati');"><n:socialimg name="technorati" size="64" alt="Login using Technorati"/><g:message code="nimble.label.technorati" /></a>
+              </td>
+              <td>
+                <a href="#" class="" onClick="nimble.changeLogin('flickr');"><n:socialimg name="flickr" size="64" alt="Login using Flickr"/><g:message code="nimble.label.flickr" /></a>
               </td>
             </tr>
           </g:if>
