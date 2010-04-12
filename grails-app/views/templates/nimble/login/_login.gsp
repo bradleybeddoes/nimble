@@ -36,7 +36,7 @@
               </fieldset>
 
               <fieldset class="loginbuttons">
-                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
+                <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
 
             </g:form>
@@ -113,7 +113,7 @@
               <label for="openiduri" class="append-1"><g:message code="nimble.template.login.blogger.identifier" /></label>
               <input id="openiduri" type="text" name="openiduri" class="easyinput"/>
               <fieldset>
-                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
+                <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
             </g:form>
           </div>
@@ -128,7 +128,7 @@
               <label for="openiduri" class="append-1"><g:message code="nimble.template.login.wordpress.identifier" /></label>
               <input id="openiduri" type="text" name="openiduri" class="easyinput"/>
               <fieldset>
-                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
+                <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
             </g:form>
           </div>
@@ -143,7 +143,7 @@
               <label for="openiduri" class="append-1"><g:message code="nimble.template.login.technorati.identifier" /></label>
               <input id="openiduri" type="text" name="technoratiusername" class="easyinput"/>
               <fieldset>
-                <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
+                <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
               </fieldset>
             </g:form>
           </div>
@@ -241,7 +241,7 @@
           </fieldset>
 
           <fieldset class="loginbuttons">
-            <button type="submit" class="button darkbutton icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
+            <button type="submit" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></button>
           </fieldset>
 
         </g:form>
