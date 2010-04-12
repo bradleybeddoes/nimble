@@ -105,8 +105,8 @@ class AccountController {
         user.profile = InstanceGenerator.profile()
         def userFields = grailsApplication.config.nimble.fields.enduser.user
         def profileFields = grailsApplication.config.nimble.fields.enduser.profile
-		user.properties[userFields] = params
-		user.profile.properties[profileFields] = params
+        user.properties[userFields] = params
+        user.profile.properties[profileFields] = params
 
         log.debug("Starting new user creation")
         [user: user]
