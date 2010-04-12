@@ -103,6 +103,8 @@ class AccountController {
 
         def user = InstanceGenerator.user()
         user.profile = InstanceGenerator.profile()
+		user.properties = params
+		user.profile.properties = params
 
         log.debug("Starting new user creation")
         [user: user]
@@ -117,9 +119,11 @@ class AccountController {
         
         def user = InstanceGenerator.user()
         user.profile = InstanceGenerator.profile()
+        def userFields = grailsApplication.config.nimble.fields.enduser.user
+        def profileFields = grailsApplication.config.nimble.fields.enduser.profile
+        user.properties[userFields] = params
+        user.profile.properties[profileFields] = params
         user.profile.owner = user
-        user.properties['username', 'pass', 'passConfirm'] = params
-        user.profile.properties['fullName', 'email'] = params
         user.enabled = grailsApplication.config.nimble.localusers.provision.active
         user.external = false
 
@@ -137,6 +141,10 @@ class AccountController {
         if (user.profile.email == null || user.profile.email.length() == 0)
         user.profile.email = 'invalid'
 
+		// Allow host application to do some validation, etc.
+		if(userService.events['beforeregister']) {
+			userService.events['beforeregister'](user)
+		}
 
         if (user.hasErrors()) {
             log.debug("Submitted values for new user are invalid")
@@ -169,6 +177,10 @@ class AccountController {
             render(view: 'createuser', model: [user: user])
             return
         }
+
+		if(userService.events['afterregister']) {
+			userService.events['afterregister'](user)
+		}
 
         log.info("Sending account registration confirmation email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.registration.subject")
         if(grailsApplication.config.nimble.messaging.enabled) {
@@ -303,7 +315,7 @@ class AccountController {
                 userService.setRandomPassword(user)
 
                 log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.subject")
-                if(grailsApplication.config.nimble.messaging.enabled) {
+                if(grailsApplication.config.nimble.messaging.enabled && !grailsApplication.config.nimble.provision.active) {
 					sendMail {
 	                    to user.profile.email
 						from grailsApplication.config.nimble.messaging.mail.from
