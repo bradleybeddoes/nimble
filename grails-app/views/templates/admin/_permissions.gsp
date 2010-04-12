@@ -28,7 +28,7 @@
       </tr>
       </tbody>
     </table>
-    <button onClick="createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add"><g:message code="nimble.link.createpermission" /></button>
+    <button onClick="nimble.createPermission(${parent.id.encodeAsHTML()});" class="button icon icon_add"><g:message code="nimble.link.createpermission" /></button>
     <button id="closepermissionsaddbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
   </div>
 </div>

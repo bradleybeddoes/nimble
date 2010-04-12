@@ -20,7 +20,7 @@
         <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
 
         <g:if test="${currentAdmin != user}">
-          <a onClick="deleteAdministrator('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.revoke" /></a>
+          <a onClick="nimble.deleteAdministrator('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.revoke" /></a>
         </g:if>
 
       </td>

@@ -19,7 +19,7 @@
         <td>${user?.profile?.fullName.encodeAsHTML()}</td>
         <td>
           <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
-          <a onClick="grantAdministrator('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.grant" /></a>
+          <a onClick="nimble.grantAdministrator('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_add"><g:message code="nimble.link.grant" /></a>
         </td>
       </tr>
     </g:each>

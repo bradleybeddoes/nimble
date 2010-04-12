@@ -16,7 +16,7 @@
         <td>
           <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="button icon icon_cog_go"><g:message code="nimble.link.view" /></g:link>
           <g:if test="${role.protect == false}">
-            <button onClick="removeRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></button>
+            <button onClick="nimble.removeRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></button>
           </g:if>
           <g:else>&nbsp;</g:else>
         </td>

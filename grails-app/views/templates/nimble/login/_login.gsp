@@ -1,25 +1,8 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
   <title><g:message code="nimble.template.login.title" /></title>
-
   <nh:nimbleui />
   <nh:login />
-  <script type="text/javascript">
-    $(function() {
-      $(".loginmethod").hide();
-      $("#loginfacebookcontinue").hide();
-
-      var active = jQuery.url.param("active")
-      if (active)
-        changeLogin(active);
-      else
-        changeLogin('local');
-
-      $("#loginlocal").show();
-      $(".flash").show();
-	  $("#username").focus();
-    });
-  </script>
 </head>
 
 <body>
@@ -61,7 +44,7 @@
             <div class="accountoptions">
               <g:link controller="account" action="forgottenpassword" class="textlink icon icon_flag_purple"><g:message code="nimble.link.forgottenpassword" /></g:link>
               <g:if test="${registration}">
-                <a href="#" id="accountcreationpolicybtn" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></a>
+                <g:link controller="account" action="createuser" class="textlink icon icon_user_go"><g:message code="nimble.link.newuser" /></g:link>
               </g:if>
             </div>
           </div>
@@ -181,7 +164,7 @@
 
       <div class="loginchoices">
         <g:if test="${local}">
-          <h2><a href="#" onClick="changeLogin('local');" class="icon icon_user_go"><g:message code="nimble.template.login.local.heading" /></a></h2>
+          <h2><a href="#" onClick="nimble.changeLogin('local');" class="icon icon_user_go"><g:message code="nimble.template.login.local.heading" /></a></h2>
         </g:if>
         <h2><g:message code="nimble.template.login.external.heading" /></h2>
         <table>
@@ -189,38 +172,38 @@
           <tr>
             <td>
               <g:if test="${openid}">
-                <a href="#" class="" onClick="changeLogin('openid');"><n:socialimg name="openid" size="64" alt="Login using OpenID"/><g:message code="nimble.label.openid" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('openid');"><n:socialimg name="openid" size="64" alt="Login using OpenID"/><g:message code="nimble.label.openid" /></a>
               </g:if>
             </td>
             <td>
               <g:if test="${facebook}">
-                <a href="#" class="" onClick="changeLogin('facebook');"><n:socialimg name="facebook" size="64" alt="Login using Facebook"/><g:message code="nimble.label.facebook" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('facebook');"><n:socialimg name="facebook" size="64" alt="Login using Facebook"/><g:message code="nimble.label.facebook" /></a>
               </g:if>
             </td>
           </tr>
           <g:if test="${openid}">
             <tr>
               <td>
-                <a class="" onClick="changeLogin('google');"><n:socialimg name="google" size="64" alt="Login using Google"/><g:message code="nimble.label.google" /></a>
+                <a class="" onClick="nimble.changeLogin('google');"><n:socialimg name="google" size="64" alt="Login using Google"/><g:message code="nimble.label.google" /></a>
               </td>
               <td>
-                <a class="" onClick="changeLogin('yahoo');"><n:socialimg name="yahoo" size="64" alt="Login using Yahoo!"/><g:message code="nimble.label.yahoo" /></a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="#" class="" onClick="changeLogin('blogger');"><n:socialimg name="blogger" size="64" alt="Login using Blogger"/><g:message code="nimble.label.blogger" /></a>
-              </td>
-              <td>
-                <a href="#" class="" onClick="changeLogin('wordpress');"><n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/><g:message code="nimble.label.wordpress" /></a>
+                <a class="" onClick="nimble.changeLogin('yahoo');"><n:socialimg name="yahoo" size="64" alt="Login using Yahoo!"/><g:message code="nimble.label.yahoo" /></a>
               </td>
             </tr>
             <tr>
               <td>
-                <a href="#" class="" onClick="changeLogin('technorati');"><n:socialimg name="technorati" size="64" alt="Login using Technorati"/><g:message code="nimble.label.technorati" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('blogger');"><n:socialimg name="blogger" size="64" alt="Login using Blogger"/><g:message code="nimble.label.blogger" /></a>
               </td>
               <td>
-                <a href="#" class="" onClick="changeLogin('flickr');"><n:socialimg name="flickr" size="64" alt="Login using Flickr"/><g:message code="nimble.label.flickr" /></a>
+                <a href="#" class="" onClick="nimble.changeLogin('wordpress');"><n:socialimg name="wordpress" size="64" alt="Login using Wordpress"/><g:message code="nimble.label.wordpress" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="" onClick="nimble.changeLogin('technorati');"><n:socialimg name="technorati" size="64" alt="Login using Technorati"/><g:message code="nimble.label.technorati" /></a>
+              </td>
+              <td>
+                <a href="#" class="" onClick="nimble.changeLogin('flickr');"><n:socialimg name="flickr" size="64" alt="Login using Flickr"/><g:message code="nimble.label.flickr" /></a>
               </td>
             </tr>
           </g:if>
@@ -276,7 +259,6 @@
 
 </g:else>
 
-<n:accountcreationpolicy/>
 <n:facebookConnect/>
 
 </body>
