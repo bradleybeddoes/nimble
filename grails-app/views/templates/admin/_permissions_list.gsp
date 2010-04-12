@@ -20,7 +20,7 @@
         </td>
         <td>
           <g:if test="${!perm.managed}">
-			<a href="#" onClick="removePermission('${parent.id.encodeAsHTML()}', '${g.fieldValue(bean:perm, field:'id')}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
+			<a href="#" onClick="nimble.removePermission('${parent.id.encodeAsHTML()}', '${g.fieldValue(bean:perm, field:'id')}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
 		  </g:if>
           <g:else>&nbsp;</g:else>
         </td>

@@ -37,7 +37,7 @@
           </ul>
         </li>
         <li>A wonderful set of professionally designed UI's to manage all Nimble features</li>
-        <li>A range of Javascript components based on <a href="http://jquery.com">JQuery</a></li>
+        <li>A range of Javascript components based on <a href="http://jquery.com">JQuery</a>, <a href="http://mootools.net">MooTools</a>, or <a href="http://www.prototypejs.org">prototype.js</a></li>
         <li>An extensive set of CSS classes for use with Nimble powered applications including over 1000 icons and integration with Sass</li>
       </ul>
       <p>

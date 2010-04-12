@@ -73,6 +73,7 @@ target ( default : 'Sets up a new project with a common Nimble base environment 
   // i18n
   copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
   copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble_de.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
+  copy(file:"${nimblePluginDir}/grails-app/i18n/messages-nimble_pt.properties", todir: "${basedir}/grails-app/i18n", overwrite: false)
 
 }
 

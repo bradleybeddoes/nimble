@@ -6,16 +6,13 @@
 	<njs:permission parent="${user}"/>
 	<njs:role parent="${user}"/>
 	<njs:group parent="${user}"/>
-	
-	$(function() {
-		$("#tabs").tabs();
-	});
+	nimble.createTabs('tabs');
   </script>
 </head>
 
 <body>
 
-  <h2><g:message code="nimble.view.user.show.heading" args="[user.username?.encodeAsHTML()]" /></h2></span>
+  <span><h2><g:message code="nimble.view.user.show.heading" args="[user.username?.encodeAsHTML()]" /></h2></span>
 
   <div class="details">
     <h3><g:message code="nimble.view.user.show.details.heading" /></h3>

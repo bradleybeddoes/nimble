@@ -4,9 +4,7 @@
   <script type="text/javascript">
 	<njs:permission parent="${role}"/>
 	<njs:member parent="${role}"/>
-	$(function() {
-		$("#tabs").tabs();
-	});
+	nimble.createTabs('tabs');
   </script>
 </head>
 <body>
@@ -63,7 +61,5 @@
   <g:form action="delete" name="deleterole">
   	<g:hiddenField name="id" value="${role.id.encodeAsHTML()}"/>
   </g:form>
-
-	<n:confirm/>
 
 </body>
