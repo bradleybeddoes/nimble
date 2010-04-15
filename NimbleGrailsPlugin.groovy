@@ -45,7 +45,7 @@ class NimbleGrailsPlugin {
                       'grails-app/conf/NimbleBootStrap.groovy',
     ]
 
-    def author = "Bradley Beddoes and  open source contributors"
+    def author = "Bradley Beddoes, Chris Doty, Mike Wille and open source contributors"
     def authorEmail = "nimbleproject@googlegroups.com"
     def title = "Nimble"
     def description = '''\\
@@ -55,7 +55,7 @@ class NimbleGrailsPlugin {
     // URL to the plugin's documentation
     def documentation = "http://sites.google.com/site/nimbledoc/"
 
-    def observe = ['controllers']
+    def observe = ['controllers', 'services', 'filters']
 
     def doWithSpring = {
         loadNimbleConfig(application)
@@ -119,7 +119,9 @@ class NimbleGrailsPlugin {
     }
 
     def onChange = { event ->
-        doWithDynamicMethods()
+		if(event.source) {
+        	injectAuthn(event.source, event.application)
+		}
     }
 
     def onConfigChange = { event ->
