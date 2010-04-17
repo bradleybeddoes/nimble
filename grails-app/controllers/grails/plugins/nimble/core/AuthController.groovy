@@ -36,7 +36,7 @@ import grails.plugins.nimble.auth.AccountCreatedException
 class AuthController {
 
     private static String TARGET = 'grails.plugins.nimble.controller.AuthController.TARGET'
-    
+
     def shiroSecurityManager
     def facebookService
     def openIDService
@@ -88,7 +88,7 @@ class AuthController {
         catch (IncorrectCredentialsException e) {
             log.info "Credentials failure for user '${params.username}'."
             log.debug(e)
-      
+
             flash.type = 'error'
             flash.message = message(code: "nimble.login.failed.credentials")
         }
@@ -324,7 +324,7 @@ class AuthController {
             response.sendError(403)
             return
         }
-    
+
         def discovered = session.getAttribute("discovered")
         ParameterList openIDResponse = new ParameterList(request.getParameterMap());
 
@@ -356,7 +356,7 @@ class AuthController {
         }
         else {
             log.debug ("OpenID authentication failure")
-      
+
             flash.type = 'error'
             flash.message = message(code: "nimble.login.openid.${service}.internal.error.res")
             redirect(action: 'login', params: [active: service])

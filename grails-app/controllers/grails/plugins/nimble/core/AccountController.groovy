@@ -317,7 +317,7 @@ class AccountController {
                 userService.setRandomPassword(user)
 
                 log.info("Sending account password reset email to $user.profile.email with subject $grailsApplication.config.nimble.messaging.passwordreset.subject")
-                if(grailsApplication.config.nimble.messaging.enabled) {
+                if(grailsApplication.config.nimble.messaging.enabled && !grailsApplication.config.nimble.provision.active) {
 					sendMail {
 	                    to user.profile.email
 						from grailsApplication.config.nimble.messaging.mail.from

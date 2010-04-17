@@ -93,7 +93,6 @@ class UserController {
             render view: 'edit', model: [user: user]
       }
       else {
-
 	      	def updatedUser = userService.updateUser(user)
 	        log.info("Successfully updated details for user [$user.id]$user.username")
 	        flash.type = "success"

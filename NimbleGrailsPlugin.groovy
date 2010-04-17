@@ -128,7 +128,10 @@ class NimbleGrailsPlugin {
         
     }
 
-    private void injectAuthn(def clazz, def application) {
+    private void injectAuthn(def clazz, GrailsApplication grailsApplication) {
+		def config = grailsApplication.config
+        GroovyClassLoader classLoader = new GroovyClassLoader(getClass().classLoader)
+
 		clazz.metaClass.getAuthenticatedSubject = {
         	def subject = SecurityUtils.getSubject()
         }
@@ -136,8 +139,8 @@ class NimbleGrailsPlugin {
         	def principal = SecurityUtils.getSubject()?.getPrincipal()		
 			def authUser
 			
-            if(application.config?.nimble?.implementation?.user)
-    			authUser = grailsApplication.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
+            if(config.nimble?.implementation?.user)
+    			authUser = classLoader.loadClass(config.nimble.implementation.user).get(principal)
     		else
     			authUser = UserBase.get(principal)
 
