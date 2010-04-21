@@ -1,5 +1,3 @@
-import org.apache.tools.ant.taskdefs.Ant
-
 /*
 *  Nimble, an extensive application base for Grails
 *  Copyright (C) 2010 Chris Doty
@@ -17,7 +15,40 @@ import org.apache.tools.ant.taskdefs.Ant
 *  limitations under the License.
 */
 
+import org.apache.tools.ant.taskdefs.Ant
+import org.apache.catalina.loader.WebappLoader
+import grails.util.GrailsUtil
+
 includeTargets << grailsScript("_GrailsArgParsing")
+
+createVirtualDirectory = { tomcat,name,path ->
+  // nimbletest/plugins/nimble-0.4-SNAPSHOT/dev/js/jquery/
+  def s=File.separator
+  def plugin = new NimbleGrailsPlugin()
+  buildroot= "/nimble/WEB-INF/classes"
+  webroot  = new File(nimblePluginDir.getCanonicalPath() + s + path).getCanonicalPath()
+  name = serverContextPath + "/plugins/" + plugin.title.toLowerCase() + "-" + plugin.version + "/" + name
+  println "Creating virtual directory of " + name + " pointed to " + webroot
+  context = tomcat.addWebapp(name, webroot);
+  context.reloadable = true
+  WebappLoader loader = new WebappLoader(tomcat.class.classLoader)
+  loader.addRepository(new File(buildroot).toURI().toURL().toString());
+  context.loader = loader
+  loader.container = context
+}
+
+eventConfigureTomcat = {tomcat ->
+  if(GrailsUtil.environment=="development")
+    createVirtualDirectory(tomcat,"dev",'./src')
+}
+
+copyFile = { from,to ->
+  def src=new File(from)
+  def dest=new File(to)
+  if(!dest.exists() || src.lastModified()>dest.lastModified()) {
+    ant.copy(file:"${src.getCanonicalFile()}", tofile:"${dest.getCanonicalFile()}", overwrite: true, preservelastmodified:true)
+  }
+}
 
 eventCleanStart = {
   if(ant.antProject.properties."base.name"=='nimble') {
@@ -38,8 +69,8 @@ compressFiles = { fileType ->
   def s=File.separatorChar
   def nimblePath = (new File(nimblePluginDir.toString())).getCanonicalPath()
 
-  def from = nimblePath+s+"web-app"+ s + "dev" + s + fileType + s
-  def to = nimblePath+s+"web-app"+ s + fileType + s
+  def from = nimblePath + s + "src" + s + fileType + s
+  def to = nimblePath + s +"web-app" + s + fileType + s
 
   // make sure base destination path exists
   ant.mkdir( dir:"${to}" )
@@ -80,9 +111,8 @@ compressFiles = { fileType ->
           proc.waitFor()
 
         } else {
-
           // copy the file
-          ant.copy(file:"${fromFile}", tofile:"${tofile}", overwrite: true)
+          copyFile(fromFile,tofile)
         }
       }
     } else {
