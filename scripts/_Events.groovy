@@ -15,26 +15,29 @@
 *  limitations under the License.
 */
 
-import org.apache.tools.ant.taskdefs.Ant
-import org.apache.catalina.loader.WebappLoader
 import grails.util.GrailsUtil
+import org.apache.catalina.loader.WebappLoader
 
 includeTargets << grailsScript("_GrailsArgParsing")
 
 createVirtualDirectory = { tomcat,name,path ->
-  // nimbletest/plugins/nimble-0.4-SNAPSHOT/dev/js/jquery/
-  def s=File.separator
-  def plugin = new NimbleGrailsPlugin()
-  buildroot= "/nimble/WEB-INF/classes"
-  webroot  = new File(nimblePluginDir.getCanonicalPath() + s + path).getCanonicalPath()
-  name = serverContextPath + "/plugins/" + plugin.title.toLowerCase() + "-" + plugin.version + "/" + name
-  println "Creating virtual directory of " + name + " pointed to " + webroot
-  context = tomcat.addWebapp(name, webroot);
-  context.reloadable = true
-  WebappLoader loader = new WebappLoader(tomcat.class.classLoader)
-  loader.addRepository(new File(buildroot).toURI().toURL().toString());
-  context.loader = loader
-  loader.container = context
+  try {
+    def plugin = new NimbleGrailsPlugin()
+    def s=File.separator
+    buildroot= "/nimble/WEB-INF/classes"
+    webroot  = new File(nimblePluginDir.getCanonicalPath() + s + path).getCanonicalPath()
+    name = serverContextPath + "/plugins/" + plugin.title.toLowerCase() + "-" + plugin.version + "/" + name
+    println "Creating virtual directory of " + name + " pointed to " + webroot
+    context = tomcat.addWebapp(name, webroot);
+    context.reloadable = true
+    WebappLoader loader = new WebappLoader(tomcat.class.classLoader)
+    loader.addRepository(new File(buildroot).toURI().toURL().toString());
+    context.loader = loader
+    loader.container = context
+  } catch( Exception e ) {
+    println 'failed to create virtual directory ' + name
+    println e.message
+  }
 }
 
 eventConfigureTomcat = {tomcat ->
@@ -43,8 +46,8 @@ eventConfigureTomcat = {tomcat ->
 }
 
 copyFile = { from,to ->
-  def src=new File(from)
-  def dest=new File(to)
+  def src=new File("${from}")
+  def dest=new File("${to}")
   if(!dest.exists() || src.lastModified()>dest.lastModified()) {
     ant.copy(file:"${src.getCanonicalFile()}", tofile:"${dest.getCanonicalFile()}", overwrite: true, preservelastmodified:true)
   }
@@ -52,14 +55,14 @@ copyFile = { from,to ->
 
 eventCleanStart = {
   if(ant.antProject.properties."base.name"=='nimble') {
-    def s=File.separatorChar
+    def s=File.separator
 
     // clear the destination directory
-    def js = "${nimblePluginDir}"+s+"web-app"+s+"js"+s
+    def js = "${nimblePluginDir}${s}web-app${s}js${s}"
     ant.delete(dir:"${js}")
-    def css = "${nimblePluginDir}"+s+"web-app"+s+"css"+s
+    def css = "${nimblePluginDir}${s}web-app${s}css${s}"
     ant.delete(dir:"${css}")
-    def images = "${nimblePluginDir}"+s+"web-app"+s+"images"+s
+    def images = "${nimblePluginDir}${s}web-app${s}images${s}"
     ant.delete(dir:"${images}")
   }
 }
@@ -67,7 +70,7 @@ eventCleanStart = {
 compressFiles = { fileType ->
   // determine source and destination base paths
   def s=File.separatorChar
-  def nimblePath = (new File(nimblePluginDir.toString())).getCanonicalPath()
+  def nimblePath = (new File("${nimblePluginDir.toString()}")).getCanonicalPath()
 
   def from = nimblePath + s + "src" + s + fileType + s
   def to = nimblePath + s +"web-app" + s + fileType + s
@@ -79,19 +82,19 @@ compressFiles = { fileType ->
   def f = new File( to )
   f.eachFileRecurse() { file->
     if(!file.isDirectory()) {
-      def srcfile = (from+file.getAbsolutePath()).replace(to,'')
+      def srcfile = (from+file.getCanonicalPath()).replace(to,'')
       def file2 = new File(srcfile)
 
       // does the file exist
       if(!file2.exists()) {
-        ant.delete(file:"${file.getAbsolutePath()}")
+        ant.delete(file:"${file.getCanonicalPath()}")
       }
     }
   }
 
   f = new File( from )
   f.eachFileRecurse() { file->
-    def fromFile = file.getAbsolutePath()
+    def fromFile = file.getCanonicalPath()
     def tofile = to+fromFile.replace(from,'')
 
     // if it is a file
@@ -110,6 +113,8 @@ compressFiles = { fileType ->
           def proc = command.execute()                 // Call *execute* on the string
           proc.waitFor()
 
+          // make the last modified of the compressed version same as source
+          new File(tofile).setLastModified((new File("${fromFile}").lastModified()))
         } else {
           // copy the file
           copyFile(fromFile,tofile)
@@ -122,9 +127,64 @@ compressFiles = { fileType ->
   }
 }
 
+checkForChangeInSASS = { from,to ->
+  def s = File.separator
+  from = new File("${nimblePluginDir}${s}${from}").getCanonicalPath()
+  to = new File("${nimblePluginDir}${s}${to}").getCanonicalPath()
+
+  def hasChanged = false
+  f = new File( from )
+
+  // check each valid .SASS file to see if it has changed
+  f.eachFileRecurse() { file->
+    def fromFile = file.getCanonicalPath()
+    def toFile = to+s+file.getName().replace(".sass",".css ").trim()
+
+    // if it is a file
+    if(!file.isDirectory()) {
+      def file2 = new File(toFile)
+
+      // if target does not exist or is older then copy/compress
+      if((!file2.exists() || file2.lastModified()<file.lastModified()) && file2.getName().indexOf('_')!=0 && fromFile.indexOf('.sass-cache')<0) {
+        hasChanged = true
+      }
+    }
+  }
+
+  return hasChanged
+}
+
+compileSASS = {
+  // determine if compass is installed
+  def gemPath = userHome.getCanonicalPath() + /\.gem\jruby\1.8\gems/
+  def foundCompass = false
+  new File(gemPath).eachDir { dir -> if(dir.getName().startsWith('chriseppstein-compass')) foundCompass = true }
+
+  // compass installed so do checks and run it if needed
+  if(foundCompass) {
+    def from = "src/sass"
+    def to = "src/css"
+
+    // check source and destination paths for differences
+    if(checkForChangeInSASS(from,to)) {      
+      def s = File.separator
+      gemPath = userHome.getCanonicalPath() + /\.gem/
+
+      // difference found so execute compass to compile SASS
+      compass = gemPath+s+"bin"+s+"compass"
+      command = "java -jar ${nimblePluginDir}${s}lib${s}jruby-complete-1.5.0.RC1.jar -S ${compass} --update --sass-dir ${from} --css-dir ${to}"
+      println command
+      proc = command.execute()                 // Call *execute* on the string
+      proc.consumeProcessOutput(System.out, System.err)
+      proc.waitFor()
+    }
+  }
+}
+
 eventCompileStart = {
+  compileSASS()
   compressFiles('js')
   compressFiles('css')
-  compressFiles('images')  // does not compress images, just copies, used to make sure resources are treated the same 
+  compressFiles('images')  // does not compress images, just copies, used to make sure resources are treated the same  
 }
 

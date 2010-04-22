@@ -424,7 +424,7 @@ fieldset { padding: 1.4em; margin: 0 0 1.5em 0; }
 
 legend { font-weight: bold; font-size: 1.2em; }
 
-input.text, input.title, input.easyinput, input[type=text] { margin: 0.5em 0; background-color: #fff; padding: 5px; }
+input.text, input.title, input[type=text] { margin: 0.5em 0; background-color: #fff; padding: 5px; }
 input.title { font-size: 1.5em; }
 input[type=checkbox], input.checkbox, input[type=radio], input.radio { position: relative; top: 0.25em; }
 
