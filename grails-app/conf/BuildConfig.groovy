@@ -17,6 +17,7 @@ grails.project.dependency.resolution = {
 
 nimble {
   resources {
+    nomodcheck = false
     nocompilesass = false
     nocompress = false
     noclean = false
