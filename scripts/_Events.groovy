@@ -18,7 +18,6 @@
 import grails.util.GrailsUtil
 import org.apache.catalina.loader.WebappLoader
 import org.codehaus.groovy.grails.plugins.GrailsPluginUtils
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 includeTargets << grailsScript("_GrailsArgParsing")
 
@@ -175,7 +174,7 @@ compileSASS = {
     def to = "src/css"
 
     // check source and destination paths for differences
-    if(checkForChangeInSASS(from,to)) {      
+    if(checkForChangeInSASS(from,to)) {
       def s = File.separator
       gemPath = userHome.getCanonicalPath() + /\.gem/
 
@@ -192,15 +191,18 @@ compileSASS = {
 
 eventCompileStart = {
   def compile = !buildConfig.nimble.resources.nocompilesass
-  if(compile)
+  if(compile) {
+    println 'nimble SASS compilation check'
     compileSASS()
+  }
 
-  if(!compile) println 'no sass'
-
-  def compress = !buildConfig.nimble.resources.nocompress
-  if(!compress) println 'no compress'
-  compressFiles('js',compress)
-  compressFiles('css',compress)
-  compressFiles('images',compress)  // does not compress images, just copies, used to make sure resources are treated the same
+  def modcheck = !buildConfig.nimble.resources.nomodcheck
+  if(modcheck) {
+    println 'nimble resource modification check'
+    def compress = !buildConfig.nimble.resources.nocompress
+    compressFiles('js',compress)
+    compressFiles('css',compress)
+    compressFiles('images',compress)  // does not compress images, just copies, used to make sure resources are treated the same
+  }
 }
 
