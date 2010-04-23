@@ -23,3 +23,11 @@ grails.project.dependency.resolution = {
     }
 
 }
+
+nimble {
+  resources {
+    nocompilesass = false
+    nocompress = false
+    noclean = false
+  }
+}

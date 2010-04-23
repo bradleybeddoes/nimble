@@ -17,23 +17,32 @@
 
 import grails.util.GrailsUtil
 import org.apache.catalina.loader.WebappLoader
+import org.codehaus.groovy.grails.plugins.GrailsPluginUtils
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 includeTargets << grailsScript("_GrailsArgParsing")
 
 createVirtualDirectory = { tomcat,name,path ->
   try {
-    def plugin = new NimbleGrailsPlugin()
-    def s=File.separator
-    buildroot= "/nimble/WEB-INF/classes"
-    webroot  = new File(nimblePluginDir.getCanonicalPath() + s + path).getCanonicalPath()
-    name = serverContextPath + "/plugins/" + plugin.title.toLowerCase() + "-" + plugin.version + "/" + name
-    println "Creating virtual directory of " + name + " pointed to " + webroot
-    context = tomcat.addWebapp(name, webroot);
-    context.reloadable = true
-    WebappLoader loader = new WebappLoader(tomcat.class.classLoader)
-    loader.addRepository(new File(buildroot).toURI().toURL().toString());
-    context.loader = loader
-    loader.container = context
+    def aliasName = null
+    new GrailsPluginUtils().getPluginInfos().each { it ->
+      if(it.getName()=='nimble') {
+        aliasName = serverContextPath + "/plugins/" + it.getName() + "-" + it.getVersion() + "/" + name
+      }
+    }
+
+    if(aliasName) {
+      def s=File.separator
+      buildroot= "/nimble/WEB-INF/classes"
+      webroot  = new File(nimblePluginDir.getCanonicalPath() + s + path).getCanonicalPath()
+      println "Creating virtual directory of " + aliasName + " pointed to " + webroot
+      context = tomcat.addWebapp(aliasName, webroot);
+      context.reloadable = true
+      WebappLoader loader = new WebappLoader(tomcat.class.classLoader)
+      loader.addRepository(new File(buildroot).toURI().toURL().toString());
+      context.loader = loader
+      loader.container = context
+    }
   } catch( Exception e ) {
     println 'failed to create virtual directory ' + name
     println e.message
@@ -54,7 +63,7 @@ copyFile = { from,to ->
 }
 
 eventCleanStart = {
-  if(ant.antProject.properties."base.name"=='nimble') {
+  if(ant.antProject.properties."base.name"=='nimble' && !buildConfig.nimble.resources.noclean) {
     def s=File.separator
 
     // clear the destination directory
@@ -67,7 +76,7 @@ eventCleanStart = {
   }
 }
 
-compressFiles = { fileType ->
+compressFiles = { fileType,compress ->
   // determine source and destination base paths
   def s=File.separatorChar
   def nimblePath = (new File("${nimblePluginDir.toString()}")).getCanonicalPath()
@@ -105,7 +114,7 @@ compressFiles = { fileType ->
       if((!file2.exists() || file2.lastModified()<file.lastModified()) && fromFile.indexOf('.')>0) {
 
         // if it is not already compressed
-        if(tofile.indexOf('.min.')<0 && fromFile.endsWith('.'+fileType) ) {
+        if(tofile.indexOf('.min.')<0 && fromFile.endsWith('.'+fileType) && compress ) {
 
           // we need to compress so fire off a command to execute the yuicompressor
           println ' [compress] compressing ' +fromFile+' to '+tofile
@@ -182,9 +191,16 @@ compileSASS = {
 }
 
 eventCompileStart = {
-  compileSASS()
-  compressFiles('js')
-  compressFiles('css')
-  compressFiles('images')  // does not compress images, just copies, used to make sure resources are treated the same  
+  def compile = !buildConfig.nimble.resources.nocompilesass
+  if(compile)
+    compileSASS()
+
+  if(!compile) println 'no sass'
+
+  def compress = !buildConfig.nimble.resources.nocompress
+  if(!compress) println 'no compress'
+  compressFiles('js',compress)
+  compressFiles('css',compress)
+  compressFiles('images',compress)  // does not compress images, just copies, used to make sure resources are treated the same
 }
 
