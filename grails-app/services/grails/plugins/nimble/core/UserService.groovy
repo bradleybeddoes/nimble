@@ -36,6 +36,12 @@ class UserService {
     def grailsApplication
     def permissionService
 
+	/**
+	 * login - Called when a user logs in.
+	 * logout - Called when  a user logs out.
+	 * beforeregister - Called immediately before a new user is created.  Can be used for validation. (i.e., user.errors.rejectValue('customfield', 'user.customfield.invalid') )
+	 * afterregister - Called immediately after a new user is created. 
+	 */
     def events = [:]
 
     /**
@@ -329,8 +335,33 @@ class UserService {
         log.debug("Creating new record for user [$user.id]$user.username login")
         def record = new LoginRecord()
 
-        record.remoteAddr = request.getRemoteAddr()
-        record.remoteHost = request.getRemoteHost()
+	/**
+	* Check user's IP in order of trust-worthy-ness
+	* ClientIP -> X-Forwarded-For -> RemoteAddr
+	**/
+	def clientIpAddr = request.getHeader("Client-IP")
+	if (clientIpAddr == null) {
+		clientIpAddr = request.getHeader("X-Forwarded-For")
+		if (clientIpAddr == null) {
+			clientIpAddr = request.getRemoteAddr()
+		}
+	}
+	if (clientIpAddr != null) {
+		if (clientIpAddr.contains(",")) {
+			clientIpAddr.tokenize(",").get(0)
+		}	
+	}
+
+	/**
+	* This is to make sure we have the right domain name
+	**/
+	def remoteHost = request.getRemoteHost()
+	if ((remoteHost == "127.0.0.1") && (clientIpAddr != remoteHost)) {
+		remoteHost = InetAddress.getByName(clientIpAddr).canonicalHostName
+	}
+
+        record.remoteAddr = clientIpAddr
+        record.remoteHost = remoteHost
         record.userAgent = request.getHeader("User-Agent")
 
         record.owner = user
