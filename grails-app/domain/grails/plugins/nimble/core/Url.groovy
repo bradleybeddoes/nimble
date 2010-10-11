@@ -25,7 +25,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  *
  * @author Bradley Beddoes
  */
-class Url {
+class Url implements Serializable {
 
     String name
     String description

@@ -22,7 +22,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  *
  * @author Bradley Beddoes
  */
-class LoginRecord {
+class LoginRecord implements Serializable {
 
     String remoteAddr
     String remoteHost

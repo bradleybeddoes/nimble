@@ -23,7 +23,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  *
  * @author Bradley Beddoes
  */
-class FederationProvider {
+class FederationProvider implements Serializable {
 
   String uid
   Details details
