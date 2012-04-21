@@ -6,21 +6,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
   <title><g:layoutTitle default="Grails"/></title>
 
-  <nh:nimblecore/>
-  <nh:nimbleui/>
-
-  <nh:growl/>
-
-  <nh:admin/>
-
   <g:layoutHead/>
 
-<g:if test="${grailsApplication.config.nimble.layout.customcss != ''}">
-<link rel="stylesheet" href="${grailsApplication.config.nimble.layout.customcss}"/>
-</g:if>
-
+  <g:if test="${grailsApplication.config.nimble.layout.customcss != ''}">
+    <link rel="stylesheet" href="${grailsApplication.config.nimble.layout.customcss}"/>
+  </g:if>
+  
+  <r:require modules="nimble-admin"/>
+  <r:layoutResources />  
 </head>
-
 <body>
 
 <div id="doc">
@@ -32,13 +26,11 @@
     <g:layoutBody/>
   </div>
 
-  <div id="ft">
-
-  </div>
+  <div id="ft"> </div>
 </div>
 
 
 <g:render template="/templates/sessionterminated" contextPath="${pluginContextPath}"/>
-
+<r:layoutResources />
 </body>
 </html>
