@@ -47,14 +47,15 @@ class AuthController {
 
     def index = { redirect(action: 'login', params: params) }
 
-    def login = {
+    def login() {
         def local = grailsApplication.config.nimble.localusers.authentication.enabled
         def registration = grailsApplication.config.nimble.localusers.registration.enabled
         def facebook = grailsApplication.config.nimble.facebook.federationprovider.enabled
         def openid = grailsApplication.config.nimble.openid.federationprovider.enabled
 
-        if(params.targetUri)
+        if(params.targetUri) {
         	session.setAttribute(AuthController.TARGET, params.targetUri)
+        }
 
         render(template: "/templates/nimble/login/login", model: [local: local, registration: registration, facebook: facebook, openid: openid, username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri])
     }

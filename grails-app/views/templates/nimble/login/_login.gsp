@@ -1,27 +1,26 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.login}"/>
-  <title><g:message code="nimble.template.login.title" /></title>
-
-  <nh:nimbleui />
-  <nh:login />
-  <script type="text/javascript">
+  <title><g:message code="nimble.template.login.title" /></title>        
+   <r:script disposition='head'>
     $(function() {
       $(".loginmethod").hide();
       $("#loginfacebookcontinue").hide();
-
       var active = jQuery.url.param("active")
-      if (active)
+      if (active) {
         changeLogin(active);
-      else
+       }
+      else {
         changeLogin('local');
+      }
 
       $("#loginlocal").show();
       $(".flash").show();
-	  $("#username").focus();
+      $("#username").focus();
     });
-  </script>
+  </r:script>
+  <r:require modules="nimble-login"/>
+  <r:layoutResources/>
 </head>
-
 <body>
 
 <g:if test="${facebook || openid}">
@@ -72,7 +71,7 @@
             <h2><g:message code="nimble.template.login.facebook.heading" /></h2>
             <p>
               <n:socialimg name="facebook" size="64" alt="Login using Facebook"/>
-			  <g:message code="nimble.template.login.facebook.descriptive" />
+              <g:message code="nimble.template.login.facebook.descriptive" />
             </p>
             <div id="loginfacebookcontinue">
               <a href="${createLink(controller: "auth", action: "facebook")}" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></a>
@@ -89,7 +88,7 @@
             <h2><g:message code="nimble.template.login.google.heading" /></h2>
             <p>
               <n:socialimg name="google" size="64" alt="Login using Google"/>
-			  <g:message code="nimble.template.login.google.descriptive" />
+              <g:message code="nimble.template.login.google.descriptive" />
             </p>
             <p>
               <a href="${createLink(controller: "auth", action: "googlereq")}" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></a>
@@ -100,7 +99,7 @@
             <h2><g:message code="nimble.template.login.yahoo.heading" /></h2>
             <p>
               <n:socialimg name="yahoo" size="64" alt="Login using Yahoo"/>
-			  <g:message code="nimble.template.login.yahoo.descriptive" />
+              <g:message code="nimble.template.login.yahoo.descriptive" />
             </p>
             <p>
               <a href="${createLink(controller: "auth", action: "yahooreq")}" class="button icon icon_user_green"><g:message code="nimble.link.login.basic" /></a>
@@ -111,7 +110,7 @@
             <h2><g:message code="nimble.template.login.openid.heading" /></h2>
             <p>
               <n:socialimg name="openid" size="64" alt="openid"/>
-			  <g:message code="nimble.template.login.openid.descriptive" />
+              <g:message code="nimble.template.login.openid.descriptive" />
             </p>
             <g:form controller="auth" action="openidreq">
               <strong><g:message code="nimble.template.login.openid.identifier" /></strong>
