@@ -23,7 +23,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  *
  * @author Bradley Beddoes
  */
-class Role {
+class Role implements Serializable {
 
     String name
     String description

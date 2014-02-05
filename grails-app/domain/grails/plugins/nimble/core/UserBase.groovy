@@ -24,7 +24,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  * @author Bradley Beddoes
  */
 
-class UserBase {
+class UserBase implements Serializable {
 
     String username
 	String realm

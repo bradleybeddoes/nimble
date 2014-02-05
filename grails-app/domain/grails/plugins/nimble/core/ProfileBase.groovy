@@ -24,7 +24,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
  *
  * @author Bradley Beddoes
  */
-class ProfileBase {
+class ProfileBase implements Serializable {
 
     String fullName
     String nickName
