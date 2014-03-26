@@ -16,7 +16,7 @@
         <td>
           <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
           <g:if test="${group.protect == false}">
-            <a onClick="removeGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
+            <a onClick="nimble.removeGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
           </g:if>
           <g:else>&nbsp;</g:else>
         </td>

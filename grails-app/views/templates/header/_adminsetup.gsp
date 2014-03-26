@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/administration.css')}"/>
+<n:css src='administration.css'/>
 <!--[if IE]>
-<link rel="stylesheet" href="${resource(dir: nimblePath, file: '/css/ie.css')}"/>
+<n:css src='ie.css'/>
 <![endif]-->

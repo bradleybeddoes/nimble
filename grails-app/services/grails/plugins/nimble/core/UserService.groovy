@@ -36,6 +36,12 @@ class UserService {
     def grailsApplication
     def permissionService
 
+	/**
+	 * login - Called when a user logs in.
+	 * logout - Called when  a user logs out.
+	 * beforeregister - Called immediately before a new user is created.  Can be used for validation. (i.e., user.errors.rejectValue('customfield', 'user.customfield.invalid') )
+	 * afterregister - Called immediately after a new user is created. 
+	 */
     def events = [:]
 
     /**

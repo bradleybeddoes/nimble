@@ -24,7 +24,7 @@
 
         <div class="searchbox">
           <g:textField name="qmembers" class="enhancedinput"/>
-          <button onClick="searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+          <button onClick="nimble.searchMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
           <button id="closeaddmembersbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
         </div>
 
@@ -40,7 +40,7 @@
 
           <div class="searchbox">
             <g:textField name="qmembersgroup" class="enhancedinput"/>
-            <button onClick="searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+            <button onClick="nimble.searchGroupMembers(${parent.id.encodeAsHTML()});" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
             <button id="closeaddgroupmembersbtn" class="button icon icon_cross"><g:message code="nimble.link.close" /></button>
           </div>
 

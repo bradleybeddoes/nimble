@@ -15,6 +15,10 @@
  *  limitations under the License.
  */
 
+// change the JavaScript library that grails & nimble use by adjusting this value
+// valid values: jquery, mootools prototype
+grails.views.javascript.library='jquery'
+
 nimble {
 
     tablenames {
@@ -28,6 +32,8 @@ nimble {
         permission = "permission"
         levelpermission = "level_permission"
         url = "url"
+        socialmediaaccount = "social_media_account"
+        socialmediaservice = "social_media_service"
     }
 
     fieldnames {
@@ -41,6 +47,12 @@ nimble {
         customcss = ''
     }
 
+    resources {
+        jslibrary = grails.views.javascript.library
+        usejsdev = false
+        usecssdev = false
+    }
+
     localusers {
         usernames {
             minlength = 4
@@ -51,15 +63,15 @@ nimble {
 		}
     }
 
-	fields {
-		admin {
-			user['username', 'external', 'federated']
-		}
-		enduser {
-			user['username', 'pass', 'passConfirm']
-			profile['fullName', 'email']
-		}
-	}
+    fields {
+        admin {
+            user = ['username', 'external', 'federated']
+        }
+        enduser {
+            user = ['username', 'pass', 'passConfirm']
+            profile = ['fullName', 'email']
+        }
+    }
 
     passwords {
         mustcontain {

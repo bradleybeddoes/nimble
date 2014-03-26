@@ -308,11 +308,12 @@ class NimbleAuthTagLib {
     }
 
     def facebookConnect = {attrs, body ->
+        def facebook = grailsApplication.config.nimble.facebook.federationprovider.enabled
 
         if (attrs['secure']?.equals('true'))
-        out << render(template: "/templates/auth/facebookjs", contextPath: pluginContextPath, model: [secure: true, apikey: facebookService.apiKey])
+        out << render(template: "/templates/auth/facebookjs", contextPath: pluginContextPath, model: [facebook:facebook, secure: true, apikey: facebookService.apiKey])
         else
-        out << render(template: "/templates/auth/facebookjs", contextPath: pluginContextPath, model: [secure: false, apikey: facebookService.apiKey])
+        out << render(template: "/templates/auth/facebookjs", contextPath: pluginContextPath, model: [facebook:facebook, secure: false, apikey: facebookService.apiKey])
 
     }
 }

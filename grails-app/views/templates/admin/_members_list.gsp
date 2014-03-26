@@ -26,7 +26,7 @@
         <td>
           <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="button icon icon_user_go"><g:message code="nimble.link.view" /></g:link>
           <g:if test="${!protect}">
-            <a onClick="removeMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
+            <a onClick="nimble.removeMember('${parent.id.encodeAsHTML()}', '${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
           </g:if>
         </td>
       </tr>
@@ -59,7 +59,7 @@
           <td>
             <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="button icon icon_group_go"><g:message code="nimble.link.view" /></g:link>
             <g:if test="${!protect}">
-              <a onClick="removeGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
+              <a onClick="nimble.removeGroupMember('${parent.id.encodeAsHTML()}', '${group.id.encodeAsHTML()}', '${group.name.encodeAsHTML()}');" class="button icon icon_delete"><g:message code="nimble.link.remove" /></a>
             </g:if>
           </td>
         </tr>

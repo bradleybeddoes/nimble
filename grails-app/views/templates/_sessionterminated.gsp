@@ -1,13 +1,3 @@
-<div id="sessionterminateddialog">
-  <div class="errorpopup">
-    <div class="content">
-	  <p>
-		<g:message code="nimble.template.sessionterminated.descriptive" />
-	  </p>
-      
-      <div class="buttons">
-        <a href="#" onClick="window.location.reload();return false;" id="sessionterminatedbtn" class="button icon icon_flag_blue"><g:message code="nimble.link.login.basic" /></a>
-      </div>
-    </div>
-  </div>
-</div>
+<input type="hidden" id="sessionterminatedtitle" value="${message(code: 'nimble.template.sessionterminated.title')}"/>
+<input type="hidden" id="sessionterminatedmsg" value="${message(code: 'nimble.template.sessionterminated.descriptive')}"/>
+<input type="hidden" id="sessionterminatedlogin" value="${message(code: 'nimble.link.login.basic')}"/>

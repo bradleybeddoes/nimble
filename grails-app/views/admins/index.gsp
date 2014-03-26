@@ -1,18 +1,9 @@
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
   <title><g:message code="nimble.view.admins.title" /></title>
-
   <script type="text/javascript">
-    var adminListEndpoint = "${createLink(controller:'admins', action:'list')}";
-	var adminSearchEndpoint = "${createLink(action:'search')}";
-	var adminDeleteEndpoint = "${createLink(action:'delete')}";
-	var adminGrantEndpoint = "${createLink(action:'create')}";
-
-    $(function() {	  
-      listAdministrators();
-    });
+  <njs:admin />
   </script>
-
 </head>
 
 <body>
@@ -32,7 +23,7 @@
 
   <div class="searchbox">
     <g:textField name="q" class="easyinput"/>
-    <button onClick="searchAdministrators();" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
+    <button onClick="nimble.searchAdministrators();" class="button icon icon_magnifier"><g:message code="nimble.link.search" /></button>
   </div>
 
   <div id="searchresponse" class="clear">

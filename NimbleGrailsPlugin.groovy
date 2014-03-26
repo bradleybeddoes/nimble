@@ -27,7 +27,7 @@ import grails.plugins.nimble.core.UserBase
 class NimbleGrailsPlugin {
 
     // the plugin version
-    def version = "0.4-SNAPSHOT"
+    def version = "1.0-SNAPSHOT"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
@@ -45,7 +45,7 @@ class NimbleGrailsPlugin {
                       'grails-app/conf/NimbleBootStrap.groovy',
     ]
 
-    def author = "Bradley Beddoes and  open source contributors"
+    def author = "Bradley Beddoes, Chris Doty, Mike Wille and open source contributors"
     def authorEmail = "nimbleproject@googlegroups.com"
     def title = "Nimble"
     def description = '''\\
@@ -55,7 +55,7 @@ class NimbleGrailsPlugin {
     // URL to the plugin's documentation
     def documentation = "http://sites.google.com/site/nimbledoc/"
 
-    def observe = ['controllers']
+    def observe = ['controllers', 'services', 'filters']
 
     def doWithSpring = {
         loadNimbleConfig(application)
@@ -119,14 +119,19 @@ class NimbleGrailsPlugin {
     }
 
     def onChange = { event ->
-        doWithDynamicMethods()
+		if(event.source) {
+        	injectAuthn(event.source, event.application)
+		}
     }
 
     def onConfigChange = { event ->
         
     }
 
-    private void injectAuthn(def clazz, def application) {
+    private void injectAuthn(def clazz, GrailsApplication grailsApplication) {
+		def config = grailsApplication.config
+        GroovyClassLoader classLoader = new GroovyClassLoader(getClass().classLoader)
+
 		clazz.metaClass.getAuthenticatedSubject = {
         	def subject = SecurityUtils.getSubject()
         }
@@ -134,8 +139,8 @@ class NimbleGrailsPlugin {
         	def principal = SecurityUtils.getSubject()?.getPrincipal()		
 			def authUser
 			
-            if(application.config?.nimble?.implementation?.user)
-    			authUser = grailsApplication.classLoader.loadClass(application.config.nimble.implementation.user).get(principal)
+            if(config.nimble?.implementation?.user)
+    			authUser = classLoader.loadClass(config.nimble.implementation.user).get(principal)
     		else
     			authUser = UserBase.get(principal)
 
@@ -154,6 +159,13 @@ class NimbleGrailsPlugin {
 
         // Merging default Nimble config into main application config
         config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleConfig')))
+
+		// Merging default Nimble Social config into main application config if social is used.
+        try {
+            config.merge(new ConfigSlurper(GrailsUtil.environment).parse(classLoader.loadClass('DefaultNimbleSocialConfig')))
+        } catch (Exception ignored) {
+            // ignore, just use the defaults
+        }
 
         // Merging user-defined Nimble config into main application config if provided
         try {
